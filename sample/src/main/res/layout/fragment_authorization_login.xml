@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context=
+                    "com.mateuszkoslacz.moviper.sample.viper.view.activity.AuthorizationActivity">
+    <!--tools:showIn="@layout/activity_authorization">-->
+
+    <EditText
+        android:id="@+id/fragment_authorization_login_edittext_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:hint="@string/fragment_authorization_login_login_hint"
+        android:transitionName="@string/loginTransition"/>
+
+    <EditText
+        android:id="@+id/fragment_authorization_login_edittext_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/fragment_authorization_login_edittext_login"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/fragment_authorization_login_password_hint"
+        android:inputType="textPassword"
+        android:transitionName="@string/passwordTransition"/>
+
+    <Button
+        android:id="@+id/fragment_authorization_login_btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_authorization_login_edittext_password"
+        android:layout_centerHorizontal="true"
+        android:text="@string/fragment_authorization_login_login_btn_txt"/>
+
+    <include layout="@layout/loading_layout"/>
+
+    <include layout="@layout/error_layout"/>
+
+    <include layout="@layout/faked_content_view"/>
+
+    <Button
+        android:id="@+id/fragment_authorization_login_btn_show_register"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/fragment_authorization_login_goto_register_btn_txt"
+        android:theme="@style/Widget.AppCompat.Button.Borderless"/>
+
+</RelativeLayout>

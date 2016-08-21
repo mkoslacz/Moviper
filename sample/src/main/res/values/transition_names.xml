@@ -1,0 +1,5 @@
+<resources>
+    <string name="logoTransition">logoTransition</string>
+    <string name="loginTransition">loginTransition</string>
+    <string name="passwordTransition">passwordTransition</string>
+</resources>

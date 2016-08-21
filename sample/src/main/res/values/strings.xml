@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Moviper Sample</string>
+
+    <string name="fragment_authorization_login_login_hint">login</string>
+    <string name="fragment_authorization_login_password_hint">password</string>
+    <string name="fragment_authorization_login_login_btn_txt">Log in</string>
+    <string name="fragment_authorization_login_goto_register_btn_txt">
+        I don\'t have an account</string>
+
+    <string name="fragment_authorization_register_login_hint">login</string>
+    <string name="fragment_authorization_register_email_hint">your@email.here</string>
+    <string name="fragment_authorization_register_password_hint">password</string>
+    <string name="fragment_authorization_register_register_btn_txt">Register</string>
+    <string name="fragment_authorization_register_goto_login_btn_txt">
+        I already have an account</string>
+
+    <string name="activity_main_sample_txt">Sample main Activity</string>
+
+</resources>

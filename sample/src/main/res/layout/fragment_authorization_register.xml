@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context="com.mateuszkoslacz.moviper.sample.viper.view.activity.AuthorizationActivity">
+    <!--tools:showIn="@layout/activity_authorization">-->
+
+    <EditText
+        android:id="@+id/fragment_authorization_register_edittext_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:hint="@string/fragment_authorization_register_login_hint"
+        android:transitionName="@string/loginTransition"/>
+
+    <EditText
+        android:id="@+id/fragment_authorization_register_edittext_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_authorization_register_edittext_login"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/fragment_authorization_register_email_hint"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:id="@+id/fragment_authorization_register_edittext_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/fragment_authorization_register_edittext_email"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/fragment_authorization_register_password_hint"
+        android:inputType="textPassword"
+        android:transitionName="@string/passwordTransition"/>
+
+    <Button
+        android:id="@+id/fragment_authorization_register_btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/fragment_authorization_register_edittext_password"
+        android:text="@string/fragment_authorization_register_register_btn_txt"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/fragment_authorization_register_btn_show_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp">
+
+        <include layout="@layout/loading_layout"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/fragment_authorization_register_btn_show_login"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/fragment_authorization_register_goto_login_btn_txt"
+        android:theme="@style/Widget.AppCompat.Button.Borderless"/>
+
+
+</RelativeLayout>
