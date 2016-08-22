@@ -33,6 +33,8 @@ This library is built on top of a great [Mosby](https://github.com/sockeqwe/mosb
 
 I've also used a Lucas Urbas Interactor implementation idea presented in his [Search viper architecture example](https://github.com/lurbas/Search).
 
+I have followed [Publish AAR to jCenter and Maven Central](https://gist.github.com/lopspower/6f62fe1492726d848d6d) by Lopez Mikhael to publish Moviper to jCenter.
+
 ## License
 ```
 Copyright 2016 Mateusz Koślacz
