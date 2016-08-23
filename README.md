@@ -16,7 +16,11 @@ You are able to use all of the Mosby's MVP Views with Moviper. MvpFragment, MvpL
 
 ## Dependency
 
-I haven't yet deployed the library to any repo, so for now you will have to do a `git clone` and manually link the library to your project like [this](http://stackoverflow.com/a/31366602/3898686). I will deploy the library very soon.
+```groovy
+dependencies {
+    compile 'com.mateuszkoslacz.moviper:moviper:1.0.0'
+}
+```
 
 ## Getting started
 
