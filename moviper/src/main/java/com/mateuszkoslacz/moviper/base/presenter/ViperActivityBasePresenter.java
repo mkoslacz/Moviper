@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.base.presenter;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -41,6 +42,11 @@ public abstract class ViperActivityBasePresenter
 
     public ViperActivityBasePresenter(@NonNull Activity activity) {
         super();
+        this.routing = createRouting(activity);
+    }
+
+    public ViperActivityBasePresenter(@NonNull Activity activity, Bundle args) {
+        super(args);
         this.routing = createRouting(activity);
     }
 

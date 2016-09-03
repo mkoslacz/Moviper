@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.base.presenter;
 
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
@@ -37,9 +38,15 @@ public abstract class WipeBasePresenter
 
     @Nullable
     private InteractorType interactor;
+    protected Bundle args;
 
-    public WipeBasePresenter() {
+    public WipeBasePresenter(){
+        this(null);
+    }
+
+    public WipeBasePresenter(Bundle args) {
         super();
+        this.args = args;
         this.interactor = createInteractor();
     }
 

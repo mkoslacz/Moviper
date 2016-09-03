@@ -22,13 +22,17 @@ public class MainActivity
         extends MvpActivity<MainContract.View, MainContract.Presenter>
         implements MainContract.View, MainContract.ViewHelper {
 
+    //Sample todo:
+    // TODO: 27.08.2016 fix mysterious no-error app dissapear while getting location on register view
+    // TODO: 27.08.2016 add recyclerview usage sample
+
     //Viper-framework TODOs:
     //TODO implement sample with Dagger2 Viper injection (to use in example and maybe to remove passing
     // activity through presenter to let it be android-free. another (no-dagger) option is to pass
     // newly created  routing to presenter constructor)
     //TODO implement sample with component tests using Dagger & Mocks
     //TODO implement sample presenting rx approach
-    //TODO create rx versions of base classes
+    //TODO create rx versions of base classes (just without presenter callbacks, PresenterForInteractor etc.)
     //TODO add proguard rules file
     //TODO add mosby version choosing in gradle
     //TODO add own lce views with TransitionManager.beginDelayedTransition(((ViewGroup) getView())); animations

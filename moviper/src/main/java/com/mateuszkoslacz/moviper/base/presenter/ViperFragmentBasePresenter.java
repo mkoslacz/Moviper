@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.base.presenter;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -41,6 +42,11 @@ public abstract class ViperFragmentBasePresenter
 
     public ViperFragmentBasePresenter(@NonNull Fragment fragment) {
         super();
+        this.routing = createRouting(fragment);
+    }
+
+    public ViperFragmentBasePresenter(@NonNull Fragment fragment, Bundle args) {
+        super(args);
         this.routing = createRouting(fragment);
     }
 

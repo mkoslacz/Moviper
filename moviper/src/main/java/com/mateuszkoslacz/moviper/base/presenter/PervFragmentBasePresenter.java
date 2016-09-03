@@ -1,5 +1,7 @@
 package com.mateuszkoslacz.moviper.base.presenter;
 
+import android.app.Activity;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -34,9 +36,15 @@ public abstract class PervFragmentBasePresenter
 
     @Nullable
     private RoutingType routing;
+    protected Bundle args;
 
     public PervFragmentBasePresenter(@NonNull Fragment fragment) {
+        this(fragment, null);
+    }
+
+    public PervFragmentBasePresenter(@NonNull Fragment fragment, Bundle args) {
         super();
+        this.args = args;
         this.routing = createRouting(fragment);
     }
 
