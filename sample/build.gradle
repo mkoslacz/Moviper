@@ -11,7 +11,7 @@ android {
     }
 
     compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    buildToolsVersion "24.0.3"
 
     defaultConfig {
         applicationId "com.mateuszkoslacz.moviper.sample"
@@ -43,23 +43,23 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
 
-    compile 'com.android.support:appcompat-v7:24.2.0'
-    compile 'com.android.support:design:24.2.0'
-    compile 'com.android.support:support-v4:24.2.0'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.android.support:support-v4:24.2.1'
 
-    compile 'com.google.android.gms:play-services-location:9.4.0'
+    compile 'com.google.android.gms:play-services-location:9.6.1'
 
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
-    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 
-    compile 'com.jakewharton:butterknife:8.2.1'
+    compile 'com.jakewharton:butterknife:8.4.0'
 
     retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.3.0'
 
     compile 'com.parse:parse-android:1.13.1'
 
-    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
 
     compile project(path: ':moviper')
 }
