@@ -27,6 +27,7 @@ public interface MoviperInteractor<PresenterType extends MoviperPresenterForInte
 
     boolean isPresenterAttached();
 
+    // TODO: 04.10.2016 move attaching presenter to constructor 
     void attachPresenter(PresenterType presenter);
 
     void detachPresenter();

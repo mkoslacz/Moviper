@@ -46,6 +46,7 @@ public interface MoviperRouting<PresenterType extends MoviperPresenterForRouting
 
     boolean isPresenterAttached();
 
+    // TODO: 04.10.2016 move attaching presenter to constructor
     void attachPresenter(PresenterType presenter);
 
     void detachPresenter();
