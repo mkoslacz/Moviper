@@ -23,7 +23,7 @@ public abstract class FragmentBaseViewHelperRouting
         extends ActivityBaseViewHelperRouting<PresenterType, ViewHelperType>
         implements MoviperViewHelperRouting<PresenterType, ViewHelperType> {
 
-    @Nullable
+    @NonNull
     private WeakReference<Fragment> fragment;
 
     public FragmentBaseViewHelperRouting(@NonNull Fragment fragment) {

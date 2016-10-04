@@ -20,7 +20,7 @@ public abstract class ActivityBaseRouting
         <PresenterType extends MoviperPresenterForRouting>  // I prefer readability rather than conventions
         implements MoviperRouting<PresenterType> {
 
-    @Nullable
+    @NonNull
     protected WeakReference<Activity> activity;
 
     @Nullable
