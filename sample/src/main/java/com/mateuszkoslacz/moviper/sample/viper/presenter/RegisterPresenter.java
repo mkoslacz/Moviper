@@ -53,19 +53,19 @@ public class RegisterPresenter
 
     @Override
     public void onRegisterClicked(RegisterBundle bundle) {
-        if (isRoutingAttached()) getRouting().hideSoftKeyboard();
+        getRouting().hideSoftKeyboard();
         if (!bundle.isComplete()) { // it's not needed with Parse, just for illustration purposes
             if (isViewAttached()) getView().displayError("Provide login, email and password!");
         } else {
             if (isViewAttached()) getView().showLoadingView();
             cachedRegisterBundle = bundle;
-            if (isRoutingAttached()) getRouting().subscribeToGetLocalization();
+            getRouting().subscribeToGetLocalization();
         }
     }
 
     @Override
     public void onShowLoginFragmentClicked() {
-        if (isRoutingAttached()) getRouting().gotoLoginFragment();
+        getRouting().gotoLoginFragment();
     }
 
     @Override
@@ -75,17 +75,17 @@ public class RegisterPresenter
 
     @Override
     public void proceedAfterRegister() {
-        if (isRoutingAttached()) getRouting().goToMainActivity();
+        getRouting().goToMainActivity();
     }
 
     @Override
     public void onRequestLocalizationPermissionsResult(boolean granted) {
-        if (isRoutingAttached()) getRouting().onRequestLocalizationPermissionsResult(granted);
+        getRouting().onRequestLocalizationPermissionsResult(granted);
     }
 
     @Override
     public void onLocalizationAquired(LocationPoint location) {
-        if (isInteractorAttached()) getInteractor().register(cachedRegisterBundle, location);
+        getInteractor().register(cachedRegisterBundle, location);
     }
 
     @Override

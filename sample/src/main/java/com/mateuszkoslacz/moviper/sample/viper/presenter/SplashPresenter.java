@@ -50,14 +50,12 @@ public class SplashPresenter
 
     @Override
     public void onViewLoaded() {
-        if (isInteractorAttached()) getInteractor().subscribeToHasActiveUserSession();
+        getInteractor().subscribeToHasActiveUserSession();
     }
 
     @Override
     public void onHasActiveUserSessionResponse(boolean hasActiveUserSession) {
-        if (isRoutingAttached()) {
-            if (hasActiveUserSession) getRouting().goToMainView();
-            else getRouting().goToAuthorizationView();
-        }
+        if (hasActiveUserSession) getRouting().goToMainView();
+        else getRouting().goToAuthorizationView();
     }
 }

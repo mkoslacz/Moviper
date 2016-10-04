@@ -60,19 +60,19 @@ public class LoginPresenter
      */
     @Override
     public void onLoginClicked(String username, String password) {
-        if (isRoutingAttached()) getRouting().hideSoftKeyboard();
+        getRouting().hideSoftKeyboard();
         if (StringUtils.isNullOrEmpty(username) || StringUtils.isNullOrEmpty(password)) {
             if (isViewAttached())
                 getView().showError(new Exception("Provide login and password!"), false);
         } else {
             if (isViewAttached()) getView().showLoading(false);
-            if (isInteractorAttached()) getInteractor().login(username, password);
+            getInteractor().login(username, password);
         }
     }
 
     @Override
     public void onShowRegisterFragmentClicked() {
-        if (isRoutingAttached()) getRouting().gotoRegisterFragment();
+        getRouting().gotoRegisterFragment();
     }
 
     @Override
@@ -82,7 +82,7 @@ public class LoginPresenter
 
     @Override
     public void proceedAfterLogin() {
-        if (isRoutingAttached()) getRouting().goToMainActivity();
+        getRouting().goToMainActivity();
     }
 
 
