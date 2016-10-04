@@ -1,9 +1,7 @@
 package com.mateuszkoslacz.moviper.base.presenter;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
@@ -34,9 +32,9 @@ public abstract class PervFragmentBasePresenter
         implements MoviperFragmentPresenterForRouting<RoutingType>,
         MvpPresenter<ViewType> {
 
-    @Nullable
-    private RoutingType routing;
     protected Bundle args;
+    @NonNull
+    private RoutingType routing;
 
     public PervFragmentBasePresenter(@NonNull Fragment fragment) {
         this(fragment, null);
@@ -49,6 +47,7 @@ public abstract class PervFragmentBasePresenter
     }
 
     @Override
+    @Deprecated
     public boolean isRoutingAttached() {
         return routing != null;
     }
@@ -56,7 +55,6 @@ public abstract class PervFragmentBasePresenter
     @Override
     public void attachView(ViewType view) {
         super.attachView(view);
-        assert routing != null;
         //noinspection unchecked
         routing.attachPresenter(this);
     }
@@ -64,12 +62,10 @@ public abstract class PervFragmentBasePresenter
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
-        assert routing != null;
         routing.detachPresenter();
-        routing = null;
     }
 
-    @Nullable
+    @NonNull
     @Override
     public RoutingType getRouting() {
         return routing;

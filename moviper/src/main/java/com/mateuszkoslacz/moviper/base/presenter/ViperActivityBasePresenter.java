@@ -3,7 +3,6 @@ package com.mateuszkoslacz.moviper.base.presenter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
@@ -37,7 +36,7 @@ public abstract class ViperActivityBasePresenter
         MoviperPresenterForInteractor<InteractorType>,
         MoviperActivityPresenterForRouting<RoutingType> {
 
-    @Nullable
+    @NonNull
     private RoutingType routing;
 
     public ViperActivityBasePresenter(@NonNull Activity activity) {
@@ -51,6 +50,7 @@ public abstract class ViperActivityBasePresenter
     }
 
     @Override
+    @Deprecated
     public boolean isRoutingAttached() {
         return routing != null;
     }
@@ -58,7 +58,6 @@ public abstract class ViperActivityBasePresenter
     @Override
     public void attachView(ViewType view) {
         super.attachView(view);
-        assert routing != null;
         //noinspection unchecked
         routing.attachPresenter(this);
     }
@@ -66,12 +65,10 @@ public abstract class ViperActivityBasePresenter
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
-        assert routing != null;
         routing.detachPresenter();
-        routing = null;
     }
 
-    @Nullable
+    @NonNull
     @Override
     public RoutingType getRouting() {
         return routing;

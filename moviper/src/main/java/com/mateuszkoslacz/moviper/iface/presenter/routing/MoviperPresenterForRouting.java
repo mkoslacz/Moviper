@@ -1,6 +1,6 @@
 package com.mateuszkoslacz.moviper.iface.presenter.routing;
 
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
 
@@ -15,6 +15,7 @@ import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
 // I prefer readability rather than conventions
 public interface MoviperPresenterForRouting<RoutingType extends MoviperRouting> {
 
+    @Deprecated
     boolean isRoutingAttached();
 
     /**
@@ -24,6 +25,6 @@ public interface MoviperPresenterForRouting<RoutingType extends MoviperRouting> 
      * @return attached {@link MoviperRouting} subclass instance or
      * null if it's detached (View got destroyed)
      */
-    @Nullable
+    @NonNull
     RoutingType getRouting();
 }

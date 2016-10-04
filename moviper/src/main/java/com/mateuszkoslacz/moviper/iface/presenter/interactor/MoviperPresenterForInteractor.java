@@ -1,7 +1,6 @@
 package com.mateuszkoslacz.moviper.iface.presenter.interactor;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
 
@@ -18,6 +17,7 @@ import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
 // I prefer readability rather than conventions
 public interface MoviperPresenterForInteractor<InteractorType extends MoviperInteractor> {
 
+    @Deprecated
     boolean isInteractorAttached();
 
     /**
@@ -27,7 +27,7 @@ public interface MoviperPresenterForInteractor<InteractorType extends MoviperInt
      * @return attached {@link MoviperInteractor} subclass instance or
      * null if it's detached (View got destroyed)
      */
-    @Nullable
+    @NonNull
     InteractorType getInteractor();
 
     /**

@@ -1,7 +1,7 @@
 package com.mateuszkoslacz.moviper.base.presenter;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
@@ -36,11 +36,11 @@ public abstract class WipeBasePresenter
         implements MvpPresenter<ViewType>,
         MoviperPresenterForInteractor<InteractorType> {
 
-    @Nullable
-    private InteractorType interactor;
     protected Bundle args;
+    @NonNull
+    private InteractorType interactor;
 
-    public WipeBasePresenter(){
+    public WipeBasePresenter() {
         this(null);
     }
 
@@ -51,6 +51,7 @@ public abstract class WipeBasePresenter
     }
 
     @Override
+    @Deprecated
     public boolean isInteractorAttached() {
         return interactor != null;
     }
@@ -58,7 +59,6 @@ public abstract class WipeBasePresenter
     @Override
     public void attachView(ViewType view) {
         super.attachView(view);
-        assert interactor != null;
         //noinspection unchecked
         interactor.attachPresenter(this);
     }
@@ -66,12 +66,10 @@ public abstract class WipeBasePresenter
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
-        assert interactor != null;
         interactor.detachPresenter();
-        interactor = null;
     }
 
-    @Nullable
+    @NonNull
     @Override
     public InteractorType getInteractor() {
         return interactor;

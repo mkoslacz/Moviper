@@ -17,7 +17,6 @@ public class WeakReferenceUtils {
     public static void detach(@Nullable WeakReference weakReferenceToClear) {
         if (weakReferenceToClear != null) {
             weakReferenceToClear.clear();
-            weakReferenceToClear = null;
         }
     }
 
