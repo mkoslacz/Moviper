@@ -2,6 +2,7 @@ package com.mateuszkoslacz.moviper.iface.presenter.interactor;
 
 import android.support.annotation.NonNull;
 
+import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
 
 /**
@@ -15,7 +16,7 @@ import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
  * interactor's error messages etc.
  */
 // I prefer readability rather than conventions
-public interface MoviperPresenterForInteractor<InteractorType extends MoviperInteractor> {
+public interface MoviperPresenterForInteractor<InteractorType extends MoviperRxInteractor> {
 
     @Deprecated
     boolean isInteractorAttached();
@@ -37,5 +38,4 @@ public interface MoviperPresenterForInteractor<InteractorType extends MoviperInt
      */
     @NonNull
     InteractorType createInteractor();
-
 }

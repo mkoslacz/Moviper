@@ -13,7 +13,8 @@ import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterFor
  * {@link com.hannesdorfmann.mosby.mvp.MvpPresenter}). It queries an API, DB etc.
  */
 // I prefer readability rather than conventions
-public interface MoviperInteractor<PresenterType extends MoviperPresenterForInteractor> {
+public interface MoviperInteractor<PresenterType extends MoviperPresenterForInteractor>
+        extends MoviperRxInteractor {
 
     /**
      * Remember to call {@link #isPresenterAttached()} before getting the Presenter to avoid

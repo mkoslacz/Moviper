@@ -18,27 +18,14 @@ import java.lang.ref.WeakReference;
  */
 public abstract class ActivityBaseRouting
         <PresenterType extends MoviperPresenterForRouting>  // I prefer readability rather than conventions
+        extends ActivityBaseRxRouting
         implements MoviperRouting<PresenterType> {
-
-    @NonNull
-    protected WeakReference<Activity> activity;
 
     @Nullable
     private WeakReference<PresenterType> presenter;
 
     public ActivityBaseRouting(@NonNull Activity activity) {
-        this.activity = new WeakReference<>(activity);
-    }
-
-    @Override
-    public boolean isActivityAttached() {
-        return WeakReferenceUtils.isAttached(activity);
-    }
-
-    @Nullable
-    @Override
-    public Activity getActivity() {
-        return WeakReferenceUtils.get(activity);
+        super(activity);
     }
 
     @Override

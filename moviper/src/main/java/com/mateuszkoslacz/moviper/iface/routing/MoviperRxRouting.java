@@ -1,8 +1,7 @@
 package com.mateuszkoslacz.moviper.iface.routing;
 
+import android.app.Activity;
 import android.support.annotation.Nullable;
-
-import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
@@ -20,23 +19,16 @@ import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRou
  * views, see {@link MoviperViewHelperRouting}
  */
 // I prefer readability rather than conventions
-public interface MoviperRouting<PresenterType extends MoviperPresenterForRouting>
-        extends MoviperRxRouting {
+public interface MoviperRxRouting {
 
     /**
-     * Remember to call {@link #isPresenterAttached()} ()} before getting the Presenter to avoid
-     * {@link NullPointerException}s.
+     * Remember to call {@link #isActivityAttached()} before getting the Activity to avoid {@link
+     * NullPointerException}s.
      *
-     * @return attached Moviper {@link com.hannesdorfmann.mosby.mvp.MvpBasePresenter} subclass
-     * instance or null if it's detached (View got destroyed)
+     * @return attached Activity instance or null if it's detached (View got destroyed)
      */
     @Nullable
-    PresenterType getPresenter();
+    Activity getActivity();
 
-    boolean isPresenterAttached();
-
-    // TODO: 04.10.2016 move attaching presenter to constructor
-    void attachPresenter(PresenterType presenter);
-
-    void detachPresenter();
+    boolean isActivityAttached();
 }
