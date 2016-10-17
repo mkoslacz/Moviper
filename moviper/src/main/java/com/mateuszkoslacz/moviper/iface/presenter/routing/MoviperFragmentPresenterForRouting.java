@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
+import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
@@ -12,7 +13,7 @@ import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
  * (see {@link MoviperPresenterForRouting})
  */
 // I prefer readability rather than conventions
-public interface MoviperFragmentPresenterForRouting<RoutingType extends MoviperRouting>
+public interface MoviperFragmentPresenterForRouting<RoutingType extends MoviperRxRouting>
         extends MoviperPresenterForRouting<RoutingType> {
 
     /**

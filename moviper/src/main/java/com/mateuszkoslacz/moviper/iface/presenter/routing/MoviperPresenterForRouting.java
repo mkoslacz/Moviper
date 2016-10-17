@@ -3,6 +3,7 @@ package com.mateuszkoslacz.moviper.iface.presenter.routing;
 import android.support.annotation.NonNull;
 
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
+import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
@@ -13,7 +14,7 @@ import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
  * routing's error messages etc.
  */
 // I prefer readability rather than conventions
-public interface MoviperPresenterForRouting<RoutingType extends MoviperRouting> {
+public interface MoviperPresenterForRouting<RoutingType extends MoviperRxRouting> {
 
     @Deprecated
     boolean isRoutingAttached();
