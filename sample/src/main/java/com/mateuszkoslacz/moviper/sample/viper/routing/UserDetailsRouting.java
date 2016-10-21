@@ -29,7 +29,8 @@ public class UserDetailsRouting
 
         if (isActivityAttached()) {
             ActivityOptionsCompat optionsCompat = ActivityOptionsCompat
-                    .makeSceneTransitionAnimation(getActivity(), getViewHelper().getAvatarImageView(),
+                    .makeSceneTransitionAnimation(getActivity(),
+                            getViewHelper().getAvatarImageView(),
                             getActivity().getString(R.string.avatar_transition));
             getActivity().startActivity(intent, optionsCompat.toBundle());
         }

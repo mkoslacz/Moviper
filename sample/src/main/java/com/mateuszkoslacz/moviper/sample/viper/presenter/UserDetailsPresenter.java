@@ -72,7 +72,8 @@ public class UserDetailsPresenter
     public void onUserFetched(User user) {
         if (isViewAttached()) {
             getView().setData(user);
-            new Handler(Looper.getMainLooper()).postDelayed(() -> getView().showContent(), 100);
+            new Handler(Looper.getMainLooper()).postDelayed(() ->
+                    getView().showContent(), 100);
         }
     }
 

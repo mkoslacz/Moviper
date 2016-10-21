@@ -62,7 +62,8 @@ public class UserDetailsActivity
             Glide.with(this)
                     .load(user.getAvatarUrl())
                     .into(mAvatarImageView);
-            mAvatarImageView.setOnClickListener(v -> getPresenter().onAvatarClicked(user.getAvatarUrl()));
+            mAvatarImageView.setOnClickListener(v ->
+                    getPresenter().onAvatarClicked(user.getAvatarUrl()));
         });
     }
 

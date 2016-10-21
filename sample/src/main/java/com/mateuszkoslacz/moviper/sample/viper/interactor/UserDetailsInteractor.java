@@ -29,7 +29,8 @@ public class UserDetailsInteractor
         Thread thread = new Thread(() -> {
             try {
                 if (isPresenterAttached())
-                    getPresenter().onUserFetched(mGitHubApiInterface.getUserForUsername(user).execute().body());
+                    getPresenter().onUserFetched(mGitHubApiInterface
+                            .getUserForUsername(user).execute().body());
             } catch (IOException e) {
                 if (isPresenterAttached())
                     getPresenter().onUserFetchedError(e);
