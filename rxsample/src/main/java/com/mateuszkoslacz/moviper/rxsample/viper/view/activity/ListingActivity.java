@@ -5,6 +5,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.mateuszkoslacz.moviper.rxsample.R;
@@ -27,6 +30,11 @@ public class ListingActivity
     @BindView(R.id.recycler_view)
     protected RecyclerView mRecyclerView;
 
+    @BindView(R.id.errorView)
+    TextView mErrorViewTextView;
+    @BindView(R.id.loadingView)
+    ProgressBar mLoadingViewProgressBar;
+
     private List<User> mUserList = new ArrayList<>();
     private UserAdapter mAdapter;
 
@@ -44,6 +52,27 @@ public class ListingActivity
     public void setUserList(List<User> userList) {
         this.mUserList.addAll(userList);
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showError() {
+        mErrorViewTextView.setVisibility(View.VISIBLE);
+        mLoadingViewProgressBar.setVisibility(View.INVISIBLE);
+        mRecyclerView.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void showLoading() {
+        mErrorViewTextView.setVisibility(View.INVISIBLE);
+        mLoadingViewProgressBar.setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void showContent() {
+        mErrorViewTextView.setVisibility(View.INVISIBLE);
+        mLoadingViewProgressBar.setVisibility(View.INVISIBLE);
+        mRecyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override

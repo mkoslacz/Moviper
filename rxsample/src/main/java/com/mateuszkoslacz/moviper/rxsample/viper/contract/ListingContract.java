@@ -28,6 +28,12 @@ public interface ListingContract {
         // In Super Rx version it also provides getters for Observables emmiting user click events.
 
         void setUserList(List<User> userList);
+
+        void showError();
+
+        void showLoading();
+
+        void showContent();
     }
 
     interface Interactor extends MoviperRxInteractor {
