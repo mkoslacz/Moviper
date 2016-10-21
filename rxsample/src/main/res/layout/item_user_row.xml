@@ -21,7 +21,7 @@
         android:layout_marginTop="10dp"
         android:textSize="18dp"
         android:transitionName="login"
-        tools:text="Login" />
+        tools:text="@string/example_login" />
 
     <TextView
         android:id="@+id/url"
@@ -31,7 +31,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="65dp"
         android:transitionName="url"
-        tools:text="http://github.com/user/login" />
+        tools:text="@string/example_url" />
 
     <ImageView
         android:layout_width="35dp"

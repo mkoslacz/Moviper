@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityOptionsCompat;
 
 import com.mateuszkoslacz.moviper.base.routing.ActivityBaseViewHelperRouting;
+import com.mateuszkoslacz.moviper.sample.R;
 import com.mateuszkoslacz.moviper.sample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.sample.viper.view.activity.FullscreenPhotoActivity;
 
@@ -28,7 +29,8 @@ public class UserDetailsRouting
 
         if (isActivityAttached()) {
             ActivityOptionsCompat optionsCompat = ActivityOptionsCompat
-                    .makeSceneTransitionAnimation(getActivity(), getViewHelper().getAvatarImageView(), "avatar");
+                    .makeSceneTransitionAnimation(getActivity(), getViewHelper().getAvatarImageView(),
+                            getActivity().getString(R.string.avatar_transition));
             getActivity().startActivity(intent, optionsCompat.toBundle());
         }
     }

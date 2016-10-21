@@ -12,7 +12,7 @@
 
     <TextView
             android:id="@+id/errorView"
-            android:text="Data loading error"
+            android:text="@string/data_loading_error"
             android:layout_marginTop="130dp"
             android:textSize="25dp"
             android:layout_centerHorizontal="true"

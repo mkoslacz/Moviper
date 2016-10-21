@@ -1,12 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                xmlns:app="http://schemas.android.com/apk/res-auto">
+                android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/avatar"
-        android:transitionName="avatar"
+        android:transitionName="@string/avatar_transition"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_margin="20dp" />
@@ -15,7 +14,7 @@
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Login"
+        tools:text="@string/example_login"
         android:textSize="25dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="30dp"/>
@@ -24,7 +23,7 @@
         android:id="@+id/url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="http://github.com/user/login"
+        tools:text="@string/example_url"
         android:textSize="13dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="65dp"/>
@@ -39,7 +38,7 @@
 
     <TextView
             android:id="@+id/errorView"
-            android:text="Data loading error"
+            android:text="@string/data_loading_error"
             android:layout_marginTop="130dp"
             android:textSize="25dp"
             android:layout_centerHorizontal="true"
@@ -60,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:text="Name:"
+            android:text="@string/name"
             android:layout_marginLeft="15dp"
             android:layout_marginBottom="5dp"/>
 
@@ -69,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            tools:text="Funny Name"
+            tools:text="@string/example_name"
             android:layout_marginLeft="35dp"
             android:layout_marginBottom="10dp"/>
 
@@ -78,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:text="Company:"
+            android:text="@string/company"
             android:layout_marginLeft="15dp"
             android:layout_marginBottom="5dp"/>
 
@@ -87,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            tools:text="Funny company"
+            tools:text="@string/example_company"
             android:layout_marginLeft="35dp"
             android:layout_marginBottom="10dp"/>
 
@@ -95,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:text="Blog:"
+            android:text="@string/blog"
             android:layout_marginLeft="15dp"
             android:layout_marginBottom="5dp"/>
 
@@ -104,7 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            tools:text="http://funnyBlog.com"
+            tools:text="@string/example_blog"
             android:layout_marginLeft="35dp"
             android:layout_marginBottom="10dp"/>
 
@@ -113,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:text="Location:"
+            android:text="@string/location"
             android:layout_marginLeft="15dp"
             android:layout_marginBottom="5dp"/>
 
@@ -122,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            tools:text="Warsaw, Poland"
+            tools:text="@string/example_location"
             android:layout_marginLeft="35dp"
             android:layout_marginBottom="10dp"/>
 
@@ -130,7 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:text="Email:"
+            android:text="@string/email"
             android:layout_marginLeft="15dp"
             android:layout_marginBottom="5dp"/>
 
@@ -139,7 +138,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            tools:text="funny@email.com"
+            tools:text="@string/example_email"
             android:layout_marginLeft="35dp"
             android:layout_marginBottom="10dp"/>
 
