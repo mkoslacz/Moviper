@@ -20,7 +20,6 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        maven { url 'https://oss.jfrog.org/libs-snapshot' }
     }
 }
 
