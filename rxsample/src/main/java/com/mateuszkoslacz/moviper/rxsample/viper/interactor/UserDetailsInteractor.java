@@ -3,22 +3,20 @@ package com.mateuszkoslacz.moviper.rxsample.viper.interactor;
 import com.fernandocejas.frodo.annotation.RxLogObservable;
 import com.mateuszkoslacz.moviper.rxsample.data.model.User;
 import com.mateuszkoslacz.moviper.rxsample.data.retrofit.GitHubApiInterface;
-import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
-
-import java.util.List;
+import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 
-public class ListingInteractor
-        implements ListingContract.Interactor {
+public class UserDetailsInteractor
+        implements UserDetailsContract.Interactor {
 
     private Retrofit mRetrofit;
     private GitHubApiInterface mGitHubApiInterface;
 
-    public ListingInteractor() {
+    public UserDetailsInteractor() {
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(GitHubApiInterface.GitHubApiUrl)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -27,10 +25,9 @@ public class ListingInteractor
         mGitHubApiInterface = mRetrofit.create(GitHubApiInterface.class);
     }
 
-
     @RxLogObservable(RxLogObservable.Scope.STREAM)
     @Override
-    public Observable<List<User>> getUsers() {
-        return mGitHubApiInterface.getUsers();
+    public Observable<User> getUserForUsername(String user) {
+        return mGitHubApiInterface.getUserForUsername(user);
     }
 }
