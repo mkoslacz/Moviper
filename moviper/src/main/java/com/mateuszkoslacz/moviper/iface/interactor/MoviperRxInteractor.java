@@ -14,4 +14,5 @@ import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterFor
  */
 public interface MoviperRxInteractor {
 
+    void onPresenterDetached();
 }

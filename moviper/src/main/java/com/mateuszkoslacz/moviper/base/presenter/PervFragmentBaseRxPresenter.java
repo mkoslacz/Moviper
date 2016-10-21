@@ -9,6 +9,7 @@ import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperFragmentPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
+import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
 
 /**
  * Created by mateuszkoslacz on 09.08.2016.
@@ -26,7 +27,7 @@ import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
  */
 //TODO migrate to MvpNullObjectPresenter base class?
 public abstract class PervFragmentBaseRxPresenter
-        <RoutingType extends MoviperRouting,  // I prefer readability rather than conventions
+        <RoutingType extends MoviperRxRouting,  // I prefer readability rather than conventions
                 ViewType extends MvpView>
         extends MvpBasePresenter<ViewType>
         implements MoviperFragmentPresenterForRouting<RoutingType>,
@@ -53,16 +54,9 @@ public abstract class PervFragmentBaseRxPresenter
     }
 
     @Override
-    public void attachView(ViewType view) {
-        super.attachView(view);
-        //noinspection unchecked
-        routing.attachPresenter(this);
-    }
-
-    @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
-        routing.detachPresenter();
+        routing.onPresenterDetached();
     }
 
     @NonNull

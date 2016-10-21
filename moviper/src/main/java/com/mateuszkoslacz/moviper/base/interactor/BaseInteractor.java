@@ -16,9 +16,7 @@ import java.lang.ref.WeakReference;
  * <p>
  * Base Interactor class. (see {@link MoviperInteractor})
  */
-public abstract class BaseInteractor
-        <PresenterType
-                extends MoviperPresenterForInteractor>
+public abstract class BaseInteractor<PresenterType extends MoviperPresenterForInteractor>
         implements MoviperInteractor<PresenterType> {
 
     @Nullable
@@ -43,5 +41,10 @@ public abstract class BaseInteractor
     @Override
     public void detachPresenter() {
         WeakReferenceUtils.detach(presenter);
+    }
+
+    @Override
+    public void onPresenterDetached() {
+        // stub
     }
 }

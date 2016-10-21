@@ -49,6 +49,12 @@ public abstract class PervActivityBaseRxPresenter
     }
 
     @Override
+    public void detachView(boolean retainInstance) {
+        super.detachView(retainInstance);
+        routing.onPresenterDetached();
+    }
+
+    @Override
     @Deprecated
     public boolean isRoutingAttached() {
         return routing != null;

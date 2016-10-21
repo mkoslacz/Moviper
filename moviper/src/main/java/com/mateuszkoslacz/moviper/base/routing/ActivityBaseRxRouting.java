@@ -37,4 +37,9 @@ public abstract class ActivityBaseRxRouting
     public Activity getActivity() {
         return WeakReferenceUtils.get(activity);
     }
+
+    @Override
+    public void onPresenterDetached() {
+        // stub
+    }
 }

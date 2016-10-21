@@ -52,6 +52,12 @@ public abstract class WipeBaseRxPresenter
     }
 
     @Override
+    public void detachView(boolean retainInstance) {
+        super.detachView(retainInstance);
+        interactor.onPresenterDetached();
+    }
+
+    @Override
     @Deprecated
     public boolean isInteractorAttached() {
         return interactor != null;

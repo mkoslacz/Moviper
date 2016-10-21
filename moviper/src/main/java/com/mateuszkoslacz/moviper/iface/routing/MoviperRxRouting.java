@@ -31,4 +31,6 @@ public interface MoviperRxRouting {
     Activity getActivity();
 
     boolean isActivityAttached();
+
+    void onPresenterDetached();
 }
