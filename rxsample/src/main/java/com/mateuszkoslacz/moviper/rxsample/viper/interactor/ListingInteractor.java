@@ -30,7 +30,7 @@ public class ListingInteractor
 
     @RxLogObservable(RxLogObservable.Scope.STREAM)
     @Override
-    public Observable<List<User>> getUsers() {
+    public Observable<List<User>> getUserList() {
         return mGitHubApiInterface.getUsers();
     }
 }

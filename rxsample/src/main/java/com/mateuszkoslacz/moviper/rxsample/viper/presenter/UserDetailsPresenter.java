@@ -42,13 +42,13 @@ public class UserDetailsPresenter
     }
 
     private void getUserDataIntentFromListingActivity() {
-            final UserDetailsActivity userDetailsActivity = (UserDetailsActivity) getView();
-            Intent intent = userDetailsActivity.getIntent();
-            User userFromExtras = intent.getExtras().getParcelable(ListingRouting.USER_EXTRA);
+        final UserDetailsActivity userDetailsActivity = (UserDetailsActivity) getView();
+        Intent intent = userDetailsActivity.getIntent();
+        User userFromExtras = intent.getExtras().getParcelable(ListingRouting.USER_EXTRA);
 
-            userDetailsActivity.setLoginAndAvatarForUser(userFromExtras);
+        userDetailsActivity.setLoginAndAvatarForUser(userFromExtras);
 
-            getUserDataFromApi(userFromExtras.getLogin());
+        getUserDataFromApi(userFromExtras.getLogin());
     }
 
     private void getUserDataFromApi(String userLogin) {

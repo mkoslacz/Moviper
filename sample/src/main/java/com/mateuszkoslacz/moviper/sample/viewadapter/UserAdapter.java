@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.rxsample.viewadapter;
+package com.mateuszkoslacz.moviper.sample.viewadapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.mateuszkoslacz.moviper.rxsample.R;
-import com.mateuszkoslacz.moviper.rxsample.data.model.User;
+import com.mateuszkoslacz.moviper.sample.R;
+import com.mateuszkoslacz.moviper.sample.model.User;
 
 import java.util.List;
 

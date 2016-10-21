@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.rxsample.viper.view.activity;
+package com.mateuszkoslacz.moviper.sample.viper.view.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceActivity;
-import com.mateuszkoslacz.moviper.rxsample.R;
-import com.mateuszkoslacz.moviper.rxsample.data.model.User;
-import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract;
-import com.mateuszkoslacz.moviper.rxsample.viper.presenter.UserDetailsPresenter;
+import com.mateuszkoslacz.moviper.sample.R;
+import com.mateuszkoslacz.moviper.sample.model.User;
+import com.mateuszkoslacz.moviper.sample.viper.contract.UserDetailsContract;
+import com.mateuszkoslacz.moviper.sample.viper.presenter.UserDetailsPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,18 +50,20 @@ public class UserDetailsActivity
 
     @Override
     public void bindDataToViews(User user) {
-        mLoginTextView.setText(user.getLogin());
-        mUrlTextView.setText(user.getUrl());
-        mNameTextView.setText(user.getName());
-        mCompanyTextView.setText(user.getCompany());
-        mBlogTextView.setText(user.getBlog());
-        mLocationTextView.setText(user.getLocation());
-        mEmailTextView.setText(user.getEmail());
+        runOnUiThread(() -> {
+            mLoginTextView.setText(user.getLogin());
+            mUrlTextView.setText(user.getUrl());
+            mNameTextView.setText(user.getName());
+            mCompanyTextView.setText(user.getCompany());
+            mBlogTextView.setText(user.getBlog());
+            mLocationTextView.setText(user.getLocation());
+            mEmailTextView.setText(user.getEmail());
 
-        Glide.with(this)
-                .load(user.getAvatarUrl())
-                .into(mAvatarImageView);
-        mAvatarImageView.setOnClickListener(v -> getPresenter().onAvatarClicked(user.getAvatarUrl()));
+            Glide.with(this)
+                    .load(user.getAvatarUrl())
+                    .into(mAvatarImageView);
+            mAvatarImageView.setOnClickListener(v -> getPresenter().onAvatarClicked(user.getAvatarUrl()));
+        });
     }
 
     @Override
