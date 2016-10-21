@@ -26,16 +26,16 @@ public class UserDetailsInteractor
 
     @Override
     public void getUserForUsername(String user) {
-        if (isPresenterAttached()) {
-            Thread thread = new Thread(() -> {
-                try {
+        Thread thread = new Thread(() -> {
+            try {
+                if (isPresenterAttached())
                     getPresenter().onUserFetched(mGitHubApiInterface.getUserForUsername(user).execute().body());
-                } catch (IOException e) {
+            } catch (IOException e) {
+                if (isPresenterAttached())
                     getPresenter().onUserFetchedError(e);
-                }
-            });
+            }
+        });
 
-            thread.start();
-        }
+        thread.start();
     }
 }
