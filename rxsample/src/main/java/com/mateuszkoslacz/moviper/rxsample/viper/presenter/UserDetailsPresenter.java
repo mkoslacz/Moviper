@@ -63,16 +63,11 @@ public class UserDetailsPresenter
                             }
                         },
                         throwable -> {
-                            Log.d("onUsers()", throwable.getMessage());
                             if (isViewAttached())
                                 getView().showError(throwable, false);
                         }
                 );
     }
-
-    /*
-    --------------------------------------------------------------------------
-     */
 
     @NonNull
     @Override

@@ -42,7 +42,6 @@ public class ListingPresenter
                             }
                         },
                         throwable -> {
-                            Log.d("onUsers()", throwable.getMessage());
                             if (isViewAttached())
                                 getView().showError();
                         }
@@ -53,10 +52,6 @@ public class ListingPresenter
     public void onItemClicked(User user, UserAdapter.UserViewHolder userViewHolder) {
         getRouting().startUserDetailsActivity(user, userViewHolder);
     }
-
-    /*
-    --------------------------------------------------------------------------
-     */
 
     @NonNull
     @Override

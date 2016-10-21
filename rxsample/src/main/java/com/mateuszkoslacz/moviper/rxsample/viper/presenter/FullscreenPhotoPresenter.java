@@ -28,10 +28,6 @@ public class FullscreenPhotoPresenter
                 .getExtras().getString(UserDetailsRouting.PHOTO_EXTRA) : "";
     }
 
-    /*
-    --------------------------------------------------------------------------
-     */
-
     @NonNull
     @Override
     public FullscreenPhotoContract.Routing createRouting(@NonNull Activity activity) {
