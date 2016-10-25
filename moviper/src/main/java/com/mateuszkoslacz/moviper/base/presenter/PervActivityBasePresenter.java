@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
+import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
 import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperActivityPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
 
@@ -28,9 +28,9 @@ import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
 public abstract class PervActivityBasePresenter
         <RoutingType extends MoviperRouting,  // I prefer readability rather than conventions
                 ViewType extends MvpView>
-        extends MvpBasePresenter<ViewType>
+        extends MoviperBasePresenter<ViewType>
         implements MoviperActivityPresenterForRouting<RoutingType>,
-        MvpPresenter<ViewType> {
+        MoviperPresenter<ViewType> {
 
     protected Bundle args;
     @NonNull

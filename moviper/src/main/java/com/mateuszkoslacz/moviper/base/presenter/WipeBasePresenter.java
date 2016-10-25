@@ -7,6 +7,7 @@ import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
+import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
 import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
 
 /**
@@ -32,8 +33,8 @@ import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterFor
 public abstract class WipeBasePresenter
         <ViewType extends MvpView, // I prefer readability rather than conventions
                 InteractorType extends MoviperInteractor>
-        extends MvpBasePresenter<ViewType>
-        implements MvpPresenter<ViewType>,
+        extends MoviperBasePresenter<ViewType>
+        implements MoviperPresenter<ViewType>,
         MoviperPresenterForInteractor<InteractorType> {
 
     protected Bundle args;
