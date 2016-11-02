@@ -31,8 +31,8 @@ public abstract class MoviperBasePresenter<V extends MvpView>
 
     @Override
     public void detachView(boolean retainInstance) {
-        super.detachView(retainInstance);
         Moviper.getInstance().unregister(this);
+        super.detachView(retainInstance);
     }
 
     @Override
