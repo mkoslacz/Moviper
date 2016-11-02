@@ -37,7 +37,6 @@ public abstract class WipeBasePresenter
         implements MoviperPresenter<ViewType>,
         MoviperPresenterForInteractor<InteractorType> {
 
-    private Bundle args;
     @NonNull
     private InteractorType interactor;
 
@@ -46,8 +45,7 @@ public abstract class WipeBasePresenter
     }
 
     public WipeBasePresenter(Bundle args) {
-        super();
-        this.args = args;
+        super(args);
         this.interactor = createInteractor();
     }
 
@@ -74,9 +72,5 @@ public abstract class WipeBasePresenter
     @Override
     public InteractorType getInteractor() {
         return interactor;
-    }
-
-    public Bundle getArgs() {
-        return args;
     }
 }

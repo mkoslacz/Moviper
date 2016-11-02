@@ -1,6 +1,8 @@
 package com.mateuszkoslacz.moviper.base.presenter;
 
 
+import android.os.Bundle;
+
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
@@ -13,6 +15,12 @@ import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 public abstract class MoviperBasePresenter<V extends MvpView>
         extends MvpBasePresenter<V>
         implements MoviperPresenter<V> {
+
+    private Bundle args;
+
+    public MoviperBasePresenter(Bundle args) {
+        this.args = args;
+    }
 
     public String getClassName() {
         return getClass().getName();
@@ -33,6 +41,10 @@ public abstract class MoviperBasePresenter<V extends MvpView>
     public void detachView(boolean retainInstance) {
         Moviper.getInstance().unregister(this);
         super.detachView(retainInstance);
+    }
+
+    public Bundle getArgs() {
+        return args;
     }
 
     @Override

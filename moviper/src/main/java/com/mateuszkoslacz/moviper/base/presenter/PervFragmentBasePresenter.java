@@ -33,7 +33,6 @@ public abstract class PervFragmentBasePresenter
         implements MoviperFragmentPresenterForRouting<RoutingType>,
         MoviperPresenter<ViewType> {
 
-    private Bundle args;
     @NonNull
     private RoutingType routing;
 
@@ -42,8 +41,7 @@ public abstract class PervFragmentBasePresenter
     }
 
     public PervFragmentBasePresenter(@NonNull Fragment fragment, Bundle args) {
-        super();
-        this.args = args;
+        super(args);
         this.routing = createRouting(fragment);
     }
 
@@ -70,9 +68,5 @@ public abstract class PervFragmentBasePresenter
     @Override
     public RoutingType getRouting() {
         return routing;
-    }
-
-    public Bundle getArgs() {
-        return args;
     }
 }
