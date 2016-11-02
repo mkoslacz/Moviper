@@ -36,7 +36,7 @@ public abstract class WipeBaseRxPresenter
         implements MoviperPresenter<ViewType>,
         MoviperPresenterForInteractor<InteractorType> {
 
-    protected Bundle args;
+    private Bundle args;
     @NonNull
     private InteractorType interactor;
 
@@ -66,5 +66,9 @@ public abstract class WipeBaseRxPresenter
     @Override
     public InteractorType getInteractor() {
         return interactor;
+    }
+
+    public Bundle getArgs() {
+        return args;
     }
 }

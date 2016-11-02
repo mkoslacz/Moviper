@@ -32,7 +32,7 @@ public abstract class PervActivityBaseRxPresenter
         implements MoviperActivityPresenterForRouting<RoutingType>,
         MoviperPresenter<ViewType> {
 
-    protected Bundle args;
+    private Bundle args;
     @NonNull
     private RoutingType routing;
 
@@ -65,4 +65,7 @@ public abstract class PervActivityBaseRxPresenter
         return routing;
     }
 
+    public Bundle getArgs() {
+        return args;
+    }
 }
