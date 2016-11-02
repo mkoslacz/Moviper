@@ -9,7 +9,12 @@ import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
 public class PresenterAlreadyRegisteredException extends RuntimeException {
 
     public PresenterAlreadyRegisteredException(MoviperPresenter presenter) {
-        super(String.format("Presenter %s named %s is already registered!",
+        super(String.format("Presenter %1$s named %1$s is already registered! You enabled presenter instances" +
+                "access and tried to register two or more presenters of the same class and name." +
+                "Override getName() method in your %1$s presenter in way that will provide unique name" +
+                "for each instance or disable presenter instances access using " +
+                "Moviper.getInstance().setConfig(new Config.Builder()...) and setting " +
+                "withInstancePresentersEnabled(true) in config builder.",
                 presenter.getClass().getName(), presenter.getName()));
     }
 }
