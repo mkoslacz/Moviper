@@ -76,12 +76,19 @@ public class ListingActivity
     }
 
     @Override
-    public void onUserClick(User user, UserAdapter.UserViewHolder userViewHolder) {
-        getPresenter().onItemClicked(user, userViewHolder);
+    public void onUserClick(User user) {
+        getPresenter().onItemClicked(user);
+    }
+
+    @Override
+    protected void onStop() {
+        mAdapter = null;
+        super.onStop();
     }
 
     private void prepareRecyclerView() {
-        mAdapter = new UserAdapter(mUserList, this, this);
+        mAdapter = new UserAdapter(this, this);
+        mAdapter.setUserList(mUserList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());

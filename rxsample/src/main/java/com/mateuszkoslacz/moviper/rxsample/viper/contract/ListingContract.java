@@ -5,7 +5,6 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
 import com.mateuszkoslacz.moviper.rxsample.data.model.User;
-import com.mateuszkoslacz.moviper.rxsample.viewadapter.UserAdapter;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public interface ListingContract {
 
         void onViewCreated();
 
-        void onItemClicked(User item, UserAdapter.UserViewHolder userViewHolder);
+        void onItemClicked(User item);
     }
 
     interface View extends MvpView {
@@ -51,6 +50,6 @@ public interface ListingContract {
         // In the case of a fragment being the view, there also will be manipulating
         // the root Activity, ie. switching fragments.
 
-        void startUserDetailsActivity(User userList, UserAdapter.UserViewHolder userViewHolder);
+        void startUserDetailsActivity(User userList);
     }
 }

@@ -13,6 +13,7 @@ import rx.Observable;
  */
 
 public interface GitHubApiInterface {
+
     String GitHubApiUrl = "https://api.github.com";
 
     @GET("/users")

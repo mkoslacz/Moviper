@@ -1,8 +1,9 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.view.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,6 +23,8 @@ public class UserDetailsActivity
         extends MvpLceActivity<LinearLayout, User, UserDetailsContract.View, UserDetailsContract.Presenter>
         implements UserDetailsContract.View, UserDetailsContract.ViewHelper {
 
+    public final static String USER_EXTRA = "USER_EXTRA";
+
     @BindView(R.id.login)
     TextView mLoginTextView;
     @BindView(R.id.avatar)
@@ -38,6 +41,12 @@ public class UserDetailsActivity
     TextView mLocationTextView;
     @BindView(R.id.email)
     TextView mEmailTextView;
+
+    public static void start(Context context, User user) {
+        Intent starter = new Intent(context, UserDetailsActivity.class);
+        starter.putExtra(USER_EXTRA, user);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +103,7 @@ public class UserDetailsActivity
         return new UserDetailsPresenter(this);
     }
 
-    public View getAvatarImageView() {
+    public ImageView getAvatarImageView() {
         return mAvatarImageView;
     }
 }

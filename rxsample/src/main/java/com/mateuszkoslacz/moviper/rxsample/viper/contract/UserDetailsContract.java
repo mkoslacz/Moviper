@@ -1,11 +1,14 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.contract;
 
+import android.widget.ImageView;
+
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRxRouting;
 import com.mateuszkoslacz.moviper.iface.viewhelper.MoviperViewHelper;
 import com.mateuszkoslacz.moviper.rxsample.data.model.User;
+import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.UserDetailsActivity;
 
 import rx.Observable;
 
@@ -46,6 +49,8 @@ public interface UserDetailsContract {
         // the root Activity, ie. switching fragments.
 
         void startFullscreenPhotoActivity(String avatarUrl);
+
+        User getUserDataIntent(UserDetailsActivity userDetailsActivity);
     }
 
     interface ViewHelper extends MoviperViewHelper {
@@ -53,6 +58,6 @@ public interface UserDetailsContract {
         // There should only be Android View getter methods to provide the Routing elements
         // to be used on advanced Android transitions.
 
-        android.view.View getAvatarImageView();
+        ImageView getAvatarImageView();
     }
 }

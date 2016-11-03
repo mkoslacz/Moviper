@@ -1,15 +1,12 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
 import com.mateuszkoslacz.moviper.rxsample.data.model.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.interactor.UserDetailsInteractor;
-import com.mateuszkoslacz.moviper.rxsample.viper.routing.ListingRouting;
 import com.mateuszkoslacz.moviper.rxsample.viper.routing.UserDetailsRouting;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.UserDetailsActivity;
 
@@ -42,13 +39,10 @@ public class UserDetailsPresenter
     }
 
     private void getUserDataIntentFromListingActivity() {
-        final UserDetailsActivity userDetailsActivity = (UserDetailsActivity) getView();
-        Intent intent = userDetailsActivity.getIntent();
-        User userFromExtras = intent.getExtras().getParcelable(ListingRouting.USER_EXTRA);
+        User user = getRouting().getUserDataIntent(((UserDetailsActivity) getView()));
 
-        userDetailsActivity.setLoginAndAvatarForUser(userFromExtras);
-
-        getUserDataFromApi(userFromExtras.getLogin());
+        getView().setLoginAndAvatarForUser(user);
+        getUserDataFromApi(user.getLogin());
     }
 
     private void getUserDataFromApi(String userLogin) {

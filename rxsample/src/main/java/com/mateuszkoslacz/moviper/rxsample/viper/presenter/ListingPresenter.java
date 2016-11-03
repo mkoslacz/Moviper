@@ -2,11 +2,9 @@ package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
 import com.mateuszkoslacz.moviper.rxsample.data.model.User;
-import com.mateuszkoslacz.moviper.rxsample.viewadapter.UserAdapter;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.interactor.ListingInteractor;
 import com.mateuszkoslacz.moviper.rxsample.viper.routing.ListingRouting;
@@ -49,8 +47,8 @@ public class ListingPresenter
     }
 
     @Override
-    public void onItemClicked(User user, UserAdapter.UserViewHolder userViewHolder) {
-        getRouting().startUserDetailsActivity(user, userViewHolder);
+    public void onItemClicked(User user) {
+        getRouting().startUserDetailsActivity(user);
     }
 
     @NonNull
