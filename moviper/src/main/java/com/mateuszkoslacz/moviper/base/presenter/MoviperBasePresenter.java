@@ -18,6 +18,9 @@ public abstract class MoviperBasePresenter<V extends MvpView>
 
     private Bundle args;
 
+    public MoviperBasePresenter() {
+    }
+
     public MoviperBasePresenter(Bundle args) {
         this.args = args;
     }
