@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
+import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
 import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperActivityPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
@@ -32,7 +32,7 @@ public abstract class ViperActivityBasePresenter
                 InteractorType extends MoviperInteractor,
                 RoutingType extends MoviperRouting>
         extends WipeBasePresenter<ViewType, InteractorType>
-        implements MvpPresenter<ViewType>,
+        implements MoviperPresenter<ViewType>,
         MoviperPresenterForInteractor<InteractorType>,
         MoviperActivityPresenterForRouting<RoutingType> {
 

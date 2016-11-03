@@ -4,10 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
+import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
 import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
 
 /**
@@ -33,11 +32,10 @@ import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterFor
 public abstract class WipeBaseRxPresenter
         <ViewType extends MvpView, // I prefer readability rather than conventions
                 InteractorType extends MoviperRxInteractor>
-        extends MvpBasePresenter<ViewType>
-        implements MvpPresenter<ViewType>,
+        extends MoviperBasePresenter<ViewType>
+        implements MoviperPresenter<ViewType>,
         MoviperPresenterForInteractor<InteractorType> {
 
-    protected Bundle args;
     @NonNull
     private InteractorType interactor;
 
@@ -46,8 +44,7 @@ public abstract class WipeBaseRxPresenter
     }
 
     public WipeBaseRxPresenter(Bundle args) {
-        super();
-        this.args = args;
+        super(args);
         this.interactor = createInteractor();
     }
 
