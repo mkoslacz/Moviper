@@ -1,7 +1,7 @@
 package com.mateuszkoslacz.moviper.sample.viper.interactor;
 
 import com.mateuszkoslacz.moviper.base.interactor.BaseInteractor;
-import com.mateuszkoslacz.moviper.sample.retrofit.GitHubApiInterface;
+import com.mateuszkoslacz.moviper.sample.data.retrofit.GitHubApiInterface;
 import com.mateuszkoslacz.moviper.sample.viper.contract.ListingContract;
 
 import java.io.IOException;

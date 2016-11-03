@@ -1,7 +1,6 @@
-package com.mateuszkoslacz.moviper.sample.retrofit;
+package com.mateuszkoslacz.moviper.sample.data.retrofit;
 
-
-import com.mateuszkoslacz.moviper.sample.model.User;
+import com.mateuszkoslacz.moviper.sample.data.model.User;
 
 import java.util.List;
 
@@ -14,6 +13,7 @@ import retrofit2.http.Path;
  */
 
 public interface GitHubApiInterface {
+
     String GitHubApiUrl = "https://api.github.com";
 
     @GET("/users")

@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.sample.model;
+package com.mateuszkoslacz.moviper.sample.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -10,6 +10,18 @@ import android.os.Parcelable;
  */
 
 public class User implements Parcelable {
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel source) {
+            return new User(source);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
     @SerializedName("organizations_url")
     private String organizationsUrl;
     @SerializedName("avatar_url")
@@ -29,6 +41,17 @@ public class User implements Parcelable {
     private String login;
 
     public User() {
+    }
+
+    protected User(Parcel in) {
+        this.organizationsUrl = in.readString();
+        this.avatarUrl = in.readString();
+        this.gistsUrl = in.readString();
+        this.htmlUrl = in.readString();
+        this.type = in.readString();
+        this.url = in.readString();
+        this.id = in.readString();
+        this.login = in.readString();
     }
 
     public String getOrganizationsUrl() {
@@ -149,7 +172,6 @@ public class User implements Parcelable {
                 '}';
     }
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -166,27 +188,4 @@ public class User implements Parcelable {
         dest.writeString(this.id);
         dest.writeString(this.login);
     }
-
-    protected User(Parcel in) {
-        this.organizationsUrl = in.readString();
-        this.avatarUrl = in.readString();
-        this.gistsUrl = in.readString();
-        this.htmlUrl = in.readString();
-        this.type = in.readString();
-        this.url = in.readString();
-        this.id = in.readString();
-        this.login = in.readString();
-    }
-
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel source) {
-            return new User(source);
-        }
-
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
 }

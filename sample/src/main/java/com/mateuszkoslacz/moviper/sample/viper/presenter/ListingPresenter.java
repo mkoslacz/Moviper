@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 
 import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBasePresenter;
-import com.mateuszkoslacz.moviper.sample.model.User;
-import com.mateuszkoslacz.moviper.sample.viewadapter.UserAdapter;
+import com.mateuszkoslacz.moviper.sample.data.model.User;
 import com.mateuszkoslacz.moviper.sample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.sample.viper.interactor.ListingInteractor;
 import com.mateuszkoslacz.moviper.sample.viper.routing.ListingRouting;
@@ -26,18 +25,6 @@ public class ListingPresenter
         super(activity);
     }
 
-    @NonNull
-    @Override
-    public ListingContract.Routing createRouting(@NonNull Activity activity) {
-        return new ListingRouting(activity);
-    }
-
-    @NonNull
-    @Override
-    public ListingContract.Interactor createInteractor() {
-        return new ListingInteractor();
-    }
-
     @Override
     public void onViewCreated() {
         if (isViewAttached()) {
@@ -47,8 +34,8 @@ public class ListingPresenter
     }
 
     @Override
-    public void onItemClicked(User item, UserAdapter.UserViewHolder userViewHolder) {
-        getRouting().startUserDetailsActivity(item, userViewHolder);
+    public void onItemClicked(User item) {
+        getRouting().startUserDetailsActivity(item);
     }
 
     @Override
@@ -63,5 +50,17 @@ public class ListingPresenter
     public void onUserFetchedError() {
         if (isViewAttached())
             getView().showError();
+    }
+
+    @NonNull
+    @Override
+    public ListingContract.Routing createRouting(@NonNull Activity activity) {
+        return new ListingRouting(activity);
+    }
+
+    @NonNull
+    @Override
+    public ListingContract.Interactor createInteractor() {
+        return new ListingInteractor();
     }
 }

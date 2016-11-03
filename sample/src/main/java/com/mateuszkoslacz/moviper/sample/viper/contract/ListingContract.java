@@ -6,8 +6,7 @@ import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperActivityPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
-import com.mateuszkoslacz.moviper.sample.model.User;
-import com.mateuszkoslacz.moviper.sample.viewadapter.UserAdapter;
+import com.mateuszkoslacz.moviper.sample.data.model.User;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public interface ListingContract {
 
         void onViewCreated();
 
-        void onItemClicked(User item, UserAdapter.UserViewHolder userViewHolder);
+        void onItemClicked(User item);
     }
 
     interface View extends MvpView {
@@ -58,7 +57,7 @@ public interface ListingContract {
         // In the case of a fragment being the view, there also will be manipulating
         // the root Activity, ie. switching fragments.
 
-        void startUserDetailsActivity(User userList, UserAdapter.UserViewHolder userViewHolder);
+        void startUserDetailsActivity(User user);
     }
 
     interface PresenterForRouting extends MoviperActivityPresenterForRouting<Routing> {

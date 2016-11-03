@@ -5,12 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.mateuszkoslacz.moviper.sample.R;
-import com.mateuszkoslacz.moviper.sample.model.User;
+import com.mateuszkoslacz.moviper.sample.data.model.User;
+import com.mateuszkoslacz.moviper.sample.viewholder.UserViewHolder;
 
 import java.util.List;
 
@@ -18,13 +16,13 @@ import java.util.List;
  * Created by jjodelka on 17/10/16.
  */
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
+public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
+
     private List<User> userList;
     private Context context;
     private UserClickListener userClickListener;
 
-    public UserAdapter(List<User> pUserList, Context pContext, UserClickListener userClickListener) {
-        this.userList = pUserList;
+    public UserAdapter(Context pContext, UserClickListener userClickListener) {
         this.context = pContext;
         this.userClickListener = userClickListener;
     }
@@ -44,35 +42,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     @Override
     public int getItemCount() {
-        return userList.size();
+        if (userList != null) return userList.size();
+        return 0;
     }
 
-    public class UserViewHolder extends RecyclerView.ViewHolder {
-        View rowView;
-
-        ImageView avatar;
-        TextView login;
-        TextView url;
-
-        public UserViewHolder(View itemView) {
-            super(itemView);
-            this.rowView = itemView;
-            this.avatar = (ImageView) itemView.findViewById(R.id.avatar);
-            this.login = (TextView) itemView.findViewById(R.id.login);
-            this.url = (TextView) itemView.findViewById(R.id.url);
-        }
-
-        protected void bind(Context context, User user, UserClickListener userClickListener) {
-            login.setText(user.getLogin());
-            url.setText(user.getUrl());
-            Glide.with(context)
-                    .load(user.getAvatarUrl())
-                    .into(avatar);
-            rowView.setOnClickListener(v -> userClickListener.onUserClick(user, this));
-        }
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 
     public interface UserClickListener {
-        void onUserClick(User user, UserViewHolder userViewHolder);
+        void onUserClick(User user);
     }
 }

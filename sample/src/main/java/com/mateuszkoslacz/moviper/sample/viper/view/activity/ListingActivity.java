@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.mateuszkoslacz.moviper.sample.R;
-import com.mateuszkoslacz.moviper.sample.model.User;
+import com.mateuszkoslacz.moviper.sample.data.model.User;
 import com.mateuszkoslacz.moviper.sample.viewadapter.UserAdapter;
 import com.mateuszkoslacz.moviper.sample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.sample.viper.presenter.ListingPresenter;
@@ -82,12 +82,19 @@ public class ListingActivity
     }
 
     @Override
-    public void onUserClick(User user, UserAdapter.UserViewHolder userViewHolder) {
-        getPresenter().onItemClicked(user, userViewHolder);
+    public void onUserClick(User user) {
+        getPresenter().onItemClicked(user);
+    }
+
+    @Override
+    protected void onStop() {
+        mAdapter = null;
+        super.onStop();
     }
 
     private void prepareRecyclerView() {
-        mAdapter = new UserAdapter(mUserList, this, this);
+        mAdapter = new UserAdapter(this, this);
+        mAdapter.setUserList(mUserList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());

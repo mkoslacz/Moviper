@@ -1,16 +1,14 @@
 package com.mateuszkoslacz.moviper.sample.viper.presenter;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 
 import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBasePresenter;
-import com.mateuszkoslacz.moviper.sample.model.User;
+import com.mateuszkoslacz.moviper.sample.data.model.User;
 import com.mateuszkoslacz.moviper.sample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.sample.viper.interactor.UserDetailsInteractor;
-import com.mateuszkoslacz.moviper.sample.viper.routing.ListingRouting;
 import com.mateuszkoslacz.moviper.sample.viper.routing.UserDetailsRouting;
 import com.mateuszkoslacz.moviper.sample.viper.view.activity.UserDetailsActivity;
 
@@ -28,18 +26,6 @@ public class UserDetailsPresenter
         super(activity);
     }
 
-    @NonNull
-    @Override
-    public UserDetailsContract.Routing createRouting(@NonNull Activity activity) {
-        return new UserDetailsRouting(activity);
-    }
-
-    @NonNull
-    @Override
-    public UserDetailsContract.Interactor createInteractor() {
-        return new UserDetailsInteractor();
-    }
-
     @Override
     public void onViewCreated() {
         if (isViewAttached()) {
@@ -54,13 +40,10 @@ public class UserDetailsPresenter
     }
 
     private void getUserDataIntentFromListingActivity() {
-        final UserDetailsActivity userDetailsActivity = (UserDetailsActivity) getView();
-        Intent intent = userDetailsActivity.getIntent();
-        User userFromExtras = intent.getExtras().getParcelable(ListingRouting.USER_EXTRA);
+        User user = getRouting().getUserDataIntent(((UserDetailsActivity) getView()));
 
-        userDetailsActivity.setLoginAndAvatarForUser(userFromExtras);
-
-        getUserDataFromApi(userFromExtras.getLogin());
+        getView().setLoginAndAvatarForUser(user);
+        getUserDataFromApi(user.getLogin());
     }
 
     private void getUserDataFromApi(String userLogin) {
@@ -81,5 +64,17 @@ public class UserDetailsPresenter
     public void onUserFetchedError(Throwable throwable) {
         if (isViewAttached())
             getView().showError(throwable, false);
+    }
+
+    @NonNull
+    @Override
+    public UserDetailsContract.Routing createRouting(@NonNull Activity activity) {
+        return new UserDetailsRouting(activity);
+    }
+
+    @NonNull
+    @Override
+    public UserDetailsContract.Interactor createInteractor() {
+        return new UserDetailsInteractor();
     }
 }
