@@ -25,11 +25,51 @@ dependencies {
 ## Getting started
 
 Just create a VIPER files set using [Moviper Template Generator](https://github.com/mkoslacz/MoviperTemplateGenerator), fill up the contract, generate missing methods using Android Studio autofix
-and implement them. Most probably you will want to check out a sample module provided in this repository to see how to use Moviper.
+and implement them. Most probably you will want to check out a sample module provided in this repository to see how to use Moviper. You have two flavours of Moviper. The "regular" one — to use with callbacks, and the Rx one, to use with RxJava.
+
+## Advanced features
+
+### Args Bundle
+
+You can easily pass extras from your Activity or Fragment to the presenter using Moviper Args Bundle. You can check out how to use it in the Sample's `FullscreenPhotoPresenter` constructor and its call.
+
+### Moviper Inter-Presenter-Communication (IPC) (RxJava)
+
+_(sample coming soon)_ 
+
+Enable IPC in your Application class.
+```java
+Moviper.getInstance().setConfig(
+        new Config.Builder()
+                .withPresenterAccessUtilEnabled(true) // plain IPC
+                .withInstancePresentersEnabled(false) // acces to specific presenters
+                .build());
+```
+
+#### Plain IPC
+
+You can access all alive Presenters of a given class from any place in your app like this:
+```java
+Moviper.getInstance().getPresenters(SomePresenter.class)
+        .subscribe(somePresenter -> somePresenter.someMethod(false)); // stream of all Presenters goes here
+```
+
+For readability mark your external methods in the Presenter using the `@ExternalCall` annotation.
+
+#### Instance Presenters Access
+
+If you set the `withInstancePresentersEnabled` in the config to true you can use Instance Presenter Access. After that you must ensure that every Presenter of given class has an unique name. To do so you have to override Presenter `String getName()` method (in default it returns "default").
+
+After that you can access any Presenter Instance like this:
+
+```java
+Moviper.getInstance().getPresenterInstance(SomePresenter.class, "someName")
+        .subscribe(somePresenter -> somePresenter.someMethod(false)); // exactly one or zero Presenters with given name and class goes here
+```
 
 ## Examples
 
-Just check out the sample module in this repo.
+For the basic usage just check out the sample module in this repo. Advanced features samples coming soon.
 
 ## Credits
 

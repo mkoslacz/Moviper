@@ -1,4 +1,5 @@
 #Viper-framework TODOs:
+ -  add sample showcasing Moviper inter-presenter communications
  -  add helper methods to BasePresenters, Interactors etc: ifViewIsAttachedDo( () -> {actions});
  -  learn & implement Dagger2 Viper injection (to use in example and maybe to remove passing
  activity through presenter to let it be android-free. another (no-dagger) option is to pass
