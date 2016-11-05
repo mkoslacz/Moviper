@@ -43,9 +43,13 @@ public class FullscreenPhotoActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen_photo);
         ButterKnife.bind(this);
+        getPresenter().onViewCreated();
+    }
 
+    @Override
+    public void setPhoto(String photoUrl) {
         Glide.with(this)
-                .load(getPresenter().getPhotoUrl())
+                .load(photoUrl)
                 .into(mPhotoImageView);
     }
 

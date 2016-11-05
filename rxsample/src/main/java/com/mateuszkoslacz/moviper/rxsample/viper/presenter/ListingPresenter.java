@@ -40,7 +40,7 @@ public class ListingPresenter
                         },
                         throwable -> {
                             if (isViewAttached())
-                                getView().showError(throwable); // TODO: 04/11/16 pass error message to view plox
+                                getView().showError(throwable);
                         }
                 );
     }
