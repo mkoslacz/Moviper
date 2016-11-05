@@ -1,19 +1,17 @@
 <resources>
     <string name="app_name">Moviper Sample</string>
+    <string name="data_loading_error">Data loading error</string>
+    <string name="email">Email:</string>
+    <string name="location">Location:</string>
+    <string name="blog">Blog:</string>
+    <string name="company">Company:</string>
+    <string name="name">Name:</string>
 
-    <string name="fragment_authorization_login_login_hint">login</string>
-    <string name="fragment_authorization_login_password_hint">password</string>
-    <string name="fragment_authorization_login_login_btn_txt">Log in</string>
-    <string name="fragment_authorization_login_goto_register_btn_txt">
-        I don\'t have an account</string>
-
-    <string name="fragment_authorization_register_login_hint">login</string>
-    <string name="fragment_authorization_register_email_hint">your@email.here</string>
-    <string name="fragment_authorization_register_password_hint">password</string>
-    <string name="fragment_authorization_register_register_btn_txt">Register</string>
-    <string name="fragment_authorization_register_goto_login_btn_txt">
-        I already have an account</string>
-
-    <string name="activity_main_sample_txt">Sample main Activity</string>
-
+    <string name="example_url">http://github.com/user/login</string>
+    <string name="example_login">Login</string>
+    <string name="example_name">Funny Name</string>
+    <string name="example_company">Funny company</string>
+    <string name="example_blog">http://funnyBlog.com</string>
+    <string name="example_location">Warsaw, Poland</string>
+    <string name="example_email">funny@email.com</string>
 </resources>
