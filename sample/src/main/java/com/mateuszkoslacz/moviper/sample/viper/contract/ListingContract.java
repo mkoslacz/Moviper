@@ -45,9 +45,9 @@ public interface ListingContract {
         // Defines what methods the Interactor could invoke on the Presenter.
         // In most cases there will be data received callbacks and error notifying.
 
-        void onUserFetched(List<User> userList);
+        void onUserListFetched(List<User> userList);
 
-        void onUserFetchedError(Throwable throwable);
+        void onUserListFetchedError(Throwable throwable);
     }
 
     interface Routing extends MoviperRouting<PresenterForRouting> {

@@ -39,7 +39,7 @@ public class ListingPresenter
     }
 
     @Override
-    public void onUserFetched(List<User> userList) {
+    public void onUserListFetched(List<User> userList) {
         if (isViewAttached()) {
             getView().setUserList(userList);
             getView().showContent();
@@ -47,7 +47,7 @@ public class ListingPresenter
     }
 
     @Override
-    public void onUserFetchedError(Throwable throwable) {
+    public void onUserListFetchedError(Throwable throwable) {
         if (isViewAttached()) getView().showError(throwable);
     }
 

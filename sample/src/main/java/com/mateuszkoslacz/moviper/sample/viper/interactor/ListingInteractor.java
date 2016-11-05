@@ -28,10 +28,10 @@ public class ListingInteractor
         if (isPresenterAttached()) {
             Thread thread = new Thread(() -> {
                 try {
-                    getPresenter().onUserFetched(mGitHubApiInterface
+                    getPresenter().onUserListFetched(mGitHubApiInterface
                             .getUsers().execute().body());
                 } catch (IOException e) {
-                    getPresenter().onUserFetchedError(e);
+                    getPresenter().onUserListFetchedError(e);
                 }
             });
 
