@@ -11,9 +11,10 @@ import com.mateuszkoslacz.moviper.sample.viper.routing.FullscreenPhotoRouting;
 import com.mateuszkoslacz.moviper.sample.viper.view.activity.FullscreenPhotoActivity;
 
 public class FullscreenPhotoPresenter
-        extends ViperActivityBasePresenter<FullscreenPhotoContract.View,
-        FullscreenPhotoContract.Interactor,
-        FullscreenPhotoContract.Routing>
+        extends ViperActivityBasePresenter
+        <FullscreenPhotoContract.View,
+                FullscreenPhotoContract.Interactor,
+                FullscreenPhotoContract.Routing>
         implements
         FullscreenPhotoContract.Presenter,
         FullscreenPhotoContract.PresenterForInteractor,

@@ -9,8 +9,7 @@ import com.mateuszkoslacz.moviper.sample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.sample.viper.view.activity.UserDetailsActivity;
 
 public class ListingRouting
-        extends ActivityBaseRouting<
-        ListingContract.PresenterForRouting>
+        extends ActivityBaseRouting<ListingContract.PresenterForRouting>
         implements ListingContract.Routing {
 
     public ListingRouting(@NonNull Activity activity) {

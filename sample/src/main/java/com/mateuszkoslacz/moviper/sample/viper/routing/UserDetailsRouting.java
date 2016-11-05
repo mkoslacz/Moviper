@@ -8,9 +8,9 @@ import com.mateuszkoslacz.moviper.sample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.sample.viper.view.activity.FullscreenPhotoActivity;
 
 public class UserDetailsRouting
-        extends ActivityBaseViewHelperRouting<
-        UserDetailsContract.PresenterForRouting,
-        UserDetailsContract.ViewHelper>
+        extends ActivityBaseViewHelperRouting
+        <UserDetailsContract.PresenterForRouting,
+                UserDetailsContract.ViewHelper>
         implements UserDetailsContract.Routing {
 
     public UserDetailsRouting(@NonNull Activity activity) {

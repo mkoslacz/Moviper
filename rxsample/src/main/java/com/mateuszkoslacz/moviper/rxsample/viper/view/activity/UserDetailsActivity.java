@@ -21,7 +21,8 @@ import butterknife.ButterKnife;
 
 public class UserDetailsActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.
-        extends MvpLceActivity<LinearLayout, User, UserDetailsContract.View, UserDetailsContract.Presenter>
+        extends MvpLceActivity<LinearLayout, User,
+        UserDetailsContract.View, UserDetailsContract.Presenter>
         implements UserDetailsContract.View, UserDetailsContract.ViewHelper {
 
     public final static String USER_EXTRA = "USER_EXTRA";
