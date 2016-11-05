@@ -13,12 +13,11 @@ public class ListingInteractor
         extends BaseInteractor<ListingContract.PresenterForInteractor>
         implements ListingContract.Interactor {
 
-    private Retrofit mRetrofit;
     private GitHubApiInterface mGitHubApiInterface;
 
     public ListingInteractor() {
-        mRetrofit = new Retrofit.Builder()
-                .baseUrl(GitHubApiInterface.GitHubApiUrl)
+        final Retrofit mRetrofit = new Retrofit.Builder()
+                .baseUrl(GitHubApiInterface.GITHUB_API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         mGitHubApiInterface = mRetrofit.create(GitHubApiInterface.class);
@@ -32,7 +31,7 @@ public class ListingInteractor
                     getPresenter().onUserFetched(mGitHubApiInterface
                             .getUsers().execute().body());
                 } catch (IOException e) {
-                    getPresenter().onUserFetchedError();
+                    getPresenter().onUserFetchedError(e);
                 }
             });
 

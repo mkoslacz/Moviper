@@ -25,14 +25,8 @@ public class UserDetailsRouting
     @Override
     public void startFullscreenPhotoActivity(String avatarUrl) {
         if (isViewHelperAttached()) {
-            FullscreenPhotoActivity.start(getActivity(), avatarUrl, getViewHelper().getAvatarImageView());
+            FullscreenPhotoActivity.start(getActivity(), avatarUrl,
+                    getViewHelper().getAvatarImageView());
         }
-    }
-
-    @Override
-    public User getUserDataIntent(UserDetailsActivity userDetailsActivity) {
-        Intent intent = userDetailsActivity.getIntent();
-        User userFromExtras = intent.getExtras().getParcelable(USER_EXTRA);
-        return userFromExtras;
     }
 }

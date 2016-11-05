@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -21,18 +22,18 @@ public class FullscreenPhotoActivity
         extends MvpActivity<FullscreenPhotoContract.View, FullscreenPhotoContract.Presenter>
         implements FullscreenPhotoContract.View {
 
-    public static final String PHOTO_EXTRA = "PHOTO_EXTRA";
+    public static final String PHOTO_URL_EXTRA_STRING = "PHOTO_URL_EXTRA_STRING";
 
     @BindView(R.id.photo)
     ImageView mPhotoImageView;
 
-    public static void start(Activity activity, String avatarUrl, ImageView avatarImageView) {
+    public static void start(Activity activity, String avatarUrl, View avatarView) {
         Intent starter = new Intent(activity, FullscreenPhotoActivity.class);
-        starter.putExtra(PHOTO_EXTRA, avatarUrl);
+        starter.putExtra(PHOTO_URL_EXTRA_STRING, avatarUrl);
 
         ActivityOptionsCompat optionsCompat = ActivityOptionsCompat
                 .makeSceneTransitionAnimation(activity,
-                        avatarImageView,
+                        avatarView,
                         activity.getString(R.string.avatar_transition));
         activity.startActivity(starter, optionsCompat.toBundle());
     }
@@ -42,20 +43,14 @@ public class FullscreenPhotoActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen_photo);
         ButterKnife.bind(this);
-
-        loadPhoto(getPresenter().getPhotoUrlIntentFromUserDetailsActivity());
-    }
-
-    private void loadPhoto(String photoUrlFromIntent) {
-        if (!photoUrlFromIntent.equals(""))
-            Glide.with(this)
-                    .load(photoUrlFromIntent)
-                    .into(mPhotoImageView);
+        Glide.with(this)
+                .load(getPresenter().getPhotoUrl())
+                .into(mPhotoImageView);
     }
 
     @NonNull
     @Override
     public FullscreenPhotoContract.Presenter createPresenter() {
-        return new FullscreenPhotoPresenter(this);
+        return new FullscreenPhotoPresenter(this, getIntent().getExtras());
     }
 }

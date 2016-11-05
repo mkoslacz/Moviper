@@ -47,9 +47,8 @@ public class ListingPresenter
     }
 
     @Override
-    public void onUserFetchedError() {
-        if (isViewAttached())
-            getView().showError();
+    public void onUserFetchedError(Throwable throwable) {
+        if (isViewAttached()) getView().showError(throwable);
     }
 
     @NonNull

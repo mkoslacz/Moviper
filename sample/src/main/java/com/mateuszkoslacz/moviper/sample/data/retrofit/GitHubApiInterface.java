@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 
 public interface GitHubApiInterface {
 
-    String GitHubApiUrl = "https://api.github.com";
+    String GITHUB_API_URL = "https://api.github.com";
 
     @GET("/users")
     Call<List<User>> getUsers();

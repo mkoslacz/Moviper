@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.sample.viper.presenter;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
@@ -22,15 +23,15 @@ public class UserDetailsPresenter
         UserDetailsContract.PresenterForInteractor,
         UserDetailsContract.PresenterForRouting {
 
-    public UserDetailsPresenter(Activity activity) {
-        super(activity);
+    public UserDetailsPresenter(Activity activity, Bundle bundle) {
+        super(activity, bundle);
     }
 
     @Override
     public void onViewCreated() {
         if (isViewAttached()) {
             getView().showLoading(false);
-            getUserDataIntentFromListingActivity();
+            getUserDataFromApi(getArgs().getString(UserDetailsActivity.USER_EXTRA));
         }
     }
 
@@ -39,16 +40,8 @@ public class UserDetailsPresenter
         getRouting().startFullscreenPhotoActivity(avatarUrl);
     }
 
-    private void getUserDataIntentFromListingActivity() {
-        User user = getRouting().getUserDataIntent(((UserDetailsActivity) getView()));
-
-        getView().setLoginAndAvatarForUser(user);
-        getUserDataFromApi(user.getLogin());
-    }
-
     private void getUserDataFromApi(String userLogin) {
-        if (isViewAttached())
-            getInteractor().getUserForUsername(userLogin);
+        if (isViewAttached()) getInteractor().getUserForUsername(userLogin);
     }
 
     @Override
@@ -62,8 +55,7 @@ public class UserDetailsPresenter
 
     @Override
     public void onUserFetchedError(Throwable throwable) {
-        if (isViewAttached())
-            getView().showError(throwable, false);
+        if (isViewAttached()) getView().showError(throwable, false);
     }
 
     @NonNull

@@ -13,7 +13,7 @@ public interface FullscreenPhotoContract {
         // Defines what methods the View can invoke on the Presenter.
         // In most cases there will be user interactions and View lifecycle events.
 
-        String getPhotoUrlIntentFromUserDetailsActivity();
+        String getPhotoUrl();
     }
 
     interface View extends MvpView {
@@ -41,7 +41,6 @@ public interface FullscreenPhotoContract {
         // In the case of a fragment being the view, there also will be manipulating
         // the root Activity, ie. switching fragments.
 
-        String getPhotoUrlIntentFromUserDetailsActivity();
     }
 
     interface PresenterForRouting extends MoviperActivityPresenterForRouting<Routing> {

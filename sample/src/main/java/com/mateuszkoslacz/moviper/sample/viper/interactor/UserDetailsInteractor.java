@@ -13,12 +13,11 @@ public class UserDetailsInteractor
         extends BaseInteractor<UserDetailsContract.PresenterForInteractor>
         implements UserDetailsContract.Interactor {
 
-    private Retrofit mRetrofit;
     private GitHubApiInterface mGitHubApiInterface;
 
     public UserDetailsInteractor() {
-        mRetrofit = new Retrofit.Builder()
-                .baseUrl(GitHubApiInterface.GitHubApiUrl)
+        final Retrofit mRetrofit = new Retrofit.Builder()
+                .baseUrl(GitHubApiInterface.GITHUB_API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         mGitHubApiInterface = mRetrofit.create(GitHubApiInterface.class);
@@ -28,12 +27,12 @@ public class UserDetailsInteractor
     public void getUserForUsername(String user) {
         Thread thread = new Thread(() -> {
             try {
-                if (isPresenterAttached())
+                if (isPresenterAttached()) {
                     getPresenter().onUserFetched(mGitHubApiInterface
                             .getUserForUsername(user).execute().body());
+                }
             } catch (IOException e) {
-                if (isPresenterAttached())
-                    getPresenter().onUserFetchedError(e);
+                if (isPresenterAttached()) getPresenter().onUserFetchedError(e);
             }
         });
 

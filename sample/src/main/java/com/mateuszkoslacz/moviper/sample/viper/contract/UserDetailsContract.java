@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.sample.viper.contract;
 
+import android.view.View;
 import android.widget.ImageView;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
@@ -29,8 +30,6 @@ public interface UserDetailsContract {
         // In most cases there will be manipulating ui and displaying data or errors.
 
         void bindDataToViews(User user);
-
-        void setLoginAndAvatarForUser(User user);
     }
 
     interface Interactor extends MoviperInteractor<PresenterForInteractor> {
@@ -57,8 +56,6 @@ public interface UserDetailsContract {
         // the root Activity, ie. switching fragments.
 
         void startFullscreenPhotoActivity(String avatarUrl);
-
-        User getUserDataIntent(UserDetailsActivity userDetailsActivity);
     }
 
     interface PresenterForRouting extends MoviperActivityPresenterForRouting<Routing> {
@@ -72,7 +69,7 @@ public interface UserDetailsContract {
         // There should only be Android View getter methods to provide the Routing elements
         // to be used on advanced Android transitions.
 
-        ImageView getAvatarImageView();
+        android.view.View getAvatarImageView();
     }
 
 }

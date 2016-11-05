@@ -1,16 +1,6 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath "com.fernandocejas.frodo:frodo-plugin:0.8.3"
-    }
-}
-
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'android-apt'
-apply plugin: 'com.fernandocejas.frodo'
 
 android {
 
@@ -43,10 +33,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
-
-frodo {
-    enabled = true
 }
 
 dependencies {

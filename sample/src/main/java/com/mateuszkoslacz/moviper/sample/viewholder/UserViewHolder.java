@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.sample.viewholder;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,27 +19,26 @@ import butterknife.ButterKnife;
 
 public class UserViewHolder extends RecyclerView.ViewHolder {
 
-    View rowView;
-
     @BindView(R.id.avatar)
-    ImageView avatar;
+    ImageView mAvatarImageView;
     @BindView(R.id.login)
-    TextView login;
+    TextView mLoginTextView;
     @BindView(R.id.url)
-    TextView url;
+    TextView mUrlTextView;
+    private View mRowView;
 
     public UserViewHolder(View itemView) {
         super(itemView);
-        this.rowView = itemView;
+        this.mRowView = itemView;
         ButterKnife.bind(this, itemView);
     }
 
-    public void bind(Context context, User user, UserAdapter.UserClickListener userClickListener) {
-        login.setText(user.getLogin());
-        url.setText(user.getUrl());
-        Glide.with(context)
+    public void bind(User user, UserAdapter.UserClickListener userClickListener) {
+        mLoginTextView.setText(user.getLogin());
+        mUrlTextView.setText(user.getUrl());
+        Glide.with(mRowView.getContext())
                 .load(user.getAvatarUrl())
-                .into(avatar);
-        rowView.setOnClickListener(v -> userClickListener.onUserClick(user));
+                .into(mAvatarImageView);
+        mRowView.setOnClickListener(v -> userClickListener.onUserClick(user));
     }
 }

@@ -27,7 +27,7 @@ public interface ListingContract {
 
         void setUserList(List<User> userList);
 
-        void showError();
+        void showError(Throwable throwable);
 
         void showLoading();
 
@@ -47,7 +47,7 @@ public interface ListingContract {
 
         void onUserFetched(List<User> userList);
 
-        void onUserFetchedError();
+        void onUserFetchedError(Throwable throwable);
     }
 
     interface Routing extends MoviperRouting<PresenterForRouting> {
