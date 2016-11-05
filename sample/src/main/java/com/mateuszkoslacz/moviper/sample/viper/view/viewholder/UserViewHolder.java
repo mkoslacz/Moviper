@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.mateuszkoslacz.moviper.sample.R;
-import com.mateuszkoslacz.moviper.sample.data.entity.User;
+import com.mateuszkoslacz.moviper.sample.viper.entity.User;
 import com.mateuszkoslacz.moviper.sample.viper.view.adapter.UserAdapter;
 
 import butterknife.BindView;

@@ -4,7 +4,7 @@ import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
-import com.mateuszkoslacz.moviper.rxsample.data.entity.User;
+import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
 import java.util.List;
 

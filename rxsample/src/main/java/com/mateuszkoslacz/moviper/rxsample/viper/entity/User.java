@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.sample.data.entity;
+package com.mateuszkoslacz.moviper.rxsample.viper.entity;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceActivity;
 import com.mateuszkoslacz.moviper.sample.R;
-import com.mateuszkoslacz.moviper.sample.data.entity.User;
+import com.mateuszkoslacz.moviper.sample.viper.entity.User;
 import com.mateuszkoslacz.moviper.sample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.sample.viper.presenter.UserDetailsPresenter;
 

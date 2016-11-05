@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mateuszkoslacz.moviper.sample.R;
-import com.mateuszkoslacz.moviper.sample.data.entity.User;
+import com.mateuszkoslacz.moviper.sample.viper.entity.User;
 import com.mateuszkoslacz.moviper.sample.viper.view.viewholder.UserViewHolder;
 
 import java.util.List;

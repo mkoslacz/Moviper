@@ -8,7 +8,7 @@ import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterFor
 import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperActivityPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRouting;
 import com.mateuszkoslacz.moviper.iface.viewhelper.MoviperViewHelper;
-import com.mateuszkoslacz.moviper.sample.data.entity.User;
+import com.mateuszkoslacz.moviper.sample.viper.entity.User;
 
 public interface UserDetailsContract {
 
