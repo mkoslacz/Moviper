@@ -1,9 +1,6 @@
-package com.mateuszkoslacz.moviper.sample.data.model;
+package com.mateuszkoslacz.moviper.sample.data.entity;
 
 import com.google.gson.annotations.SerializedName;
-
-import android.os.Parcel;
-import android.os.Parcelable;
 
 /**
  * Created by jjodelka on 17/10/16.

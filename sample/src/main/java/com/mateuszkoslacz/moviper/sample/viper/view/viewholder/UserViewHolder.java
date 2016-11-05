@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.rxsample.viewholder;
+package com.mateuszkoslacz.moviper.sample.viper.view.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,9 +6,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.mateuszkoslacz.moviper.rxsample.R;
-import com.mateuszkoslacz.moviper.rxsample.data.model.User;
-import com.mateuszkoslacz.moviper.rxsample.viewadapter.UserAdapter;
+import com.mateuszkoslacz.moviper.sample.R;
+import com.mateuszkoslacz.moviper.sample.data.entity.User;
+import com.mateuszkoslacz.moviper.sample.viper.view.adapter.UserAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

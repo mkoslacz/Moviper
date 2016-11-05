@@ -15,10 +15,10 @@ import android.widget.TextView;
 
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.mateuszkoslacz.moviper.sample.R;
-import com.mateuszkoslacz.moviper.sample.data.model.User;
-import com.mateuszkoslacz.moviper.sample.viewadapter.UserAdapter;
+import com.mateuszkoslacz.moviper.sample.data.entity.User;
 import com.mateuszkoslacz.moviper.sample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.sample.viper.presenter.ListingPresenter;
+import com.mateuszkoslacz.moviper.sample.viper.view.adapter.UserAdapter;
 
 import java.util.List;
 
@@ -66,7 +66,6 @@ public class ListingActivity
     public void setUserList(List<User> userList) {
         runOnUiThread(() -> {
             mAdapter.setmUserList(userList);
-            mAdapter.notifyDataSetChanged();
         });
     }
 

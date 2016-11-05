@@ -1,7 +1,7 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.interactor;
 
 import com.mateuszkoslacz.moviper.base.interactor.BaseRxInteractor;
-import com.mateuszkoslacz.moviper.rxsample.data.model.User;
+import com.mateuszkoslacz.moviper.rxsample.data.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.data.retrofit.GitHubApiInterface;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
 

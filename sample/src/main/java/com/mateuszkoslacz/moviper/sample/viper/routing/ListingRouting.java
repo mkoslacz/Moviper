@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 
 import com.mateuszkoslacz.moviper.base.routing.ActivityBaseRouting;
-import com.mateuszkoslacz.moviper.sample.data.model.User;
+import com.mateuszkoslacz.moviper.sample.data.entity.User;
 import com.mateuszkoslacz.moviper.sample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.sample.viper.view.activity.UserDetailsActivity;
 

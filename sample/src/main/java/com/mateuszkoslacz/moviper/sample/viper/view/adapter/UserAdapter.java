@@ -1,13 +1,13 @@
-package com.mateuszkoslacz.moviper.rxsample.viewadapter;
+package com.mateuszkoslacz.moviper.sample.viper.view.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mateuszkoslacz.moviper.rxsample.R;
-import com.mateuszkoslacz.moviper.rxsample.data.model.User;
-import com.mateuszkoslacz.moviper.rxsample.viewholder.UserViewHolder;
+import com.mateuszkoslacz.moviper.sample.R;
+import com.mateuszkoslacz.moviper.sample.data.entity.User;
+import com.mateuszkoslacz.moviper.sample.viper.view.viewholder.UserViewHolder;
 
 import java.util.List;
 
@@ -41,8 +41,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
         return mUserList != null ? mUserList.size() : 0;
     }
 
-    public void setUserList(List<User> userList) {
-        this.mUserList = userList;
+    public void setmUserList(List<User> mUserList) {
+        this.mUserList = mUserList;
         notifyDataSetChanged();
     }
 

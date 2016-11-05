@@ -15,8 +15,8 @@ import android.widget.TextView;
 
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.mateuszkoslacz.moviper.rxsample.R;
-import com.mateuszkoslacz.moviper.rxsample.data.model.User;
-import com.mateuszkoslacz.moviper.rxsample.viewadapter.UserAdapter;
+import com.mateuszkoslacz.moviper.rxsample.data.entity.User;
+import com.mateuszkoslacz.moviper.rxsample.viper.view.adapter.UserAdapter;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.presenter.ListingPresenter;
 
@@ -65,7 +65,6 @@ public class ListingActivity
     @Override
     public void setUserList(List<User> userList) {
         mAdapter.setUserList(userList);
-        mAdapter.notifyDataSetChanged();
     }
 
     private void prepareRecyclerView() {

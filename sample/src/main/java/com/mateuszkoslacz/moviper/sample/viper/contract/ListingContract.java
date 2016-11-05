@@ -6,7 +6,7 @@ import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperActivityPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
-import com.mateuszkoslacz.moviper.sample.data.model.User;
+import com.mateuszkoslacz.moviper.sample.data.entity.User;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.mateuszkoslacz.moviper.rxsample.data.retrofit;
 
-import com.mateuszkoslacz.moviper.rxsample.data.model.User;
+import com.mateuszkoslacz.moviper.rxsample.data.entity.User;
 
 import java.util.List;
 

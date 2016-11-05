@@ -1,8 +1,5 @@
 package com.mateuszkoslacz.moviper.sample.viper.contract;
 
-import android.view.View;
-import android.widget.ImageView;
-
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
@@ -11,8 +8,7 @@ import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterFor
 import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperActivityPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRouting;
 import com.mateuszkoslacz.moviper.iface.viewhelper.MoviperViewHelper;
-import com.mateuszkoslacz.moviper.sample.data.model.User;
-import com.mateuszkoslacz.moviper.sample.viper.view.activity.UserDetailsActivity;
+import com.mateuszkoslacz.moviper.sample.data.entity.User;
 
 public interface UserDetailsContract {
 
