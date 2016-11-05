@@ -1,14 +1,11 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.contract;
 
-import android.widget.ImageView;
-
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRxRouting;
 import com.mateuszkoslacz.moviper.iface.viewhelper.MoviperViewHelper;
 import com.mateuszkoslacz.moviper.rxsample.data.model.User;
-import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.UserDetailsActivity;
 
 import rx.Observable;
 
@@ -29,8 +26,6 @@ public interface UserDetailsContract {
         // In Super Rx version it also provides getters for Observables emmiting user click events.
 
         void bindDataToViews(User user);
-
-        void setLoginAndAvatarForUser(User user);
     }
 
     interface Interactor extends MoviperRxInteractor {
@@ -48,9 +43,7 @@ public interface UserDetailsContract {
         // In the case of a fragment being the view, there also will be manipulating
         // the root Activity, ie. switching fragments.
 
-        void startFullscreenPhotoActivity(String avatarUrl);
-
-        User getUserDataIntent(UserDetailsActivity userDetailsActivity);
+        void startFullscreenPhotoActivity(String photoUrl);
     }
 
     interface ViewHelper extends MoviperViewHelper {
@@ -58,6 +51,6 @@ public interface UserDetailsContract {
         // There should only be Android View getter methods to provide the Routing elements
         // to be used on advanced Android transitions.
 
-        ImageView getAvatarImageView();
+        android.view.View getAvatarImageView();
     }
 }

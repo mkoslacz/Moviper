@@ -28,7 +28,7 @@ public interface ListingContract {
 
         void setUserList(List<User> userList);
 
-        void showError();
+        void showError(Throwable throwable);
 
         void showLoading();
 
@@ -50,6 +50,6 @@ public interface ListingContract {
         // In the case of a fragment being the view, there also will be manipulating
         // the root Activity, ie. switching fragments.
 
-        void startUserDetailsActivity(User userList);
+        void startUserDetailsActivity(User user);
     }
 }

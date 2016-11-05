@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.interactor;
 
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 import com.mateuszkoslacz.moviper.base.interactor.BaseRxInteractor;
 import com.mateuszkoslacz.moviper.rxsample.data.model.User;
 import com.mateuszkoslacz.moviper.rxsample.data.retrofit.GitHubApiInterface;
@@ -15,19 +14,17 @@ public class UserDetailsInteractor
         extends BaseRxInteractor
         implements UserDetailsContract.Interactor {
 
-    private Retrofit mRetrofit;
     private GitHubApiInterface mGitHubApiInterface;
 
     public UserDetailsInteractor() {
-        mRetrofit = new Retrofit.Builder()
-                .baseUrl(GitHubApiInterface.GitHubApiUrl)
+        final Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(GitHubApiInterface.GITHUB_API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
-        mGitHubApiInterface = mRetrofit.create(GitHubApiInterface.class);
+        mGitHubApiInterface = retrofit.create(GitHubApiInterface.class);
     }
 
-    @RxLogObservable(RxLogObservable.Scope.STREAM)
     @Override
     public Observable<User> getUserForUsername(String user) {
         return mGitHubApiInterface.getUserForUsername(user);

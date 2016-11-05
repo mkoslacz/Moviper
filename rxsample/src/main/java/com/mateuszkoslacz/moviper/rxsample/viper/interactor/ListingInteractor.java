@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.interactor;
 
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 import com.mateuszkoslacz.moviper.base.interactor.BaseRxInteractor;
 import com.mateuszkoslacz.moviper.rxsample.data.model.User;
 import com.mateuszkoslacz.moviper.rxsample.data.retrofit.GitHubApiInterface;
@@ -17,20 +16,17 @@ public class ListingInteractor
         extends BaseRxInteractor
         implements ListingContract.Interactor {
 
-    private Retrofit mRetrofit;
     private GitHubApiInterface mGitHubApiInterface;
 
     public ListingInteractor() {
-        mRetrofit = new Retrofit.Builder()
-                .baseUrl(GitHubApiInterface.GitHubApiUrl)
+        Retrofit mRetrofit = new Retrofit.Builder()
+                .baseUrl(GitHubApiInterface.GITHUB_API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
         mGitHubApiInterface = mRetrofit.create(GitHubApiInterface.class);
     }
 
-
-    @RxLogObservable(RxLogObservable.Scope.STREAM)
     @Override
     public Observable<List<User>> getUserList() {
         return mGitHubApiInterface.getUsers();

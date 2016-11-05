@@ -14,7 +14,7 @@ import rx.Observable;
 
 public interface GitHubApiInterface {
 
-    String GitHubApiUrl = "https://api.github.com";
+    String GITHUB_API_URL = "https://api.github.com";
 
     @GET("/users")
     Observable<List<User>> getUsers();

@@ -1,16 +1,6 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath "com.fernandocejas.frodo:frodo-plugin:0.8.3"
-    }
-}
-
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'android-apt'
-apply plugin: 'com.fernandocejas.frodo'
 
 android {
     compileSdkVersion 25
@@ -19,7 +9,7 @@ android {
     defaultConfig {
         applicationId "com.mateuszkoslacz.moviper.rxsample"
         minSdkVersion 21
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
 
@@ -37,10 +27,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
-
-frodo {
-    enabled = true
 }
 
 dependencies {

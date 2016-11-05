@@ -2,26 +2,12 @@ package com.mateuszkoslacz.moviper.rxsample.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 /**
  * Created by jjodelka on 17/10/16.
  */
 
-public class User implements Parcelable {
+public class User {
 
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel source) {
-            return new User(source);
-        }
-
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
     @SerializedName("organizations_url")
     private String organizationsUrl;
     @SerializedName("avatar_url")
@@ -41,17 +27,6 @@ public class User implements Parcelable {
     private String login;
 
     public User() {
-    }
-
-    protected User(Parcel in) {
-        this.organizationsUrl = in.readString();
-        this.avatarUrl = in.readString();
-        this.gistsUrl = in.readString();
-        this.htmlUrl = in.readString();
-        this.type = in.readString();
-        this.url = in.readString();
-        this.id = in.readString();
-        this.login = in.readString();
     }
 
     public String getOrganizationsUrl() {
@@ -156,36 +131,5 @@ public class User implements Parcelable {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "organizationsUrl='" + organizationsUrl + '\'' +
-                ", avatarUrl='" + avatarUrl + '\'' +
-                ", gistsUrl='" + gistsUrl + '\'' +
-                ", htmlUrl='" + htmlUrl + '\'' +
-                ", type='" + type + '\'' +
-                ", url='" + url + '\'' +
-                ", id='" + id + '\'' +
-                ", login='" + login + '\'' +
-                '}';
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.organizationsUrl);
-        dest.writeString(this.avatarUrl);
-        dest.writeString(this.gistsUrl);
-        dest.writeString(this.htmlUrl);
-        dest.writeString(this.type);
-        dest.writeString(this.url);
-        dest.writeString(this.id);
-        dest.writeString(this.login);
     }
 }

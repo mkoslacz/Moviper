@@ -11,14 +11,13 @@ public interface FullscreenPhotoContract {
         // Defines what methods the View can invoke on the Presenter.
         // In most cases there will be user interactions and View lifecycle events.
 
-        String getPhotoUrlIntentFromUserDetailsActivity();
+        String getPhotoUrl();
     }
 
     interface View extends MvpView {
         // Defines what methods the Presenter can invoke on the View
         // In most cases there will be manipulating ui and displaying data or errors.
-        // In Super Rx version it also provides getters for Observables emmiting user click events.
-
+        // In Super Rx version it also provides getters for Observables emitting user click events.
     }
 
     interface Interactor extends MoviperRxInteractor {
@@ -34,7 +33,5 @@ public interface FullscreenPhotoContract {
         // framework, ie. scheduling alarms or sending broadcasts.
         // In the case of a fragment being the view, there also will be manipulating
         // the root Activity, ie. switching fragments.
-
-        String getPhotoUrlIntentFromUserDetailsActivity();
     }
 }

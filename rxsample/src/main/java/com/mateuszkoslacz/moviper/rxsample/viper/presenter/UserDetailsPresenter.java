@@ -1,10 +1,10 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
-import com.mateuszkoslacz.moviper.rxsample.data.model.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.interactor.UserDetailsInteractor;
 import com.mateuszkoslacz.moviper.rxsample.viper.routing.UserDetailsRouting;
@@ -21,28 +21,21 @@ public class UserDetailsPresenter
         implements
         UserDetailsContract.Presenter {
 
-    public UserDetailsPresenter(Activity activity) {
-        super(activity);
+    public UserDetailsPresenter(Activity activity, Bundle bundle) {
+        super(activity, bundle);
     }
 
     @Override
     public void onViewCreated() {
         if (isViewAttached()) {
             getView().showLoading(false);
-            getUserDataIntentFromListingActivity();
+            getUserDataFromApi(getArgs().getString(UserDetailsActivity.USER_EXTRA));
         }
     }
 
     @Override
     public void onAvatarClicked(String avatarUrl) {
         getRouting().startFullscreenPhotoActivity(avatarUrl);
-    }
-
-    private void getUserDataIntentFromListingActivity() {
-        User user = getRouting().getUserDataIntent(((UserDetailsActivity) getView()));
-
-        getView().setLoginAndAvatarForUser(user);
-        getUserDataFromApi(user.getLogin());
     }
 
     private void getUserDataFromApi(String userLogin) {
@@ -57,8 +50,7 @@ public class UserDetailsPresenter
                             }
                         },
                         throwable -> {
-                            if (isViewAttached())
-                                getView().showError(throwable, false);
+                            if (isViewAttached()) getView().showError(throwable, false);
                         }
                 );
     }

@@ -14,7 +14,6 @@
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="@string/example_login"
         android:textSize="25dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="30dp"/>
@@ -23,7 +22,6 @@
         android:id="@+id/url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="@string/example_url"
         android:textSize="13dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="65dp"/>
@@ -68,7 +66,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            tools:text="@string/example_name"
             android:layout_marginLeft="35dp"
             android:layout_marginBottom="10dp"/>
 
@@ -86,7 +83,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            tools:text="@string/example_company"
             android:layout_marginLeft="35dp"
             android:layout_marginBottom="10dp"/>
 
@@ -103,7 +99,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            tools:text="@string/example_blog"
             android:layout_marginLeft="35dp"
             android:layout_marginBottom="10dp"/>
 
@@ -121,7 +116,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            tools:text="@string/example_location"
             android:layout_marginLeft="35dp"
             android:layout_marginBottom="10dp"/>
 
@@ -138,7 +132,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            tools:text="@string/example_email"
             android:layout_marginLeft="35dp"
             android:layout_marginBottom="10dp"/>
 

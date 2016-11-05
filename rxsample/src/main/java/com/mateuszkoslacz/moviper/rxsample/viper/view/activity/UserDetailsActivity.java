@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -44,7 +45,7 @@ public class UserDetailsActivity
 
     public static void start(Context context, User user) {
         Intent starter = new Intent(context, UserDetailsActivity.class);
-        starter.putExtra(USER_EXTRA, user);
+        starter.putExtra(USER_EXTRA, user.getLogin());
         context.startActivity(starter);
     }
 
@@ -53,7 +54,6 @@ public class UserDetailsActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
         ButterKnife.bind(this);
-
         getPresenter().onViewCreated();
     }
 
@@ -66,7 +66,6 @@ public class UserDetailsActivity
         mBlogTextView.setText(user.getBlog());
         mLocationTextView.setText(user.getLocation());
         mEmailTextView.setText(user.getEmail());
-
         Glide.with(this)
                 .load(user.getAvatarUrl())
                 .into(mAvatarImageView);
@@ -75,16 +74,8 @@ public class UserDetailsActivity
     }
 
     @Override
-    public void setLoginAndAvatarForUser(User user) {
-        mLoginTextView.setText(user.getLogin());
-        Glide.with(this)
-                .load(user.getAvatarUrl())
-                .into(mAvatarImageView);
-    }
-
-    @Override
-    protected String getErrorMessage(Throwable e, boolean pullToRefresh) {
-        return e.getLocalizedMessage();
+    public View getAvatarImageView() {
+        return mAvatarImageView;
     }
 
     @Override
@@ -93,17 +84,17 @@ public class UserDetailsActivity
     }
 
     @Override
-    public void loadData(boolean pullToRefresh) {
+    protected String getErrorMessage(Throwable e, boolean pullToRefresh) {
+        return e.getLocalizedMessage();
+    }
 
+    @Override
+    public void loadData(boolean pullToRefresh) {
     }
 
     @NonNull
     @Override
     public UserDetailsContract.Presenter createPresenter() {
-        return new UserDetailsPresenter(this);
-    }
-
-    public ImageView getAvatarImageView() {
-        return mAvatarImageView;
+        return new UserDetailsPresenter(this, getIntent().getExtras());
     }
 }

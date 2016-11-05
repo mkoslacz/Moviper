@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.rxsample.viewadapter;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,36 +17,33 @@ import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
 
-    private List<User> userList;
-    private Context context;
-    private UserClickListener userClickListener;
+    private List<User> mUserList;
+    private UserClickListener mUserClickListener;
 
-    public UserAdapter(Context pContext, UserClickListener userClickListener) {
-        this.context = pContext;
-        this.userClickListener = userClickListener;
+    public UserAdapter(UserClickListener mUserClickListener) {
+        this.mUserClickListener = mUserClickListener;
     }
 
     @Override
     public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_user_row, parent, false);
-
         return new UserViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(UserViewHolder holder, int position) {
-        holder.bind(context, userList.get(position), userClickListener);
+        holder.bind(mUserList.get(position), mUserClickListener);
     }
 
     @Override
     public int getItemCount() {
-        if (userList != null) return userList.size();
-        return 0;
+        return mUserList != null ? mUserList.size() : 0;
     }
 
     public void setUserList(List<User> userList) {
-        this.userList = userList;
+        this.mUserList = userList;
+        notifyDataSetChanged();
     }
 
     public interface UserClickListener {

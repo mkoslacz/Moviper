@@ -26,8 +26,7 @@ public class ListingPresenter
 
     @Override
     public void onViewCreated() {
-        if (isViewAttached())
-            getView().showLoading();
+        if (isViewAttached()) getView().showLoading();
 
         getInteractor().getUserList()
                 .subscribeOn(Schedulers.io())
@@ -41,7 +40,7 @@ public class ListingPresenter
                         },
                         throwable -> {
                             if (isViewAttached())
-                                getView().showError();
+                                getView().showError(throwable); // TODO: 04/11/16 pass error message to view plox
                         }
                 );
     }
