@@ -1,1 +1,1 @@
-include ':sample', ':moviper', ':rxsample'
+include ':sample', ':moviper', ':rxsample', ':ipcsample'
