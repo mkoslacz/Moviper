@@ -38,12 +38,12 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.hannesdorfmann.mosby:mvp:2.0.1'
     compile 'com.hannesdorfmann.mosby:viewstate:2.0.1'
+    compile 'com.android.support:recyclerview-v7:25.0.0'
 
     // TODO: probably should split to two flavours to
     // avoid including rxJava in projects that don't
     // use rx
     compile 'io.reactivex:rxjava:1.2.2'
-
 }
 
 
