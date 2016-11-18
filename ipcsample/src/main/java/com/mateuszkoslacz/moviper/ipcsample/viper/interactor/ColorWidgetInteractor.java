@@ -1,10 +1,10 @@
 package com.mateuszkoslacz.moviper.ipcsample.viper.interactor;
 
 import com.mateuszkoslacz.moviper.base.interactor.BaseRxInteractor;
-import com.mateuszkoslacz.moviper.ipcsample.viper.contract.ViperContract;
+import com.mateuszkoslacz.moviper.ipcsample.viper.contract.ColorWidgetContract;
 
-public class ViperInteractor
+public class ColorWidgetInteractor
         extends BaseRxInteractor
-        implements ViperContract.Interactor {
+        implements ColorWidgetContract.Interactor {
 
 }

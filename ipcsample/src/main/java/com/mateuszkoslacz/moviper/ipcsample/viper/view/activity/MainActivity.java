@@ -20,18 +20,16 @@ public class MainActivity
     }
 
     @Override
-    public int getViewIdFragmentFirst() {
-        return R.id.fragment_first;
-    }
-
-    @Override
-    public int getViewIdFragmentSecond() {
-        return R.id.fragment_second;
-    }
-
-    @Override
-    public int getViewIdFragmentThird() {
-        return R.id.fragment_third;
+    public int getViewIdForPosition(int position) {
+        switch (position) {
+            case 1:
+                return R.id.fragment_first;
+            case 2:
+                return R.id.fragment_second;
+            case 3:
+            default:
+                return R.id.fragment_third;
+        }
     }
 
     @NonNull

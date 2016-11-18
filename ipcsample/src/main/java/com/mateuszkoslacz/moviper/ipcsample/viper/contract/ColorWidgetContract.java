@@ -7,15 +7,15 @@ import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRxRouting;
 import com.mateuszkoslacz.moviper.iface.viewhelper.MoviperViewHelper;
 
-public interface ViperContract {
+public interface ColorWidgetContract {
 
     interface Presenter extends MvpPresenter<View> {
 
         void onViewCreated();
 
-        void onButtonClick();
+        void changeAllWidgetsColor();
 
-        void onButtonClick(String fragmentName);
+        void changeWidgetColor(String fragmentName);
 
         @ExternalCall
         void requestColorChange(int color);

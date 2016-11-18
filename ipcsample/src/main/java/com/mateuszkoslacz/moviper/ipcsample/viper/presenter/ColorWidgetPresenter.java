@@ -7,18 +7,18 @@ import android.support.v4.app.Fragment;
 
 import com.mateuszkoslacz.moviper.annotation.ExternalCall;
 import com.mateuszkoslacz.moviper.base.presenter.ViperFragmentBaseRxPresenter;
-import com.mateuszkoslacz.moviper.ipcsample.viper.contract.ViperContract;
-import com.mateuszkoslacz.moviper.ipcsample.viper.interactor.ViperInteractor;
-import com.mateuszkoslacz.moviper.ipcsample.viper.routing.ViperRouting;
+import com.mateuszkoslacz.moviper.ipcsample.viper.contract.ColorWidgetContract;
+import com.mateuszkoslacz.moviper.ipcsample.viper.interactor.ColorWidgetInteractor;
+import com.mateuszkoslacz.moviper.ipcsample.viper.routing.ColorWidgetRouting;
 import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 
-public class ViperPresenter
+public class ColorWidgetPresenter
         extends ViperFragmentBaseRxPresenter
-        <ViperContract.View,
-                ViperContract.Interactor,
-                ViperContract.Routing>
+        <ColorWidgetContract.View,
+                ColorWidgetContract.Interactor,
+                ColorWidgetContract.Routing>
         implements
-        ViperContract.Presenter {
+        ColorWidgetContract.Presenter {
 
     public static final String FRAGMENT_PRESENTER_NAME = "FRAGMENT_PRESENTER_NAME";
     public static final String FRAGMENT_COLOR_NAME = "FRAGMENT_COLOR_NAME";
@@ -28,7 +28,7 @@ public class ViperPresenter
     private String colorName;
     private int backgroundColor;
 
-    public ViperPresenter(Fragment fragment, Bundle bundle) {
+    public ColorWidgetPresenter(Fragment fragment, Bundle bundle) {
         super(fragment, bundle);
     }
 
@@ -45,14 +45,14 @@ public class ViperPresenter
     }
 
     @Override
-    public void onButtonClick() {
-        Moviper.getInstance().getPresenters(ViperPresenter.class)
+    public void changeAllWidgetsColor() {
+        Moviper.getInstance().getPresenters(ColorWidgetPresenter.class)
                 .subscribe(presenter -> presenter.requestColorChange(backgroundColor));
     }
 
     @Override
-    public void onButtonClick(String fragmentName) {
-        Moviper.getInstance().getPresenterInstance(ViperPresenter.class, fragmentName)
+    public void changeWidgetColor(String fragmentName) {
+        Moviper.getInstance().getPresenterInstance(ColorWidgetPresenter.class, fragmentName)
                 .subscribe(presenter -> presenter.requestColorChange(backgroundColor));
     }
 
@@ -73,13 +73,13 @@ public class ViperPresenter
 
     @NonNull
     @Override
-    public ViperContract.Routing createRouting(@NonNull Fragment fragment) {
-        return new ViperRouting(fragment);
+    public ColorWidgetContract.Routing createRouting(@NonNull Fragment fragment) {
+        return new ColorWidgetRouting(fragment);
     }
 
     @NonNull
     @Override
-    public ViperContract.Interactor createInteractor() {
-        return new ViperInteractor();
+    public ColorWidgetContract.Interactor createInteractor() {
+        return new ColorWidgetInteractor();
     }
 }

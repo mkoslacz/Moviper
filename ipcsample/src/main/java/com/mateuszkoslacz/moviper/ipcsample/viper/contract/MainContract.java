@@ -1,7 +1,5 @@
 package com.mateuszkoslacz.moviper.ipcsample.viper.contract;
 
-import android.support.v4.app.Fragment;
-
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
@@ -16,11 +14,7 @@ public interface MainContract {
 
     interface View extends MvpView {
 
-        int getViewIdFragmentFirst();
-
-        int getViewIdFragmentSecond();
-
-        int getViewIdFragmentThird();
+        int getViewIdForPosition(int position);
     }
 
     interface Interactor extends MoviperRxInteractor {
@@ -29,6 +23,7 @@ public interface MainContract {
 
     interface Routing extends MoviperRxRouting {
 
-        void bindFragmentToView(int viewId, Fragment fragment);
+        void prepareAndBindWidgetToView(String widgetName, String colorName,
+                                        String color, int viewId);
     }
 }

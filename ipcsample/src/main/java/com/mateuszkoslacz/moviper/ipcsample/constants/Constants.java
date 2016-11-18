@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.ipcsample.util;
+package com.mateuszkoslacz.moviper.ipcsample.constants;
 
 /**
  * Created by jjodelka on 08/11/2016.
