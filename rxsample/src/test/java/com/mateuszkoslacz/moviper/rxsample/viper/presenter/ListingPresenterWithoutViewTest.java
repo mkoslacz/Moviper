@@ -12,9 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.mockito.verification.VerificationMode;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,32 +21,20 @@ import java.util.List;
 import rx.schedulers.TestScheduler;
 import rx.subjects.TestSubject;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by mateuszkoslacz on 17.11.2016.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class ListingPresenterTest {
-
-    @Rule
-    public final RxAndroidSchedulersOverrideRule mOverrideRule = new RxAndroidSchedulersOverrideRule();
-
-    @Mock
-    protected ListingInteractor mInteractor;
-
-    @Mock
-    protected ListingRouting mRouting;
-
-    @Mock
-    protected ListingActivity mView;
-
-    @InjectMocks
-    protected ListingPresenter mPresenter = new ListingPresenter(mView);
+public class ListingPresenterWithoutViewTest extends ListingPresenterTest {
 
     @Before
     public void setUpPresenter() {
-        mPresenter.attachView(mView);
+        mPresenter.detachView(false);
     }
 
 
@@ -59,12 +45,12 @@ public class ListingPresenterTest {
         TestSubject<List<User>> subject = TestSubject.create(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
         mPresenter.onViewCreated();
-        verify(mView).showLoading();
+        verify(mView, never()).showLoading();
         verify(mInteractor).getUserList();
         subject.onNext(users);
         scheduler.triggerActions();
-        verify(mView).setUserList(users);
-        verify(mView).showContent();
+        verify(mView, never()).setUserList(users);
+        verify(mView, never()).showContent();
         verify(mView, never()).showError(any());
     }
 
@@ -74,20 +60,14 @@ public class ListingPresenterTest {
         TestSubject<List<User>> subject = TestSubject.create(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
         mPresenter.onViewCreated();
-        verify(mView).showLoading();
+        verify(mView, never()).showLoading();
         verify(mInteractor).getUserList();
         IOException e = new IOException();
         subject.onError(e);
         scheduler.triggerActions();
         verify(mView, never()).setUserList(any());
         verify(mView, never()).showContent();
-        verify(mView).showError(e);
+        verify(mView, never()).showError(e);
     }
 
-    @Test
-    public void onItemClicked() throws Exception {
-        User user = new User();
-        mPresenter.onItemClicked(user);
-        verify(mRouting).startUserDetailsActivity(user);
-    }
 }
