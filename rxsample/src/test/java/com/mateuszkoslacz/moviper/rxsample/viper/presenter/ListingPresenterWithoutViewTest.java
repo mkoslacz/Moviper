@@ -1,17 +1,11 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
-import com.mateuszkoslacz.moviper.rxsample.viper.interactor.ListingInteractor;
-import com.mateuszkoslacz.moviper.rxsample.viper.presenter.utils.RxAndroidSchedulersOverrideRule;
-import com.mateuszkoslacz.moviper.rxsample.viper.routing.ListingRouting;
-import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.ListingActivity;
+import com.mateuszkoslacz.moviper.rxsample.viper.utils.RxAndroidSchedulersOverrideRule;
 
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.IOException;
