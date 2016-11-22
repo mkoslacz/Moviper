@@ -32,7 +32,7 @@ import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterFor
 public abstract class WipeBaseRxPresenter
         <ViewType extends MvpView, // I prefer readability rather than conventions
                 InteractorType extends MoviperRxInteractor>
-        extends MoviperBasePresenter<ViewType>
+        extends MoviperBaseRxPresenter<ViewType>
         implements MoviperPresenter<ViewType>,
         MoviperPresenterForInteractor<InteractorType> {
 

@@ -29,7 +29,7 @@ import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
 public abstract class PervFragmentBaseRxPresenter
         <RoutingType extends MoviperRxRouting,  // I prefer readability rather than conventions
                 ViewType extends MvpView>
-        extends MoviperBasePresenter<ViewType>
+        extends MoviperBaseRxPresenter<ViewType>
         implements MoviperFragmentPresenterForRouting<RoutingType>,
         MoviperPresenter<ViewType> {
 
