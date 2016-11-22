@@ -16,7 +16,7 @@ import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
 
 import static com.mateuszkoslacz.moviper.rxsample.viper.view.activity.UserDetailsActivity.USER_EXTRA;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.robolectric.Robolectric.setupActivity;
 
 /**
@@ -43,7 +43,6 @@ public class ListingRoutingRobolectricTest {
         mRouting.startUserDetailsActivity(user);
         Intent starter = new Intent(mListingActivity, UserDetailsActivity.class);
         starter.putExtra(USER_EXTRA, user.getLogin());
-        // FIXME: 21.11.2016 why does it fail?
-        assertEquals(Shadows.shadowOf(mListingActivity).getNextStartedActivity(), starter);
+        assertTrue(Shadows.shadowOf(mListingActivity).getNextStartedActivity().filterEquals(starter));
     }
 }
