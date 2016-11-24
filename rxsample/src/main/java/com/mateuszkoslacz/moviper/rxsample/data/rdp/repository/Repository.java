@@ -1,7 +1,7 @@
 package com.mateuszkoslacz.moviper.rxsample.data.rdp.repository;
 
-import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.Specification;
-import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.stream.StreamSpecification;
+import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.base.Specification;
+import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.stream.base.StreamSpecification;
 
 import java.util.List;
 

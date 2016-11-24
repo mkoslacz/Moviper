@@ -1,9 +1,9 @@
 package com.mateuszkoslacz.moviper.rxsample.data.rdp.repository.retrofit;
 
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.repository.Repository;
-import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.Specification;
+import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.base.Specification;
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.retrofit.RetrofitSpecification;
-import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.stream.StreamSpecification;
+import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.stream.base.StreamSpecification;
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.stream.retrofit.RetrofitStreamSpecification;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 

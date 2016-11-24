@@ -1,5 +1,6 @@
-package com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.retrofit.impl;
+package com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.stream.retrofit.impl;
 
+import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.stream.UserByUsernameStreamSpecification;
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.stream.retrofit.RetrofitStreamSpecification;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
@@ -12,17 +13,19 @@ import rx.Observable;
  * Created by jjodelka on 23/11/2016.
  */
 
-public class UserByUsernameSpecification implements RetrofitStreamSpecification<User> {
+public class UserByUsernameRetrofitStreamSpecification implements RetrofitStreamSpecification<User>, UserByUsernameStreamSpecification {
 
     private String username;
-
-    public UserByUsernameSpecification(String username) {
-        this.username = username;
-    }
 
     @Override
     public Observable<User> getResults(Retrofit retrofit) {
         return retrofit.create(UserByUserNameRetrofitApiCall.class).getUserForUsername(username);
+    }
+
+    @Override
+    public UserByUsernameStreamSpecification setUserName(String userName) {
+        this.username = userName;
+        return this;
     }
 
     private interface UserByUserNameRetrofitApiCall {
