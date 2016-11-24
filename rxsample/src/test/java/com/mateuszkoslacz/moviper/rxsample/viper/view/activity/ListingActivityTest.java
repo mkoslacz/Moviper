@@ -138,7 +138,7 @@ public class ListingActivityTest {
         mRecyclerView.findViewHolderForAdapterPosition(0).itemView.performClick();
 
         // workaround robolectric recyclerView issue
-        mRecyclerView.measure(0,0);
+        mRecyclerView.measure(0, 0);
         mRecyclerView.layout(0, 0, 100, 1000);
 
         Mockito.verify(mListingPresenter).onItemClicked(user1);
