@@ -19,6 +19,7 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
+import org.robolectric.util.ActivityController;
 
 import java.util.Arrays;
 
@@ -54,9 +55,15 @@ public class ListingActivityTest {
 
     @Test
     public void onViewCreated() throws Exception {
-        // TODO: 22.11.2016 how to use buildActivity instead of setupActivity on exactly one test and THEN inject mocks?
-        mListingActivity = Robolectric.buildActivity(ListingActivity.class).create().get();
+        // FIXME: 24.11.2016 this is how it should look to
+        // inject mocks first, and invoke onCreate
+        // then, but there is exactly the same problem as when
+        // using Glide with Robolectric + Mockito @injectMocks
+        ActivityController<ListingActivity> listingActivityLifecycleController =
+                Robolectric.buildActivity(ListingActivity.class);
+        mListingActivity = listingActivityLifecycleController.get();
         MockitoAnnotations.initMocks(this);
+        listingActivityLifecycleController.create();
         Mockito.verify(mListingPresenter).onViewCreated();
     }
 
