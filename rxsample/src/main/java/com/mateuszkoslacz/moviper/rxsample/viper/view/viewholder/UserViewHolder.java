@@ -5,10 +5,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.mateuszkoslacz.moviper.rxsample.R;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.adapter.UserAdapter;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,7 +36,7 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
     public void bind(User user, UserAdapter.UserClickListener userClickListener) {
         mLoginTextView.setText(user.getLogin());
         mUrlTextView.setText(user.getUrl());
-        Glide.with(mRowView.getContext())
+        Picasso.with(mRowView.getContext())
                 .load(user.getAvatarUrl())
                 .into(mAvatarImageView);
         mRowView.setOnClickListener(v -> userClickListener.onUserClick(user));

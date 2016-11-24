@@ -4,24 +4,18 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.mateuszkoslacz.moviper.rxsample.BuildConfig;
 import com.mateuszkoslacz.moviper.rxsample.R;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.presenter.ListingPresenter;
 
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.rule.PowerMockRule;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
@@ -38,12 +32,7 @@ import static org.junit.Assert.assertTrue;
  */
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
-//@PowerMockIgnore({ "org.mockito.*", "org.robolectric.*", "android.*" })
-//@PrepareForTest(Glide.class)
 public class ListingActivityTest {
-
-//    @Rule
-//    public PowerMockRule mPowerMockRule = new PowerMockRule();
 
     @Mock
     private ListingPresenter mListingPresenter;
@@ -105,10 +94,6 @@ public class ListingActivityTest {
 
     @Test
     public void testShowContent() throws Exception {
-        // TODO: 22.11.2016 how to do it properly in this case?
-        // ref: https://github.com/jayway/powermock/wiki/PowerMockRule
-        // uncomment class annotation and rule to see the problem
-        PowerMockito.mockStatic(Glide.class);
         mListingActivity.showContent();
         assertFalse("Loading indicator is visible", mProgressBar.isShown());
         assertTrue("content is not visible", mRecyclerView.isShown());
@@ -119,8 +104,6 @@ public class ListingActivityTest {
     // testShowContent have failed). Can we define that test A is dependent on test B, like in TestNG?
     @Test
     public void testSetContent() throws Exception {
-        // TODO: 22.11.2016 see above
-        PowerMockito.mockStatic(Glide.class);
         User user1 = new User();
         User user2 = new User();
         User user3 = new User();
@@ -137,8 +120,6 @@ public class ListingActivityTest {
 
     @Test
     public void testContentClicks() throws Exception {
-        // TODO: 22.11.2016 see above
-        PowerMockito.mockStatic(Glide.class);
         User user1 = new User();
         User user2 = new User();
         User user3 = new User();
