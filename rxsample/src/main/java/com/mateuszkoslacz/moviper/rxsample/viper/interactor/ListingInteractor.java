@@ -2,9 +2,8 @@ package com.mateuszkoslacz.moviper.rxsample.viper.interactor;
 
 import com.mateuszkoslacz.moviper.base.interactor.BaseRxInteractor;
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.repository.Repository;
-import com.mateuszkoslacz.moviper.rxsample.data.rdp.repository.retrofit.UserRetrofitRepository;
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.AllUsersSpecification;
-import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.retrofit.impl.AllUsersRetrofitSpecification;
+import com.mateuszkoslacz.moviper.rxsample.di.DIProvider;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
@@ -16,14 +15,16 @@ public class ListingInteractor
         extends BaseRxInteractor
         implements ListingContract.Interactor {
 
-    private Repository<User> mUserRepository = new UserRetrofitRepository();
+    Repository<User> mUserRepository;
+    AllUsersSpecification allUsersSpecification;
+
+    public ListingInteractor() {
+        mUserRepository = DIProvider.getRepositoryComponent().provideUserRepository();
+        allUsersSpecification = DIProvider.getSpecificationComponent().provideAllUsersSpecification();
+    }
 
     @Override
     public Observable<List<User>> getUserList() {
-        return mUserRepository.query(getUsersSpecification());
-    }
-
-    private AllUsersSpecification getUsersSpecification() {
-        return new AllUsersRetrofitSpecification();
+        return mUserRepository.query(allUsersSpecification);
     }
 }
