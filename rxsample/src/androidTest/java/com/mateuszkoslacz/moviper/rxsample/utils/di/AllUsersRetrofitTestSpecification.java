@@ -8,20 +8,20 @@ import java.util.List;
 import retrofit2.Retrofit;
 import rx.Observable;
 
-public class AllUsersRetrofitTestSpecification extends AllUsersRetrofitSpecification {
+class AllUsersRetrofitTestSpecification extends AllUsersRetrofitSpecification {
 
     @Override
     public Observable<List<User>> getResults(Retrofit retrofit) {
         User user1 = new User();
-        user1.setName("user1");
+        user1.setLogin("user1");
         User user2 = new User();
-        user2.setName("user2");
+        user2.setLogin("user2");
         User user3 = new User();
-        user3.setName("user3");
+        user3.setLogin("user3");
         User user4 = new User();
-        user4.setName("user4");
+        user4.setLogin("user4");
         User user5 = new User();
-        user5.setName("user5");
+        user5.setLogin("user5");
 
         return Observable.just(java.util.Arrays.asList(user1, user2, user3, user4, user5));
     }
