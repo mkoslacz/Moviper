@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.rxsample.viper.TestUtils;
+package com.mateuszkoslacz.moviper.rxsample.utils.di;
 
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.AllUsersSpecification;
 import com.mateuszkoslacz.moviper.rxsample.di.modules.specification.AllUsersSpecificationModule;
