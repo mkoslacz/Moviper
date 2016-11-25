@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.rxsample.di;
 
 
+import android.content.Context;
 import android.support.annotation.VisibleForTesting;
 
 import com.mateuszkoslacz.moviper.rxsample.di.components.DaggerRepositoryComponent;
@@ -15,8 +16,10 @@ public class DIProvider {
 
     private static RepositoryComponent repositoryComponent;
     private static SpecificationComponent specificationComponent;
+    private static Context context;
 
     public static RepositoryComponent getRepositoryComponent() {
+        assertNonNullContext();
         if (repositoryComponent == null) {
             repositoryComponent = DaggerRepositoryComponent.builder()
                     .userRepositoryModule(new UserRepositoryModule())
@@ -26,6 +29,7 @@ public class DIProvider {
     }
 
     public static SpecificationComponent getSpecificationComponent() {
+        assertNonNullContext();
         if (specificationComponent == null) {
             specificationComponent = DaggerSpecificationComponent.builder()
                     .allUsersSpecificationModule(new AllUsersSpecificationModule())
@@ -35,13 +39,23 @@ public class DIProvider {
         return specificationComponent;
     }
 
+    public static void init(Context pContext) {
+        context = pContext;
+    }
+
     @VisibleForTesting
-    public void setRepositoryComponent(RepositoryComponent component) {
+    public static void setRepositoryComponent(RepositoryComponent component) {
         repositoryComponent = component;
     }
 
     @VisibleForTesting
-    public void setSpecificationComponent(SpecificationComponent component) {
+    public static void setSpecificationComponent(SpecificationComponent component) {
         specificationComponent = component;
+    }
+
+    private static void assertNonNullContext() {
+        if (context == null) {
+            throw new IllegalStateException("You have to init DIProvider with context first");
+        }
     }
 }
