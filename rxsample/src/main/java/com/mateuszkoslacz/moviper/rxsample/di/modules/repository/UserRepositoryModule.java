@@ -4,8 +4,6 @@ import com.mateuszkoslacz.moviper.rxsample.data.rdp.repository.Repository;
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.repository.retrofit.UserRetrofitRepository;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -13,8 +11,7 @@ import dagger.Provides;
 public class UserRepositoryModule {
 
     @Provides
-    @Singleton
-    Repository<User> provideUserRepository() {
+    public Repository<User> provideUserRepository() {
         return new UserRetrofitRepository();
     }
 }
