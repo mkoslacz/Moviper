@@ -13,17 +13,17 @@ public interface ColorWidgetContract {
 
         void onViewCreated();
 
-        void changeAllWidgetsColor();
+        void synchronizeWidgetsColor();
 
-        void changeWidgetColor(String fragmentName);
+        void synchronizeGivenWidgetColor(String widgetToSyncId);
 
         @ExternalCall
-        void requestColorChange(int color);
+        void changeColorTo(int color);
     }
 
     interface View extends MvpView {
 
-        void setColorName(String colorName);
+        void setWidgetName(String name);
 
         void setBackgroundColor(int color);
     }

@@ -40,25 +40,25 @@ public class ColorWidgetPresenter
             backgroundColor = Color.parseColor(getArgs().getString(FRAGMENT_BACKGROUND_COLOR));
 
             getView().setBackgroundColor(backgroundColor);
-            getView().setColorName(colorName);
+            getView().setWidgetName(colorName);
         }
     }
 
     @Override
-    public void changeAllWidgetsColor() {
+    public void synchronizeWidgetsColor() {
         Moviper.getInstance().getPresenters(ColorWidgetPresenter.class)
-                .subscribe(presenter -> presenter.requestColorChange(backgroundColor));
+                .subscribe(presenter -> presenter.changeColorTo(backgroundColor));
     }
 
     @Override
-    public void changeWidgetColor(String fragmentName) {
-        Moviper.getInstance().getPresenterInstance(ColorWidgetPresenter.class, fragmentName)
-                .subscribe(presenter -> presenter.requestColorChange(backgroundColor));
+    public void synchronizeGivenWidgetColor(String widgetToSyncId) {
+        Moviper.getInstance().getPresenterInstance(ColorWidgetPresenter.class, widgetToSyncId)
+                .subscribe(presenter -> presenter.changeColorTo(backgroundColor));
     }
 
     @ExternalCall
     @Override
-    public void requestColorChange(int color) {
+    public void changeColorTo(int color) {
         if (isViewAttached()) getView().setBackgroundColor(color);
     }
 

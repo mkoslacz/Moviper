@@ -41,27 +41,27 @@ public class ColorWidgetFragment
 
     @OnClick(R.id.button_first)
     void onFirstButtonClick() {
-        getPresenter().changeWidgetColor(Constants.FRAGMENT_NAME_FIRST);
+        getPresenter().synchronizeGivenWidgetColor(Constants.FRAGMENT_NAME_FIRST);
     }
 
     @OnClick(R.id.button_second)
     void onSecondButtonClick() {
-        getPresenter().changeWidgetColor(Constants.FRAGMENT_NAME_SECOND);
+        getPresenter().synchronizeGivenWidgetColor(Constants.FRAGMENT_NAME_SECOND);
     }
 
     @OnClick(R.id.button_third)
     void onThirdButtonClick() {
-        getPresenter().changeWidgetColor(Constants.FRAGMENT_NAME_THIRD);
+        getPresenter().synchronizeGivenWidgetColor(Constants.FRAGMENT_NAME_THIRD);
     }
 
     @OnClick(R.id.button_all)
     void onAllButtonClick() {
-        getPresenter().changeAllWidgetsColor();
+        getPresenter().synchronizeWidgetsColor();
     }
 
     @Override
-    public void setColorName(String colorName) {
-        textViewColorName.setText(colorName);
+    public void setWidgetName(String name) {
+        textViewColorName.setText(name);
     }
 
     @Override
