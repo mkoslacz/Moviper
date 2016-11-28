@@ -3,6 +3,7 @@ package com.mateuszkoslacz.moviper.rxsample.di;
 
 import android.content.Context;
 import android.support.annotation.VisibleForTesting;
+import android.util.Log;
 
 import com.mateuszkoslacz.moviper.rxsample.di.components.DaggerRepositoryComponent;
 import com.mateuszkoslacz.moviper.rxsample.di.components.DaggerSpecificationComponent;
@@ -21,10 +22,12 @@ public class DIProvider {
     public static RepositoryComponent getRepositoryComponent() {
         assertNonNullContext();
         if (repositoryComponent == null) {
+            Log.d("UserTestRepository", "create fresh component");
             repositoryComponent = DaggerRepositoryComponent.builder()
                     .userRepositoryModule(new UserRepositoryModule())
                     .build();
         }
+        Log.d("UserTestRepository", "getRepositoryComponent");
         return repositoryComponent;
     }
 
@@ -45,6 +48,7 @@ public class DIProvider {
 
     @VisibleForTesting
     public static void setRepositoryComponent(RepositoryComponent component) {
+        Log.d("UserTestRepository", "setRepositoryComponent");
         repositoryComponent = component;
     }
 
