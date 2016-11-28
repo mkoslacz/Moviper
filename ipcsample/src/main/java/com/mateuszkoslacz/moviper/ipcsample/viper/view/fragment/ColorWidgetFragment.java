@@ -66,7 +66,7 @@ public class ColorWidgetFragment
 
     @Override
     public void setBackgroundColor(int color) {
-        getActivity().runOnUiThread(() -> getView().setBackgroundColor(color));
+        getView().setBackgroundColor(color);
     }
 
     @NonNull

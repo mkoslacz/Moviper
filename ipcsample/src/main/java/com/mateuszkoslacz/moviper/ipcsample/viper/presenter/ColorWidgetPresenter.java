@@ -12,6 +12,8 @@ import com.mateuszkoslacz.moviper.ipcsample.viper.interactor.ColorWidgetInteract
 import com.mateuszkoslacz.moviper.ipcsample.viper.routing.ColorWidgetRouting;
 import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 
+import rx.android.schedulers.AndroidSchedulers;
+
 public class ColorWidgetPresenter
         extends ViperFragmentBaseRxPresenter
         <ColorWidgetContract.View,
@@ -47,12 +49,14 @@ public class ColorWidgetPresenter
     @Override
     public void synchronizeWidgetsColor() {
         Moviper.getInstance().getPresenters(ColorWidgetPresenter.class)
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(presenter -> presenter.changeColorTo(backgroundColor));
     }
 
     @Override
     public void synchronizeGivenWidgetColor(String widgetToSyncId) {
         Moviper.getInstance().getPresenterInstance(ColorWidgetPresenter.class, widgetToSyncId)
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(presenter -> presenter.changeColorTo(backgroundColor));
     }
 
