@@ -27,8 +27,9 @@ public class MainActivity
             case 2:
                 return R.id.fragment_second;
             case 3:
-            default:
                 return R.id.fragment_third;
+            default:
+                throw new RuntimeException("Unexpected view position!");
         }
     }
 
