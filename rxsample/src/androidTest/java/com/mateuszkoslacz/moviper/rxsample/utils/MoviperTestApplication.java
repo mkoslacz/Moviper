@@ -2,13 +2,13 @@ package com.mateuszkoslacz.moviper.rxsample.utils;
 
 import com.mateuszkoslacz.moviper.rxsample.MoviperApplication;
 import com.mateuszkoslacz.moviper.rxsample.di.DIProvider;
-import com.mateuszkoslacz.moviper.rxsample.di.components.DaggerRepositoryComponent;
-import com.mateuszkoslacz.moviper.rxsample.di.components.DaggerSpecificationComponent;
 import com.mateuszkoslacz.moviper.rxsample.di.components.RepositoryComponent;
 import com.mateuszkoslacz.moviper.rxsample.di.components.SpecificationComponent;
-import com.mateuszkoslacz.moviper.rxsample.di.modules.specification.UserByUsernameStreamSpecificationModule;
-import com.mateuszkoslacz.moviper.rxsample.utils.di.AllUsersSpecificationTestModule;
-import com.mateuszkoslacz.moviper.rxsample.utils.di.UserRepositoryTestModule;
+import com.mateuszkoslacz.moviper.rxsample.utils.di.components.DaggerRepositoryTestComponent;
+import com.mateuszkoslacz.moviper.rxsample.utils.di.components.DaggerSpecificationTestComponent;
+import com.mateuszkoslacz.moviper.rxsample.utils.di.modules.AllUsersSpecificationTestModule;
+import com.mateuszkoslacz.moviper.rxsample.utils.di.modules.UserByUsernameStreamSpecificationTestModule;
+import com.mateuszkoslacz.moviper.rxsample.utils.di.modules.UserRepositoryTestModule;
 
 
 public class MoviperTestApplication extends MoviperApplication {
@@ -18,17 +18,16 @@ public class MoviperTestApplication extends MoviperApplication {
         super.onCreate();
 
         DIProvider.init(this);
-        SpecificationComponent specificationTestComponent = DaggerSpecificationComponent.builder()
-                .allUsersSpecificationModule(new AllUsersSpecificationTestModule())
-                .userByUsernameStreamSpecificationModule(new UserByUsernameStreamSpecificationModule())
+        SpecificationComponent specificationComponent = DaggerSpecificationTestComponent.builder()
+                .allUsersSpecificationTestModule(new AllUsersSpecificationTestModule())
+                .userByUsernameStreamSpecificationTestModule(new UserByUsernameStreamSpecificationTestModule())
                 .build();
 
-
-        RepositoryComponent repositoryComponent = DaggerRepositoryComponent.builder()
-                .userRepositoryModule(new UserRepositoryTestModule())
+        RepositoryComponent repositoryComponent = DaggerRepositoryTestComponent.builder()
+                .userRepositoryTestModule(new UserRepositoryTestModule())
                 .build();
 
-        DIProvider.setSpecificationComponent(specificationTestComponent);
+        DIProvider.setSpecificationComponent(specificationComponent);
         DIProvider.setRepositoryComponent(repositoryComponent);
     }
 }
