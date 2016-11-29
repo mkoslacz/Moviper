@@ -24,20 +24,20 @@ dependencies {
 
 ## Getting started
 
-Just create a VIPER files set using [Moviper Template Generator](https://github.com/mkoslacz/MoviperTemplateGenerator), fill up the contract, generate missing methods using Android Studio autofix
+First of all, check out the samples. After that, just create a VIPER files set using [Moviper Template Generator](https://github.com/mkoslacz/MoviperTemplateGenerator), fill up the contract, generate missing methods using Android Studio autofix
 and implement them. Most probably you will want to check out a sample module provided in this repository to see how to use Moviper. You have two flavours of Moviper. The "regular" one — to use with callbacks, and the Rx one, to use with RxJava.
 
 ## Advanced features
 
 ### Args Bundle
 
-You can easily pass extras from your Activity or Fragment to the presenter using Moviper Args Bundle. You can check out how to use it in the Sample's `FullscreenPhotoPresenter` constructor and its call.
+You can easily pass extras from your Activity or Fragment to the presenter using Moviper Args Bundle. You can check out how to use it in the Sample's `FullscreenPhotoPresenter` [constructor and its call](https://github.com/mkoslacz/Moviper/blob/master/rxsample/src/main/java/com/mateuszkoslacz/moviper/rxsample/viper/presenter/FullscreenPhotoPresenter.java#L25).
 
 ### Moviper Inter-Presenter-Communication (IPC) (RxJava)
 
-_(sample coming soon)_ 
+##### Quickstart
 
-Enable IPC in your Application class.
+Enable IPC in your `Application` class `onCreate()` method. 
 ```java
 Moviper.getInstance().setConfig(
         new Config.Builder()
@@ -46,7 +46,7 @@ Moviper.getInstance().setConfig(
                 .build());
 ```
 
-#### Plain IPC
+##### Plain IPC
 
 You can access all alive Presenters of a given class from any place in your app like this:
 ```java
@@ -56,7 +56,7 @@ Moviper.getInstance().getPresenters(SomePresenter.class)
 
 For readability mark your external methods in the Presenter using the `@ExternalCall` annotation.
 
-#### Instance Presenters Access
+##### Instance Presenters Access
 
 If you set the `withInstancePresentersEnabled` in the config to true you can use Instance Presenter Access. After that you must ensure that every Presenter of given class has an unique name. To do so you have to override Presenter `String getName()` method (in default it returns "default").
 
@@ -69,7 +69,7 @@ Moviper.getInstance().getPresenterInstance(SomePresenter.class, "someName")
 
 ## Examples
 
-For the basic usage just check out the sample module in this repo. Advanced features samples coming soon.
+For the basic usage just check out the `rxsample` (or `sample`, if you aren't familiar with [RxJava](https://github.com/ReactiveX/RxJava)) module in this repo. For the IPC usage check out the `ipcsample` module.
 
 ## Credits
 
