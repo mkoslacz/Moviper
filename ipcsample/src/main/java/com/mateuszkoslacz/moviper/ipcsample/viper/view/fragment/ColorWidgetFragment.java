@@ -20,7 +20,7 @@ import butterknife.OnClick;
 
 public class ColorWidgetFragment
         extends MvpFragment<ColorWidgetContract.View, ColorWidgetContract.Presenter>
-        implements ColorWidgetContract.View, ColorWidgetContract.ViewHelper {
+        implements ColorWidgetContract.View {
 
     @BindView(R.id.color_name)
     TextView textViewColorName;

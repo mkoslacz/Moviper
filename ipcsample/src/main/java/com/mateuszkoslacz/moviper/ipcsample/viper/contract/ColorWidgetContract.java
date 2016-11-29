@@ -4,8 +4,7 @@ import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.annotation.ExternalCall;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRxRouting;
-import com.mateuszkoslacz.moviper.iface.viewhelper.MoviperViewHelper;
+import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
 
 public interface ColorWidgetContract {
 
@@ -32,12 +31,7 @@ public interface ColorWidgetContract {
 
     }
 
-    interface Routing extends MoviperViewHelperRxRouting<ViewHelper> {
+    interface Routing extends MoviperRxRouting {
 
     }
-
-    interface ViewHelper extends MoviperViewHelper {
-
-    }
-
 }
