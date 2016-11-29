@@ -57,18 +57,18 @@ public class ListingActivityTest {
     public void shouldErrorViewBeDisplayed() {
         onView(withId(R.id.loadingView)).check(matches(not(isDisplayed())));
         onView(withId(R.id.errorView)).check(matches(isDisplayed()));
-        onView(withId(R.id.contentView)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.recycler_view)).check(matches(not(isDisplayed())));
     }
 
     public void shouldLoadingViewBeDisplayed() {
         onView(withId(R.id.loadingView)).check(matches(isDisplayed()));
         onView(withId(R.id.errorView)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.contentView)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.recycler_view)).check(matches(not(isDisplayed())));
     }
 
     public void shouldContentViewBeDisplayed() {
         onView(withId(R.id.loadingView)).check(matches(not(isDisplayed())));
         onView(withId(R.id.errorView)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.contentView)).check(matches(isDisplayed()));
+        onView(withId(R.id.recycler_view)).check(matches(isDisplayed()));
     }
 }
