@@ -23,7 +23,6 @@ public interface MainContract {
 
     interface Routing extends MoviperRxRouting {
 
-        void prepareAndBindWidgetToView(String widgetName, String colorName,
-                                        String color, int viewId);
+        void createAndAddWidgetToSlotWithGivenId(String widgetName, String color, int viewId);
     }
 }

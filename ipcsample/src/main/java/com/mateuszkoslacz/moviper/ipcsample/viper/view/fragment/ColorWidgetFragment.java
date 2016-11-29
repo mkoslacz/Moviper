@@ -25,6 +25,15 @@ public class ColorWidgetFragment
     @BindView(R.id.color_name)
     TextView textViewColorName;
 
+    public static ColorWidgetFragment create(String colorName, String color) {
+        ColorWidgetFragment colorWidgetFragment = new ColorWidgetFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(ColorWidgetPresenter.FRAGMENT_COLOR_NAME, colorName);
+        bundle.putString(ColorWidgetPresenter.FRAGMENT_BACKGROUND_COLOR, color);
+        colorWidgetFragment.setArguments(bundle);
+        return colorWidgetFragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -41,17 +50,17 @@ public class ColorWidgetFragment
 
     @OnClick(R.id.button_first)
     void onFirstButtonClick() {
-        getPresenter().synchronizeGivenWidgetColor(Constants.FRAGMENT_NAME_FIRST);
+        getPresenter().synchronizeGivenWidgetColor(Constants.COLOR_NAME_BLUE);
     }
 
     @OnClick(R.id.button_second)
     void onSecondButtonClick() {
-        getPresenter().synchronizeGivenWidgetColor(Constants.FRAGMENT_NAME_SECOND);
+        getPresenter().synchronizeGivenWidgetColor(Constants.COLOR_NAME_GREEN);
     }
 
     @OnClick(R.id.button_third)
     void onThirdButtonClick() {
-        getPresenter().synchronizeGivenWidgetColor(Constants.FRAGMENT_NAME_THIRD);
+        getPresenter().synchronizeGivenWidgetColor(Constants.COLOR_NAME_RED);
     }
 
     @OnClick(R.id.button_all)

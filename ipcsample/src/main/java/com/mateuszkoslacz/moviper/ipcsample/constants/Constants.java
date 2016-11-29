@@ -12,8 +12,4 @@ public class Constants {
     public static final String COLOR_NAME_BLUE = "1. BLUE";
     public static final String COLOR_NAME_GREEN = "2. GREEN";
     public static final String COLOR_NAME_RED = "3. RED";
-
-    public static final String FRAGMENT_NAME_FIRST = "FRAGMENT_NAME_FIRST";
-    public static final String FRAGMENT_NAME_SECOND = "FRAGMENT_NAME_SECOND";
-    public static final String FRAGMENT_NAME_THIRD = "FRAGMENT_NAME_THIRD";
 }

@@ -22,11 +22,9 @@ public class ColorWidgetPresenter
         implements
         ColorWidgetContract.Presenter {
 
-    public static final String FRAGMENT_PRESENTER_NAME = "FRAGMENT_PRESENTER_NAME";
     public static final String FRAGMENT_COLOR_NAME = "FRAGMENT_COLOR_NAME";
     public static final String FRAGMENT_BACKGROUND_COLOR = "FRAGMENT_BACKGROUND_COLOR";
 
-    private String presenterName;
     private String colorName;
     private int backgroundColor;
 
@@ -36,9 +34,8 @@ public class ColorWidgetPresenter
 
     @Override
     public void onViewCreated() {
-            colorName = getArgs().getString(FRAGMENT_COLOR_NAME);
-            presenterName = getArgs().getString(FRAGMENT_PRESENTER_NAME);
-            backgroundColor = Color.parseColor(getArgs().getString(FRAGMENT_BACKGROUND_COLOR));
+        colorName = getArgs().getString(FRAGMENT_COLOR_NAME);
+        backgroundColor = Color.parseColor(getArgs().getString(FRAGMENT_BACKGROUND_COLOR));
 
         if (isViewAttached()) {
             getView().setBackgroundColor(backgroundColor);
