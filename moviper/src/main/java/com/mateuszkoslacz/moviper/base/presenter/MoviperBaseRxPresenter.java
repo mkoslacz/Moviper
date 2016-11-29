@@ -28,18 +28,14 @@ public class MoviperBaseRxPresenter<V extends MvpView>
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
-        if(!retainInstance)
-            unsubscribe();
+        if(!retainInstance) unsubscribe();
     }
 
     protected void addSubscription(Subscription subscription) {
-        if(compositeSubscription != null) {
-            compositeSubscription.add(subscription);
-        }
+        if(compositeSubscription != null) compositeSubscription.add(subscription);
     }
 
     private void unsubscribe() {
-        if(compositeSubscription != null)
-            compositeSubscription.clear();
+        if(compositeSubscription != null) compositeSubscription.clear();
     }
 }
