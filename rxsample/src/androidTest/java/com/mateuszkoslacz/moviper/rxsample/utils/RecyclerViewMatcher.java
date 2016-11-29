@@ -3,11 +3,13 @@ package com.mateuszkoslacz.moviper.rxsample.utils;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
 public class RecyclerViewMatcher {
+
     private final int recyclerViewId;
 
     public RecyclerViewMatcher(int recyclerViewId) {
@@ -31,11 +33,9 @@ public class RecyclerViewMatcher {
                         idDescription = this.resources.getResourceName(recyclerViewId);
                     } catch (Resources.NotFoundException var4) {
                         idDescription = String.format("%s (resource name not found)",
-                                new Object[] { Integer.valueOf
-                                        (recyclerViewId) });
+                                recyclerViewId);
                     }
                 }
-
                 description.appendText("with id: " + idDescription);
             }
 
@@ -48,8 +48,7 @@ public class RecyclerViewMatcher {
                             (RecyclerView) view.getRootView().findViewById(recyclerViewId);
                     if (recyclerView != null && recyclerView.getId() == recyclerViewId) {
                         childView = recyclerView.findViewHolderForAdapterPosition(position).itemView;
-                    }
-                    else {
+                    } else {
                         return false;
                     }
                 }
@@ -60,7 +59,6 @@ public class RecyclerViewMatcher {
                     View targetView = childView.findViewById(targetViewId);
                     return view == targetView;
                 }
-
             }
         };
     }
