@@ -17,4 +17,3 @@ public interface SpecificationComponent {
 
     AllUsersSpecification provideAllUsersSpecification();
 }
-
