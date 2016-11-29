@@ -44,7 +44,8 @@ public class UserTestRepository implements TestRepository<User> {
 
     @Override
     public Observable<List<User>> query(Specification specification) {
-        ((AllUsersTestSpecification) specification).getResults().subscribe(testUsersSubject);
+        ((AllUsersTestSpecification) specification).getResults()
+                .subscribe(testUsersSubject::onNext, testUsersSubject::onError);
         return testUsersSubject;
     }
 
