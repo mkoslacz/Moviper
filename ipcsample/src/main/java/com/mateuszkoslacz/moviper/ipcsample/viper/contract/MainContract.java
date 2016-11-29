@@ -14,7 +14,7 @@ public interface MainContract {
 
     interface View extends MvpView {
 
-        int getViewIdForPosition(int position);
+        int getViewSlotIdForPosition(int position);
     }
 
     interface Interactor extends MoviperRxInteractor {
@@ -23,6 +23,7 @@ public interface MainContract {
 
     interface Routing extends MoviperRxRouting {
 
-        void createAndAddWidgetToSlotWithGivenId(String widgetName, int widgetColor, int viewId);
+        void createAndAddWidgetToSlotWithGivenId(String widgetName, int widgetColor,
+                                                 int destinationSlotId);
     }
 }

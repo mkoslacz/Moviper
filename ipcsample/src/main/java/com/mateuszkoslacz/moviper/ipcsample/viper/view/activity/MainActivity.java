@@ -20,7 +20,7 @@ public class MainActivity
     }
 
     @Override
-    public int getViewIdForPosition(int position) {
+    public int getViewSlotIdForPosition(int position) {
         switch (position) {
             case 1:
                 return R.id.fragment_first;

@@ -18,14 +18,15 @@ public class MainRouting
     }
 
     @Override
-    public void createAndAddWidgetToSlotWithGivenId(String widgetName, int widgetColor, int viewId) {
-        bindWidgetToView(viewId, ColorWidgetFragment.create(widgetName, widgetColor));
+    public void createAndAddWidgetToSlotWithGivenId(String widgetName, int widgetColor,
+                                                    int destinationSlotId) {
+        bindWidgetToView(destinationSlotId, ColorWidgetFragment.create(widgetName, widgetColor));
     }
 
-    public void bindWidgetToView(int viewId, Fragment fragment) {
+    public void bindWidgetToView(int destinationSlotId, Fragment fragment) {
         ((AppCompatActivity) getActivity()).getSupportFragmentManager()
                 .beginTransaction()
-                .add(viewId, fragment)
+                .add(destinationSlotId, fragment)
                 .commit();
     }
 }
