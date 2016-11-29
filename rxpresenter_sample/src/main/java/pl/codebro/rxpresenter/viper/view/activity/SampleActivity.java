@@ -2,7 +2,6 @@ package pl.codebro.rxpresenter.viper.view.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
