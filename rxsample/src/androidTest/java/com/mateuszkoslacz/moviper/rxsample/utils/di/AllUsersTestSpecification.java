@@ -1,17 +1,15 @@
 package com.mateuszkoslacz.moviper.rxsample.utils.di;
 
-import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.retrofit.impl.AllUsersRetrofitSpecification;
+import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.AllUsersSpecification;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
 import java.util.List;
 
-import retrofit2.Retrofit;
 import rx.Observable;
 
-class AllUsersRetrofitTestSpecification extends AllUsersRetrofitSpecification {
+class AllUsersTestSpecification implements AllUsersSpecification {
 
-    @Override
-    public Observable<List<User>> getResults(Retrofit retrofit) {
+    public Observable<List<User>> getResults() {
         User user1 = new User();
         user1.setLogin("user1");
         User user2 = new User();

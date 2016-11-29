@@ -7,6 +7,6 @@ public class AllUsersSpecificationTestModule extends AllUsersSpecificationModule
 
     @Override
     public AllUsersSpecification provideAllUsersSpecification() {
-        return new AllUsersRetrofitTestSpecification();
+        return new AllUsersTestSpecification();
     }
 }
