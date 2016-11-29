@@ -1,30 +1,32 @@
-package com.mateuszkoslacz.moviper.recyclerviewsample.viper.base;
+package com.mateuszkoslacz.moviper.base.routing;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.mateuszkoslacz.moviper.base.routing.ActivityBaseViewHelperRouting;
 import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRouting;
+import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRxRouting;
 import com.mateuszkoslacz.moviper.iface.viewhelper.MoviperViewHelper;
 import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
 
 import java.lang.ref.WeakReference;
 
 /**
- * Created by norbertbanaszek on 26.10.2016.
+ * Created by jjodelka on 29/11/2016.
+ * <p>
+ * ViewHolder version of base Routing class with ViewHelper. (see {@link MoviperViewHelperRouting},
+ * {@link MoviperViewHelper} and {@link MoviperPresenterForRouting})
  */
 
-public class ViewHolderBaseViewHelperRouting<PresenterType extends MoviperPresenterForRouting,
-            ViewHelperType extends MoviperViewHelper>
-        extends ActivityBaseViewHelperRouting<PresenterType, ViewHelperType>
-        implements MoviperViewHelperRouting<PresenterType, ViewHelperType> {
+public abstract class ViewHolderBaseViewHelperRxRouting<ViewHelperType extends MoviperViewHelper>
+        extends ActivityBaseViewHelperRxRouting<ViewHelperType>
+        implements MoviperViewHelperRxRouting<ViewHelperType> {
 
     @Nullable
     private WeakReference<Activity> activity;
 
-    public ViewHolderBaseViewHelperRouting(@NonNull Activity activity) {
+    public ViewHolderBaseViewHelperRxRouting(@NonNull Activity activity) {
         super(activity);
         this.activity = new WeakReference<>(activity);
     }
@@ -42,8 +44,8 @@ public class ViewHolderBaseViewHelperRouting<PresenterType extends MoviperPresen
     }
 
     @Override
-    public void detachPresenter() {
-        super.detachPresenter();
+    public void onPresenterDetached() {
+        super.onPresenterDetached();
         WeakReferenceUtils.detach(activity);
     }
 }
