@@ -50,6 +50,10 @@ public abstract class MoviperBasePresenter<V extends MvpView>
         return args;
     }
 
+    public void setArgs(Bundle args) {
+        this.args = args;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
