@@ -3,7 +3,7 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.viper.routing;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 
-import com.mateuszkoslacz.moviper.base.routing.ActivityBaseViewHelperRxRouting;
+import com.mateuszkoslacz.moviper.base.routing.ViewHolderBaseViewHelperRxRouting;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.HeaderContract;
 
 /**
@@ -11,8 +11,7 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.HeaderContra
  */
 
 public class HeaderRouting
-        extends ActivityBaseViewHelperRxRouting<
-        HeaderContract.ViewHelper>
+        extends ViewHolderBaseViewHelperRxRouting<HeaderContract.ViewHelper>
         implements HeaderContract.Routing {
 
     public HeaderRouting(@NonNull Activity activity) {

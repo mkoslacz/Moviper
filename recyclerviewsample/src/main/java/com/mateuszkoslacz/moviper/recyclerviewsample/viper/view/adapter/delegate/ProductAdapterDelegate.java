@@ -6,10 +6,10 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
+import com.mateuszkoslacz.moviper.recyclerviewsample.R;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.IListingItem;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ProductItem;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.viewholder.ProductViewHolder;
-import com.mateuszkoslacz.moviper.recyclerviewsample.R;
 
 import java.util.List;
 

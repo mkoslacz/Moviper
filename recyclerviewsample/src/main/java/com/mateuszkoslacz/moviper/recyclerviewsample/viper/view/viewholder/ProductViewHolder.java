@@ -5,10 +5,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.mateuszkoslacz.moviper.base.view.MvpViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.R;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.base.MvpViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.ProductContract;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter.ProductPresenterMoviper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,13 +45,13 @@ public class ProductViewHolder
     }
 
     @Override
-    public void setProduct(Product product) {
-        mProduct = product;
+    public Product getProduct() {
+        return mProduct;
     }
 
     @Override
-    public Product getProduct() {
-        return mProduct;
+    public void setProduct(Product product) {
+        mProduct = product;
     }
 
     public void setProductTitle(String productTitle) {
@@ -73,8 +74,7 @@ public class ProductViewHolder
 
     @Override
     public ProductContract.Presenter createPresenter() {
-        return null;
-        // TODO: 29/11/2016
+        return new ProductPresenterMoviper(itemView);
     }
 
 }

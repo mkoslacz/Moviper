@@ -18,11 +18,11 @@ public class HeaderItem implements IListingItem {
         return IListingItem.TYPE_HEADER;
     }
 
-    public void setTitle(String title) {
-        mTitle = title;
-    }
-
     public String getTitle() {
         return mTitle;
+    }
+
+    public void setTitle(String title) {
+        mTitle = title;
     }
 }

@@ -20,11 +20,11 @@ public class ProductItem implements IListingItem {
         return IListingItem.TYPE_PRODUCT;
     }
 
-    public void setProduct(Product product) {
-        mProduct = product;
-    }
-
     public Product getProduct() {
         return mProduct;
+    }
+
+    public void setProduct(Product product) {
+        mProduct = product;
     }
 }

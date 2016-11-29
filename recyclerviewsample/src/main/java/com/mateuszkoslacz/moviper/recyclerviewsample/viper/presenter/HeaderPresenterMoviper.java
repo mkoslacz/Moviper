@@ -2,23 +2,26 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.view.View;
 
-import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.ViperMoviperViewHolderBaseRxPresenter;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.HeaderContract;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.interactor.HeaderInteractor;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.routing.HeaderRouting;
 
 /**
  * Created by jjodelka on 29/11/2016.
  */
 
-public class HeaderPresenter
-        extends ViperActivityBaseRxPresenter<HeaderContract.View,
-            HeaderContract.Interactor,
-            HeaderContract.Routing>
+public class HeaderPresenterMoviper
+        extends ViperMoviperViewHolderBaseRxPresenter<
+                    HeaderContract.View,
+                    HeaderContract.Interactor,
+                    HeaderContract.Routing>
         implements HeaderContract.Presenter {
 
-    public HeaderPresenter(@NonNull Activity activity) {
-        super(activity);
+    public HeaderPresenterMoviper(@NonNull View view) {
+        super(view);
     }
 
     @Override
@@ -36,9 +39,8 @@ public class HeaderPresenter
 
     @NonNull
     @Override
-    public HeaderContract.Routing createRouting(@NonNull Activity activity) {
-        return null;
-        // TODO: 29/11/2016
+    public HeaderContract.Routing createRouting(@NonNull View view) {
+        return new HeaderRouting((Activity) view.getContext());
     }
 }
 

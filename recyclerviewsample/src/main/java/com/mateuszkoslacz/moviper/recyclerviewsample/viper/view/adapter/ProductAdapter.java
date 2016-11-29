@@ -5,8 +5,8 @@ import android.view.ViewGroup;
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegatesManager;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.base.MvpRecyclerViewAdapter;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.base.MvpViewHolder;
+import com.mateuszkoslacz.moviper.base.view.MvpRecyclerViewAdapter;
+import com.mateuszkoslacz.moviper.base.view.MvpViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.IListingItem;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.delegate.HeaderAdapterDelegate;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.delegate.ProductAdapterDelegate;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class ProductAdapter
         extends MvpRecyclerViewAdapter<MvpView, MvpPresenter<MvpView>,
-                MvpViewHolder<MvpView, MvpPresenter<MvpView>>> {
+        MvpViewHolder<MvpView, MvpPresenter<MvpView>>> {
 
     private List<IListingItem> mListingItems;
     private AdapterDelegatesManager mDelegatesManager;
