@@ -14,7 +14,7 @@ public interface ColorWidgetContract {
 
         void synchronizeWidgetsColor();
 
-        void synchronizeGivenWidgetColor(String widgetToSyncId);
+        void synchronizeColorOfWidgetNamed(String widgetName);
 
         @ExternalCall
         void changeColorTo(int color);
@@ -22,7 +22,7 @@ public interface ColorWidgetContract {
 
     interface View extends MvpView {
 
-        void setWidgetName(String name);
+        void setName(String name);
 
         void setBackgroundColor(int color);
     }

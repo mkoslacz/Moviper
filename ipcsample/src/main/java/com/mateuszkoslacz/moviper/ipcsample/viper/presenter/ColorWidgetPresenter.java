@@ -43,7 +43,7 @@ public class ColorWidgetPresenter
     public void onViewCreated() {
         if (isViewAttached()) {
             getView().setBackgroundColor(backgroundColor);
-            getView().setWidgetName(colorName);
+            getView().setName(colorName);
         }
     }
 
@@ -55,8 +55,8 @@ public class ColorWidgetPresenter
     }
 
     @Override
-    public void synchronizeGivenWidgetColor(String widgetToSyncId) {
-        Moviper.getInstance().getPresenterInstance(ColorWidgetPresenter.class, widgetToSyncId)
+    public void synchronizeColorOfWidgetNamed(String widgetName) {
+        Moviper.getInstance().getPresenterInstance(ColorWidgetPresenter.class, widgetName)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(presenter -> presenter.changeColorTo(backgroundColor));
     }

@@ -50,17 +50,17 @@ public class ColorWidgetFragment
 
     @OnClick(R.id.button_first)
     void onFirstButtonClick() {
-        getPresenter().synchronizeGivenWidgetColor(Constants.NAME_BLUE);
+        getPresenter().synchronizeColorOfWidgetNamed(Constants.NAME_BLUE);
     }
 
     @OnClick(R.id.button_second)
     void onSecondButtonClick() {
-        getPresenter().synchronizeGivenWidgetColor(Constants.NAME_GREEN);
+        getPresenter().synchronizeColorOfWidgetNamed(Constants.NAME_GREEN);
     }
 
     @OnClick(R.id.button_third)
     void onThirdButtonClick() {
-        getPresenter().synchronizeGivenWidgetColor(Constants.NAME_RED);
+        getPresenter().synchronizeColorOfWidgetNamed(Constants.NAME_RED);
     }
 
     @OnClick(R.id.button_all)
@@ -69,7 +69,7 @@ public class ColorWidgetFragment
     }
 
     @Override
-    public void setWidgetName(String name) {
+    public void setName(String name) {
         textViewColorName.setText(name);
     }
 
