@@ -25,11 +25,11 @@ public class ColorWidgetFragment
     @BindView(R.id.color_name)
     TextView textViewColorName;
 
-    public static ColorWidgetFragment create(String colorName, String color) {
+    public static ColorWidgetFragment create(String name, int color) {
         ColorWidgetFragment colorWidgetFragment = new ColorWidgetFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(ColorWidgetPresenter.FRAGMENT_COLOR_NAME, colorName);
-        bundle.putString(ColorWidgetPresenter.FRAGMENT_BACKGROUND_COLOR, color);
+        bundle.putString(ColorWidgetPresenter.FRAGMENT_COLOR_NAME, name);
+        bundle.putInt(ColorWidgetPresenter.FRAGMENT_BACKGROUND_COLOR, color);
         colorWidgetFragment.setArguments(bundle);
         return colorWidgetFragment;
     }

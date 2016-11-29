@@ -35,7 +35,7 @@ public class ColorWidgetPresenter
     @Override
     public void attachView(ColorWidgetContract.View view) {
         colorName = getArgs().getString(FRAGMENT_COLOR_NAME);
-        backgroundColor = Color.parseColor(getArgs().getString(FRAGMENT_BACKGROUND_COLOR));
+        backgroundColor = getArgs().getInt(FRAGMENT_BACKGROUND_COLOR);
         super.attachView(view);
     }
 

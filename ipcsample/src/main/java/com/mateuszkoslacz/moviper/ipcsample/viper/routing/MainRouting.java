@@ -18,8 +18,8 @@ public class MainRouting
     }
 
     @Override
-    public void createAndAddWidgetToSlotWithGivenId(String colorName, String color, int viewId) {
-        bindWidgetToView(viewId, ColorWidgetFragment.create(colorName, color));
+    public void createAndAddWidgetToSlotWithGivenId(String widgetName, int widgetColor, int viewId) {
+        bindWidgetToView(viewId, ColorWidgetFragment.create(widgetName, widgetColor));
     }
 
     public void bindWidgetToView(int viewId, Fragment fragment) {
