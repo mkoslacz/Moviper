@@ -21,9 +21,9 @@ public interface HeaderContract {
 
         void setTitleToTextView(String title);
 
-        void setTitle(String title);
-
         String getTitle();
+
+        void setTitle(String title);
     }
 
     interface Interactor extends MoviperRxInteractor {

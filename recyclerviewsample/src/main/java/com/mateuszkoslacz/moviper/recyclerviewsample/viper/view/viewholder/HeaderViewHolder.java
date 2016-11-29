@@ -3,9 +3,10 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.viewholder;
 import android.view.View;
 import android.widget.TextView;
 
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.base.MvpViewHolder;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.HeaderContract;
+import com.mateuszkoslacz.moviper.base.view.MvpViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.R;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.HeaderContract;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter.HeaderPresenterMoviper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,13 +36,13 @@ public class HeaderViewHolder extends
     }
 
     @Override
-    public void setTitle(String title) {
-        this.title = title;
+    public String getTitle() {
+        return title;
     }
 
     @Override
-    public String getTitle() {
-        return title;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Override
@@ -51,7 +52,6 @@ public class HeaderViewHolder extends
 
     @Override
     public HeaderContract.Presenter createPresenter() {
-        return null;
-        // TODO: 29/11/2016
+        return new HeaderPresenterMoviper(itemView);
     }
 }

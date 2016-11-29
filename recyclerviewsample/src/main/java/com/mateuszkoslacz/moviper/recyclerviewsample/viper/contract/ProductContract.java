@@ -20,9 +20,9 @@ public interface ProductContract {
 
     interface View extends MvpView {
 
-        void setProduct(Product product);
-
         Product getProduct();
+
+        void setProduct(Product product);
 
         void setProductTitle(String productTitle);
 

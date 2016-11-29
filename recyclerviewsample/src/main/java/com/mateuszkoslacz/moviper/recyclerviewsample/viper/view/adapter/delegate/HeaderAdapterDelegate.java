@@ -6,11 +6,10 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.IListingItem;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.HeaderItem;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.viewholder.HeaderViewHolder;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.viewholder.ProductViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.R;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.HeaderItem;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.IListingItem;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.viewholder.HeaderViewHolder;
 
 import java.util.List;
 
@@ -27,8 +26,8 @@ public class HeaderAdapterDelegate extends AdapterDelegate<List<IListingItem>> {
     @NonNull
     @Override
     protected RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent) {
-        return new ProductViewHolder(LayoutInflater
-                .from(parent.getContext()).inflate(R.layout.vh_product, parent, false));
+        return new HeaderViewHolder(LayoutInflater
+                .from(parent.getContext()).inflate(R.layout.vh_header, parent, false));
     }
 
     @Override

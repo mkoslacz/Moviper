@@ -2,24 +2,27 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.view.View;
 
-import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.ViperMoviperViewHolderBaseRxPresenter;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.ProductContract;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.interactor.ProductInteractor;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.routing.ProductRouting;
 
 /**
  * Created by jjodelka on 29/11/2016.
  */
 
-public class ProductPresenter
-        extends ViperActivityBaseRxPresenter<ProductContract.View,
+public class ProductPresenterMoviper
+        extends ViperMoviperViewHolderBaseRxPresenter<
+            ProductContract.View,
             ProductContract.Interactor,
             ProductContract.Routing>
         implements ProductContract.Presenter {
 
-    public ProductPresenter(@NonNull Activity activity) {
-        super(activity);
+    public ProductPresenterMoviper(@NonNull View view) {
+        super(view);
     }
 
     @Override
@@ -41,10 +44,8 @@ public class ProductPresenter
 
     @NonNull
     @Override
-    public ProductContract.Routing createRouting(@NonNull Activity activity) {
-        return null;
-        // TODO: 29/11/2016  
+    public ProductContract.Routing createRouting(@NonNull View view) {
+        return new ProductRouting((Activity) view.getContext());
     }
-
 }
 
