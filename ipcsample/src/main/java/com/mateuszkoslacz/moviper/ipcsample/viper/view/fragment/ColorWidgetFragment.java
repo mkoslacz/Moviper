@@ -50,17 +50,17 @@ public class ColorWidgetFragment
 
     @OnClick(R.id.button_first)
     void onFirstButtonClick() {
-        getPresenter().synchronizeGivenWidgetColor(Constants.COLOR_NAME_BLUE);
+        getPresenter().synchronizeGivenWidgetColor(Constants.NAME_BLUE);
     }
 
     @OnClick(R.id.button_second)
     void onSecondButtonClick() {
-        getPresenter().synchronizeGivenWidgetColor(Constants.COLOR_NAME_GREEN);
+        getPresenter().synchronizeGivenWidgetColor(Constants.NAME_GREEN);
     }
 
     @OnClick(R.id.button_third)
     void onThirdButtonClick() {
-        getPresenter().synchronizeGivenWidgetColor(Constants.COLOR_NAME_RED);
+        getPresenter().synchronizeGivenWidgetColor(Constants.NAME_RED);
     }
 
     @OnClick(R.id.button_all)

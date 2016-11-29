@@ -11,7 +11,7 @@ public class Constants {
     public static final int COLOR_GREEN = Color.parseColor("#00FF00");
     public static final int COLOR_RED = Color.parseColor("#FF0000");
 
-    public static final String COLOR_NAME_BLUE = "1. BLUE";
-    public static final String COLOR_NAME_GREEN = "2. GREEN";
-    public static final String COLOR_NAME_RED = "3. RED";
+    public static final String NAME_BLUE = "1. BLUE";
+    public static final String NAME_GREEN = "2. GREEN";
+    public static final String NAME_RED = "3. RED";
 }

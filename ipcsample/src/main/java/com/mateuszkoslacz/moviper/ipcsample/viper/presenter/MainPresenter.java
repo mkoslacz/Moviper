@@ -26,15 +26,15 @@ public class MainPresenter
     public void onViewCreated() {
         if (isViewAttached()) {
             getRouting().createAndAddWidgetToSlotWithGivenId(
-                    Constants.COLOR_NAME_BLUE,
+                    Constants.NAME_BLUE,
                     Constants.COLOR_BLUE,
                     getView().getViewSlotIdForPosition(1));
             getRouting().createAndAddWidgetToSlotWithGivenId(
-                    Constants.COLOR_NAME_GREEN,
+                    Constants.NAME_GREEN,
                     Constants.COLOR_GREEN,
                     getView().getViewSlotIdForPosition(2));
             getRouting().createAndAddWidgetToSlotWithGivenId(
-                    Constants.COLOR_NAME_RED,
+                    Constants.NAME_RED,
                     Constants.COLOR_RED,
                     getView().getViewSlotIdForPosition(3));
         }
