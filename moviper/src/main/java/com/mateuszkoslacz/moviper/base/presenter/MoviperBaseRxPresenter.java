@@ -1,5 +1,7 @@
 package com.mateuszkoslacz.moviper.base.presenter;
 
+import android.os.Bundle;
+
 import com.hannesdorfmann.mosby.mvp.MvpView;
 
 import rx.Subscription;
@@ -15,7 +17,11 @@ public class MoviperBaseRxPresenter<V extends MvpView>
     private CompositeSubscription compositeSubscription;
 
     public MoviperBaseRxPresenter() {
-        super();
+        this(null);
+    }
+
+    public MoviperBaseRxPresenter(Bundle args) {
+        super(args);
         compositeSubscription = new CompositeSubscription();
     }
 
