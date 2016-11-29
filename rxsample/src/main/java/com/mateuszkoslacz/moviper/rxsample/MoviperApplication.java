@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.mateuszkoslacz.moviper.rxsample.di.DIProvider;
 
-public class Moviper extends Application {
+public class MoviperApplication extends Application {
 
     @Override
     public void onCreate() {
