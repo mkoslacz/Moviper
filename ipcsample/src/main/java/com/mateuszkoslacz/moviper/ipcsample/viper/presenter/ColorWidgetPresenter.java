@@ -33,10 +33,14 @@ public class ColorWidgetPresenter
     }
 
     @Override
-    public void onViewCreated() {
+    public void attachView(ColorWidgetContract.View view) {
         colorName = getArgs().getString(FRAGMENT_COLOR_NAME);
         backgroundColor = Color.parseColor(getArgs().getString(FRAGMENT_BACKGROUND_COLOR));
+        super.attachView(view);
+    }
 
+    @Override
+    public void onViewCreated() {
         if (isViewAttached()) {
             getView().setBackgroundColor(backgroundColor);
             getView().setWidgetName(colorName);
@@ -65,11 +69,7 @@ public class ColorWidgetPresenter
 
     @Override
     public String getName() {
-        if (presenterName != null) {
-            return presenterName;
-        } else {
-            return super.getName();
-        }
+        return colorName;
     }
 
     @NonNull
