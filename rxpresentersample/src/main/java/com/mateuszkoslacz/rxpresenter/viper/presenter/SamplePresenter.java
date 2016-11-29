@@ -1,14 +1,14 @@
-package pl.codebro.rxpresenter.viper.presenter;
+package com.mateuszkoslacz.rxpresenter.viper.presenter;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.app.Activity;
 
 import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
+import com.mateuszkoslacz.rxpresenter.viper.contract.SampleContract;
+import com.mateuszkoslacz.rxpresenter.viper.interactor.SampleInteractor;
+import com.mateuszkoslacz.rxpresenter.viper.routing.SampleRouting;
 
-import pl.codebro.rxpresenter.viper.contract.SampleContract;
-import pl.codebro.rxpresenter.viper.routing.SampleRouting;
-import pl.codebro.rxpresenter.viper.interactor.SampleInteractor;
 
 import java.util.concurrent.TimeUnit;
 

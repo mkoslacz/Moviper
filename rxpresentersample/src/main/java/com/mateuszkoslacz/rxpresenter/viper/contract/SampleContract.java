@@ -1,4 +1,4 @@
-package pl.codebro.rxpresenter.viper.contract;
+package com.mateuszkoslacz.rxpresenter.viper.contract;
 
 import android.os.Bundle;
 

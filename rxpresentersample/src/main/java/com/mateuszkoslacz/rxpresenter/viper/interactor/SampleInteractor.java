@@ -1,8 +1,8 @@
-package pl.codebro.rxpresenter.viper.interactor;
+package com.mateuszkoslacz.rxpresenter.viper.interactor;
 
 import com.mateuszkoslacz.moviper.base.interactor.BaseRxInteractor;
+import com.mateuszkoslacz.rxpresenter.viper.contract.SampleContract;
 
-import pl.codebro.rxpresenter.viper.contract.SampleContract;
 
 public class SampleInteractor
         extends BaseRxInteractor

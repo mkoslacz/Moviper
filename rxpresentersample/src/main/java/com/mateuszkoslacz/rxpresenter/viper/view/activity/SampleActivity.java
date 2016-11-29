@@ -1,14 +1,14 @@
-package pl.codebro.rxpresenter.viper.view.activity;
+package com.mateuszkoslacz.rxpresenter.viper.view.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.widget.TextView;
 
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
+import com.mateuszkoslacz.rxpresenter.viper.contract.SampleContract;
+import com.mateuszkoslacz.rxpresenter.viper.presenter.SamplePresenter;
 
-import pl.codebro.rxpresenter.R;
-import pl.codebro.rxpresenter.viper.contract.SampleContract;
-import pl.codebro.rxpresenter.viper.presenter.SamplePresenter;
+import com.mateuszkoslacz.rxpresenter.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
