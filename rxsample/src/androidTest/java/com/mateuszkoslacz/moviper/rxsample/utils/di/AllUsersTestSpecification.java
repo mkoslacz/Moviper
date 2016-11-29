@@ -7,7 +7,7 @@ import java.util.List;
 
 import rx.Observable;
 
-class AllUsersTestSpecification implements AllUsersSpecification {
+public class AllUsersTestSpecification implements AllUsersSpecification {
 
     public Observable<List<User>> getResults() {
         User user1 = new User();

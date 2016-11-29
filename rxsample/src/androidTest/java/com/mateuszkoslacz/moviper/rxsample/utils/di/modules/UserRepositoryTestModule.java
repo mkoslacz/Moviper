@@ -1,15 +1,17 @@
-package com.mateuszkoslacz.moviper.rxsample.utils.di;
+package com.mateuszkoslacz.moviper.rxsample.utils.di.modules;
 
 
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.repository.Repository;
-import com.mateuszkoslacz.moviper.rxsample.di.modules.repository.UserRepositoryModule;
+import com.mateuszkoslacz.moviper.rxsample.utils.di.UserTestRepository;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
 import javax.inject.Singleton;
 
+import dagger.Module;
 import dagger.Provides;
 
-public class UserRepositoryTestModule extends UserRepositoryModule {
+@Module
+public class UserRepositoryTestModule {
 
     @Provides
     @Singleton
