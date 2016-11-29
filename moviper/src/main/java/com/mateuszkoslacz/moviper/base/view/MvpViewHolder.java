@@ -1,8 +1,7 @@
-package com.mateuszkoslacz.moviper.recyclerviewsample.viper.base;
+package com.mateuszkoslacz.moviper.base.view;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
@@ -12,20 +11,23 @@ import com.hannesdorfmann.mosby.mvp.delegate.ViewGroupMvpDelegateImpl;
 
 /**
  * Created by norbertbanaszek on 24.10.2016.
+ * <p>
+ * An {@link RecyclerView.Adapter} that uses an {@link MvpPresenter} to implement a Model-View-Presenter
+ * architecture.
  */
 
-public abstract class MvpViewHolder <V extends MvpView, P extends MvpPresenter<V>>
+public abstract class MvpViewHolder <View extends MvpView, Presenter extends MvpPresenter<View>>
         extends RecyclerView.ViewHolder
-        implements BaseMvpDelegateCallback<V, P>, MvpView {
+        implements BaseMvpDelegateCallback<View, Presenter>, MvpView {
 
-    protected P presenter;
-    protected ViewGroupMvpDelegate<V, P> mvpDelegate;
+    protected Presenter mPresenter;
+    protected ViewGroupMvpDelegate<View, Presenter> mvpDelegate;
 
-    public MvpViewHolder(View itemView) {
+    public MvpViewHolder(android.view.View itemView) {
         super(itemView);
     }
 
-    @NonNull protected ViewGroupMvpDelegate<V, P> getMvpDelegate() {
+    @NonNull protected ViewGroupMvpDelegate<View, Presenter> getMvpDelegate() {
         if (mvpDelegate == null) {
             mvpDelegate = new ViewGroupMvpDelegateImpl<>(this);
         }
@@ -41,18 +43,18 @@ public abstract class MvpViewHolder <V extends MvpView, P extends MvpPresenter<V
         getMvpDelegate().onDetachedFromWindow();
     }
 
-    public abstract P createPresenter();
+    public abstract Presenter createPresenter();
 
-    @Override public P getPresenter() {
-        return presenter;
+    @Override public Presenter getPresenter() {
+        return mPresenter;
     }
 
-    @Override public void setPresenter(P presenter) {
-        this.presenter = presenter;
+    @Override public void setPresenter(Presenter presenter) {
+        this.mPresenter = presenter;
     }
 
-    @Override public V getMvpView() {
-        return (V) this;
+    @Override public View getMvpView() {
+        return (View) this;
     }
 
     @Override public boolean isRetainInstance() {
