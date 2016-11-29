@@ -1,19 +1,31 @@
-package com.mateuszkoslacz.moviper.recyclerviewsample.viper.base;
+package com.mateuszkoslacz.moviper.base.presenter;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.mateuszkoslacz.moviper.base.presenter.WipeBasePresenter;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
+import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperViewHolderPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
 
 /**
  * Created by norbertbanaszek on 26.10.2016.
+ * <p>
+ * Viper - View, Interactor, Presenter, Entities, Routing
+ * <p>
+ * This is a ViewHolder version of base presenter class for mentioned set of concepts.
+ * (see {@link MvpBasePresenter})
+ * <p>
+ * You can use any Mosby Activity View with this class
+ * ({@link com.hannesdorfmann.mosby.mvp.MvpFragment},
+ * {@link com.hannesdorfmann.mosby.mvp.lce.MvpLceFragment},
+ * {@link com.hannesdorfmann.mosby.mvp.viewstate.MvpViewStateFragment},
+ * {@link com.hannesdorfmann.mosby.mvp.viewstate.lce.MvpLceViewStateFragment})
  */
 
 public abstract class ViperViewHolderBasePresenter<ViewType extends MvpView,
@@ -22,7 +34,7 @@ public abstract class ViperViewHolderBasePresenter<ViewType extends MvpView,
         extends WipeBasePresenter<ViewType, InteractorType>
         implements MvpPresenter<ViewType>,
             MoviperPresenterForInteractor<InteractorType>,
-            MoviperViewHolderPresenterForRouting<RoutingType> {
+        MoviperViewHolderPresenterForRouting<RoutingType> {
 
     @Nullable
     private RoutingType routing;
