@@ -30,17 +30,17 @@ public class HeaderViewHolder extends
     }
 
     @Override
-    public String getTitle() {
+    public String getCategory() {
         return title;
     }
 
     @Override
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCategory(String category) {
+        this.title = category;
     }
 
     @Override
-    public void setTitleToTextView(String title) {
+    public void setTitle(String title) {
         mProductTitleTextView.setText(title);
     }
 

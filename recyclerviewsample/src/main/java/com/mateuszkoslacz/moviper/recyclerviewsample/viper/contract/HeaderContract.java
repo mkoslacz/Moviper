@@ -18,11 +18,11 @@ public interface HeaderContract {
 
     interface View extends MvpView {
 
-        void setTitleToTextView(String title);
-
-        String getTitle();
-
         void setTitle(String title);
+
+        String getCategory();
+
+        void setCategory(String category);
     }
 
     interface Interactor extends MoviperRxInteractor {

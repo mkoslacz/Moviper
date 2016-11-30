@@ -28,7 +28,7 @@ public class HeaderPresenterMoviper
     public void attachView(HeaderContract.View view) {
         super.attachView(view);
         if (isViewAttached()) {
-            getView().setTitleToTextView(getView().getTitle());
+            getView().setTitle(getView().getCategory());
         }
     }
 
