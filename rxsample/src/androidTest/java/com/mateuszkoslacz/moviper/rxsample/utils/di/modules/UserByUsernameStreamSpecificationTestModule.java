@@ -1,7 +1,7 @@
 package com.mateuszkoslacz.moviper.rxsample.utils.di.modules;
 
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.stream.UserByUsernameStreamSpecification;
-import com.mateuszkoslacz.moviper.rxsample.utils.di.UserByUsernameStreamTestSpecification;
+import com.mateuszkoslacz.moviper.rxsample.utils.data.rdp.specification.stream.test.impl.UserByUsernameStreamTestSpecification;
 
 import dagger.Module;
 import dagger.Provides;

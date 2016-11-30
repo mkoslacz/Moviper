@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.rxsample.utils.di;
+package com.mateuszkoslacz.moviper.rxsample.utils.data.rdp.specification.stream.test.impl;
 
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.stream.UserByUsernameStreamSpecification;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;

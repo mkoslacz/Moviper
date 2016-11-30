@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.rxsample.utils.di;
+package com.mateuszkoslacz.moviper.rxsample.utils.data.rdp.repository;
 
 
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.repository.Repository;

@@ -6,7 +6,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.mateuszkoslacz.moviper.rxsample.di.DIProvider;
 import com.mateuszkoslacz.moviper.rxsample.utils.RecyclerViewMatcher;
-import com.mateuszkoslacz.moviper.rxsample.utils.di.TestRepository;
+import com.mateuszkoslacz.moviper.rxsample.utils.data.rdp.repository.TestRepository;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.ListingActivity;
 
