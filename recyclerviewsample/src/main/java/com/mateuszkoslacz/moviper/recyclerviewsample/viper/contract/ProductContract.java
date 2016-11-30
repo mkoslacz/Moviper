@@ -23,13 +23,13 @@ public interface ProductContract {
 
         void setProduct(Product product);
 
-        void setProductTitle(String productTitle);
+        void setTitle(String productTitle);
 
-        void setProductDescription(String productDescription);
+        void setDescription(String productDescription);
 
-        void setProductPhoto(String productPhotoUrl);
+        void setPhoto(String productPhotoUrl);
 
-        void setProductPrice(String productPrice);
+        void setPrice(String productPrice);
     }
 
     interface Interactor extends MoviperRxInteractor {

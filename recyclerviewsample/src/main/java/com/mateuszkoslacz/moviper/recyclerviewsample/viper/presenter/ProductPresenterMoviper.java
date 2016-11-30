@@ -30,10 +30,10 @@ public class ProductPresenterMoviper
         super.attachView(view);
         if (isViewAttached()) {
             Product product = getView().getProduct();
-            getView().setProductTitle(product.getTitle());
-            getView().setProductDescription(product.getDescription());
-            getView().setProductPrice(product.getPrice());
-            getView().setProductPhoto(product.getPhotoUrl());
+            getView().setTitle(product.getTitle());
+            getView().setDescription(product.getDescription());
+            getView().setPrice(product.getPrice());
+            getView().setPhoto(product.getPhotoUrl());
         }
     }
 

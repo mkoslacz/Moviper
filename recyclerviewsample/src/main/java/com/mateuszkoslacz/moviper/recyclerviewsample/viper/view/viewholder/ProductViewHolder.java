@@ -48,21 +48,21 @@ public class ProductViewHolder
         mProduct = product;
     }
 
-    public void setProductTitle(String productTitle) {
+    public void setTitle(String productTitle) {
         mProductTitle.setText(productTitle);
     }
 
-    public void setProductDescription(String productDescription) {
+    public void setDescription(String productDescription) {
         mProductDescription.setText(productDescription);
     }
 
-    public void setProductPhoto(String productPhotoUrl) {
+    public void setPhoto(String productPhotoUrl) {
         Glide.with(itemView.getContext())
                 .load(productPhotoUrl)
                 .into(mProductPhoto);
     }
 
-    public void setProductPrice(String productPrice) {
+    public void setPrice(String productPrice) {
         mProductPrice.setText(productPrice);
     }
 
