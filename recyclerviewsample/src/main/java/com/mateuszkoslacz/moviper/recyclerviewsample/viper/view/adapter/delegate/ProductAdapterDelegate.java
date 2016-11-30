@@ -32,7 +32,8 @@ public class ProductAdapterDelegate extends AdapterDelegate<List<IListingItem>> 
 
     @Override
     protected void onBindViewHolder(@NonNull List<IListingItem> items, int position,
-                                    @NonNull RecyclerView.ViewHolder holder, @NonNull List<Object> payloads) {
+                                    @NonNull RecyclerView.ViewHolder holder,
+                                    @NonNull List<Object> payloads) {
         ProductViewHolder productViewHolder = (ProductViewHolder) holder;
         productViewHolder.setProduct(((ProductItem) items.get(position)).getProduct());
         productViewHolder.bindPresenter();
