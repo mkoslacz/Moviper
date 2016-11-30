@@ -50,11 +50,7 @@ public class ProductAdapter
 
     @Override
     public int getItemViewType(int position) {
-        if (mListingItems.size() == 0) {
-            return 0;
-        } else {
-            return mDelegatesManager.getItemViewType(mListingItems, position);
-        }
+        return mDelegatesManager.getItemViewType(mListingItems, position);
     }
 
     public void setListingItems(List<IListingItem> listingItems) {
