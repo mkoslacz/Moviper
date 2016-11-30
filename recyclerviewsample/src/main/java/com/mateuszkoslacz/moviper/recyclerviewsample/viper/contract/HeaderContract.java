@@ -14,7 +14,6 @@ public interface HeaderContract {
 
     interface Presenter extends MvpPresenter<View> {
 
-        void requestFillingView();
     }
 
     interface View extends MvpView {

@@ -15,7 +15,6 @@ public interface ProductContract {
 
     interface Presenter extends MvpPresenter<View> {
 
-        void requestFillingView();
     }
 
     interface View extends MvpView {

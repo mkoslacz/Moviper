@@ -26,7 +26,8 @@ public class ProductPresenterMoviper
     }
 
     @Override
-    public void requestFillingView() {
+    public void attachView(ProductContract.View view) {
+        super.attachView(view);
         if (isViewAttached()) {
             Product product = getView().getProduct();
             getView().setProductTitle(product.getTitle());

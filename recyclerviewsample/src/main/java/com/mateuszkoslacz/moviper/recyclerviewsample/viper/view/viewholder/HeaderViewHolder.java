@@ -30,12 +30,6 @@ public class HeaderViewHolder extends
     }
 
     @Override
-    public void bindPresenter() {
-        super.bindPresenter();
-        getPresenter().requestFillingView();
-    }
-
-    @Override
     public String getTitle() {
         return title;
     }

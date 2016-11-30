@@ -25,7 +25,8 @@ public class HeaderPresenterMoviper
     }
 
     @Override
-    public void requestFillingView() {
+    public void attachView(HeaderContract.View view) {
+        super.attachView(view);
         if (isViewAttached()) {
             getView().setTitleToTextView(getView().getTitle());
         }

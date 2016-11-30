@@ -39,12 +39,6 @@ public class ProductViewHolder
     }
 
     @Override
-    public void bindPresenter() {
-        super.bindPresenter();
-        getPresenter().requestFillingView();
-    }
-
-    @Override
     public Product getProduct() {
         return mProduct;
     }
