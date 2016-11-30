@@ -54,6 +54,7 @@ public class ProductAdapter
     }
 
     public void setListingItems(List<IListingItem> listingItems) {
+        mListingItems.clear();
         mListingItems.addAll(listingItems);
         notifyDataSetChanged();
     }
