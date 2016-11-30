@@ -37,7 +37,7 @@ public class MainActivity
     }
 
     @Override
-    public void setListingItems(List<IListingItem> listingItems) {
+    public void setData(List<IListingItem> listingItems) {
         mProductAdapter.setListingItems(listingItems);
     }
 

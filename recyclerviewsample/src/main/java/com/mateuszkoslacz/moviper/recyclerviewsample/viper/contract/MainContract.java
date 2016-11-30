@@ -23,11 +23,11 @@ public interface MainContract {
 
     interface View extends MvpView {
 
-        void setListingItems(List<IListingItem> listingItems);
+        void setData(List<IListingItem> listingItems);
     }
 
     interface Interactor extends MoviperRxInteractor {
-        List<Product> getFakeProductList();
+        List<Product> getProducts();
     }
 
     interface Routing extends MoviperViewHelperRxRouting<ViewHelper> {

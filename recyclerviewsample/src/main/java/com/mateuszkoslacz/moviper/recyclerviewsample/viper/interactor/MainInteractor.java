@@ -18,7 +18,7 @@ public class MainInteractor
         extends BaseRxInteractor
         implements MainContract.Interactor {
 
-    public List<Product> getFakeProductList() {
+    public List<Product> getProducts() {
         // Smartphones
         Product smartphone1 = new Product.Builder()
                 .title("OnePlus 3")

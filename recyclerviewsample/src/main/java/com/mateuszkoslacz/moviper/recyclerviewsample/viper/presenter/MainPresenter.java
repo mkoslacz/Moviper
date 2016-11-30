@@ -28,7 +28,7 @@ public class MainPresenter extends ViperActivityBaseRxPresenter<
     @Override
     public void onViewCreated() {
         List<IListingItem> listingItems = new ArrayList<>();
-        for (Product product : getInteractor().getFakeProductList()) {
+        for (Product product : getInteractor().getProducts()) {
             listingItems.add(new ProductItem(product));
         }
         listingItems.add(5, new HeaderItem("Laptops"));
@@ -36,7 +36,7 @@ public class MainPresenter extends ViperActivityBaseRxPresenter<
         listingItems.add(0, new HeaderItem("Smartphones"));
 
         if (isViewAttached()) {
-            getView().setListingItems(listingItems);
+            getView().setData(listingItems);
         }
     }
 
