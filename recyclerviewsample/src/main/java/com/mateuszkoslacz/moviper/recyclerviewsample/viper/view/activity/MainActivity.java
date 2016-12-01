@@ -31,7 +31,7 @@ public class MainActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        setRecyclerView();
+        configureRecyclerView();
 
         getPresenter().onViewCreated();
     }
@@ -41,7 +41,7 @@ public class MainActivity
         mProductAdapter.setListingItems(listingItems);
     }
 
-    private void setRecyclerView() {
+    private void configureRecyclerView() {
         mProductAdapter = new ProductAdapter();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mProductAdapter);
