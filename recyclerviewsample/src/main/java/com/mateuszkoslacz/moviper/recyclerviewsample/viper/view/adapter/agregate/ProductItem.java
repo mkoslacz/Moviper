@@ -23,8 +23,4 @@ public class ProductItem implements IListingItem {
     public Product getProduct() {
         return mProduct;
     }
-
-    public void setProduct(Product product) {
-        mProduct = product;
-    }
 }

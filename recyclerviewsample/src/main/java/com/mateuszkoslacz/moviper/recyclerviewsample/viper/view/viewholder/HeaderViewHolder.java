@@ -6,6 +6,7 @@ import android.widget.TextView;
 import com.mateuszkoslacz.moviper.base.view.MvpViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.R;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.HeaderContract;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Category;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter.HeaderPresenter;
 
 import butterknife.BindView;
@@ -22,7 +23,7 @@ public class HeaderViewHolder extends
     @BindView(R.id.product_title)
     TextView mProductTitleTextView;
 
-    private String title;
+    private Category mCategory;
 
     public HeaderViewHolder(View itemView) {
         super(itemView);
@@ -30,13 +31,13 @@ public class HeaderViewHolder extends
     }
 
     @Override
-    public String getCategory() {
-        return title;
+    public Category getCategory() {
+        return mCategory;
     }
 
     @Override
-    public void setCategory(String category) {
-        this.title = category;
+    public void setCategory(Category category) {
+        this.mCategory = category;
     }
 
     @Override

@@ -1,7 +1,5 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity;
 
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.category.ICategory;
-
 /**
  * Created by jjodelka on 29/11/2016.
  */
@@ -12,14 +10,12 @@ public class Product {
     private String description;
     private String price;
     private String photoUrl;
-    private ICategory category;
 
     private Product(Builder builder) {
         title = builder.title;
         description = builder.description;
         price = builder.price;
         photoUrl = builder.photoUrl;
-        category = builder.category;
     }
 
     public String getTitle() {
@@ -34,10 +30,6 @@ public class Product {
         return price;
     }
 
-    public ICategory getCategory() {
-        return category;
-    }
-
     public String getPhotoUrl() {
         return photoUrl;
     }
@@ -47,7 +39,6 @@ public class Product {
         private String description;
         private String price;
         private String photoUrl;
-        private ICategory category;
 
         public Builder() {
         }
@@ -69,11 +60,6 @@ public class Product {
 
         public Builder price(String val) {
             price = val;
-            return this;
-        }
-
-        public Builder category(ICategory val) {
-            category = val;
             return this;
         }
 

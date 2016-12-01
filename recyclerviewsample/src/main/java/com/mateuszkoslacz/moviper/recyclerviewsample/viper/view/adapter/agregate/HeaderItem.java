@@ -1,16 +1,18 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate;
 
 
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Category;
+
 /**
  * Created by jjodelka on 29/11/2016.
  */
 
 public class HeaderItem implements IListingItem {
 
-    private String mTitle;
+    private Category mCategory;
 
-    public HeaderItem(String title) {
-        mTitle = title;
+    public HeaderItem(Category category) {
+        mCategory = category;
     }
 
     @Override
@@ -18,11 +20,7 @@ public class HeaderItem implements IListingItem {
         return IListingItem.TYPE_HEADER;
     }
 
-    public String getTitle() {
-        return mTitle;
-    }
-
-    public void setTitle(String title) {
-        mTitle = title;
+    public Category getCategory() {
+        return mCategory;
     }
 }
