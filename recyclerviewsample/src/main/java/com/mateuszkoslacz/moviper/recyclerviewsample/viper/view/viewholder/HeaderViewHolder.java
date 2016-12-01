@@ -6,7 +6,7 @@ import android.widget.TextView;
 import com.mateuszkoslacz.moviper.base.view.MvpViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.R;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.HeaderContract;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter.HeaderPresenterMoviper;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter.HeaderPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,6 +46,6 @@ public class HeaderViewHolder extends
 
     @Override
     public HeaderContract.Presenter createPresenter() {
-        return new HeaderPresenterMoviper(itemView);
+        return new HeaderPresenter(itemView);
     }
 }

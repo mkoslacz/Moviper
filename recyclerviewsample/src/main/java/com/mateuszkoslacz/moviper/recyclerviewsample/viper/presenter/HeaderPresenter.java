@@ -13,14 +13,14 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.routing.HeaderRouting
  * Created by jjodelka on 29/11/2016.
  */
 
-public class HeaderPresenterMoviper
+public class HeaderPresenter
         extends ViperMoviperViewHolderBaseRxPresenter<
                     HeaderContract.View,
                     HeaderContract.Interactor,
                     HeaderContract.Routing>
         implements HeaderContract.Presenter {
 
-    public HeaderPresenterMoviper(@NonNull View view) {
+    public HeaderPresenter(@NonNull View view) {
         super(view);
     }
 

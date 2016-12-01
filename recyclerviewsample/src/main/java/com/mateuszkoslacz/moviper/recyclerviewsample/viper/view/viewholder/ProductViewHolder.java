@@ -9,7 +9,7 @@ import com.mateuszkoslacz.moviper.base.view.MvpViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.R;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.ProductContract;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter.ProductPresenterMoviper;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter.ProductPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,7 +68,7 @@ public class ProductViewHolder
 
     @Override
     public ProductContract.Presenter createPresenter() {
-        return new ProductPresenterMoviper(itemView);
+        return new ProductPresenter(itemView);
     }
 
 }

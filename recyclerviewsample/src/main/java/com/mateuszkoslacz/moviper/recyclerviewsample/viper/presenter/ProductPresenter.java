@@ -14,14 +14,14 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.routing.ProductRoutin
  * Created by jjodelka on 29/11/2016.
  */
 
-public class ProductPresenterMoviper
+public class ProductPresenter
         extends ViperMoviperViewHolderBaseRxPresenter<
             ProductContract.View,
             ProductContract.Interactor,
             ProductContract.Routing>
         implements ProductContract.Presenter {
 
-    public ProductPresenterMoviper(@NonNull View view) {
+    public ProductPresenter(@NonNull View view) {
         super(view);
     }
 
