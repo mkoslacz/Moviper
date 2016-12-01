@@ -1,34 +1,29 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.interactor;
 
 import com.mateuszkoslacz.moviper.base.interactor.BaseRxInteractor;
-import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
-import com.mateuszkoslacz.moviper.rxsample.data.retrofit.GitHubApiInterface;
+import com.mateuszkoslacz.moviper.rxsample.data.rdp.repository.Repository;
+import com.mateuszkoslacz.moviper.rxsample.data.rdp.repository.retrofit.UserRetrofitRepository;
+import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.AllUsersSpecification;
+import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.retrofit.impl.AllUsersRetrofitSpecification;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
+import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
 import java.util.List;
 
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 
 public class ListingInteractor
         extends BaseRxInteractor
         implements ListingContract.Interactor {
 
-    private GitHubApiInterface mGitHubApiInterface;
-
-    public ListingInteractor() {
-        Retrofit mRetrofit = new Retrofit.Builder()
-                .baseUrl(GitHubApiInterface.GITHUB_API_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
-        mGitHubApiInterface = mRetrofit.create(GitHubApiInterface.class);
-    }
+    private Repository<User> mUserRepository = new UserRetrofitRepository();
 
     @Override
     public Observable<List<User>> getUserList() {
-        return mGitHubApiInterface.getUsers();
+        return mUserRepository.query(getUsersSpecification());
+    }
+
+    private AllUsersSpecification getUsersSpecification() {
+        return new AllUsersRetrofitSpecification();
     }
 }

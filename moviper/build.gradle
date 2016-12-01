@@ -36,6 +36,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:2.2.9'
     compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:recyclerview-v7:25.0.0'
     compile 'com.hannesdorfmann.mosby:mvp:2.0.1'
     compile 'com.hannesdorfmann.mosby:viewstate:2.0.1'
 
