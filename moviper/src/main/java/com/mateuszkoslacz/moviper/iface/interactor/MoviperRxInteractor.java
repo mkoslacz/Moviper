@@ -1,9 +1,5 @@
 package com.mateuszkoslacz.moviper.iface.interactor;
 
-import android.support.annotation.Nullable;
-
-import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
-
 /**
  * Created by lucas.urbas on 29/08/15.
  * <p>
