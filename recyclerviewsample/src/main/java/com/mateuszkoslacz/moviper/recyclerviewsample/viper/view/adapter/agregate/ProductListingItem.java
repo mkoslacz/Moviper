@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate;
 
-
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 
 /**
