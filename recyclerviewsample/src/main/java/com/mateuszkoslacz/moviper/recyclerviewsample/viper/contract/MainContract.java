@@ -3,8 +3,7 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRxRouting;
-import com.mateuszkoslacz.moviper.iface.viewhelper.MoviperViewHelper;
+import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ListingItem;
 
@@ -30,11 +29,7 @@ public interface MainContract {
         List<Product> getProducts();
     }
 
-    interface Routing extends MoviperViewHelperRxRouting<ViewHelper> {
-
-    }
-
-    interface ViewHelper extends MoviperViewHelper {
+    interface Routing extends MoviperRxRouting {
 
     }
 }

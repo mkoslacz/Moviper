@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 
 public class ProductViewHolder
         extends MvpBaseViewHolder<Product, ProductContract.View, ProductContract.Presenter>
-        implements ProductContract.View, ProductContract.ViewHelper {
+        implements ProductContract.View {
 
     @BindView(R.id.product_photo)
     ImageView mProductPhoto;

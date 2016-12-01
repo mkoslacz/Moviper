@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter;
 
-import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -15,9 +14,9 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.routing.HeaderRouting
 
 public class HeaderPresenter
         extends ViperMoviperViewHolderBaseRxPresenter<
-                    HeaderContract.View,
-                    HeaderContract.Interactor,
-                    HeaderContract.Routing>
+            HeaderContract.View,
+            HeaderContract.Interactor,
+            HeaderContract.Routing>
         implements HeaderContract.Presenter {
 
     public HeaderPresenter(@NonNull View view) {
@@ -41,7 +40,7 @@ public class HeaderPresenter
     @NonNull
     @Override
     public HeaderContract.Routing createRouting(@NonNull View view) {
-        return new HeaderRouting((Activity) view.getContext());
+        return new HeaderRouting(view);
     }
 }
 

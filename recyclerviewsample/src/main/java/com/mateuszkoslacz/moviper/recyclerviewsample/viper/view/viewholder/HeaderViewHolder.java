@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 
 public class HeaderViewHolder extends
         MvpBaseViewHolder<Category, HeaderContract.View, HeaderContract.Presenter>
-        implements HeaderContract.View, HeaderContract.ViewHelper {
+        implements HeaderContract.View {
 
     @BindView(R.id.product_title)
     TextView mProductTitleTextView;

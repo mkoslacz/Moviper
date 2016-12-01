@@ -1,11 +1,9 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRxRouting;
+import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
 import com.mateuszkoslacz.moviper.iface.view.MvpViewHolder;
-import com.mateuszkoslacz.moviper.iface.viewhelper.MoviperViewHelper;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Category;
 
 /**
@@ -27,11 +25,7 @@ public interface HeaderContract {
 
     }
 
-    interface Routing extends MoviperViewHelperRxRouting<ViewHelper> {
-
-    }
-
-    interface ViewHelper extends MoviperViewHelper {
+    interface Routing extends MoviperRxRouting {
 
     }
 }

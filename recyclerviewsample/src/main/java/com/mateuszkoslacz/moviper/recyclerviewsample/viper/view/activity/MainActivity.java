@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity
         extends MvpActivity<MainContract.View, MainContract.Presenter>
-        implements MainContract.View, MainContract.ViewHelper {
+        implements MainContract.View {
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;

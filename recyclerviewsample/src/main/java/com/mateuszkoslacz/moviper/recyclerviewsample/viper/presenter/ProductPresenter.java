@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter;
 
-import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -46,7 +45,7 @@ public class ProductPresenter
     @NonNull
     @Override
     public ProductContract.Routing createRouting(@NonNull View view) {
-        return new ProductRouting((Activity) view.getContext());
+        return new ProductRouting(view);
     }
 }
 
