@@ -7,17 +7,17 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
  * Created by jjodelka on 29/11/2016.
  */
 
-public class ProductItem implements IListingItem {
+public class ProductListingItem implements ListingItem {
 
     private Product mProduct;
 
-    public ProductItem(Product product) {
+    public ProductListingItem(Product product) {
         mProduct = product;
     }
 
     @Override
     public int getType() {
-        return IListingItem.TYPE_PRODUCT;
+        return ListingItem.TYPE_PRODUCT;
     }
 
     public Product getProduct() {

@@ -7,7 +7,7 @@ import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.base.view.MvpRecyclerViewAdapter;
 import com.mateuszkoslacz.moviper.base.view.MvpViewHolder;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.IListingItem;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ListingItem;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.delegate.HeaderAdapterDelegate;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.delegate.ProductAdapterDelegate;
 
@@ -22,15 +22,15 @@ public class ProductAdapter
         extends MvpRecyclerViewAdapter<MvpView, MvpPresenter<MvpView>,
         MvpViewHolder<MvpView, MvpPresenter<MvpView>>> {
 
-    private List<IListingItem> mListingItems;
+    private List<ListingItem> mListingItems;
     private AdapterDelegatesManager mDelegatesManager;
 
     public ProductAdapter() {
         mListingItems = new ArrayList<>();
         mDelegatesManager = new AdapterDelegatesManager();
         mDelegatesManager
-                .addDelegate(IListingItem.TYPE_HEADER, new HeaderAdapterDelegate())
-                .addDelegate(IListingItem.TYPE_PRODUCT, new ProductAdapterDelegate());
+                .addDelegate(ListingItem.TYPE_HEADER, new HeaderAdapterDelegate())
+                .addDelegate(ListingItem.TYPE_PRODUCT, new ProductAdapterDelegate());
     }
 
     @Override
@@ -53,7 +53,7 @@ public class ProductAdapter
         return mDelegatesManager.getItemViewType(mListingItems, position);
     }
 
-    public void setListingItems(List<IListingItem> listingItems) {
+    public void setListingItems(List<ListingItem> listingItems) {
         mListingItems.clear();
         mListingItems.addAll(listingItems);
         notifyDataSetChanged();
