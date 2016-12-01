@@ -5,7 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.mateuszkoslacz.moviper.base.view.MvpViewHolder;
+import com.mateuszkoslacz.moviper.base.view.MvpBaseViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.R;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.ProductContract;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
  */
 
 public class ProductViewHolder
-        extends MvpViewHolder<ProductContract.View, ProductContract.Presenter>
+        extends MvpBaseViewHolder<Product, ProductContract.View, ProductContract.Presenter>
         implements ProductContract.View, ProductContract.ViewHelper {
 
     @BindView(R.id.product_photo)
@@ -31,21 +31,9 @@ public class ProductViewHolder
     @BindView(R.id.product_description)
     TextView mProductDescription;
 
-    Product mProduct;
-
     public ProductViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
-    }
-
-    @Override
-    public Product getProduct() {
-        return mProduct;
-    }
-
-    @Override
-    public void setProduct(Product product) {
-        mProduct = product;
     }
 
     public void setTitle(String productTitle) {

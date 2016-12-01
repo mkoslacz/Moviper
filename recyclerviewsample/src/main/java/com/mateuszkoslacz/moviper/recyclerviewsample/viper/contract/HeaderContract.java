@@ -4,6 +4,7 @@ import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRxRouting;
+import com.mateuszkoslacz.moviper.iface.view.MvpViewHolder;
 import com.mateuszkoslacz.moviper.iface.viewhelper.MoviperViewHelper;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Category;
 
@@ -17,13 +18,9 @@ public interface HeaderContract {
 
     }
 
-    interface View extends MvpView {
+    interface View extends MvpViewHolder<Category> {
 
         void setTitle(String title);
-
-        Category getCategory();
-
-        void setCategory(Category category);
     }
 
     interface Interactor extends MoviperRxInteractor {

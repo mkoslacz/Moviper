@@ -6,7 +6,8 @@ import com.hannesdorfmann.adapterdelegates3.AdapterDelegatesManager;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.base.view.MvpRecyclerViewAdapter;
-import com.mateuszkoslacz.moviper.base.view.MvpViewHolder;
+import com.mateuszkoslacz.moviper.base.view.MvpBaseViewHolder;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ListingItem;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.delegate.HeaderAdapterDelegate;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.delegate.ProductAdapterDelegate;
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class ProductAdapter
         extends MvpRecyclerViewAdapter<MvpView, MvpPresenter<MvpView>,
-        MvpViewHolder<MvpView, MvpPresenter<MvpView>>> {
+        MvpBaseViewHolder> {
 
     private List<ListingItem> mListingItems;
     private AdapterDelegatesManager mDelegatesManager;
@@ -34,12 +35,12 @@ public class ProductAdapter
     }
 
     @Override
-    public MvpViewHolder<MvpView, MvpPresenter<MvpView>> onCreateViewHolder(ViewGroup parent, int viewType) {
-        return (MvpViewHolder) mDelegatesManager.onCreateViewHolder(parent, viewType);
+    public MvpBaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return (MvpBaseViewHolder) mDelegatesManager.onCreateViewHolder(parent, viewType);
     }
 
     @Override
-    public void onBindViewHolder(MvpViewHolder holder, int position) {
+    public void onBindViewHolder(MvpBaseViewHolder holder, int position) {
         mDelegatesManager.onBindViewHolder(mListingItems, position, holder);
     }
 

@@ -15,7 +15,7 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
 
 public abstract class MvpRecyclerViewAdapter<View extends MvpView,
                 Presenter extends MvpPresenter<View>,
-                ViewHolder extends MvpViewHolder<View, Presenter>>
+                ViewHolder extends MvpBaseViewHolder>
         extends RecyclerView.Adapter<ViewHolder> {
 
     @Override

@@ -28,7 +28,7 @@ public class HeaderPresenter
     public void attachView(HeaderContract.View view) {
         super.attachView(view);
         if (isViewAttached()) {
-            getView().setTitle(getView().getCategory().getName());
+            getView().setTitle(getView().getDataObject().getName());
         }
     }
 

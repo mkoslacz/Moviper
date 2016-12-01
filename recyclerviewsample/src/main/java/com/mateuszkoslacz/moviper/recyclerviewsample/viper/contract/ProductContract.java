@@ -4,6 +4,7 @@ import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRxRouting;
+import com.mateuszkoslacz.moviper.iface.view.MvpViewHolder;
 import com.mateuszkoslacz.moviper.iface.viewhelper.MoviperViewHelper;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 
@@ -17,11 +18,7 @@ public interface ProductContract {
 
     }
 
-    interface View extends MvpView {
-
-        Product getProduct();
-
-        void setProduct(Product product);
+    interface View extends MvpViewHolder<Product> {
 
         void setTitle(String productTitle);
 

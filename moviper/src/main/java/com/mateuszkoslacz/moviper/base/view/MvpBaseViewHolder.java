@@ -8,6 +8,7 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpDelegateCallback;
 import com.hannesdorfmann.mosby.mvp.delegate.ViewGroupMvpDelegate;
 import com.hannesdorfmann.mosby.mvp.delegate.ViewGroupMvpDelegateImpl;
+import com.mateuszkoslacz.moviper.iface.view.MvpViewHolder;
 
 /**
  * Created by norbertbanaszek on 24.10.2016.
@@ -16,14 +17,15 @@ import com.hannesdorfmann.mosby.mvp.delegate.ViewGroupMvpDelegateImpl;
  * architecture.
  */
 
-public abstract class MvpViewHolder <View extends MvpView, Presenter extends MvpPresenter<View>>
+public abstract class MvpBaseViewHolder<DataObject, View extends MvpViewHolder, Presenter extends MvpPresenter<View>>
         extends RecyclerView.ViewHolder
-        implements BaseMvpDelegateCallback<View, Presenter>, MvpView {
+        implements BaseMvpDelegateCallback<View, Presenter>, MvpViewHolder<DataObject> {
 
+    private DataObject mDataObject;
     protected Presenter mPresenter;
     protected ViewGroupMvpDelegate<View, Presenter> mvpDelegate;
 
-    public MvpViewHolder(android.view.View itemView) {
+    public MvpBaseViewHolder(android.view.View itemView) {
         super(itemView);
     }
 
@@ -33,6 +35,16 @@ public abstract class MvpViewHolder <View extends MvpView, Presenter extends Mvp
         }
 
         return mvpDelegate;
+    }
+
+    @Override
+    public DataObject getDataObject() {
+        return mDataObject;
+    }
+
+    @Override
+    public void setDataObject(DataObject dataObject) {
+        mDataObject = dataObject;
     }
 
     public void bindPresenter() {
