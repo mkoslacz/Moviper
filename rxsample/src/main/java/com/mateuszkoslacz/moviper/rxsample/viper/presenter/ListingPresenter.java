@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
@@ -9,6 +10,7 @@ import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.interactor.ListingInteractor;
 import com.mateuszkoslacz.moviper.rxsample.viper.routing.ListingRouting;
 
+import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -25,10 +27,11 @@ public class ListingPresenter
     }
 
     @Override
-    public void onViewCreated() {
-        if (isViewAttached()) getView().showLoading();
+    public void onViewCreated(Bundle savedInstanceState) {
+        if (savedInstanceState != null) return;
 
-        getInteractor().getUserList()
+        if (isViewAttached()) getView().showLoading();
+        addSubscription(getInteractor().getUserList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -39,10 +42,9 @@ public class ListingPresenter
                             }
                         },
                         throwable -> {
-                            if (isViewAttached())
-                                getView().showError(throwable);
+                            if (isViewAttached()) getView().showError(throwable);
                         }
-                );
+                ));
     }
 
     @Override

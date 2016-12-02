@@ -59,7 +59,13 @@ public class ListingActivity
         setContentView(R.layout.activity_listing);
         ButterKnife.bind(this);
         prepareRecyclerView();
-        getPresenter().onViewCreated();
+        getPresenter().onViewCreated(savedInstanceState);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        setRetainInstance(true);
     }
 
     @Override
