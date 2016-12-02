@@ -26,11 +26,11 @@ public class UserDetailsPresenter
     }
 
     @Override
-    public void onViewCreated() {
-        if (isViewAttached()) {
-            getView().showLoading(false);
-            getUserDataFromApi(getArgs().getString(UserDetailsActivity.USER_EXTRA));
-        }
+    public void onViewCreated(Bundle savedInstanceState) {
+        if(savedInstanceState != null) return;
+
+        getView().showLoading(false);
+        getUserDataFromApi(getArgs().getString(UserDetailsActivity.USER_EXTRA));
     }
 
     @Override
@@ -39,20 +39,18 @@ public class UserDetailsPresenter
     }
 
     private void getUserDataFromApi(String userLogin) {
-        getInteractor().getUserForUsername(userLogin)
+        addSubscription(getInteractor().getUserForUsername(userLogin)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         user -> {
-                            if (isViewAttached()) {
-                                getView().setData(user);
-                                getView().showContent();
-                            }
+                            getView().setData(user);
+                            getView().showContent();
                         },
                         throwable -> {
-                            if (isViewAttached()) getView().showError(throwable, false);
+                            getView().showError(throwable, false);
                         }
-                );
+                ));
     }
 
     @NonNull
