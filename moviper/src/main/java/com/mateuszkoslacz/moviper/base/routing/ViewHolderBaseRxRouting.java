@@ -26,8 +26,8 @@ public class ViewHolderBaseRxRouting
     }
 
     @Override
-    public void onPresenterDetached() {
-        super.onPresenterDetached();
+    public void onPresenterDetached(boolean retainInstance) {
+        super.onPresenterDetached(retainInstance);
         WeakReferenceUtils.detach(activity);
     }
 }

@@ -14,7 +14,14 @@ import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
 public abstract class BaseRxInteractor implements MoviperRxInteractor {
 
     @Override
-    public void onPresenterDetached() {
+    public void onPresenterDetached(boolean retainInstance) {
+        onPresenterDetached();
+        // stub
+    }
+
+    @Override
+    @Deprecated
+    public void onPresenterDetached(){
         // stub
     }
 }

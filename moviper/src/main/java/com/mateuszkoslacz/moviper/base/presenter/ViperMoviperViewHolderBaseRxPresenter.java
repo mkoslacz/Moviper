@@ -51,7 +51,7 @@ public abstract class ViperMoviperViewHolderBaseRxPresenter<ViewType extends Mvp
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
-        routing.onPresenterDetached();
+        routing.onPresenterDetached(retainInstance);
     }
 
     @Override

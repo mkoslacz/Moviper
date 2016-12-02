@@ -32,4 +32,5 @@ public class ViewHolderBaseRouting
         super.detachPresenter();
         WeakReferenceUtils.detach(activity);
     }
+
 }

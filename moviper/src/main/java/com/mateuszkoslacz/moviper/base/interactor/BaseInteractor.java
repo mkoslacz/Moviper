@@ -44,6 +44,13 @@ public abstract class BaseInteractor<PresenterType extends MoviperPresenterForIn
     }
 
     @Override
+    public void onPresenterDetached(boolean retainInstance) {
+        onPresenterDetached();
+        // stub
+    }
+
+    @Override
+    @Deprecated
     public void onPresenterDetached() {
         // stub
     }

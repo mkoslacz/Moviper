@@ -39,6 +39,13 @@ public abstract class ActivityBaseRxRouting
     }
 
     @Override
+    public void onPresenterDetached(boolean retainInstance) {
+        onPresenterDetached();
+        // stub
+    }
+
+    @Override
+    @Deprecated
     public void onPresenterDetached() {
         // stub
     }

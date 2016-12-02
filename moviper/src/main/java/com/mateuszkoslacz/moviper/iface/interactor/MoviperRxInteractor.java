@@ -10,5 +10,8 @@ package com.mateuszkoslacz.moviper.iface.interactor;
  */
 public interface MoviperRxInteractor {
 
+    void onPresenterDetached(boolean retainInstance);
+
+    @Deprecated
     void onPresenterDetached();
 }

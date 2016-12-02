@@ -52,7 +52,7 @@ public abstract class ViperFragmentBaseRxPresenter
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
-        routing.onPresenterDetached();
+        routing.onPresenterDetached(retainInstance);
     }
 
     @Override

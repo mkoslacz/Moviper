@@ -32,5 +32,8 @@ public interface MoviperRxRouting {
 
     boolean isActivityAttached();
 
+    void onPresenterDetached(boolean retainInstance);
+
+    @Deprecated
     void onPresenterDetached();
 }

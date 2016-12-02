@@ -44,8 +44,8 @@ public abstract class ViewHolderBaseViewHelperRxRouting<ViewHelperType extends M
     }
 
     @Override
-    public void onPresenterDetached() {
-        super.onPresenterDetached();
+    public void onPresenterDetached(boolean retainInstance) {
+        super.onPresenterDetached(retainInstance);
         WeakReferenceUtils.detach(activity);
     }
 }

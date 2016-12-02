@@ -53,7 +53,7 @@ public abstract class ViperActivityBaseRxPresenter
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
-        routing.onPresenterDetached();
+        routing.onPresenterDetached(retainInstance);
     }
 
     @Override
