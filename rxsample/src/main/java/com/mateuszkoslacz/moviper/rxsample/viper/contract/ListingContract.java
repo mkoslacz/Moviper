@@ -1,5 +1,7 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.contract;
 
+import android.os.Bundle;
+
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
@@ -16,7 +18,7 @@ public interface ListingContract {
         // Defines what methods the View can invoke on the Presenter.
         // In most cases there will be user interactions and View lifecycle events.
 
-        void onViewCreated();
+        void onViewCreated(Bundle savedInstanceState);
 
         void onItemClicked(User item);
     }

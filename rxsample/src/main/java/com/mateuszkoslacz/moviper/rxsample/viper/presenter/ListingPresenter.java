@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
@@ -25,24 +26,22 @@ public class ListingPresenter
     }
 
     @Override
-    public void onViewCreated() {
-        if (isViewAttached()) getView().showLoading();
+    public void onViewCreated(Bundle savedInstanceState) {
+        if(savedInstanceState != null) return;
 
-        getInteractor().getUserList()
+        getView().showLoading();
+        addSubscription(getInteractor().getUserList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         user -> {
-                            if (isViewAttached()) {
-                                getView().setUserList(user);
-                                getView().showContent();
-                            }
+                            getView().setUserList(user);
+                            getView().showContent();
                         },
                         throwable -> {
-                            if (isViewAttached())
-                                getView().showError(throwable);
+                            getView().showError(throwable);
                         }
-                );
+                ));
     }
 
     @Override
