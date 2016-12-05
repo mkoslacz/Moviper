@@ -19,7 +19,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
  */
 
 @RunWith(AndroidJUnit4.class)
-public class ColorWidgetFragmentTest {
+public class ColorWidgetFragmentInstrumentationTest {
 
     @Rule
     public FragmentTestRule<ColorWidgetFragment> mFragmentTestRule = new FragmentTestRule<>(ColorWidgetFragment.class);
