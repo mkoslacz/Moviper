@@ -55,7 +55,13 @@ public class UserDetailsActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
         ButterKnife.bind(this);
-        getPresenter().onViewCreated();
+        getPresenter().onViewCreated(savedInstanceState);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        setRetainInstance(true);
     }
 
     @Override

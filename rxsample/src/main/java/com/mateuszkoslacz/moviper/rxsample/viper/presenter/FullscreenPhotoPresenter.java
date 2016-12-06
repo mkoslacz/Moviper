@@ -27,7 +27,7 @@ public class FullscreenPhotoPresenter
 
     @Override
     public void onViewCreated() {
-        if (isViewAttached()) getView().setPhoto(mPhotoUrl);
+        if(isViewAttached()) getView().setPhoto(mPhotoUrl);
     }
 
 
