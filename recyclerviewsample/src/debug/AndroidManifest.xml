@@ -4,5 +4,7 @@
     <application>
         <activity android:name="com.mateuszkoslacz.moviper.recyclerviewsample.utils.ViewHolderInstrumentedTestActivity"
                   android:theme="@style/Theme.AppCompat"/>
+        <activity android:name="com.mateuszkoslacz.moviper.recyclerviewsample.utils.ViewHolderUnitTestActivity"
+                  android:theme="@style/Theme.AppCompat"/>
     </application>
 </manifest>
