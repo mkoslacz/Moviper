@@ -9,7 +9,6 @@ import android.support.test.runner.AndroidJUnit4;
 import com.mateuszkoslacz.moviper.base.presenter.WipeBaseRxPresenter;
 import com.mateuszkoslacz.moviper.ipcsample.constants.Constants;
 import com.mateuszkoslacz.moviper.ipcsample.viper.view.activity.MainActivity;
-import com.mateuszkoslacz.moviper.ipcsample.viper.view.fragment.ColorWidgetFragment;
 import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 
 import junit.framework.Assert;
@@ -33,7 +32,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 @RunWith(AndroidJUnit4.class)
 public class MainActivityInstrumentationTest {
 
-    MainActivity activity;
+    private MainActivity activity;
 
     @Rule
     public ActivityTestRule<MainActivity>
@@ -46,21 +45,17 @@ public class MainActivityInstrumentationTest {
 
     @Test
     public void shouldButtonClickChangeFragmentColor() {
-        ColorWidgetFragment firstFragment = ((ColorWidgetFragment)
-                activity.getSupportFragmentManager().findFragmentById(R.id.fragment_first));
-        ColorDrawable firstFragmentColor = ((ColorDrawable) firstFragment.getView().getBackground());
+        ColorDrawable firstFragmentColor = getFragmentBackgroundDrawable(R.id.fragment_first);
 
         Assert.assertEquals(firstFragmentColor.getColor(), Constants.COLOR_BLUE);
 
-
-        ColorWidgetFragment thirdFragment = ((ColorWidgetFragment)
-                activity.getSupportFragmentManager().findFragmentById(R.id.fragment_third));
-        ColorDrawable thirdFragmentColor = ((ColorDrawable) thirdFragment.getView().getBackground());
+        ColorDrawable thirdFragmentColor = getFragmentBackgroundDrawable(R.id.fragment_third);
 
         Assert.assertEquals(thirdFragmentColor.getColor(), Constants.COLOR_RED);
 
         Espresso.onView(CoreMatchers.allOf(withId(R.id.button_third),
-                withParent(withParent(withParent(withId(R.id.fragment_first)))))).perform(ViewActions.click());
+                withParent(withParent(withParent(withId(R.id.fragment_first))))))
+                .perform(ViewActions.click());
 
         Assert.assertEquals(thirdFragmentColor.getColor(), Constants.COLOR_BLUE);
     }
@@ -68,22 +63,17 @@ public class MainActivityInstrumentationTest {
     //example with finding parent which contains proper text
     @Test
     public void shouldButtonClickChangeFragmentColor2() {
-        ColorWidgetFragment firstFragment = ((ColorWidgetFragment)
-                activity.getSupportFragmentManager().findFragmentById(R.id.fragment_first));
-        ColorDrawable firstFragmentColor = ((ColorDrawable) firstFragment.getView().getBackground());
+        ColorDrawable firstFragmentColor = getFragmentBackgroundDrawable(R.id.fragment_first);
 
         Assert.assertEquals(firstFragmentColor.getColor(), Constants.COLOR_BLUE);
 
-
-        ColorWidgetFragment thirdFragment = ((ColorWidgetFragment)
-                activity.getSupportFragmentManager().findFragmentById(R.id.fragment_third));
-        ColorDrawable thirdFragmentColor = ((ColorDrawable) thirdFragment.getView().getBackground());
+        ColorDrawable thirdFragmentColor = getFragmentBackgroundDrawable(R.id.fragment_third);
 
         Assert.assertEquals(thirdFragmentColor.getColor(), Constants.COLOR_RED);
 
-
         Espresso.onView(CoreMatchers.allOf(withId(R.id.button_third),
-                withParent(withParent(hasDescendant(withText(Constants.NAME_BLUE)))))).perform(ViewActions.click());
+                withParent(withParent(hasDescendant(withText(Constants.NAME_BLUE))))))
+                .perform(ViewActions.click());
 
         Assert.assertEquals(thirdFragmentColor.getColor(), Constants.COLOR_BLUE);
     }
@@ -92,5 +82,10 @@ public class MainActivityInstrumentationTest {
     public void cleanUp() {
         Moviper.getInstance().getPresenters(WipeBaseRxPresenter.class)
                 .subscribe(Moviper.getInstance()::unregister);
+    }
+
+    private ColorDrawable getFragmentBackgroundDrawable(int fragmentId) {
+        return ((ColorDrawable) activity.getSupportFragmentManager()
+                .findFragmentById(fragmentId).getView().getBackground());
     }
 }
