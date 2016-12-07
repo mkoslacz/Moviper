@@ -17,19 +17,21 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 /**
  * Created by bwilk on 12/5/16.
  */
-
 @RunWith(AndroidJUnit4.class)
 public class ColorWidgetFragmentInstrumentationTest {
 
     @Rule
-    public FragmentTestRule<ColorWidgetFragment> mFragmentTestRule = new FragmentTestRule<>(ColorWidgetFragment.class);
+    public FragmentTestRule<ColorWidgetFragment>
+            mFragmentTestRule = new FragmentTestRule<>(ColorWidgetFragment.class);
 
     @Test
     public void testFragment() {
         mFragmentTestRule.launchActivity(null);
         onView(withId(R.id.button_first)).check(matches(isDisplayed()));
         mFragmentTestRule.getFragmentManager()
-                .beginTransaction().remove(mFragmentTestRule.getFragment()).commit();
+                .beginTransaction()
+                .remove(mFragmentTestRule.getFragment())
+                .commit();
         onView(withId(R.id.button_first)).check(doesNotExist());
     }
 }

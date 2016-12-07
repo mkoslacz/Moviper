@@ -9,7 +9,6 @@ import android.widget.FrameLayout;
 /**
  * Created by bwilk on 12/5/16.
  */
-
 @VisibleForTesting
 public class TestActivity extends AppCompatActivity {
 

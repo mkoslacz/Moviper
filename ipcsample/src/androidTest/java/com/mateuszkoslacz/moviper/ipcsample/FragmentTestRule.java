@@ -12,21 +12,19 @@ import junit.framework.Assert;
 /**
  * Created by bwilk on 12/5/16.
  */
+public class FragmentTestRule<T extends MvpFragment> extends ActivityTestRule<TestActivity> {
 
+    private final Class<T> mFragmentClass;
+    private T mFragment;
+    private FragmentManager mFragmentManager;
 
-public class FragmentTestRule<F extends MvpFragment> extends ActivityTestRule<TestActivity> {
-
-    private final Class<F> mFragmentClass;
-    private F mFragment;
-    private FragmentManager fragmentManager;
-
-    public FragmentTestRule(final Class<F> fragmentClass) {
+    public FragmentTestRule(final Class<T> fragmentClass) {
         super(TestActivity.class, true, false);
         mFragmentClass = fragmentClass;
     }
 
     public FragmentManager getFragmentManager() {
-        return fragmentManager;
+        return mFragmentManager;
     }
 
     @Override
@@ -35,22 +33,24 @@ public class FragmentTestRule<F extends MvpFragment> extends ActivityTestRule<Te
 
         getActivity().runOnUiThread(() -> {
             try {
-                fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                mFragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = mFragmentManager.beginTransaction();
                 mFragment = mFragmentClass.newInstance();
                 mFragment.setArguments(new Bundle());
                 transaction.replace(R.id.container, mFragment);
                 transaction.commit();
             } catch (InstantiationException | IllegalAccessException e) {
-                Assert.fail(String.format("%s: Could not insert %s into TestActivity: %s",
+                Assert.fail(
+                        String.format("%s: Could not insert %s into TestActivity: %s",
                         getClass().getSimpleName(),
                         mFragmentClass.getSimpleName(),
-                        e.getMessage()));
+                        e.getMessage())
+                );
             }
         });
     }
 
-    public F getFragment() {
+    public T getFragment() {
         return mFragment;
     }
 }

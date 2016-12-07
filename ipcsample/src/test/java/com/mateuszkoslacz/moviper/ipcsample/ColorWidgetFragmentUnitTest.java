@@ -22,27 +22,26 @@ import static org.mockito.Mockito.verify;
 /**
  * Created by bwilk on 12/5/16.
  */
-
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
 public class ColorWidgetFragmentUnitTest {
 
     @Mock
-    ColorWidgetPresenter presenter;
+    ColorWidgetPresenter mPresenter;
 
     @InjectMocks
-    ColorWidgetFragment fragment = new ColorWidgetFragment();
+    ColorWidgetFragment mFragment = new ColorWidgetFragment();
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        fragment.setArguments(new Bundle());
+        mFragment.setArguments(new Bundle());
     }
 
     @Test
     public void testFragment() {
-        Assert.assertNotNull(presenter);
-        SupportFragmentTestUtil.startVisibleFragment(fragment);
-        verify(presenter).onViewCreated();
+        Assert.assertNotNull(mPresenter);
+        SupportFragmentTestUtil.startVisibleFragment(mFragment);
+        verify(mPresenter).onViewCreated();
     }
 }
