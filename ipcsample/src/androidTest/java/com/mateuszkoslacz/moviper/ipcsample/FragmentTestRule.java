@@ -12,14 +12,15 @@ import junit.framework.Assert;
 /**
  * Created by bwilk on 12/5/16.
  */
-public class FragmentTestRule<T extends MvpFragment> extends ActivityTestRule<TestActivity> {
+public class FragmentTestRule<FragmentType extends MvpFragment> extends ActivityTestRule<TestActivity> {
 
-    private final Class<T> mFragmentClass;
-    private T mFragment;
+    private final Class<FragmentType> mFragmentClass;
+    private FragmentType mFragment;
     private FragmentManager mFragmentManager;
     private Bundle mArguments;
+    private boolean mIsFragmentRemoved;
 
-    public FragmentTestRule(final Class<T> fragmentClass) {
+    public FragmentTestRule(final Class<FragmentType> fragmentClass) {
         super(TestActivity.class, true, false);
         mFragmentClass = fragmentClass;
     }
@@ -51,11 +52,22 @@ public class FragmentTestRule<T extends MvpFragment> extends ActivityTestRule<Te
         });
     }
 
+    public void removeFragment() {
+        getActivity().runOnUiThread(() -> {
+            if (!mIsFragmentRemoved) {
+                mFragmentManager.beginTransaction()
+                        .remove(mFragment)
+                        .commit();
+                mIsFragmentRemoved = true;
+            }
+        });
+    }
+
     public void setArguments(Bundle arguments) {
         mArguments = arguments;
     }
 
-    public T getFragment() {
+    public FragmentType getFragment() {
         return mFragment;
     }
 }
