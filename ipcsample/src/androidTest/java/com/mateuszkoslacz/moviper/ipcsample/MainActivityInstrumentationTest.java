@@ -1,13 +1,10 @@
 package com.mateuszkoslacz.moviper.ipcsample;
 
 import android.graphics.drawable.ColorDrawable;
-import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.mateuszkoslacz.moviper.base.presenter.WipeBaseRxPresenter;
 import com.mateuszkoslacz.moviper.ipcsample.constants.Constants;
 import com.mateuszkoslacz.moviper.ipcsample.viper.view.activity.MainActivity;
-import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -32,20 +29,8 @@ public class MainActivityInstrumentationTest {
     private MainActivity mActivity;
 
     @Rule
-    public ActivityTestRule<MainActivity>
-            mActivityTestRule = new ActivityTestRule<MainActivity>(MainActivity.class) {
-        @Override
-        protected void afterActivityFinished() {
-            /*
-                We need to unregister presenters manually because of threading issues.
-                Ex: Sometimes the fragment's presenter inside the first test is not unregistered
-                when we call another test and the same presenter is trying go be registered again.
-             */
-            super.afterActivityFinished();
-            Moviper.getInstance().getPresenters(WipeBaseRxPresenter.class)
-                    .subscribe(Moviper.getInstance()::unregister);
-        }
-    };
+    public MoviperActivityTestRule<MainActivity>
+            mActivityTestRule = new MoviperActivityTestRule<>(MainActivity.class);
 
     @Before
     public void setUp() {
