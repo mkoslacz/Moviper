@@ -13,12 +13,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.hannesdorfmann.mosby.mvp.MvpActivity;
+import com.hannesdorfmann.mosby.mvp.viewstate.MvpViewStateActivity;
+import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
 import com.mateuszkoslacz.moviper.rxsample.R;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.adapter.UserAdapter;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.presenter.ListingPresenter;
+import com.mateuszkoslacz.moviper.rxsample.viper.view.viewstate.ListingViewState;
 
 import java.util.List;
 
@@ -27,7 +29,7 @@ import butterknife.ButterKnife;
 
 public class ListingActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.
-        extends MvpActivity<ListingContract.View, ListingContract.Presenter>
+        extends MvpViewStateActivity<ListingContract.View, ListingContract.Presenter>
         implements ListingContract.View, UserAdapter.UserClickListener {
 
     public static final String PHOTO_URL_EXTRA_STRING = "PHOTO_URL_EXTRA_STRING";
@@ -57,20 +59,15 @@ public class ListingActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listing);
+        setRetainInstance(true);
         ButterKnife.bind(this);
         prepareRecyclerView();
-        getPresenter().onViewCreated(savedInstanceState);
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        setRetainInstance(true);
-    }
-
-    @Override
-    public void setUserList(List<User> userList) {
+    public void setUserList(List<User> userList, boolean retained) {
         mAdapter.setUserList(userList);
+        if(!retained) ((ListingViewState) getViewState()).setUserList(userList);
     }
 
     private void prepareRecyclerView() {
@@ -97,6 +94,7 @@ public class ListingActivity
         mLoadingViewProgressBar.setVisibility(View.INVISIBLE);
         mRecyclerView.setVisibility(View.INVISIBLE);
         mErrorViewTextView.setText(throwable.getLocalizedMessage());
+        ((ListingViewState) getViewState()).setStateError(throwable);
     }
 
     @Override
@@ -104,6 +102,7 @@ public class ListingActivity
         mErrorViewTextView.setVisibility(View.INVISIBLE);
         mLoadingViewProgressBar.setVisibility(View.VISIBLE);
         mRecyclerView.setVisibility(View.INVISIBLE);
+        ((ListingViewState) getViewState()).setStateLoading();
     }
 
     @Override
@@ -111,6 +110,7 @@ public class ListingActivity
         mErrorViewTextView.setVisibility(View.INVISIBLE);
         mLoadingViewProgressBar.setVisibility(View.INVISIBLE);
         mRecyclerView.setVisibility(View.VISIBLE);
+        ((ListingViewState) getViewState()).setStateContent();
     }
 
     @NonNull
@@ -119,4 +119,14 @@ public class ListingActivity
         return new ListingPresenter(this);
     }
 
+    @NonNull
+    @Override
+    public ViewState<ListingContract.View> createViewState() {
+        return new ListingViewState();
+    }
+
+    @Override
+    public void onNewViewStateInstance() {
+        getPresenter().onViewCreated();
+    }
 }

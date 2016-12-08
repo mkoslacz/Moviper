@@ -9,6 +9,7 @@ import com.mateuszkoslacz.moviper.rxsample.R;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.viewholder.UserViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
 
-    private List<User> mUserList;
+    private List<User> mUserList = new ArrayList<>();
     private UserClickListener mUserClickListener;
 
     public UserAdapter(UserClickListener mUserClickListener) {
@@ -42,7 +43,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
     }
 
     public void setUserList(List<User> userList) {
-        this.mUserList = userList;
+        mUserList.clear();
+        mUserList.addAll(userList);
         notifyDataSetChanged();
     }
 

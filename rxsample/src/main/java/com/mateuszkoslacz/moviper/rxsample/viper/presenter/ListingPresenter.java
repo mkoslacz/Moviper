@@ -1,7 +1,6 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
@@ -10,7 +9,6 @@ import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.interactor.ListingInteractor;
 import com.mateuszkoslacz.moviper.rxsample.viper.routing.ListingRouting;
 
-import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -27,9 +25,7 @@ public class ListingPresenter
     }
 
     @Override
-    public void onViewCreated(Bundle savedInstanceState) {
-        if (savedInstanceState != null) return;
-
+    public void onViewCreated() {
         if (isViewAttached()) getView().showLoading();
         addSubscription(getInteractor().getUserList()
                 .subscribeOn(Schedulers.io())
@@ -37,7 +33,7 @@ public class ListingPresenter
                 .subscribe(
                         user -> {
                             if (isViewAttached()) {
-                                getView().setUserList(user);
+                                getView().setUserList(user, false);
                                 getView().showContent();
                             }
                         },
