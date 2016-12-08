@@ -9,7 +9,6 @@ import com.mateuszkoslacz.moviper.ipcsample.constants.Constants;
 import com.mateuszkoslacz.moviper.ipcsample.viper.view.activity.MainActivity;
 import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -34,7 +33,19 @@ public class MainActivityInstrumentationTest {
 
     @Rule
     public ActivityTestRule<MainActivity>
-            mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+            mActivityTestRule = new ActivityTestRule<MainActivity>(MainActivity.class) {
+        @Override
+        protected void afterActivityFinished() {
+            /*
+                We need to unregister presenters manually because of threading issues.
+                Ex: Sometimes the fragment's presenter inside the first test is not unregistered
+                when we call another test and the same presenter is trying go be registered again.
+             */
+            super.afterActivityFinished();
+            Moviper.getInstance().getPresenters(WipeBaseRxPresenter.class)
+                    .subscribe(Moviper.getInstance()::unregister);
+        }
+    };
 
     @Before
     public void setUp() {
@@ -42,7 +53,7 @@ public class MainActivityInstrumentationTest {
     }
 
     @Test
-    public void shouldButtonClickChangeFragmentColor() {
+    public void shouldButtonClickChangeFragmentColorFoundById() {
         ColorDrawable firstFragmentColor = getFragmentBackgroundDrawable(R.id.fragment_first);
         assertEquals(firstFragmentColor.getColor(), Constants.COLOR_BLUE);
         ColorDrawable thirdFragmentColor = getFragmentBackgroundDrawable(R.id.fragment_third);
@@ -53,9 +64,8 @@ public class MainActivityInstrumentationTest {
         assertEquals(thirdFragmentColor.getColor(), Constants.COLOR_BLUE);
     }
 
-    //example with finding parent which contains proper text
     @Test
-    public void shouldButtonClickChangeFragmentColor2() {
+    public void shouldButtonClickChangeFragmentColorFoundByContent() {
         ColorDrawable firstFragmentColor = getFragmentBackgroundDrawable(R.id.fragment_first);
         assertEquals(firstFragmentColor.getColor(), Constants.COLOR_BLUE);
         ColorDrawable thirdFragmentColor = getFragmentBackgroundDrawable(R.id.fragment_third);
@@ -64,12 +74,6 @@ public class MainActivityInstrumentationTest {
                 withParent(withParent(hasDescendant(withText(Constants.NAME_BLUE))))))
                 .perform(click());
         assertEquals(thirdFragmentColor.getColor(), Constants.COLOR_BLUE);
-    }
-
-    @After
-    public void cleanUp() {
-        Moviper.getInstance().getPresenters(WipeBaseRxPresenter.class)
-                .subscribe(Moviper.getInstance()::unregister);
     }
 
     private ColorDrawable getFragmentBackgroundDrawable(int fragmentId) {
