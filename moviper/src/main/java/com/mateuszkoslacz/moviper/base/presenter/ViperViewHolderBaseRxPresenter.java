@@ -11,6 +11,7 @@ import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
 import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperViewHolderRxPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
+import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 /**
  * Created by jjodelka on 29/11/2016.
@@ -27,7 +28,7 @@ import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
  * {@link com.hannesdorfmann.mosby.mvp.viewstate.lce.MvpLceViewStateFragment})
  */
 
-public abstract class ViperViewHolderBaseRxPresenter<ViewType extends MvpView,  // I prefer readability rather than conventions
+public abstract class ViperViewHolderBaseRxPresenter<ViewType extends ViperView,  // I prefer readability rather than conventions
             InteractorType extends MoviperRxInteractor,
             RoutingType extends MoviperRxRouting>
         extends WipeBaseRxPresenter<ViewType, InteractorType>
@@ -49,9 +50,16 @@ public abstract class ViperViewHolderBaseRxPresenter<ViewType extends MvpView,  
     }
 
     @Override
+    public void attachView(ViewType view) {
+        super.attachView(view);
+        routing.attachActivity(view.getActivity());
+    }
+
+    @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
         routing.onPresenterDetached(retainInstance);
+        routing.detachActivity();
     }
 
     @Override

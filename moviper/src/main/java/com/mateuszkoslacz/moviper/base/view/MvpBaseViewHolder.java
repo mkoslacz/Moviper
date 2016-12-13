@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.base.view;
 
+import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
@@ -35,6 +36,11 @@ public abstract class MvpBaseViewHolder<DataObject, View extends MvpViewHolder, 
         }
 
         return mvpDelegate;
+    }
+
+    @Override
+    public Activity getActivity() {
+        return ((Activity) itemView.getContext());
     }
 
     @Override
