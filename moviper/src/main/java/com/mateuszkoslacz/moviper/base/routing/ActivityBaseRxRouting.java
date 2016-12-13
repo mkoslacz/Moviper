@@ -32,6 +32,16 @@ public abstract class ActivityBaseRxRouting
         return WeakReferenceUtils.isAttached(activity);
     }
 
+    @Override
+    public void attachActivity(Activity activity) {
+        throw new RuntimeException("For now this method is called only in the ViewHolder case. Work in progress.");
+    }
+
+    @Override
+    public void detachActivity() {
+        throw new RuntimeException("For now this method is called only in the ViewHolder case. Work in progress.");
+    }
+
     @Nullable
     @Override
     public Activity getActivity() {

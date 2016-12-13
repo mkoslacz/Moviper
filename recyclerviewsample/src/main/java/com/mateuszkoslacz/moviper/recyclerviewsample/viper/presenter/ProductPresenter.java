@@ -3,7 +3,7 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.mateuszkoslacz.moviper.base.presenter.ViperMoviperViewHolderBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.ViperViewHolderBaseRxPresenter;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.ProductContract;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.interactor.ProductInteractor;
@@ -14,10 +14,10 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.routing.ProductRoutin
  */
 
 public class ProductPresenter
-        extends ViperMoviperViewHolderBaseRxPresenter<
-            ProductContract.View,
-            ProductContract.Interactor,
-            ProductContract.Routing>
+        extends ViperViewHolderBaseRxPresenter<
+                    ProductContract.View,
+                    ProductContract.Interactor,
+                    ProductContract.Routing>
         implements ProductContract.Presenter {
 
     public ProductPresenter(@NonNull View view) {
