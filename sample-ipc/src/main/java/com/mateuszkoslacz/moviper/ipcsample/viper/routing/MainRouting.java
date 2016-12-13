@@ -5,12 +5,12 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
-import com.mateuszkoslacz.moviper.base.routing.ActivityBaseRxRouting;
+import com.mateuszkoslacz.moviper.base.routing.BaseRxRouting;
 import com.mateuszkoslacz.moviper.ipcsample.viper.contract.MainContract;
 import com.mateuszkoslacz.moviper.ipcsample.viper.view.fragment.ColorWidgetFragment;
 
 public class MainRouting
-        extends ActivityBaseRxRouting
+        extends BaseRxRouting
         implements MainContract.Routing {
 
     public MainRouting(@NonNull Activity activity) {
