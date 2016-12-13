@@ -26,7 +26,7 @@ public interface ListingContract {
         // In most cases there will be manipulating ui and displaying data or errors.
         // In Super Rx version it also provides getters for Observables emmiting user click events.
 
-        void setUserList(List<User> userList, boolean retained);
+        void setUserList(List<User> userList);
 
         void showError(Throwable throwable);
 
@@ -51,16 +51,5 @@ public interface ListingContract {
         // the root Activity, ie. switching fragments.
 
         void startUserDetailsActivity(User user);
-    }
-
-    interface ViewState {
-
-        void setUserList(List<User> userList);
-
-        void setStateError(Throwable throwable);
-
-        void setStateLoading();
-
-        void setStateContent();
     }
 }

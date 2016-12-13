@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RxMoviper Sample</string>
+    <string name="data_loading_error">Data loading error</string>
+    <string name="email">Email:</string>
+    <string name="location">Location:</string>
+    <string name="blog">Blog:</string>
+    <string name="company">Company:</string>
+    <string name="name">Name:</string>
+
+</resources>

@@ -2,11 +2,14 @@ package com.mateuszkoslacz.moviper.rxsample.viper.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by jjodelka on 17/10/16.
  */
 
-public class User {
+public class User implements Parcelable {
 
     @SerializedName("organizations_url")
     private String organizationsUrl;
@@ -132,4 +135,54 @@ public class User {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.organizationsUrl);
+        dest.writeString(this.avatarUrl);
+        dest.writeString(this.gistsUrl);
+        dest.writeString(this.htmlUrl);
+        dest.writeString(this.location);
+        dest.writeString(this.company);
+        dest.writeString(this.email);
+        dest.writeString(this.name);
+        dest.writeString(this.blog);
+        dest.writeString(this.type);
+        dest.writeString(this.url);
+        dest.writeString(this.id);
+        dest.writeString(this.login);
+    }
+
+    protected User(Parcel in) {
+        this.organizationsUrl = in.readString();
+        this.avatarUrl = in.readString();
+        this.gistsUrl = in.readString();
+        this.htmlUrl = in.readString();
+        this.location = in.readString();
+        this.company = in.readString();
+        this.email = in.readString();
+        this.name = in.readString();
+        this.blog = in.readString();
+        this.type = in.readString();
+        this.url = in.readString();
+        this.id = in.readString();
+        this.login = in.readString();
+    }
+
+    public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel source) {
+            return new User(source);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 }

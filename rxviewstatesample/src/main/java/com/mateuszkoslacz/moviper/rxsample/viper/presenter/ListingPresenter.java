@@ -27,22 +27,20 @@ public class ListingPresenter
     @Override
     public void onViewCreated() {
         if (isViewAttached()) getView().showLoading();
-
-        getInteractor().getUserList()
+        addSubscription(getInteractor().getUserList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         user -> {
                             if (isViewAttached()) {
-                                getView().setUserList(user);
+                                getView().setUserList(user, false);
                                 getView().showContent();
                             }
                         },
                         throwable -> {
-                            if (isViewAttached())
-                                getView().showError(throwable);
+                            if (isViewAttached()) getView().showError(throwable);
                         }
-                );
+                ));
     }
 
     @Override
