@@ -30,39 +30,29 @@ public class ProductViewHolderUnitTest {
     public ProductViewHolder mViewHolder;
 
     private ViewHolderUnitTestActivity mActivity;
-    private int mViewHolderViewId = R.layout.vh_product;
 
+    //TODO: reconsider if we should pull up setup to an abstract class
     @Before
     public void setUp() throws Exception {
-        startActivity();
-        initViewHolder(mActivity);
+        mActivity = Robolectric.setupActivity(ViewHolderUnitTestActivity.class);
+        mActivity.createViewHolderLayout(R.layout.vh_product);
+        mViewHolder = new ProductViewHolder(mActivity.getViewHolderLayout());
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
     public void isPresenterAttached() {
-        mViewHolder.setDataObject(getModel());
+        mViewHolder.setDataObject(createTestProduct());
         mViewHolder.bindPresenter();
 
         Mockito.verify(mPresenter).attachView(Mockito.any());
     }
 
-    private void startActivity() {
-        mActivity = Robolectric.setupActivity(ViewHolderUnitTestActivity.class);
-        mActivity.addViewHolderView(mViewHolderViewId);
-    }
-
-    private void initViewHolder(ViewHolderUnitTestActivity activity) {
-        mViewHolder = new ProductViewHolder(activity.getViewHolderView());
-        MockitoAnnotations.initMocks(this);
-    }
-
-    private Product getModel() {
-        Product product = new Product.Builder()
+    private Product createTestProduct() {
+        return new Product.Builder()
                 .title("Title")
                 .price("Price")
                 .description("Desc")
                 .build();
-
-        return product;
     }
 }

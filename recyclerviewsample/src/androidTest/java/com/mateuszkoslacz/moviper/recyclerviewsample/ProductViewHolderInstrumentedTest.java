@@ -22,40 +22,31 @@ import static android.support.test.espresso.matcher.ViewMatchers.*;
 public class ProductViewHolderInstrumentedTest {
 
     @Rule
-    public ViewHolderInstrumentedTestRule<Product> mTestRule = new ViewHolderInstrumentedTestRule<>(
-            () -> getViewId(),
-            view -> getViewHolder(view),
-            () -> getModel()
-    );
+    public ViewHolderInstrumentedTestRule<Product> mTestRule =
+            ViewHolderInstrumentedTestRule.builder()
+                    .withViewId(R.layout.vh_product)
+                    .withModelObject(createTestProduct())
+                    .withViewHolderDelegate(this::getViewHolder)
+                    .build();
 
     @Test
     public void setTitle() throws Exception {
         mTestRule.launchActivity(null);
-
-        String titleToBeDisplayed = "Title";
-        Espresso.onView(withId(R.id.product_title)).check(matches(withText(titleToBeDisplayed)));
+        Espresso.onView(withId(R.id.product_title)).check(matches(withText("Title")));
     }
 
     @Test
     public void setDescription() throws Exception {
         mTestRule.launchActivity(null);
-
-        String descToBeDisplayed = "Desc";
-        Espresso.onView(withId(R.id.product_description)).check(matches(withText(descToBeDisplayed)));
+        Espresso.onView(withId(R.id.product_description)).check(matches(withText("Desc")));
     }
 
-    private int getViewId() {
-        return R.layout.vh_product;
-    }
-
-    private Product getModel() {
-        Product product = new Product.Builder()
+    private Product createTestProduct() {
+        return new Product.Builder()
                 .title("Title")
                 .price("Price")
                 .description("Desc")
                 .build();
-
-        return product;
     }
 
     private ProductViewHolder getViewHolder(View view) {

@@ -13,32 +13,30 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.utils.ViewHolderInstrumente
 public class ViewHolderInstrumentedTestRule<M> extends ActivityTestRule<ViewHolderInstrumentedTestActivity> {
 
     private final ViewHolderDelegate mViewHolderDelegate;
-    private final ViewDelegate mViewDelegate;
-    private final ModelDelegate<M> mModelDelegate;
+    private final int mViewId;
+    private final M mModelObject;
     private MvpBaseViewHolder mViewHolder;
 
-    public ViewHolderInstrumentedTestRule(final ViewDelegate viewDelegate,
-                                          final ViewHolderDelegate viewHolderDelegate,
-                                          final ModelDelegate<M> modelDelegate) {
+    private ViewHolderInstrumentedTestRule(Builder builder) {
         super(ViewHolderInstrumentedTestActivity.class, true, false);
-        mViewDelegate = viewDelegate;
-        mViewHolderDelegate = viewHolderDelegate;
-        mModelDelegate = modelDelegate;
+        mViewHolderDelegate = builder.mViewHolderDelegate;
+        mViewId = builder.mViewId;
+        mModelObject = (M) builder.mModelObject;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     @Override
     protected void afterActivityLaunched() {
         super.afterActivityLaunched();
         getActivity().runOnUiThread(() -> {
-            getActivity().addViewHolderView(mViewDelegate.getViewId());
-            mViewHolder = mViewHolderDelegate.getViewHolder(getActivity().getViewHolderView());
-            mViewHolder.setDataObject(mModelDelegate.getModel());
+            getActivity().createViewHolderLayout(mViewId);
+            mViewHolder = mViewHolderDelegate.getViewHolder(getActivity().getViewHolderLayout());
+            mViewHolder.setDataObject(mModelObject);
             mViewHolder.bindPresenter();
         });
-    }
-
-    public View getViewHolderView() {
-        return getActivity().getViewHolderView();
     }
 
     public interface ViewHolderDelegate {
@@ -46,13 +44,33 @@ public class ViewHolderInstrumentedTestRule<M> extends ActivityTestRule<ViewHold
         MvpBaseViewHolder getViewHolder(View view);
     }
 
-    public interface ViewDelegate {
 
-        int getViewId();
-    }
+    public static final class Builder<M> {
 
-    public interface ModelDelegate<M> {
+        private ViewHolderDelegate mViewHolderDelegate;
+        private int mViewId;
+        private M mModelObject;
 
-        M getModel();
+        public Builder() {
+        }
+
+        public Builder withViewHolderDelegate(ViewHolderDelegate mViewHolderDelegate) {
+            this.mViewHolderDelegate = mViewHolderDelegate;
+            return this;
+        }
+
+        public Builder withViewId(int mViewId) {
+            this.mViewId = mViewId;
+            return this;
+        }
+
+        public Builder withModelObject(M mModelObject) {
+            this.mModelObject = mModelObject;
+            return this;
+        }
+
+        public ViewHolderInstrumentedTestRule build() {
+            return new ViewHolderInstrumentedTestRule(this);
+        }
     }
 }

@@ -28,13 +28,13 @@ public class ViewHolderUnitTestActivity extends AppCompatActivity {
         setContentView(mRootView);
     }
 
-    public void addViewHolderView(int viewId) {
+    public void createViewHolderLayout(int viewId) {
         mViewHolderView = LayoutInflater.from(this).inflate(viewId, null);
         mRootView.removeAllViews();
         mRootView.addView(mViewHolderView);
     }
 
-    public View getViewHolderView() {
+    public View getViewHolderLayout() {
         return mViewHolderView;
     }
 }
