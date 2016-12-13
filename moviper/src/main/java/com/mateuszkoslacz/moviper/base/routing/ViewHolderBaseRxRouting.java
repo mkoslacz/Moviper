@@ -14,7 +14,7 @@ import java.lang.ref.WeakReference;
  */
 
 public class ViewHolderBaseRxRouting
-        extends ActivityBaseRxRouting
+        extends BaseRxRouting
         implements MoviperRxRouting {
 
     @Nullable

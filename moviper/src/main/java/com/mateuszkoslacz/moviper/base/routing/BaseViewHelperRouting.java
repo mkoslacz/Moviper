@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRxRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRouting;
 import com.mateuszkoslacz.moviper.iface.viewhelper.MoviperViewHelper;
 import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
@@ -16,12 +15,13 @@ import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
  * Activity version of base Routing class with ViewHelper. (see {@link MoviperViewHelperRouting},
  * {@link MoviperViewHelper} and {@link MoviperPresenterForRouting})
  */
-public abstract class ActivityBaseViewHelperRxRouting
-        <ViewHelperType extends MoviperViewHelper> // I prefer readability rather than conventions
-        extends ActivityBaseRxRouting
-        implements MoviperViewHelperRxRouting<ViewHelperType> {
+public abstract class BaseViewHelperRouting
+        <PresenterType extends MoviperPresenterForRouting,  // I prefer readability rather than conventions
+                ViewHelperType extends MoviperViewHelper>
+        extends BaseRouting<PresenterType>
+        implements MoviperViewHelperRouting<PresenterType, ViewHelperType> {
 
-    public ActivityBaseViewHelperRxRouting(@NonNull Activity activity) {
+    public BaseViewHelperRouting(@NonNull Activity activity) {
         super(activity);
     }
 
@@ -36,4 +36,5 @@ public abstract class ActivityBaseViewHelperRxRouting
     public boolean isViewHelperAttached() {
         return isActivityAttached();
     }
+
 }

@@ -20,7 +20,7 @@ import java.lang.ref.WeakReference;
 
 public class ViewHolderBaseViewHelperRouting<PresenterType extends MoviperPresenterForRouting,
             ViewHelperType extends MoviperViewHelper>
-        extends ActivityBaseViewHelperRouting<PresenterType, ViewHelperType>
+        extends BaseViewHelperRouting<PresenterType, ViewHelperType>
         implements MoviperViewHelperRouting<PresenterType, ViewHelperType> {
 
     @Nullable

@@ -16,15 +16,15 @@ import java.lang.ref.WeakReference;
  * Activity version of base Routing class.
  * (see {@link MoviperRouting} and {@link MoviperPresenterForRouting})
  */
-public abstract class ActivityBaseRouting
+public abstract class BaseRouting
         <PresenterType extends MoviperPresenterForRouting>  // I prefer readability rather than conventions
-        extends ActivityBaseRxRouting
+        extends BaseRxRouting
         implements MoviperRouting<PresenterType> {
 
     @Nullable
     private WeakReference<PresenterType> presenter;
 
-    public ActivityBaseRouting(@NonNull Activity activity) {
+    public BaseRouting(@NonNull Activity activity) {
         super(activity);
     }
 

@@ -17,13 +17,13 @@ import java.lang.ref.WeakReference;
  * Activity version of base Routing class.
  * (see {@link MoviperRouting} and {@link MoviperPresenterForRouting})
  */
-public abstract class ActivityBaseRxRouting
+public abstract class BaseRxRouting
         implements MoviperRxRouting {
 
     @NonNull
     protected WeakReference<Activity> activity;
 
-    public ActivityBaseRxRouting(@NonNull Activity activity) {
+    public BaseRxRouting(@NonNull Activity activity) {
         this.activity = new WeakReference<>(activity);
     }
 
