@@ -1,1 +1,1 @@
-include ':moviper', ':sample', ':sample-rx', ':sample-ipc', ':sample-recyclerview', ':sample-rx-presenter', 'sample-rx-viewstate'
+include ':moviper', ':sample', ':sample-rx', ':sample-ipc', ':sample-recyclerview', ':sample-rx-presenter', 'sample-rx-viewstate', ':sample-rx-rdp'
