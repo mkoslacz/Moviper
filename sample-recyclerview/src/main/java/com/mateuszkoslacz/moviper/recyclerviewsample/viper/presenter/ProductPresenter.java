@@ -2,7 +2,7 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter;
 
 import android.support.annotation.NonNull;
 
-import com.mateuszkoslacz.moviper.base.presenter.ViperViewHolderBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.ViperBaseRxPresenter;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.ProductContract;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.interactor.ProductInteractor;
@@ -13,7 +13,7 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.routing.ProductRoutin
  */
 
 public class ProductPresenter
-        extends ViperViewHolderBaseRxPresenter
+        extends ViperBaseRxPresenter
         <ProductContract.View,
                 ProductContract.Interactor,
                 ProductContract.Routing>
