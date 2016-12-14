@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter;
 
-import android.app.Activity;
 import android.support.annotation.NonNull;
 
 import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
@@ -16,15 +15,12 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainPresenter extends ViperActivityBaseRxPresenter<
-            MainContract.View,
-            MainContract.Interactor,
-            MainContract.Routing>
+public class MainPresenter
+        extends ViperActivityBaseRxPresenter
+        <MainContract.View,
+                MainContract.Interactor,
+                MainContract.Routing>
         implements MainContract.Presenter {
-
-    public MainPresenter(Activity activity) {
-        super(activity);
-    }
 
     @Override
     public void onViewCreated() {
@@ -43,8 +39,8 @@ public class MainPresenter extends ViperActivityBaseRxPresenter<
 
     @NonNull
     @Override
-    public MainContract.Routing createRouting(@NonNull Activity activity) {
-        return new MainRouting(activity);
+    public MainContract.Routing createRouting() {
+        return new MainRouting();
     }
 
     @NonNull
