@@ -1,7 +1,5 @@
 package com.mateuszkoslacz.moviper.ipcsample.viper.routing;
 
-import android.app.Activity;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
@@ -12,10 +10,6 @@ import com.mateuszkoslacz.moviper.ipcsample.viper.view.fragment.ColorWidgetFragm
 public class MainRouting
         extends BaseRxRouting
         implements MainContract.Routing {
-
-    public MainRouting(@NonNull Activity activity) {
-        super(activity);
-    }
 
     @Override
     public void createAndAddWidgetToSlotWithGivenId(String widgetName, int widgetColor,
