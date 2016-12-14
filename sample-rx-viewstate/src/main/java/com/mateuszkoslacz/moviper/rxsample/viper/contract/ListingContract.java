@@ -33,6 +33,16 @@ public interface ListingContract {
         void showLoading();
 
         void showContent();
+
+
+        interface State {
+
+            void setUserList(List<User> userList);
+
+            void setError(Throwable throwable);
+
+            void setState(int state);
+        }
     }
 
     interface Interactor extends MoviperRxInteractor {
@@ -53,14 +63,5 @@ public interface ListingContract {
         void startUserDetailsActivity(User user);
     }
 
-    interface ViewState {
 
-        void setUserList(List<User> userList);
-
-        void setStateError(Throwable throwable);
-
-        void setStateLoading();
-
-        void setStateContent();
-    }
 }

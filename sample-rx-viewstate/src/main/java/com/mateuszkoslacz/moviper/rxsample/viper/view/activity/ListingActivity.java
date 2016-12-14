@@ -94,7 +94,8 @@ public class ListingActivity
         mLoadingViewProgressBar.setVisibility(View.INVISIBLE);
         mRecyclerView.setVisibility(View.INVISIBLE);
         mErrorViewTextView.setText(throwable.getLocalizedMessage());
-        ((ListingViewState) getViewState()).setStateError(throwable);
+        // TODO: 14.12.2016 why it's not generic to return correct ViewState
+        ((ListingViewState) getViewState()).setError(throwable);
     }
 
     @Override
@@ -102,7 +103,7 @@ public class ListingActivity
         mErrorViewTextView.setVisibility(View.INVISIBLE);
         mLoadingViewProgressBar.setVisibility(View.VISIBLE);
         mRecyclerView.setVisibility(View.INVISIBLE);
-        ((ListingViewState) getViewState()).setStateLoading();
+        ((ListingViewState) getViewState()).setState(ListingViewState.STATE_LOADING);
     }
 
     @Override
@@ -110,7 +111,7 @@ public class ListingActivity
         mErrorViewTextView.setVisibility(View.INVISIBLE);
         mLoadingViewProgressBar.setVisibility(View.INVISIBLE);
         mRecyclerView.setVisibility(View.VISIBLE);
-        ((ListingViewState) getViewState()).setStateContent();
+        ((ListingViewState) getViewState()).setState(ListingViewState.STATE_CONTENT);
     }
 
     @NonNull

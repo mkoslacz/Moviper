@@ -15,10 +15,10 @@ import java.util.List;
  */
 
 public class ListingViewState
-        implements RestorableViewState<ListingContract.View>, ListingContract.ViewState {
+        implements RestorableViewState<ListingContract.View>, ListingContract.View.State {
 
-    private static final int STATE_LOADING = 0;
-    private static final int STATE_CONTENT = 1;
+    public static final int STATE_LOADING = 0;
+    public static final int STATE_CONTENT = 1;
     private static final int STATE_ERROR = 2;
     private static final String KEY_STATE = "KEY_STATE";
     private static final String KEY_DATA = "KEY_DATA";
@@ -72,18 +72,13 @@ public class ListingViewState
     }
 
     @Override
-    public void setStateError(Throwable throwable) {
+    public void setError(Throwable throwable) {
         mThrowable = throwable;
         mState = STATE_ERROR;
     }
 
     @Override
-    public void setStateLoading() {
-        mState = STATE_LOADING;
-    }
-
-    @Override
-    public void setStateContent() {
-        mState = STATE_CONTENT;
+    public void setState(int state) {
+        mState = state;
     }
 }
