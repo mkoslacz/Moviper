@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
+import com.mateuszkoslacz.moviper.iface.view.ViperView;
 import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
 
 import java.lang.ref.WeakReference;
@@ -23,23 +24,19 @@ public abstract class BaseRxRouting
     @NonNull
     protected WeakReference<Activity> activity;
 
-    public BaseRxRouting(@NonNull Activity activity) {
-        this.activity = new WeakReference<>(activity);
-    }
-
     @Override
     public boolean isActivityAttached() {
         return WeakReferenceUtils.isAttached(activity);
     }
 
     @Override
-    public void attachActivity(Activity activity) {
-        throw new RuntimeException("For now this method is called only in the ViewHolder case. Work in progress.");
+    public void attachActivity(ViperView view) {
+        activity = new WeakReference<>(view.getActivity());
     }
 
     @Override
     public void detachActivity() {
-        throw new RuntimeException("For now this method is called only in the ViewHolder case. Work in progress.");
+        WeakReferenceUtils.detach(activity);
     }
 
     @Nullable

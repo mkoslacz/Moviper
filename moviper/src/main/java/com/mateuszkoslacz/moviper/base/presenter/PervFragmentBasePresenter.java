@@ -2,14 +2,12 @@ package com.mateuszkoslacz.moviper.base.presenter;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
-import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperFragmentPresenterForRouting;
+import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
+import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 /**
  * Created by mateuszkoslacz on 09.08.2016.
@@ -28,21 +26,20 @@ import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
 //TODO migrate to MvpNullObjectPresenter base class?
 public abstract class PervFragmentBasePresenter
         <RoutingType extends MoviperRouting,  // I prefer readability rather than conventions
-                ViewType extends MvpView>
+                ViewType extends ViperView>
         extends MoviperBasePresenter<ViewType>
-        implements MoviperFragmentPresenterForRouting<RoutingType>,
-        MoviperPresenter<ViewType> {
+        implements MoviperPresenterForRouting<RoutingType>, MoviperPresenter<ViewType> {
 
     @NonNull
     private RoutingType routing;
 
-    public PervFragmentBasePresenter(@NonNull Fragment fragment) {
-        this(fragment, null);
+    public PervFragmentBasePresenter() {
+        this(null);
     }
 
-    public PervFragmentBasePresenter(@NonNull Fragment fragment, Bundle args) {
+    public PervFragmentBasePresenter(Bundle args) {
         super(args);
-        this.routing = createRouting(fragment);
+        this.routing = createRouting();
     }
 
     @Override
@@ -56,12 +53,14 @@ public abstract class PervFragmentBasePresenter
         super.attachView(view);
         //noinspection unchecked
         routing.attachPresenter(this);
+        routing.attachActivity(view);
     }
 
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
         routing.detachPresenter();
+        routing.detachActivity();
     }
 
     @NonNull

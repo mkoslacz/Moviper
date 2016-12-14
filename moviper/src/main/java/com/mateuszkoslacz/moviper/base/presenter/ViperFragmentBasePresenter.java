@@ -2,16 +2,14 @@ package com.mateuszkoslacz.moviper.base.presenter;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
 import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
-import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperFragmentPresenterForRouting;
+import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
+import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
@@ -29,25 +27,25 @@ import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
  */
 //TODO migrate to MvpNullObjectPresenter base class?
 public abstract class ViperFragmentBasePresenter
-        <ViewType extends MvpView,  // I prefer readability rather than conventions
+        <ViewType extends ViperView,  // I prefer readability rather than conventions
                 InteractorType extends MoviperInteractor,
                 RoutingType extends MoviperRouting>
         extends WipeBasePresenter<ViewType, InteractorType>
         implements MoviperPresenter<ViewType>,
         MoviperPresenterForInteractor<InteractorType>,
-        MoviperFragmentPresenterForRouting<RoutingType> {
+        MoviperPresenterForRouting<RoutingType> {
 
     @NonNull
     private RoutingType routing;
 
-    public ViperFragmentBasePresenter(@NonNull Fragment fragment) {
+    public ViperFragmentBasePresenter() {
         super();
-        this.routing = createRouting(fragment);
+        this.routing = createRouting();
     }
 
-    public ViperFragmentBasePresenter(@NonNull Fragment fragment, Bundle args) {
+    public ViperFragmentBasePresenter(Bundle args) {
         super(args);
-        this.routing = createRouting(fragment);
+        this.routing = createRouting();
     }
 
     @Override
@@ -61,12 +59,14 @@ public abstract class ViperFragmentBasePresenter
         super.attachView(view);
         //noinspection unchecked
         routing.attachPresenter(this);
+        routing.attachActivity(view);
     }
 
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
         routing.detachPresenter();
+        routing.detachActivity();
     }
 
     @NonNull

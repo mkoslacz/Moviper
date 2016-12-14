@@ -1,7 +1,5 @@
 package com.mateuszkoslacz.moviper.base.routing;
 
-import android.app.Activity;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
@@ -16,17 +14,12 @@ import java.lang.ref.WeakReference;
  * Activity version of base Routing class.
  * (see {@link MoviperRouting} and {@link MoviperPresenterForRouting})
  */
-public abstract class BaseRouting
-        <PresenterType extends MoviperPresenterForRouting>  // I prefer readability rather than conventions
+public abstract class BaseRouting<PresenterType extends MoviperPresenterForRouting>  // I prefer readability rather than conventions
         extends BaseRxRouting
         implements MoviperRouting<PresenterType> {
 
     @Nullable
     private WeakReference<PresenterType> presenter;
-
-    public BaseRouting(@NonNull Activity activity) {
-        super(activity);
-    }
 
     @Override
     public void attachPresenter(PresenterType presenter) {
@@ -47,7 +40,6 @@ public abstract class BaseRouting
     @Override
     public void detachPresenter() {
         WeakReferenceUtils.detach(presenter);
-        WeakReferenceUtils.detach(activity);
     }
 
 }

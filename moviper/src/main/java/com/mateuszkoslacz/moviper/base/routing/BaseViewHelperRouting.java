@@ -1,7 +1,5 @@
 package com.mateuszkoslacz.moviper.base.routing;
 
-import android.app.Activity;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
@@ -20,10 +18,6 @@ public abstract class BaseViewHelperRouting
                 ViewHelperType extends MoviperViewHelper>
         extends BaseRouting<PresenterType>
         implements MoviperViewHelperRouting<PresenterType, ViewHelperType> {
-
-    public BaseViewHelperRouting(@NonNull Activity activity) {
-        super(activity);
-    }
 
     @Nullable
     @Override
