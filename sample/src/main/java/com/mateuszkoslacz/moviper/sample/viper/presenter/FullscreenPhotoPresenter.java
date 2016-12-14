@@ -3,17 +3,16 @@ package com.mateuszkoslacz.moviper.sample.viper.presenter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBasePresenter;
+import com.mateuszkoslacz.moviper.base.presenter.ViperBasePresenter;
 import com.mateuszkoslacz.moviper.sample.viper.contract.FullscreenPhotoContract;
 import com.mateuszkoslacz.moviper.sample.viper.interactor.FullscreenPhotoInteractor;
 import com.mateuszkoslacz.moviper.sample.viper.routing.FullscreenPhotoRouting;
 import com.mateuszkoslacz.moviper.sample.viper.view.activity.FullscreenPhotoActivity;
 
 public class FullscreenPhotoPresenter
-        extends ViperActivityBasePresenter
-        <FullscreenPhotoContract.View,
-                FullscreenPhotoContract.Interactor,
-                FullscreenPhotoContract.Routing>
+        extends ViperBasePresenter<FullscreenPhotoContract.View,
+                        FullscreenPhotoContract.Interactor,
+                        FullscreenPhotoContract.Routing>
         implements FullscreenPhotoContract.Presenter,
         FullscreenPhotoContract.PresenterForInteractor,
         FullscreenPhotoContract.PresenterForRouting {
