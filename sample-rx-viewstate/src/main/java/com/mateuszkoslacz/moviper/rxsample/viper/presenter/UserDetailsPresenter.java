@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
@@ -18,11 +17,10 @@ public class UserDetailsPresenter
         <UserDetailsContract.View,
                 UserDetailsContract.Interactor,
                 UserDetailsContract.Routing>
-        implements
-        UserDetailsContract.Presenter {
+        implements UserDetailsContract.Presenter {
 
-    public UserDetailsPresenter(Activity activity, Bundle bundle) {
-        super(activity, bundle);
+    public UserDetailsPresenter(Bundle bundle) {
+        super(bundle);
     }
 
     @Override
@@ -58,8 +56,8 @@ public class UserDetailsPresenter
 
     @NonNull
     @Override
-    public UserDetailsContract.Routing createRouting(@NonNull Activity activity) {
-        return new UserDetailsRouting(activity);
+    public UserDetailsContract.Routing createRouting() {
+        return new UserDetailsRouting();
     }
 
     @NonNull
