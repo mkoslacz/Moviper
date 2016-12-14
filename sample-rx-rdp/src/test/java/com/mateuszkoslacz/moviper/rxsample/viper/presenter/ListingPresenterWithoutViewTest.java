@@ -1,12 +1,9 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
-import com.mateuszkoslacz.moviper.rxsample.viper.utils.RxAndroidSchedulersOverrideRule;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,14 +20,13 @@ import static org.mockito.Mockito.when;
 /**
  * Created by mateuszkoslacz on 17.11.2016.
  */
-@RunWith(MockitoJUnitRunner.class)
 public class ListingPresenterWithoutViewTest extends ListingPresenterTest {
 
     @Before
     public void setUpPresenter() {
+        super.setUpPresenter();
         mPresenter.detachView(false);
     }
-
 
     @Test
     public void onViewCreatedUsersReceived() throws Exception {
