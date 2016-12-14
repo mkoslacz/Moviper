@@ -16,21 +16,21 @@ import com.mateuszkoslacz.moviper.iface.view.ViperView;
  * <p>
  * Viper - View, Interactor, Presenter, Entities, Routing
  * <p>
- * This is a Fragment version of base presenter class for mentioned set of concepts.
+ * This is a Activity version of base presenter class for mentioned set of concepts.
  * (see {@link MvpBasePresenter})
  * <p>
  * You can use any Mosby Activity View with this class
- * ({@link com.hannesdorfmann.mosby.mvp.MvpFragment},
- * {@link com.hannesdorfmann.mosby.mvp.lce.MvpLceFragment},
- * {@link com.hannesdorfmann.mosby.mvp.viewstate.MvpViewStateFragment},
- * {@link com.hannesdorfmann.mosby.mvp.viewstate.lce.MvpLceViewStateFragment})
+ * ({@link com.hannesdorfmann.mosby.mvp.MvpActivity},
+ * {@link com.hannesdorfmann.mosby.mvp.lce.MvpLceActivity},
+ * {@link com.hannesdorfmann.mosby.mvp.viewstate.MvpViewStateActivity},
+ * {@link com.hannesdorfmann.mosby.mvp.viewstate.lce.MvpLceViewStateActivity})
  */
 //TODO migrate to MvpNullObjectPresenter base class?
-public abstract class ViperFragmentBasePresenter
+public abstract class ViperBasePresenter
         <ViewType extends ViperView,  // I prefer readability rather than conventions
                 InteractorType extends MoviperInteractor,
                 RoutingType extends MoviperRouting>
-        extends MoviperBasePresenter<ViewType>
+        extends CommonBasePresenter<ViewType>
         implements MoviperPresenter<ViewType>,
         MoviperPresenterForInteractor<InteractorType>,
         MoviperPresenterForRouting<RoutingType> {
@@ -41,13 +41,11 @@ public abstract class ViperFragmentBasePresenter
     @NonNull
     private InteractorType interactor;
 
-    public ViperFragmentBasePresenter() {
-        super();
-        this.routing = createRouting();
-        this.interactor = createInteractor();
+    public ViperBasePresenter() {
+        this(null);
     }
 
-    public ViperFragmentBasePresenter(Bundle args) {
+    public ViperBasePresenter(Bundle args) {
         super(args);
         this.routing = createRouting();
         this.interactor = createInteractor();
