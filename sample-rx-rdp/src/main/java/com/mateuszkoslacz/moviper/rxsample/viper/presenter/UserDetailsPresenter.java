@@ -3,7 +3,7 @@ package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.ViperBaseRxPresenter;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.interactor.UserDetailsInteractor;
 import com.mateuszkoslacz.moviper.rxsample.viper.routing.UserDetailsRouting;
@@ -13,10 +13,9 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class UserDetailsPresenter
-        extends ViperActivityBaseRxPresenter
-        <UserDetailsContract.View,
-                UserDetailsContract.Interactor,
-                UserDetailsContract.Routing>
+        extends ViperBaseRxPresenter<UserDetailsContract.View,
+                        UserDetailsContract.Interactor,
+                        UserDetailsContract.Routing>
         implements UserDetailsContract.Presenter {
 
     public UserDetailsPresenter(Bundle bundle) {
