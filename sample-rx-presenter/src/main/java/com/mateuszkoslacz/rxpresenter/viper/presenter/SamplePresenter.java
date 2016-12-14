@@ -2,7 +2,6 @@ package com.mateuszkoslacz.rxpresenter.viper.presenter;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.app.Activity;
 
 import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
 import com.mateuszkoslacz.rxpresenter.viper.contract.SampleContract;
@@ -22,14 +21,10 @@ public class SamplePresenter
                 SampleContract.Routing>
         implements SampleContract.Presenter {
 
-    public SamplePresenter(Activity activity) {
-        super(activity);
-    }
-
     @NonNull
     @Override
-    public SampleContract.Routing createRouting(@NonNull Activity activity) {
-        return new SampleRouting(activity);
+    public SampleContract.Routing createRouting() {
+        return new SampleRouting();
     }
 
     @NonNull
