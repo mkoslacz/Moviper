@@ -2,7 +2,7 @@ package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
 import android.support.annotation.NonNull;
 
-import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.ViperBaseRxPresenter;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.interactor.ListingInteractor;
@@ -12,10 +12,9 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class ListingPresenter
-        extends ViperActivityBaseRxPresenter
-        <ListingContract.View,
-                ListingContract.Interactor,
-                ListingContract.Routing>
+        extends ViperBaseRxPresenter<ListingContract.View,
+                        ListingContract.Interactor,
+                        ListingContract.Routing>
         implements ListingContract.Presenter {
 
     @Override
