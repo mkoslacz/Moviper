@@ -30,7 +30,7 @@ public abstract class ViperActivityBasePresenter
         <ViewType extends ViperView,  // I prefer readability rather than conventions
                 InteractorType extends MoviperInteractor,
                 RoutingType extends MoviperRouting>
-        extends WipeBasePresenter<ViewType, InteractorType>
+        extends MoviperBasePresenter<ViewType>
         implements MoviperPresenter<ViewType>,
         MoviperPresenterForInteractor<InteractorType>,
         MoviperPresenterForRouting<RoutingType> {
@@ -38,14 +38,19 @@ public abstract class ViperActivityBasePresenter
     @NonNull
     private RoutingType routing;
 
+    @NonNull
+    private InteractorType interactor;
+
     public ViperActivityBasePresenter() {
         super();
         this.routing = createRouting();
+        this.interactor = createInteractor();
     }
 
     public ViperActivityBasePresenter(Bundle args) {
         super(args);
         this.routing = createRouting();
+        this.interactor = createInteractor();
     }
 
     @Override
@@ -55,11 +60,18 @@ public abstract class ViperActivityBasePresenter
     }
 
     @Override
+    @Deprecated
+    public boolean isInteractorAttached() {
+        return interactor != null;
+    }
+
+    @Override
     public void attachView(ViewType view) {
         super.attachView(view);
         //noinspection unchecked
         routing.attachPresenter(this);
         routing.attachActivity(view);
+        interactor.attachPresenter(this);
     }
 
     @Override
@@ -67,11 +79,18 @@ public abstract class ViperActivityBasePresenter
         super.detachView(retainInstance);
         routing.detachPresenter();
         routing.detachActivity();
+        interactor.detachPresenter();
     }
 
     @NonNull
     @Override
     public RoutingType getRouting() {
         return routing;
+    }
+
+    @NonNull
+    @Override
+    public InteractorType getInteractor() {
+        return interactor;
     }
 }

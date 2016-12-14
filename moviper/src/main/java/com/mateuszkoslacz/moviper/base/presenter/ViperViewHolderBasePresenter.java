@@ -2,7 +2,6 @@ package com.mateuszkoslacz.moviper.base.presenter;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
@@ -31,22 +30,44 @@ public abstract class ViperViewHolderBasePresenter
         <ViewType extends ViperView,
                 InteractorType extends MoviperInteractor,
                 RoutingType extends MoviperRouting>
-        extends WipeBasePresenter<ViewType, InteractorType>
+        extends MoviperBasePresenter<ViewType>
         implements MvpPresenter<ViewType>,
         MoviperPresenterForInteractor<InteractorType>,
         MoviperPresenterForRouting<RoutingType> {
 
-    @Nullable
+    @NonNull
     private RoutingType routing;
+
+    @NonNull
+    private InteractorType interactor;
 
     public ViperViewHolderBasePresenter(Bundle args) {
         super(args);
         this.routing = createRouting();
+        this.interactor = createInteractor();
     }
 
     public ViperViewHolderBasePresenter() {
         super();
         this.routing = createRouting();
+        this.interactor = createInteractor();
+    }
+
+    @Override
+    public void attachView(ViewType view) {
+        super.attachView(view);
+        //noinspection unchecked
+        routing.attachPresenter(this);
+        routing.attachActivity(view);
+        interactor.attachPresenter(this);
+    }
+
+    @Override
+    public void detachView(boolean retainInstance) {
+        super.detachView(retainInstance);
+        routing.detachPresenter();
+        routing.detachActivity();
+        interactor.detachPresenter();
     }
 
     @Override
@@ -56,24 +77,21 @@ public abstract class ViperViewHolderBasePresenter
     }
 
     @Override
-    public void attachView(ViewType view) {
-        super.attachView(view);
-        //noinspection unchecked
-        routing.attachPresenter(this);
-        routing.attachActivity(view);
-    }
-
-    @Override
-    public void detachView(boolean retainInstance) {
-        super.detachView(retainInstance);
-        routing.detachPresenter();
-        routing.detachActivity();
+    @Deprecated
+    public boolean isInteractorAttached() {
+        return interactor != null;
     }
 
     @NonNull
     @Override
     public RoutingType getRouting() {
         return routing;
+    }
+
+    @NonNull
+    @Override
+    public InteractorType getInteractor() {
+        return interactor;
     }
 }
 

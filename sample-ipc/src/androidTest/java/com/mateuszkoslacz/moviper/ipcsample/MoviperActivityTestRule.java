@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.support.test.rule.ActivityTestRule;
 
 import com.mateuszkoslacz.moviper.base.presenter.MoviperBaseRxPresenter;
-import com.mateuszkoslacz.moviper.base.presenter.WipeBaseRxPresenter;
 import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 
 /**

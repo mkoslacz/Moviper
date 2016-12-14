@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.hannesdorfmann.mosby.mvp.MvpFragment;
 import com.mateuszkoslacz.moviper.base.presenter.MoviperBasePresenter;
-import com.mateuszkoslacz.moviper.base.presenter.WipeBaseRxPresenter;
 import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 
 import junit.framework.Assert;
