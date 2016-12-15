@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
 import com.mateuszkoslacz.moviper.recyclerviewsample.R;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ListingItem;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ProductListingItem;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.DisplayableItem;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ProductItem;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.viewholder.ProductViewHolder;
 
 import java.util.List;
@@ -16,11 +16,11 @@ import java.util.List;
 /**
  * Created by jjodelka on 29/11/2016.
  */
-public class ProductAdapterDelegate extends AdapterDelegate<List<ListingItem>> {
+public class ProductAdapterDelegate extends AdapterDelegate<List<DisplayableItem>> {
 
     @Override
-    protected boolean isForViewType(@NonNull List<ListingItem> items, int position) {
-        return items.get(position).getType() == ListingItem.TYPE_PRODUCT;
+    protected boolean isForViewType(@NonNull List<DisplayableItem> items, int position) {
+        return items.get(position).getType() == ProductItem.TYPE;
     }
 
     @NonNull
@@ -31,11 +31,11 @@ public class ProductAdapterDelegate extends AdapterDelegate<List<ListingItem>> {
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull List<ListingItem> items, int position,
+    protected void onBindViewHolder(@NonNull List<DisplayableItem> items, int position,
                                     @NonNull RecyclerView.ViewHolder holder,
                                     @NonNull List<Object> payloads) {
         ProductViewHolder productViewHolder = (ProductViewHolder) holder;
-        productViewHolder.setDataObject(((ProductListingItem) items.get(position)).getProduct());
+        productViewHolder.setDataObject(((ProductItem) items.get(position)).getProduct());
         productViewHolder.bindPresenter();
     }
 }
