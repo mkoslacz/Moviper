@@ -1,5 +1,8 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
+import android.content.Context;
+
+import com.mateuszkoslacz.moviper.rxsample.di.DIProvider;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.interactor.ListingInteractor;
 import com.mateuszkoslacz.moviper.rxsample.viper.utils.RxAndroidSchedulersOverrideRule;
@@ -7,6 +10,7 @@ import com.mateuszkoslacz.moviper.rxsample.viper.routing.ListingRouting;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.ListingActivity;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,6 +47,11 @@ public class ListingPresenterTest {
 
     @InjectMocks
     protected ListingPresenter mPresenter = new ListingPresenter(mView);
+
+    @BeforeClass
+    public static void setUpClass() {
+        DIProvider.init(mock(Context.class));
+    }
 
     @Before
     public void setUpPresenter() {
