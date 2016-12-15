@@ -52,18 +52,6 @@ public abstract class ViperBasePresenter
     }
 
     @Override
-    @Deprecated
-    public boolean isRoutingAttached() {
-        return routing != null;
-    }
-
-    @Override
-    @Deprecated
-    public boolean isInteractorAttached() {
-        return interactor != null;
-    }
-
-    @Override
     public void attachView(ViewType view) {
         super.attachView(view);
         //noinspection unchecked

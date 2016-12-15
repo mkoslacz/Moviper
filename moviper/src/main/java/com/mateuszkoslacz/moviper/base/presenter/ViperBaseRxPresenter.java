@@ -76,18 +76,6 @@ public abstract class ViperBaseRxPresenter
         interactor.onPresenterDetached(retainInstance);
     }
 
-    @Override
-    @Deprecated
-    public boolean isRoutingAttached() {
-        return routing != null;
-    }
-
-    @Override
-    @Deprecated
-    public boolean isInteractorAttached() {
-        return interactor != null;
-    }
-
     @NonNull
     @Override
     public RoutingType getRouting() {
