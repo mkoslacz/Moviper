@@ -5,7 +5,7 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ListingItem;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.DisplayableItem;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public interface MainContract {
 
     interface View extends MvpView {
 
-        void setData(List<ListingItem> listingItems);
+        void setData(List<DisplayableItem> displayableItems);
     }
 
     interface Interactor extends MoviperRxInteractor {

@@ -9,9 +9,9 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Category;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.interactor.MainInteractor;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.routing.MainRouting;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.HeaderListingItem;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ListingItem;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ProductListingItem;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.HeaderItem;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.DisplayableItem;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ProductItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,16 +28,16 @@ public class MainPresenter extends ViperActivityBaseRxPresenter<
 
     @Override
     public void onViewCreated() {
-        List<ListingItem> listingItems = new ArrayList<>();
+        List<DisplayableItem> displayableItems = new ArrayList<>();
         for (Product product : getInteractor().getProducts()) {
-            listingItems.add(new ProductListingItem(product));
+            displayableItems.add(new ProductItem(product));
         }
-        listingItems.add(5, new HeaderListingItem(new Category("Laptop")));
-        listingItems.add(3, new HeaderListingItem(new Category("Tablets")));
-        listingItems.add(0, new HeaderListingItem(new Category("Smartphones")));
+        displayableItems.add(5, new HeaderItem(new Category("Laptop")));
+        displayableItems.add(3, new HeaderItem(new Category("Tablets")));
+        displayableItems.add(0, new HeaderItem(new Category("Smartphones")));
 
         if (isViewAttached()) {
-            getView().setData(listingItems);
+            getView().setData(displayableItems);
         }
     }
 

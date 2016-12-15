@@ -6,17 +6,18 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
  * Created by jjodelka on 29/11/2016.
  */
 
-public class ProductListingItem implements ListingItem {
+public class ProductItem implements DisplayableItem {
 
+    public static final int TYPE = ProductItem.class.hashCode();
     private Product mProduct;
 
-    public ProductListingItem(Product product) {
+    public ProductItem(Product product) {
         mProduct = product;
     }
 
     @Override
     public int getType() {
-        return ListingItem.TYPE_PRODUCT;
+        return TYPE;
     }
 
     public Product getProduct() {

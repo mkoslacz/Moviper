@@ -10,7 +10,7 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.R;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.MainContract;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter.MainPresenter;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.ProductAdapter;
-import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ListingItem;
+import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.DisplayableItem;
 
 import java.util.List;
 
@@ -37,8 +37,8 @@ public class MainActivity
     }
 
     @Override
-    public void setData(List<ListingItem> listingItems) {
-        mProductAdapter.setListingItems(listingItems);
+    public void setData(List<DisplayableItem> displayableItems) {
+        mProductAdapter.setListingItems(displayableItems);
     }
 
     private void configureRecyclerView() {

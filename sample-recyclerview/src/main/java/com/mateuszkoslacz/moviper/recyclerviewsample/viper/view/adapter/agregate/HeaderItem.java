@@ -6,17 +6,18 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Category;
  * Created by jjodelka on 29/11/2016.
  */
 
-public class HeaderListingItem implements ListingItem {
+public class HeaderItem implements DisplayableItem {
 
+    public static final int TYPE = HeaderItem.class.hashCode();
     private Category mCategory;
 
-    public HeaderListingItem(Category category) {
+    public HeaderItem(Category category) {
         mCategory = category;
     }
 
     @Override
     public int getType() {
-        return ListingItem.TYPE_HEADER;
+        return TYPE;
     }
 
     public Category getCategory() {
