@@ -16,6 +16,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.IOException;
@@ -46,7 +47,7 @@ public class ListingPresenterTest {
     protected ListingActivity mView;
 
     @InjectMocks
-    protected ListingPresenter mPresenter = new ListingPresenter(mView);
+    protected ListingPresenter mPresenter = new ListingPresenter();
 
     @BeforeClass
     public static void setUpClass() {
@@ -55,7 +56,9 @@ public class ListingPresenterTest {
 
     @Before
     public void setUpPresenter() {
+        Mockito.when(mView.getActivity()).thenReturn(mView);
         mPresenter.attachView(mView);
+        mRouting.attachActivity(mView);
     }
 
 
