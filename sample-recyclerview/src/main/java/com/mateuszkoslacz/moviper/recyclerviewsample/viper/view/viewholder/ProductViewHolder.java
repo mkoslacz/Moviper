@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.viewholder;
 
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -55,6 +56,7 @@ public class ProductViewHolder
     }
 
     @Override
+    @NonNull
     public ProductContract.Presenter createPresenter() {
         return new ProductPresenter();
     }

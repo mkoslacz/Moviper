@@ -20,7 +20,7 @@ public class BaseRouting<PresenterType extends ViperPresenterForRouting>  // I p
         implements ViperRouting<PresenterType> {
 
     @Nullable
-    WeakReference<PresenterType> presenter;
+    private WeakReference<PresenterType> presenter;
 
     @Nullable
     WeakReference<Activity> activity;

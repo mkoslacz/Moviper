@@ -25,7 +25,7 @@ public abstract class CommonBasePresenter<V extends MvpView>
         this.args = args;
     }
 
-    public String getClassName() {
+    private String getClassName() {
         return getClass().getName();
     }
 

@@ -21,8 +21,8 @@ public abstract class ViperViewHolder<DataObject, View extends ViperDataView, Pr
         extends RecyclerView.ViewHolder
         implements BaseMvpDelegateCallback<View, Presenter>, ViperDataView<DataObject> {
 
-    protected Presenter mPresenter;
-    protected ViewGroupMvpDelegate<View, Presenter> mvpDelegate;
+    private Presenter mPresenter;
+    private ViewGroupMvpDelegate<View, Presenter> mvpDelegate;
     private DataObject mDataObject;
 
     public ViperViewHolder(android.view.View itemView) {
@@ -30,7 +30,7 @@ public abstract class ViperViewHolder<DataObject, View extends ViperDataView, Pr
     }
 
     @NonNull
-    protected ViewGroupMvpDelegate<View, Presenter> getMvpDelegate() {
+    private ViewGroupMvpDelegate<View, Presenter> getMvpDelegate() {
         if (mvpDelegate == null) {
             mvpDelegate = new ViewGroupMvpDelegateImpl<>(this);
         }
@@ -38,6 +38,7 @@ public abstract class ViperViewHolder<DataObject, View extends ViperDataView, Pr
         return mvpDelegate;
     }
 
+    @NonNull
     @Override
     public Activity getActivity() {
         return ((Activity) itemView.getContext());
@@ -61,6 +62,8 @@ public abstract class ViperViewHolder<DataObject, View extends ViperDataView, Pr
         getMvpDelegate().onDetachedFromWindow();
     }
 
+    @Override
+    @NonNull
     public abstract Presenter createPresenter();
 
     @Override
