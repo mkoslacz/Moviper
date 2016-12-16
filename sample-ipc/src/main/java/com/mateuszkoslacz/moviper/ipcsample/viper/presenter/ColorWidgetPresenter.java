@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.mateuszkoslacz.moviper.annotation.ExternalCall;
-import com.mateuszkoslacz.moviper.base.presenter.ViperBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.BaseRxPresenter;
 import com.mateuszkoslacz.moviper.ipcsample.viper.contract.ColorWidgetContract;
 import com.mateuszkoslacz.moviper.ipcsample.viper.interactor.ColorWidgetInteractor;
 import com.mateuszkoslacz.moviper.ipcsample.viper.routing.ColorWidgetRouting;
@@ -13,10 +13,9 @@ import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 import rx.android.schedulers.AndroidSchedulers;
 
 public class ColorWidgetPresenter
-        extends ViperBaseRxPresenter
-        <ColorWidgetContract.View,
-                ColorWidgetContract.Interactor,
-                ColorWidgetContract.Routing>
+        extends BaseRxPresenter<ColorWidgetContract.View,
+                        ColorWidgetContract.Interactor,
+                        ColorWidgetContract.Routing>
         implements ColorWidgetContract.Presenter {
 
     public static final String FRAGMENT_COLOR_NAME = "FRAGMENT_COLOR_NAME";

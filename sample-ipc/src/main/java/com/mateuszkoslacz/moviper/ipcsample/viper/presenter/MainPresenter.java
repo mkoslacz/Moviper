@@ -2,16 +2,16 @@ package com.mateuszkoslacz.moviper.ipcsample.viper.presenter;
 
 import android.support.annotation.NonNull;
 
-import com.mateuszkoslacz.moviper.base.presenter.ViperBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.BaseRxPresenter;
 import com.mateuszkoslacz.moviper.ipcsample.constants.Constants;
 import com.mateuszkoslacz.moviper.ipcsample.viper.contract.MainContract;
 import com.mateuszkoslacz.moviper.ipcsample.viper.interactor.MainInteractor;
 import com.mateuszkoslacz.moviper.ipcsample.viper.routing.MainRouting;
 
 public class MainPresenter
-        extends ViperBaseRxPresenter<MainContract.View,
-                        MainContract.Interactor,
-                        MainContract.Routing>
+        extends BaseRxPresenter<MainContract.View,
+                                MainContract.Interactor,
+                                MainContract.Routing>
         implements MainContract.Presenter {
 
     @Override
