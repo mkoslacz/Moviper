@@ -4,10 +4,10 @@ import android.support.annotation.NonNull;
 
 import com.mateuszkoslacz.moviper.base.exception.PresenterInstancesAccessNotEnabled;
 import com.mateuszkoslacz.moviper.base.exception.PresentersAccessUtilNotEnabled;
-import com.mateuszkoslacz.moviper.base.presenter.ViperBaseRxPresenter;
-import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
-import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
+import com.mateuszkoslacz.moviper.base.presenter.BaseRxPresenter;
+import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
+import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
+import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -100,7 +100,7 @@ public class MoviperTest {
     public void gettingPresenterInstanceWithNoAccesEnabled() throws Exception {
         mExpectedException.expect(PresenterInstancesAccessNotEnabled.class);
         Moviper.getInstance()
-                .getPresenterInstance(TestPresenter.class, MoviperPresenter.DEFAULT_NAME)
+                .getPresenterInstance(TestPresenter.class, ViperPresenter.DEFAULT_NAME)
                 .subscribe();
     }
 
@@ -119,17 +119,17 @@ public class MoviperTest {
 
     }
 
-    private static class TestPresenter extends ViperBaseRxPresenter implements MoviperPresenter {
+    private static class TestPresenter extends BaseRxPresenter {
 
         @NonNull
         @Override
-        public MoviperRxInteractor createInteractor() {
+        public ViperRxInteractor createInteractor() {
             return null;
         }
 
         @NonNull
         @Override
-        public MoviperRxRouting createRouting() {
+        public ViperRxRouting createRouting() {
             return null;
         }
     }
