@@ -1,10 +1,10 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.contract;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRxRouting;
+import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
+import com.mateuszkoslacz.moviper.iface.routing.ViperViewHelperRxRouting;
 import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
-import com.mateuszkoslacz.moviper.iface.viewhelper.MoviperViewHelper;
+import com.mateuszkoslacz.moviper.iface.viewhelper.ViperViewHelper;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
 import rx.Observable;
@@ -28,7 +28,7 @@ public interface UserDetailsContract {
         void bindDataToViews(User user);
     }
 
-    interface Interactor extends MoviperRxInteractor {
+    interface Interactor extends ViperRxInteractor {
         // Defines what methods the Presenter can invoke on the Interactor.
         // In most cases there will be data saving and querying.
         // It's just a marker interface.
@@ -36,7 +36,7 @@ public interface UserDetailsContract {
         Observable<User> getUserForUsername(String user);
     }
 
-    interface Routing extends MoviperViewHelperRxRouting<ViewHelper> {
+    interface Routing extends ViperViewHelperRxRouting<ViewHelper> {
         // Defines what methods the Presenter can invoke on the Routing.
         // In most cases there will be starting another activities, services and using system
         // framework, ie. scheduling alarms or sending broadcasts.
@@ -46,7 +46,7 @@ public interface UserDetailsContract {
         void startFullscreenPhotoActivity(String photoUrl);
     }
 
-    interface ViewHelper extends MoviperViewHelper {
+    interface ViewHelper extends ViperViewHelper {
         // Defines what Android views the Routing can get from the Viper View.
         // There should only be Android View getter methods to provide the Routing elements
         // to be used on advanced Android transitions.
