@@ -3,9 +3,9 @@ package com.mateuszkoslacz.rxpresenter.viper.contract;
 import android.os.Bundle;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
-import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 public interface SampleContract {
 
@@ -14,7 +14,7 @@ public interface SampleContract {
         void onViewCreated(Bundle savedInstanceState);
     }
 
-    interface View extends ViperView {
+    interface View extends MvpView {
 
         void showNumber(long number);
     }
