@@ -1,8 +1,9 @@
 package com.mateuszkoslacz.moviper.iface.routing;
 
+import android.app.Activity;
 import android.support.annotation.Nullable;
 
-import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
+import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
@@ -17,26 +18,28 @@ import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRou
  * scheduling, Services creating etc. for better separation of concepts.
  * <p>
  * If you are looking for solution providing Android Views to use in Android Transaction with shared
- * views, see {@link MoviperViewHelperRouting}
+ * views, see {@link ViperViewHelperRouting}
  */
 // I prefer readability rather than conventions
-public interface MoviperRouting<PresenterType extends MoviperPresenterForRouting>
-        extends MoviperRxRouting {
+public interface ViperRxRouting {
 
     /**
-     * Remember to call {@link #isPresenterAttached()} ()} before getting the Presenter to avoid
-     * {@link NullPointerException}s.
+     * Remember to call {@link #isActivityAttached()} before getting the Activity to avoid {@link
+     * NullPointerException}s.
      *
-     * @return attached Moviper {@link com.hannesdorfmann.mosby.mvp.MvpBasePresenter} subclass
-     * instance or null if it's detached (View got destroyed)
+     * @return attached Activity instance or null if it's detached (View got destroyed)
      */
     @Nullable
-    PresenterType getPresenter();
+    Activity getActivity();
 
-    boolean isPresenterAttached();
+    boolean isActivityAttached();
 
-    // TODO: 04.10.2016 move attaching presenter to constructor
-    void attachPresenter(PresenterType presenter);
+    void attachActivity(ViperView view);
 
-    void detachPresenter();
+    void detachActivity();
+
+    void onPresenterDetached(boolean retainInstance);
+
+    @Deprecated
+    void onPresenterDetached();
 }

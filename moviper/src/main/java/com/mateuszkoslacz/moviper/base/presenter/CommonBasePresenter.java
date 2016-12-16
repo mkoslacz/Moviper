@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
+import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 
 /**
  * Created by mateuszkoslacz on 24.10.2016.
@@ -13,7 +13,7 @@ import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
 
 public abstract class CommonBasePresenter<V extends MvpView>
         extends MvpBasePresenter<V>
-        implements MoviperPresenter<V> {
+        implements ViperPresenter<V> {
 
     private Bundle args;
 

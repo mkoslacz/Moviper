@@ -13,9 +13,9 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
  * architecture.
  */
 
-public abstract class MvpRecyclerViewAdapter<View extends MvpView,
+public abstract class ViperRecyclerViewAdapter<View extends MvpView,
                 Presenter extends MvpPresenter<View>,
-                ViewHolder extends MvpBaseViewHolder>
+                ViewHolder extends ViperViewHolder>
         extends RecyclerView.Adapter<ViewHolder> {
 
     @Override

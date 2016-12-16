@@ -2,8 +2,8 @@ package com.mateuszkoslacz.moviper.base.routing;
 
 import android.support.annotation.Nullable;
 
-import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
+import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
+import com.mateuszkoslacz.moviper.iface.routing.ViperRouting;
 import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
 
 import java.lang.ref.WeakReference;
@@ -12,11 +12,11 @@ import java.lang.ref.WeakReference;
  * Created by mateuszkoslacz on 08.08.2016.
  * <p>
  * Activity version of base Routing class.
- * (see {@link MoviperRouting} and {@link MoviperPresenterForRouting})
+ * (see {@link ViperRouting} and {@link ViperPresenterForRouting})
  */
-public abstract class BaseRouting<PresenterType extends MoviperPresenterForRouting>  // I prefer readability rather than conventions
+public abstract class BaseRouting<PresenterType extends ViperPresenterForRouting>  // I prefer readability rather than conventions
         extends BaseRxRouting
-        implements MoviperRouting<PresenterType> {
+        implements ViperRouting<PresenterType> {
 
     @Nullable
     private WeakReference<PresenterType> presenter;

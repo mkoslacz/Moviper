@@ -8,7 +8,7 @@ import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpDelegateCallback;
 import com.hannesdorfmann.mosby.mvp.delegate.ViewGroupMvpDelegate;
 import com.hannesdorfmann.mosby.mvp.delegate.ViewGroupMvpDelegateImpl;
-import com.mateuszkoslacz.moviper.iface.view.MvpViewHolder;
+import com.mateuszkoslacz.moviper.iface.view.ViperDataView;
 
 /**
  * Created by norbertbanaszek on 24.10.2016.
@@ -17,15 +17,15 @@ import com.mateuszkoslacz.moviper.iface.view.MvpViewHolder;
  * architecture.
  */
 
-public abstract class MvpBaseViewHolder<DataObject, View extends MvpViewHolder, Presenter extends MvpPresenter<View>>
+public abstract class ViperViewHolder<DataObject, View extends ViperDataView, Presenter extends MvpPresenter<View>>
         extends RecyclerView.ViewHolder
-        implements BaseMvpDelegateCallback<View, Presenter>, MvpViewHolder<DataObject> {
+        implements BaseMvpDelegateCallback<View, Presenter>, ViperDataView<DataObject> {
 
     private DataObject mDataObject;
     protected Presenter mPresenter;
     protected ViewGroupMvpDelegate<View, Presenter> mvpDelegate;
 
-    public MvpBaseViewHolder(android.view.View itemView) {
+    public ViperViewHolder(android.view.View itemView) {
         super(itemView);
     }
 

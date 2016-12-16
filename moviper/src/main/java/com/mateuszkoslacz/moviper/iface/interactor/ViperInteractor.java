@@ -2,7 +2,7 @@ package com.mateuszkoslacz.moviper.iface.interactor;
 
 import android.support.annotation.Nullable;
 
-import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
+import com.mateuszkoslacz.moviper.iface.presenter.interactor.ViperPresenterForInteractor;
 
 /**
  * Created by lucas.urbas on 29/08/15.
@@ -13,14 +13,14 @@ import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterFor
  * {@link com.hannesdorfmann.mosby.mvp.MvpPresenter}). It queries an API, DB etc.
  */
 // I prefer readability rather than conventions
-public interface MoviperInteractor<PresenterType extends MoviperPresenterForInteractor>
-        extends MoviperRxInteractor {
+public interface ViperInteractor<PresenterType extends ViperPresenterForInteractor>
+        extends ViperRxInteractor {
 
     /**
      * Remember to call {@link #isPresenterAttached()} before getting the Presenter to avoid
      * {@link NullPointerException}s.
      *
-     * @return attached {@link MoviperPresenterForInteractor} subclass instance or
+     * @return attached {@link ViperPresenterForInteractor} subclass instance or
      * null if it's detached (View got destroyed)
      */
     @Nullable

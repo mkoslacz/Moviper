@@ -7,7 +7,7 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
  * Created by mateuszkoslacz on 24.10.2016.
  */
 
-public interface MoviperPresenter<View extends MvpView> extends MvpPresenter<View> {
+public interface ViperPresenter<View extends MvpView> extends MvpPresenter<View> {
 
     String DEFAULT_NAME = "default";
 

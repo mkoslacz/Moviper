@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
+import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
+import com.mateuszkoslacz.moviper.iface.routing.ViperRouting;
+import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
 
@@ -16,10 +16,10 @@ import java.lang.ref.WeakReference;
  * Created by mateuszkoslacz on 08.08.2016.
  * <p>
  * Activity version of base Routing class.
- * (see {@link MoviperRouting} and {@link MoviperPresenterForRouting})
+ * (see {@link ViperRouting} and {@link ViperPresenterForRouting})
  */
 public abstract class BaseRxRouting
-        implements MoviperRxRouting {
+        implements ViperRxRouting {
 
     @NonNull
     WeakReference<Activity> activity;

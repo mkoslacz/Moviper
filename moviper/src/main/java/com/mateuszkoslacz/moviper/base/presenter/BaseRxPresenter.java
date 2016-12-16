@@ -4,12 +4,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
-import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
-import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
-import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
-import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
+import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
+import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
+import com.mateuszkoslacz.moviper.iface.presenter.interactor.ViperPresenterForInteractor;
+import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
+import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
+import com.mateuszkoslacz.moviper.presenterbus.Moviper;
+
+import rx.Subscription;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
@@ -26,14 +30,14 @@ import com.mateuszkoslacz.moviper.iface.view.ViperView;
  * {@link com.hannesdorfmann.mosby.mvp.viewstate.lce.MvpLceViewStateActivity})
  */
 //TODO migrate to MvpNullObjectPresenter base class?
-public abstract class ViperBasePresenter
+public abstract class BaseRxPresenter
         <ViewType extends ViperView,  // I prefer readability rather than conventions
-                InteractorType extends MoviperInteractor,
-                RoutingType extends MoviperRouting>
+                InteractorType extends ViperRxInteractor,
+                RoutingType extends ViperRxRouting>
         extends CommonBasePresenter<ViewType>
-        implements MoviperPresenter<ViewType>,
-        MoviperPresenterForInteractor<InteractorType>,
-        MoviperPresenterForRouting<RoutingType> {
+        implements ViperPresenter<ViewType>,
+        ViperPresenterForInteractor<InteractorType>,
+        ViperPresenterForRouting<RoutingType> {
 
     @NonNull
     private RoutingType routing;
@@ -41,12 +45,16 @@ public abstract class ViperBasePresenter
     @NonNull
     private InteractorType interactor;
 
-    public ViperBasePresenter() {
+
+    private CompositeSubscription compositeSubscription;
+
+    public BaseRxPresenter() {
         this(null);
     }
 
-    public ViperBasePresenter(Bundle args) {
+    public BaseRxPresenter(Bundle args) {
         super(args);
+        this.compositeSubscription = new CompositeSubscription();
         this.routing = createRouting();
         this.interactor = createInteractor();
     }
@@ -54,18 +62,18 @@ public abstract class ViperBasePresenter
     @Override
     public void attachView(ViewType view) {
         super.attachView(view);
-        //noinspection unchecked
-        routing.attachPresenter(this);
+        Moviper.getInstance().register(this);
         routing.attachActivity(view);
-        interactor.attachPresenter(this);
     }
 
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
-        routing.detachPresenter();
+        if (!retainInstance) unsubscribe();
+        Moviper.getInstance().unregister(this);
         routing.detachActivity();
-        interactor.detachPresenter();
+        routing.onPresenterDetached(retainInstance);
+        interactor.onPresenterDetached(retainInstance);
     }
 
     @NonNull
@@ -78,5 +86,13 @@ public abstract class ViperBasePresenter
     @Override
     public InteractorType getInteractor() {
         return interactor;
+    }
+
+    protected void addSubscription(Subscription subscription) {
+        if (compositeSubscription != null) compositeSubscription.add(subscription);
+    }
+
+    private void unsubscribe() {
+        if (compositeSubscription != null) compositeSubscription.clear();
     }
 }
