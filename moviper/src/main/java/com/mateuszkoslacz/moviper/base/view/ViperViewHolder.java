@@ -8,6 +8,7 @@ import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpDelegateCallback;
 import com.hannesdorfmann.mosby.mvp.delegate.ViewGroupMvpDelegate;
 import com.hannesdorfmann.mosby.mvp.delegate.ViewGroupMvpDelegateImpl;
+import com.mateuszkoslacz.moviper.iface.view.MvpDataView;
 import com.mateuszkoslacz.moviper.iface.view.ViperDataView;
 
 /**
@@ -17,7 +18,7 @@ import com.mateuszkoslacz.moviper.iface.view.ViperDataView;
  * architecture.
  */
 
-public abstract class ViperViewHolder<DataObject, View extends ViperDataView, Presenter extends MvpPresenter<View>>
+public abstract class ViperViewHolder<DataObject, View extends MvpDataView, Presenter extends MvpPresenter<View>>
         extends RecyclerView.ViewHolder
         implements BaseMvpDelegateCallback<View, Presenter>, ViperDataView<DataObject> {
 
