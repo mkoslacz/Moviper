@@ -3,7 +3,7 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.viewholder;
 import android.view.View;
 import android.widget.TextView;
 
-import com.mateuszkoslacz.moviper.base.view.MvpBaseViewHolder;
+import com.mateuszkoslacz.moviper.base.view.ViperViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.R;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.HeaderContract;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Category;
@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
  */
 
 public class HeaderViewHolder
-        extends MvpBaseViewHolder<Category, HeaderContract.View, HeaderContract.Presenter>
+        extends ViperViewHolder<Category, HeaderContract.View, HeaderContract.Presenter>
         implements HeaderContract.View {
 
     @BindView(R.id.product_title)

@@ -2,7 +2,7 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter;
 
 import android.support.annotation.NonNull;
 
-import com.mateuszkoslacz.moviper.base.presenter.ViperBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.BaseRxPresenter;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.MainContract;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Category;
@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainPresenter
-        extends ViperBaseRxPresenter<MainContract.View,
-                        MainContract.Interactor,
-                        MainContract.Routing>
+        extends BaseRxPresenter<MainContract.View,
+                                MainContract.Interactor,
+                                MainContract.Routing>
         implements MainContract.Presenter {
 
     @Override

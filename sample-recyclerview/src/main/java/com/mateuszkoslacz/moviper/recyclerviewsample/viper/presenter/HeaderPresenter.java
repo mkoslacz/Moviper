@@ -2,7 +2,7 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter;
 
 import android.support.annotation.NonNull;
 
-import com.mateuszkoslacz.moviper.base.presenter.ViperBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.BaseRxPresenter;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.HeaderContract;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.interactor.HeaderInteractor;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.routing.HeaderRouting;
@@ -12,10 +12,9 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.routing.HeaderRouting
  */
 
 public class HeaderPresenter
-        extends ViperBaseRxPresenter
-        <HeaderContract.View,
-                HeaderContract.Interactor,
-                HeaderContract.Routing>
+        extends BaseRxPresenter<HeaderContract.View,
+                        HeaderContract.Interactor,
+                        HeaderContract.Routing>
         implements HeaderContract.Presenter {
 
     @Override

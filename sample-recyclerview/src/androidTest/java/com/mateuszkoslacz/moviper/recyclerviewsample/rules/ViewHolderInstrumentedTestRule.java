@@ -3,7 +3,7 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.rules;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 
-import com.mateuszkoslacz.moviper.base.view.MvpBaseViewHolder;
+import com.mateuszkoslacz.moviper.base.view.ViperViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.utils.ViewHolderInstrumentedTestActivity;
 
 /**
@@ -15,7 +15,7 @@ public class ViewHolderInstrumentedTestRule<M> extends ActivityTestRule<ViewHold
     private final ViewHolderDelegate mViewHolderDelegate;
     private final int mViewId;
     private final M mModelObject;
-    private MvpBaseViewHolder mViewHolder;
+    private ViperViewHolder mViewHolder;
 
     private ViewHolderInstrumentedTestRule(Builder builder) {
         super(ViewHolderInstrumentedTestActivity.class, true, false);
@@ -41,7 +41,7 @@ public class ViewHolderInstrumentedTestRule<M> extends ActivityTestRule<ViewHold
 
     public interface ViewHolderDelegate {
 
-        MvpBaseViewHolder getViewHolder(View view);
+        ViperViewHolder getViewHolder(View view);
     }
 
 
