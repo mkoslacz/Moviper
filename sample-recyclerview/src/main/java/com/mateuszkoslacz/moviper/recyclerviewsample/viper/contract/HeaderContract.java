@@ -3,7 +3,7 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
-import com.mateuszkoslacz.moviper.iface.view.ViperDataView;
+import com.mateuszkoslacz.moviper.iface.view.MvpDataView;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Category;
 
 /**
@@ -16,7 +16,7 @@ public interface HeaderContract {
 
     }
 
-    interface View extends ViperDataView<Category> {
+    interface View extends MvpDataView<Category> {
 
         void setTitle(String title);
     }
