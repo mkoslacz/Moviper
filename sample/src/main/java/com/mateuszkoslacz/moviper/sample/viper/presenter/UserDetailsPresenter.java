@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 
-import com.mateuszkoslacz.moviper.base.presenter.ViperBasePresenter;
+import com.mateuszkoslacz.moviper.base.presenter.BasePresenter;
 import com.mateuszkoslacz.moviper.sample.viper.entity.User;
 import com.mateuszkoslacz.moviper.sample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.sample.viper.interactor.UserDetailsInteractor;
@@ -13,9 +13,9 @@ import com.mateuszkoslacz.moviper.sample.viper.routing.UserDetailsRouting;
 import com.mateuszkoslacz.moviper.sample.viper.view.activity.UserDetailsActivity;
 
 public class UserDetailsPresenter
-        extends ViperBasePresenter<UserDetailsContract.View,
-                        UserDetailsContract.Interactor,
-                        UserDetailsContract.Routing>
+        extends BasePresenter<UserDetailsContract.View,
+                                UserDetailsContract.Interactor,
+                                UserDetailsContract.Routing>
         implements UserDetailsContract.Presenter,
         UserDetailsContract.PresenterForInteractor,
         UserDetailsContract.PresenterForRouting {
