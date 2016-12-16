@@ -25,11 +25,11 @@ public class ProductAdapter
         MvpBaseViewHolder> {
 
     private List<ListingItem> mListingItems;
-    private AdapterDelegatesManager mDelegatesManager;
+    private AdapterDelegatesManager<List<ListingItem>> mDelegatesManager;
 
     public ProductAdapter() {
         mListingItems = new ArrayList<>();
-        mDelegatesManager = new AdapterDelegatesManager();
+        mDelegatesManager = new AdapterDelegatesManager<>();
         mDelegatesManager
                 .addDelegate(HeaderListingItem.TYPE, new HeaderAdapterDelegate())
                 .addDelegate(ProductListingItem.TYPE, new ProductAdapterDelegate());
