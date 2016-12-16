@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.delegate;
 
+import android.preference.PreferenceActivity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,7 +21,7 @@ public class HeaderAdapterDelegate extends AdapterDelegate<List<ListingItem>> {
 
     @Override
     protected boolean isForViewType(@NonNull List<ListingItem> items, int position) {
-        return items.get(position).getType() == ListingItem.TYPE_HEADER;
+        return items.get(position).getType() == HeaderListingItem.TYPE;
     }
 
     @NonNull

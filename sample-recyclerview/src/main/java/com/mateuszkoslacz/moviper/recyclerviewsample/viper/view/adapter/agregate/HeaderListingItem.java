@@ -8,6 +8,7 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Category;
 
 public class HeaderListingItem implements ListingItem {
 
+    public static final int TYPE = HeaderListingItem.class.hashCode();
     private Category mCategory;
 
     public HeaderListingItem(Category category) {
@@ -16,7 +17,7 @@ public class HeaderListingItem implements ListingItem {
 
     @Override
     public int getType() {
-        return ListingItem.TYPE_HEADER;
+        return TYPE;
     }
 
     public Category getCategory() {

@@ -20,7 +20,7 @@ public class ProductAdapterDelegate extends AdapterDelegate<List<ListingItem>> {
 
     @Override
     protected boolean isForViewType(@NonNull List<ListingItem> items, int position) {
-        return items.get(position).getType() == ListingItem.TYPE_PRODUCT;
+        return items.get(position).getType() == ProductListingItem.TYPE;
     }
 
     @NonNull
