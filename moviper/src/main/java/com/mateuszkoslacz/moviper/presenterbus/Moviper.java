@@ -1,5 +1,7 @@
 package com.mateuszkoslacz.moviper.presenterbus;
 
+import android.support.annotation.VisibleForTesting;
+
 import com.mateuszkoslacz.moviper.base.exception.PresenterAlreadyRegisteredException;
 import com.mateuszkoslacz.moviper.base.exception.PresenterInstancesAccessNotEnabled;
 import com.mateuszkoslacz.moviper.base.exception.PresentersAccessUtilNotEnabled;
@@ -97,6 +99,11 @@ public class Moviper {
 
     private void unregisterSync(ViperPresenter presenter) {
         mPresenters.remove(presenter);
+    }
+
+    @VisibleForTesting
+    public void unregisterAll() {
+        mPresenters.clear();
     }
 
     private class MoviperBundle {

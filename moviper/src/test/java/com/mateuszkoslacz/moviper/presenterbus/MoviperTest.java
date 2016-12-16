@@ -1,21 +1,17 @@
 package com.mateuszkoslacz.moviper.presenterbus;
 
-import android.support.annotation.NonNull;
-
 import com.mateuszkoslacz.moviper.base.exception.PresenterInstancesAccessNotEnabled;
 import com.mateuszkoslacz.moviper.base.exception.PresentersAccessUtilNotEnabled;
 import com.mateuszkoslacz.moviper.base.presenter.BaseRxPresenter;
-import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
-import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
 
-import rx.exceptions.OnErrorNotImplementedException;
 import rx.observers.TestSubscriber;
 
 import static org.junit.Assert.assertEquals;
@@ -34,6 +30,11 @@ public class MoviperTest {
     public void setUp() throws Exception {
         // reset Moviper config to default before each test
         Moviper.getInstance().setConfig(new Config.Builder().build());
+    }
+
+    @After
+    public void clear() throws Exception {
+        Moviper.getInstance().unregisterAll();
     }
 
     @Test
@@ -83,10 +84,9 @@ public class MoviperTest {
                 .withPresenterAccessUtilEnabled(true)
                 .withInstancePresentersEnabled(true)
                 .build());
-        TestPresenter mockPresenter = new TestPresenter();
-        TestPresenter secondMockPresenter = new TestPresenter();
+        TestPresenter mockPresenter = Mockito.mock(TestPresenter.class);
+        TestPresenter secondMockPresenter = Mockito.mock(TestPresenter.class);
         Moviper.getInstance().register(mockPresenter);
-        mExpectedException.expect(OnErrorNotImplementedException.class); // TODO how to better handle unwraped rx exceptions?
         Moviper.getInstance().register(secondMockPresenter);
     }
 
@@ -119,19 +119,6 @@ public class MoviperTest {
 
     }
 
-    private static class TestPresenter extends BaseRxPresenter {
-
-        @NonNull
-        @Override
-        public ViperRxInteractor createInteractor() {
-            return null;
-        }
-
-        @NonNull
-        @Override
-        public ViperRxRouting createRouting() {
-            return null;
-        }
+    private static abstract class TestPresenter extends BaseRxPresenter {
     }
-
 }
