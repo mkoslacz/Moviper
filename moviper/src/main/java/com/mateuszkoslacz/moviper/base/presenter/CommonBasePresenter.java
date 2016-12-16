@@ -17,10 +17,11 @@ public abstract class CommonBasePresenter<V extends MvpView>
 
     private Bundle args;
 
-    public CommonBasePresenter() {
+    CommonBasePresenter() {
+
     }
 
-    public CommonBasePresenter(Bundle args) {
+    CommonBasePresenter(Bundle args) {
         this.args = args;
     }
 

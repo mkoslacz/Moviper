@@ -22,7 +22,7 @@ public abstract class BaseRxRouting
         implements MoviperRxRouting {
 
     @NonNull
-    protected WeakReference<Activity> activity;
+    WeakReference<Activity> activity;
 
     @Override
     public boolean isActivityAttached() {

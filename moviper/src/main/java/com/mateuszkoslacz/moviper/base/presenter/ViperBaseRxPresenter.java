@@ -69,7 +69,7 @@ public abstract class ViperBaseRxPresenter
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
-        if(!retainInstance) unsubscribe();
+        if (!retainInstance) unsubscribe();
         Moviper.getInstance().unregister(this);
         routing.detachActivity();
         routing.onPresenterDetached(retainInstance);
@@ -89,10 +89,10 @@ public abstract class ViperBaseRxPresenter
     }
 
     protected void addSubscription(Subscription subscription) {
-        if(compositeSubscription != null) compositeSubscription.add(subscription);
+        if (compositeSubscription != null) compositeSubscription.add(subscription);
     }
 
     private void unsubscribe() {
-        if(compositeSubscription != null) compositeSubscription.clear();
+        if (compositeSubscription != null) compositeSubscription.clear();
     }
 }
