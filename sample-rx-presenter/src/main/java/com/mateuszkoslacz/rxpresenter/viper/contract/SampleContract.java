@@ -3,8 +3,8 @@ package com.mateuszkoslacz.rxpresenter.viper.contract;
 import android.os.Bundle;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
+import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
+import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 public interface SampleContract {
@@ -19,11 +19,11 @@ public interface SampleContract {
         void showNumber(long number);
     }
 
-    interface Interactor extends MoviperRxInteractor {
+    interface Interactor extends ViperRxInteractor {
 
     }
 
-    interface Routing extends MoviperRxRouting {
+    interface Routing extends ViperRxRouting {
 
     }
 }

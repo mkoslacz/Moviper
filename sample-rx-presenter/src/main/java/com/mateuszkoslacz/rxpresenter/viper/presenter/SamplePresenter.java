@@ -3,7 +3,7 @@ package com.mateuszkoslacz.rxpresenter.viper.presenter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.mateuszkoslacz.moviper.base.presenter.ViperBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.BaseRxPresenter;
 import com.mateuszkoslacz.rxpresenter.viper.contract.SampleContract;
 import com.mateuszkoslacz.rxpresenter.viper.interactor.SampleInteractor;
 import com.mateuszkoslacz.rxpresenter.viper.routing.SampleRouting;
@@ -15,9 +15,9 @@ import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 
 public class SamplePresenter
-        extends ViperBaseRxPresenter<SampleContract.View,
-                        SampleContract.Interactor,
-                        SampleContract.Routing>
+        extends BaseRxPresenter<SampleContract.View,
+                                SampleContract.Interactor,
+                                SampleContract.Routing>
         implements SampleContract.Presenter {
 
     @NonNull
