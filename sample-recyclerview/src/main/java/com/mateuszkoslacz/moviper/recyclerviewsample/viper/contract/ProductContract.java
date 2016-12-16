@@ -3,7 +3,7 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
-import com.mateuszkoslacz.moviper.iface.view.ViperDataView;
+import com.mateuszkoslacz.moviper.iface.view.MvpDataView;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 
 /**
@@ -16,7 +16,7 @@ public interface ProductContract {
 
     }
 
-    interface View extends ViperDataView<Product> {
+    interface View extends MvpDataView<Product> {
 
         void setTitle(String productTitle);
 
