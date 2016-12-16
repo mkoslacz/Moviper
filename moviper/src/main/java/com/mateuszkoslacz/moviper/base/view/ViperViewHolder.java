@@ -21,15 +21,16 @@ public abstract class ViperViewHolder<DataObject, View extends ViperDataView, Pr
         extends RecyclerView.ViewHolder
         implements BaseMvpDelegateCallback<View, Presenter>, ViperDataView<DataObject> {
 
-    private DataObject mDataObject;
     protected Presenter mPresenter;
     protected ViewGroupMvpDelegate<View, Presenter> mvpDelegate;
+    private DataObject mDataObject;
 
     public ViperViewHolder(android.view.View itemView) {
         super(itemView);
     }
 
-    @NonNull protected ViewGroupMvpDelegate<View, Presenter> getMvpDelegate() {
+    @NonNull
+    protected ViewGroupMvpDelegate<View, Presenter> getMvpDelegate() {
         if (mvpDelegate == null) {
             mvpDelegate = new ViewGroupMvpDelegateImpl<>(this);
         }
@@ -62,28 +63,34 @@ public abstract class ViperViewHolder<DataObject, View extends ViperDataView, Pr
 
     public abstract Presenter createPresenter();
 
-    @Override public Presenter getPresenter() {
+    @Override
+    public Presenter getPresenter() {
         return mPresenter;
     }
 
-    @Override public void setPresenter(Presenter presenter) {
+    @Override
+    public void setPresenter(Presenter presenter) {
         this.mPresenter = presenter;
     }
 
-    @Override public View getMvpView() {
+    @Override
+    public View getMvpView() {
         return (View) this;
     }
 
-    @Override public boolean isRetainInstance() {
+    @Override
+    public boolean isRetainInstance() {
         return true;
     }
 
-    @Override public void setRetainInstance(boolean retainingInstance) {
+    @Override
+    public void setRetainInstance(boolean retainingInstance) {
         throw new UnsupportedOperationException("Retainining Instance is not supported / implemented yet");
     }
 
-    @Override public boolean shouldInstanceBeRetained() {
+    @Override
+    public boolean shouldInstanceBeRetained() {
         return true;
     }
 
- }
+}

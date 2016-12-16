@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
 
 /**
  * Created by norbertbanaszek on 24.10.2016.
@@ -13,9 +12,7 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
  * architecture.
  */
 
-public abstract class ViperRecyclerViewAdapter<View extends MvpView,
-                Presenter extends MvpPresenter<View>,
-                ViewHolder extends ViperViewHolder>
+public abstract class ViperRecyclerViewAdapter<ViewHolder extends ViperViewHolder>
         extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
@@ -47,7 +44,6 @@ public abstract class ViperRecyclerViewAdapter<View extends MvpView,
 
     @Override
     public int getItemViewType(int position) {
-
         return super.getItemViewType(position);
     }
 }
