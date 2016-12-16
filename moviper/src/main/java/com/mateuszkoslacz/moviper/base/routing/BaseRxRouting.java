@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRouting;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
-import com.mateuszkoslacz.moviper.iface.view.ViperView;
+import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
 import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
 
 import java.lang.ref.WeakReference;
@@ -34,8 +34,8 @@ public abstract class BaseRxRouting implements ViperRxRouting {
     }
 
     @Override
-    public void attach(ViperView view) {
-        this.activity = new WeakReference<>(view.getActivity());
+    public void attach(ActivityHolder activityHolder) {
+        this.activity = new WeakReference<>(activityHolder.getActivity());
     }
 
     @Override

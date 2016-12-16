@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRouting;
-import com.mateuszkoslacz.moviper.iface.view.ViperView;
+import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
 import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
 
 import java.lang.ref.WeakReference;
@@ -48,8 +48,8 @@ public class BaseRouting<PresenterType extends ViperPresenterForRouting>  // I p
     }
 
     @Override
-    public void attach(ViperView view, PresenterType presenter) {
-        this.activity = new WeakReference<>(view.getActivity());
+    public void attach(ActivityHolder activityHolder, PresenterType presenter) {
+        this.activity = new WeakReference<>(activityHolder.getActivity());
         this.presenter = new WeakReference<>(presenter);
     }
 

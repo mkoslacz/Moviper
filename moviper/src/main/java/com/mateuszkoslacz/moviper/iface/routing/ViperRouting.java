@@ -3,7 +3,7 @@ package com.mateuszkoslacz.moviper.iface.routing;
 import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
-import com.mateuszkoslacz.moviper.iface.view.ViperView;
+import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
@@ -36,5 +36,5 @@ public interface ViperRouting<PresenterType extends ViperPresenterForRouting>
 
     boolean isPresenterAttached();
 
-    void attach(ViperView view, PresenterType presenter);
+    void attach(ActivityHolder activityHolder, PresenterType presenter);
 }
