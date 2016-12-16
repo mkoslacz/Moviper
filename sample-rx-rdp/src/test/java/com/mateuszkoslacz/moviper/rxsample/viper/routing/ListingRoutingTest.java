@@ -35,7 +35,7 @@ public class ListingRoutingTest {
         MockitoAnnotations.initMocks(this);
         Mockito.when(mActivity.getActivity()).thenReturn(mActivity);
         mRouting = new ListingRouting();
-        mRouting.attachActivity(mActivity);
+        mRouting.attach(mActivity);
     }
 
     @Test
@@ -49,7 +49,7 @@ public class ListingRoutingTest {
 
     @Test
     public void startUserDetailsActivityWhenActivityDetached() throws Exception {
-        mRouting.detachActivity();
+        mRouting.detach(false);
         mockStatic(UserDetailsActivity.class);
         User user = new User();
         mRouting.startUserDetailsActivity(user);

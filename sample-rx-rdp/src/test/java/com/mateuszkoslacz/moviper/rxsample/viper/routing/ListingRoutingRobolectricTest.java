@@ -32,7 +32,7 @@ public class ListingRoutingRobolectricTest {
     public void setUp() {
         mListingActivity = setupActivity(ListingActivity.class);
         mRouting = new ListingRouting();
-        mRouting.attachActivity(mListingActivity);
+        mRouting.attach(mListingActivity);
     }
 
     @Test
