@@ -19,8 +19,7 @@ import java.util.List;
  */
 
 public class ProductAdapter
-        extends ViperRecyclerViewAdapter<MvpView, MvpPresenter<MvpView>,
-                ViperViewHolder> {
+        extends ViperRecyclerViewAdapter<ViperViewHolder> {
 
     private List<ListingItem> mListingItems;
     private AdapterDelegatesManager mDelegatesManager;
