@@ -1,9 +1,9 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.contract;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
-import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 public interface FullscreenPhotoContract {
 
@@ -14,7 +14,7 @@ public interface FullscreenPhotoContract {
         void onViewCreated();
     }
 
-    interface View extends ViperView {
+    interface View extends MvpView {
         // Defines what methods the Presenter can invoke on the View
         // In most cases there will be manipulating ui and displaying data or errors.
         // In Super Rx version it also provides getters for Observables emitting user click events.
