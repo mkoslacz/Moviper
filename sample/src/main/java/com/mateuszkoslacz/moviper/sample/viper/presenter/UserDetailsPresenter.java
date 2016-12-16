@@ -1,12 +1,11 @@
 package com.mateuszkoslacz.moviper.sample.viper.presenter;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 
-import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBasePresenter;
+import com.mateuszkoslacz.moviper.base.presenter.BasePresenter;
 import com.mateuszkoslacz.moviper.sample.viper.entity.User;
 import com.mateuszkoslacz.moviper.sample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.sample.viper.interactor.UserDetailsInteractor;
@@ -14,17 +13,15 @@ import com.mateuszkoslacz.moviper.sample.viper.routing.UserDetailsRouting;
 import com.mateuszkoslacz.moviper.sample.viper.view.activity.UserDetailsActivity;
 
 public class UserDetailsPresenter
-        extends ViperActivityBasePresenter
-        <UserDetailsContract.View,
-                UserDetailsContract.Interactor,
-                UserDetailsContract.Routing>
-        implements
-        UserDetailsContract.Presenter,
+        extends BasePresenter<UserDetailsContract.View,
+                                UserDetailsContract.Interactor,
+                                UserDetailsContract.Routing>
+        implements UserDetailsContract.Presenter,
         UserDetailsContract.PresenterForInteractor,
         UserDetailsContract.PresenterForRouting {
 
-    public UserDetailsPresenter(Activity activity, Bundle bundle) {
-        super(activity, bundle);
+    public UserDetailsPresenter(Bundle bundle) {
+        super(bundle);
     }
 
     @Override
@@ -60,8 +57,8 @@ public class UserDetailsPresenter
 
     @NonNull
     @Override
-    public UserDetailsContract.Routing createRouting(@NonNull Activity activity) {
-        return new UserDetailsRouting(activity);
+    public UserDetailsContract.Routing createRouting() {
+        return new UserDetailsRouting();
     }
 
     @NonNull

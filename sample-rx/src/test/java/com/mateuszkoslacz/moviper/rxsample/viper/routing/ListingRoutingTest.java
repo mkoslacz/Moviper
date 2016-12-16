@@ -1,14 +1,14 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.routing;
 
-import android.app.Activity;
-
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
+import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.ListingActivity;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.UserDetailsActivity;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
@@ -26,18 +26,20 @@ import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 public class ListingRoutingTest {
 
     @Mock
-    protected Activity mActivity;
+    protected ListingActivity mActivity;
 
     protected ListingRouting mRouting;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
+        Mockito.when(mActivity.getActivity()).thenReturn(mActivity);
+        mRouting = new ListingRouting();
+        mRouting.attach(mActivity);
     }
 
     @Test
     public void startUserDetailsActivity() throws Exception {
-        mRouting = new ListingRouting(mActivity);
         mockStatic(UserDetailsActivity.class);
         User user = new User();
         mRouting.startUserDetailsActivity(user);
@@ -47,7 +49,7 @@ public class ListingRoutingTest {
 
     @Test
     public void startUserDetailsActivityWhenActivityDetached() throws Exception {
-        mRouting = new ListingRouting(null);
+        mRouting.detach(false);
         mockStatic(UserDetailsActivity.class);
         User user = new User();
         mRouting.startUserDetailsActivity(user);

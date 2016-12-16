@@ -3,13 +3,13 @@ package com.mateuszkoslacz.moviper.ipcsample.viper.view.activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.hannesdorfmann.mosby.mvp.MvpActivity;
+import com.mateuszkoslacz.moviper.base.view.activity.ViperActivity;
 import com.mateuszkoslacz.moviper.ipcsample.R;
 import com.mateuszkoslacz.moviper.ipcsample.viper.contract.MainContract;
 import com.mateuszkoslacz.moviper.ipcsample.viper.presenter.MainPresenter;
 
 public class MainActivity
-        extends MvpActivity<MainContract.View, MainContract.Presenter>
+        extends ViperActivity<MainContract.View, MainContract.Presenter>
         implements MainContract.View {
 
     @Override
@@ -36,6 +36,6 @@ public class MainActivity
     @NonNull
     @Override
     public MainContract.Presenter createPresenter() {
-        return new MainPresenter(this);
+        return new MainPresenter();
     }
 }

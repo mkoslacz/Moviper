@@ -3,7 +3,7 @@ package com.mateuszkoslacz.moviper.ipcsample;
 import android.app.Activity;
 import android.support.test.rule.ActivityTestRule;
 
-import com.mateuszkoslacz.moviper.base.presenter.WipeBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.BaseRxPresenter;
 import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 
 /**
@@ -24,7 +24,7 @@ public class MoviperActivityTestRule<ActivityType extends Activity>
                 when we call another test and the same presenter is trying to be registered again.
              */
         super.afterActivityFinished();
-        Moviper.getInstance().getPresenters(WipeBaseRxPresenter.class)
+        Moviper.getInstance().getPresenters(BaseRxPresenter.class)
                 .subscribe(Moviper.getInstance()::unregister);
     }
 }

@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.routing;
 
-import android.app.Activity;
 import android.content.Intent;
 
 import com.mateuszkoslacz.moviper.rxsample.BuildConfig;
@@ -32,8 +31,8 @@ public class ListingRoutingRobolectricTest {
     @Before
     public void setUp() {
         mListingActivity = setupActivity(ListingActivity.class);
-        Activity activity = mListingActivity;
-        mRouting = new ListingRouting(activity);
+        mRouting = new ListingRouting();
+        mRouting.attach(mListingActivity);
     }
 
     @Test

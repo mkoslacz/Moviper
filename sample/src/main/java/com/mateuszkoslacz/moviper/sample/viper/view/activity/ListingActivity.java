@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.hannesdorfmann.mosby.mvp.MvpActivity;
+import com.mateuszkoslacz.moviper.base.view.activity.ViperActivity;
 import com.mateuszkoslacz.moviper.sample.R;
 import com.mateuszkoslacz.moviper.sample.viper.entity.User;
 import com.mateuszkoslacz.moviper.sample.viper.contract.ListingContract;
@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
 
 public class ListingActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.
-        extends MvpActivity<ListingContract.View, ListingContract.Presenter>
+        extends ViperActivity<ListingContract.View, ListingContract.Presenter>
         implements ListingContract.View, UserAdapter.UserClickListener {
 
     public static final String PHOTO_URL_EXTRA_STRING = "PHOTO_URL_EXTRA_STRING";
@@ -118,7 +118,7 @@ public class ListingActivity
     @NonNull
     @Override
     public ListingContract.Presenter createPresenter() {
-        return new ListingPresenter(this);
+        return new ListingPresenter();
     }
 
 }

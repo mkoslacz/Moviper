@@ -1,7 +1,6 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
-import com.mateuszkoslacz.moviper.rxsample.viper.utils.RxAndroidSchedulersOverrideRule;
 
 import org.junit.Before;
 import org.junit.Test;

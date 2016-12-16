@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.hannesdorfmann.mosby.mvp.MvpActivity;
+import com.mateuszkoslacz.moviper.base.view.activity.ViperActivity;
 import com.mateuszkoslacz.moviper.recyclerviewsample.R;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.MainContract;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter.MainPresenter;
@@ -18,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity
-        extends MvpActivity<MainContract.View, MainContract.Presenter>
+        extends ViperActivity<MainContract.View, MainContract.Presenter>
         implements MainContract.View {
 
     @BindView(R.id.recycler_view)
@@ -50,7 +50,6 @@ public class MainActivity
     @NonNull
     @Override
     public MainContract.Presenter createPresenter() {
-        return new MainPresenter(this);
+        return new MainPresenter();
     }
-
 }

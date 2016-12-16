@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceActivity;
+import com.mateuszkoslacz.moviper.base.view.activity.ViperLceActivity;
 import com.mateuszkoslacz.moviper.rxsample.R;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract;
@@ -21,8 +21,11 @@ import butterknife.ButterKnife;
 
 public class UserDetailsActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.
-        extends MvpLceActivity<LinearLayout, User,
-        UserDetailsContract.View, UserDetailsContract.Presenter>
+        extends ViperLceActivity
+        <LinearLayout,
+                User,
+                UserDetailsContract.View,
+                UserDetailsContract.Presenter>
         implements UserDetailsContract.View, UserDetailsContract.ViewHelper {
 
     public final static String USER_EXTRA = "USER_EXTRA";
@@ -102,6 +105,6 @@ public class UserDetailsActivity
     @NonNull
     @Override
     public UserDetailsContract.Presenter createPresenter() {
-        return new UserDetailsPresenter(this, getIntent().getExtras());
+        return new UserDetailsPresenter(getIntent().getExtras());
     }
 }

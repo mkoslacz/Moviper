@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.hannesdorfmann.mosby.mvp.viewstate.MvpViewStateActivity;
 import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.mateuszkoslacz.moviper.base.view.activity.ViperViewStateActivity;
 import com.mateuszkoslacz.moviper.rxsample.R;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.adapter.UserAdapter;
@@ -29,7 +29,10 @@ import butterknife.ButterKnife;
 
 public class ListingActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.
-        extends MvpViewStateActivity<ListingContract.View, ListingContract.Presenter>
+        extends ViperViewStateActivity
+        <ListingContract.View,
+                ListingContract.Presenter,
+                ListingViewState>
         implements ListingContract.View, UserAdapter.UserClickListener {
 
     public static final String PHOTO_URL_EXTRA_STRING = "PHOTO_URL_EXTRA_STRING";
@@ -67,7 +70,7 @@ public class ListingActivity
     @Override
     public void setUserList(List<User> userList, boolean retained) {
         mAdapter.setUserList(userList);
-        if(!retained) ((ListingViewState) getViewState()).setUserList(userList);
+        if (!retained) getViewState().setUserList(userList);
     }
 
     private void prepareRecyclerView() {
@@ -94,8 +97,7 @@ public class ListingActivity
         mLoadingViewProgressBar.setVisibility(View.INVISIBLE);
         mRecyclerView.setVisibility(View.INVISIBLE);
         mErrorViewTextView.setText(throwable.getLocalizedMessage());
-        // TODO: 14.12.2016 why it's not generic to return correct ViewState
-        ((ListingViewState) getViewState()).setError(throwable);
+        getViewState().setError(throwable);
     }
 
     @Override
@@ -103,7 +105,7 @@ public class ListingActivity
         mErrorViewTextView.setVisibility(View.INVISIBLE);
         mLoadingViewProgressBar.setVisibility(View.VISIBLE);
         mRecyclerView.setVisibility(View.INVISIBLE);
-        ((ListingViewState) getViewState()).setState(ListingViewState.STATE_LOADING);
+        getViewState().setState(ListingViewState.STATE_LOADING);
     }
 
     @Override
@@ -111,13 +113,13 @@ public class ListingActivity
         mErrorViewTextView.setVisibility(View.INVISIBLE);
         mLoadingViewProgressBar.setVisibility(View.INVISIBLE);
         mRecyclerView.setVisibility(View.VISIBLE);
-        ((ListingViewState) getViewState()).setState(ListingViewState.STATE_CONTENT);
+        getViewState().setState(ListingViewState.STATE_CONTENT);
     }
 
     @NonNull
     @Override
     public ListingContract.Presenter createPresenter() {
-        return new ListingPresenter(this);
+        return new ListingPresenter();
     }
 
     @NonNull

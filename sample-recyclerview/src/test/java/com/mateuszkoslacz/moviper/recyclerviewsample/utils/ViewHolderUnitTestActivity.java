@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
 import com.mateuszkoslacz.moviper.recyclerviewsample.R;
 
 /**
