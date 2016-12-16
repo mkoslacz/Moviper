@@ -3,8 +3,8 @@ package com.mateuszkoslacz.moviper.base.routing;
 import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
-import com.mateuszkoslacz.moviper.iface.routing.ViperViewHelperRxRouting;
 import com.mateuszkoslacz.moviper.iface.routing.ViperViewHelperRouting;
+import com.mateuszkoslacz.moviper.iface.routing.ViperViewHelperRxRouting;
 import com.mateuszkoslacz.moviper.iface.viewhelper.ViperViewHelper;
 import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
 

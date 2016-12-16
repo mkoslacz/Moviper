@@ -6,7 +6,7 @@ package com.mateuszkoslacz.moviper.iface.view;
 
 public interface ViperDataView<DataObject> extends ViperView {
 
-    void setDataObject(DataObject dataObject);
-
     DataObject getDataObject();
+
+    void setDataObject(DataObject dataObject);
 }
