@@ -2,6 +2,7 @@ package com.mateuszkoslacz.moviper.base.view.fragment;
 
 import com.hannesdorfmann.mosby.mvp.MvpFragment;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 /**
@@ -9,7 +10,7 @@ import com.mateuszkoslacz.moviper.iface.view.ViperView;
  */
 
 public abstract class ViperFragment
-        <ViewType extends ViperView,
+        <ViewType extends MvpView,
                 Presenter extends MvpPresenter<ViewType>>
         extends MvpFragment<ViewType, Presenter>
         implements ViperView {

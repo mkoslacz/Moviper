@@ -1,6 +1,6 @@
 package com.mateuszkoslacz.moviper.iface.routing;
 
-import com.mateuszkoslacz.moviper.iface.view.ViperView;
+import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
@@ -20,5 +20,5 @@ import com.mateuszkoslacz.moviper.iface.view.ViperView;
 // I prefer readability rather than conventions
 public interface ViperRxRouting extends CommonViperRouting {
 
-    void attach(ViperView view);
+    void attach(ActivityHolder activityHolder);
 }

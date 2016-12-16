@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
+import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.iface.presenter.interactor.ViperPresenterForInteractor;
@@ -31,7 +32,7 @@ import rx.subscriptions.CompositeSubscription;
  */
 //TODO migrate to MvpNullObjectPresenter base class?
 public abstract class BaseRxPresenter
-        <ViewType extends ViperView,  // I prefer readability rather than conventions
+        <ViewType extends MvpView,  // I prefer readability rather than conventions
                 InteractorType extends ViperRxInteractor,
                 RoutingType extends ViperRxRouting>
         extends CommonBasePresenter<ViewType>
@@ -63,7 +64,7 @@ public abstract class BaseRxPresenter
     public void attachView(ViewType view) {
         super.attachView(view);
         Moviper.getInstance().register(this);
-        routing.attach(view);
+        routing.attach((ViperView) view);
         interactor.attach();
     }
 
