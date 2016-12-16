@@ -1,11 +1,11 @@
 package com.mateuszkoslacz.moviper.sample.viper.contract;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.interactor.ViperPresenterForInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.ViperViewHelperRouting;
-import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 import com.mateuszkoslacz.moviper.iface.viewhelper.ViperViewHelper;
 import com.mateuszkoslacz.moviper.sample.viper.entity.User;
 
@@ -20,7 +20,7 @@ public interface UserDetailsContract {
         void onAvatarClicked(String avatarUrl);
     }
 
-    interface View extends ViperLceView<User> {
+    interface View extends MvpLceView<User> {
         // Defines what methods the Presenter can invoke on the View
         // In most cases there will be manipulating ui and displaying data or errors.
 
