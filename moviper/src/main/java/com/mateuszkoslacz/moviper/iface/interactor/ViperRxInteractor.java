@@ -8,10 +8,7 @@ package com.mateuszkoslacz.moviper.iface.interactor;
  * It's responsible of manipulating data on behalf of Presenter (see Mosby's
  * {@link com.hannesdorfmann.mosby.mvp.MvpPresenter}). It queries an API, DB etc.
  */
-public interface ViperRxInteractor {
+public interface ViperRxInteractor extends CommonViperInteractor {
 
-    void onPresenterDetached(boolean retainInstance);
-
-    @Deprecated
-    void onPresenterDetached();
+    void attach();
 }

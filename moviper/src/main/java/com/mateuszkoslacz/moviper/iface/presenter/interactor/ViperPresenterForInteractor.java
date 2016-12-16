@@ -2,7 +2,7 @@ package com.mateuszkoslacz.moviper.iface.presenter.interactor;
 
 import android.support.annotation.NonNull;
 
-import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
+import com.mateuszkoslacz.moviper.iface.interactor.CommonViperInteractor;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperInteractor;
 
 /**
@@ -16,7 +16,7 @@ import com.mateuszkoslacz.moviper.iface.interactor.ViperInteractor;
  * interactor's error messages etc.
  */
 // I prefer readability rather than conventions
-public interface ViperPresenterForInteractor<InteractorType extends ViperRxInteractor> {
+public interface ViperPresenterForInteractor<InteractorType extends CommonViperInteractor> {
 
     /**
      * @return attached {@link ViperInteractor} subclass instance or

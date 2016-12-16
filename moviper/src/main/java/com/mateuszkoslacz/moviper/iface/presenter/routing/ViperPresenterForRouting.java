@@ -2,8 +2,8 @@ package com.mateuszkoslacz.moviper.iface.presenter.routing;
 
 import android.support.annotation.NonNull;
 
+import com.mateuszkoslacz.moviper.iface.routing.CommonViperRouting;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRouting;
-import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
@@ -14,7 +14,7 @@ import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
  * routing's error messages etc.
  */
 // I prefer readability rather than conventions
-public interface ViperPresenterForRouting<RoutingType extends ViperRxRouting> {
+public interface ViperPresenterForRouting<RoutingType extends CommonViperRouting> {
 
     /**
      * @return attached {@link ViperRouting} subclass instance or

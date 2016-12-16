@@ -63,7 +63,8 @@ public abstract class BaseRxPresenter
     public void attachView(ViewType view) {
         super.attachView(view);
         Moviper.getInstance().register(this);
-        routing.attachActivity(view);
+        routing.attach(view);
+        interactor.attach();
     }
 
     @Override
@@ -71,9 +72,8 @@ public abstract class BaseRxPresenter
         super.detachView(retainInstance);
         if (!retainInstance) unsubscribe();
         Moviper.getInstance().unregister(this);
-        routing.detachActivity();
-        routing.onPresenterDetached(retainInstance);
-        interactor.onPresenterDetached(retainInstance);
+        routing.detach(retainInstance);
+        interactor.detach(retainInstance);
     }
 
     @NonNull

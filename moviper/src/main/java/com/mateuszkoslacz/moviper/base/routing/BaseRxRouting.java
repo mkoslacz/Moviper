@@ -1,7 +1,6 @@
 package com.mateuszkoslacz.moviper.base.routing;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
@@ -18,26 +17,10 @@ import java.lang.ref.WeakReference;
  * Activity version of base Routing class.
  * (see {@link ViperRouting} and {@link ViperPresenterForRouting})
  */
-public abstract class BaseRxRouting
-        implements ViperRxRouting {
+public abstract class BaseRxRouting implements ViperRxRouting {
 
-    @NonNull
+    @Nullable
     WeakReference<Activity> activity;
-
-    @Override
-    public boolean isActivityAttached() {
-        return WeakReferenceUtils.isAttached(activity);
-    }
-
-    @Override
-    public void attachActivity(ViperView view) {
-        activity = new WeakReference<>(view.getActivity());
-    }
-
-    @Override
-    public void detachActivity() {
-        WeakReferenceUtils.detach(activity);
-    }
 
     @Nullable
     @Override
@@ -46,14 +29,17 @@ public abstract class BaseRxRouting
     }
 
     @Override
-    public void onPresenterDetached(boolean retainInstance) {
-        onPresenterDetached();
-        // stub
+    public boolean isActivityAttached() {
+        return WeakReferenceUtils.isAttached(activity);
     }
 
     @Override
-    @Deprecated
-    public void onPresenterDetached() {
-        // stub
+    public void attach(ViperView view) {
+        this.activity = new WeakReference<>(view.getActivity());
+    }
+
+    @Override
+    public void detach(boolean retainInstance) {
+        WeakReferenceUtils.detach(activity);
     }
 }

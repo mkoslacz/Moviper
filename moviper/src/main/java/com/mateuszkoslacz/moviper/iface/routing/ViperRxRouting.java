@@ -1,8 +1,5 @@
 package com.mateuszkoslacz.moviper.iface.routing;
 
-import android.app.Activity;
-import android.support.annotation.Nullable;
-
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 /**
@@ -21,25 +18,7 @@ import com.mateuszkoslacz.moviper.iface.view.ViperView;
  * views, see {@link ViperViewHelperRouting}
  */
 // I prefer readability rather than conventions
-public interface ViperRxRouting {
+public interface ViperRxRouting extends CommonViperRouting {
 
-    /**
-     * Remember to call {@link #isActivityAttached()} before getting the Activity to avoid {@link
-     * NullPointerException}s.
-     *
-     * @return attached Activity instance or null if it's detached (View got destroyed)
-     */
-    @Nullable
-    Activity getActivity();
-
-    boolean isActivityAttached();
-
-    void attachActivity(ViperView view);
-
-    void detachActivity();
-
-    void onPresenterDetached(boolean retainInstance);
-
-    @Deprecated
-    void onPresenterDetached();
+    void attach(ViperView view);
 }

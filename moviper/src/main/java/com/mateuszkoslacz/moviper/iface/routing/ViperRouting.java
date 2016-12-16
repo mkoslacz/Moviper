@@ -3,6 +3,7 @@ package com.mateuszkoslacz.moviper.iface.routing;
 import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
+import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
@@ -21,7 +22,7 @@ import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouti
  */
 // I prefer readability rather than conventions
 public interface ViperRouting<PresenterType extends ViperPresenterForRouting>
-        extends ViperRxRouting {
+        extends CommonViperRouting {
 
     /**
      * Remember to call {@link #isPresenterAttached()} ()} before getting the Presenter to avoid
@@ -35,8 +36,5 @@ public interface ViperRouting<PresenterType extends ViperPresenterForRouting>
 
     boolean isPresenterAttached();
 
-    // TODO: 04.10.2016 move attaching presenter to constructor
-    void attachPresenter(PresenterType presenter);
-
-    void detachPresenter();
+    void attach(ViperView view, PresenterType presenter);
 }

@@ -14,7 +14,7 @@ import com.mateuszkoslacz.moviper.iface.presenter.interactor.ViperPresenterForIn
  */
 // I prefer readability rather than conventions
 public interface ViperInteractor<PresenterType extends ViperPresenterForInteractor>
-        extends ViperRxInteractor {
+        extends CommonViperInteractor {
 
     /**
      * Remember to call {@link #isPresenterAttached()} before getting the Presenter to avoid
@@ -28,8 +28,5 @@ public interface ViperInteractor<PresenterType extends ViperPresenterForInteract
 
     boolean isPresenterAttached();
 
-    // TODO: 04.10.2016 move attaching presenter to constructor 
-    void attachPresenter(PresenterType presenter);
-
-    void detachPresenter();
+    void attach(PresenterType presenter);
 }

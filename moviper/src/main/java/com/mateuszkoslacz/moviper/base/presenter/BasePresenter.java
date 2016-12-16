@@ -55,17 +55,16 @@ public abstract class BasePresenter
     public void attachView(ViewType view) {
         super.attachView(view);
         //noinspection unchecked
-        routing.attachPresenter(this);
-        routing.attachActivity(view);
-        interactor.attachPresenter(this);
+        routing.attach(view, this);
+        //noinspection unchecked
+        interactor.attach(this);
     }
 
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
-        routing.detachPresenter();
-        routing.detachActivity();
-        interactor.detachPresenter();
+        routing.detach(retainInstance);
+        interactor.detach(retainInstance);
     }
 
     @NonNull

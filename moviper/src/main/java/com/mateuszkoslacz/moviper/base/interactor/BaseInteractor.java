@@ -34,24 +34,13 @@ public abstract class BaseInteractor<PresenterType extends ViperPresenterForInte
     }
 
     @Override
-    public void attachPresenter(PresenterType presenter) {
+    public void attach(PresenterType presenter) {
         this.presenter = new WeakReference<>(presenter);
     }
 
     @Override
-    public void detachPresenter() {
+    public void detach(boolean retainInstance) {
         WeakReferenceUtils.detach(presenter);
     }
 
-    @Override
-    public void onPresenterDetached(boolean retainInstance) {
-        onPresenterDetached();
-        // stub
-    }
-
-    @Override
-    @Deprecated
-    public void onPresenterDetached() {
-        // stub
-    }
 }
