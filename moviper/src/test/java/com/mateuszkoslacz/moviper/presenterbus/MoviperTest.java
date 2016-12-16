@@ -91,13 +91,13 @@ public class MoviperTest {
     }
 
     @Test
-    public void gettingPresenterWithNoAccesEnabled() throws Exception {
+    public void gettingPresenterWithNoAccessEnabled() throws Exception {
         mExpectedException.expect(PresentersAccessUtilNotEnabled.class);
         Moviper.getInstance().getPresenters(TestPresenter.class).subscribe();
     }
 
     @Test
-    public void gettingPresenterInstanceWithNoAccesEnabled() throws Exception {
+    public void gettingPresenterInstanceWithNoAccessEnabled() throws Exception {
         mExpectedException.expect(PresenterInstancesAccessNotEnabled.class);
         Moviper.getInstance()
                 .getPresenterInstance(TestPresenter.class, ViperPresenter.DEFAULT_NAME)

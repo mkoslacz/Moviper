@@ -85,7 +85,7 @@ public abstract class ViperViewHolder<DataObject, View extends ViperDataView, Pr
 
     @Override
     public void setRetainInstance(boolean retainingInstance) {
-        throw new UnsupportedOperationException("Retainining Instance is not supported / implemented yet");
+        throw new UnsupportedOperationException("Retaining Instance is not supported / implemented yet");
     }
 
     @Override
