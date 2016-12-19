@@ -6,8 +6,6 @@ import android.view.View;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
-import com.hannesdorfmann.mosby.mvp.viewstate.lce.MvpLceViewStateActivity;
 import com.mateuszkoslacz.moviper.base.view.activity.mvp.MvpLceViewStateAiActivity;
 import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 
@@ -19,15 +17,9 @@ public abstract class ViperLceViewStateAiActivity
         <ContentView extends View,
                 Model,
                 ViewType extends MvpLceView<Model>,
-                Presenter extends MvpPresenter<ViewType>,
-                ViewStateType extends ViewState<ViewType>>
+                Presenter extends MvpPresenter<ViewType>>
         extends MvpLceViewStateAiActivity<ContentView, Model, ViewType, Presenter>
         implements ViperLceView<Model> {
-
-    @Override
-    public ViewStateType getViewState() {
-        return (ViewStateType) super.getViewState();
-    }
 
     @NonNull
     @Override
