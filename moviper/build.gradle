@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: "com.jfrog.bintray"
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'android-apt'
+
 
 
 // This is the library version used when deploying the artifact
@@ -44,6 +46,9 @@ dependencies {
     // avoid including rxJava in projects that don't
     // use rx
     compile 'io.reactivex:rxjava:1.2.2'
+
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
 
 }
 
