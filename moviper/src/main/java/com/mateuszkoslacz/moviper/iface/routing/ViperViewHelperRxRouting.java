@@ -6,14 +6,12 @@ import com.mateuszkoslacz.moviper.iface.viewhelper.ViperViewHelper;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
- * <p>
- * It's a Routing ({@link ViperRouting}) that also provides a ViewHelper
- * (see {@link ViperViewHelper}), which is responsible for providing
- * Android Views (ImageView, TextView etc.) to allow performing Android Transitions with shared Views.
- * <p>
+ * </p>
+ * It's a Routing ({@link ViperRouting}) that also provides a ViewHelper (see {@link
+ * ViperViewHelper}), which is responsible for providing Android Views (ImageView, TextView etc.)
+ * to allow performing Android Transitions with shared Views.
  */
-public interface ViperViewHelperRxRouting
-        <ViewHelperType extends ViperViewHelper>  // I prefer readability rather than conventions
+public interface ViperViewHelperRxRouting<ViewHelperType extends ViperViewHelper>
         extends ViperRxRouting {
 
     /**
@@ -25,5 +23,11 @@ public interface ViperViewHelperRxRouting
     @Nullable
     ViewHelperType getViewHelper();
 
+    /**
+     * Checks if a ViewHelper is attached to this routing. You should always call this method
+     * before calling {@link #getViewHelper()} to get the ViewHelper instance.
+     *
+     * @return true if ViewHelper is attached or false if it's detached
+     */
     boolean isViewHelperAttached();
 }
