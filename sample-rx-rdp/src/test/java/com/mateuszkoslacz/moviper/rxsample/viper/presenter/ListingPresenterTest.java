@@ -5,18 +5,17 @@ import android.content.Context;
 import com.mateuszkoslacz.moviper.rxsample.di.DIProvider;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.interactor.ListingInteractor;
-import com.mateuszkoslacz.moviper.rxsample.viper.utils.RxAndroidSchedulersOverrideRule;
 import com.mateuszkoslacz.moviper.rxsample.viper.routing.ListingRouting;
+import com.mateuszkoslacz.moviper.rxsample.viper.utils.RxAndroidSchedulersOverrideRule;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.ListingActivity;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,12 +24,15 @@ import java.util.List;
 import rx.schedulers.TestScheduler;
 import rx.subjects.TestSubject;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by mateuszkoslacz on 17.11.2016.
  */
-@RunWith(MockitoJUnitRunner.class)
 public class ListingPresenterTest {
 
     @Rule
@@ -46,7 +48,7 @@ public class ListingPresenterTest {
     protected ListingActivity mView;
 
     @InjectMocks
-    protected ListingPresenter mPresenter = new ListingPresenter(mView);
+    protected ListingPresenter mPresenter;
 
     @BeforeClass
     public static void setUpClass() {
@@ -55,6 +57,9 @@ public class ListingPresenterTest {
 
     @Before
     public void setUpPresenter() {
+        DIProvider.init(mock(Context.class));
+        mPresenter = new ListingPresenter(mView);
+        MockitoAnnotations.initMocks(this);
         mPresenter.attachView(mView);
     }
 
