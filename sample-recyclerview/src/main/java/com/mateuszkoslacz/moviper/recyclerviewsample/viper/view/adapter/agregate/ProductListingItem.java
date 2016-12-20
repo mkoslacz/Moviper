@@ -8,6 +8,7 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 
 public class ProductListingItem implements ListingItem {
 
+    public static final int TYPE = ProductListingItem.class.hashCode();
     private Product mProduct;
 
     public ProductListingItem(Product product) {
@@ -16,7 +17,7 @@ public class ProductListingItem implements ListingItem {
 
     @Override
     public int getType() {
-        return ListingItem.TYPE_PRODUCT;
+        return TYPE;
     }
 
     public Product getProduct() {

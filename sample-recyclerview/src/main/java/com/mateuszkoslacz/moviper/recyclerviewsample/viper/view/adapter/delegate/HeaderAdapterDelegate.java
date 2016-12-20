@@ -20,7 +20,7 @@ public class HeaderAdapterDelegate extends AdapterDelegate<List<ListingItem>> {
 
     @Override
     protected boolean isForViewType(@NonNull List<ListingItem> items, int position) {
-        return items.get(position).getType() == ListingItem.TYPE_HEADER;
+        return items.get(position).getType() == HeaderListingItem.TYPE;
     }
 
     @NonNull
