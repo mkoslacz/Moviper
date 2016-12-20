@@ -2,15 +2,14 @@ package com.mateuszkoslacz.moviper.base.presenter;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
 import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
-import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperFragmentPresenterForRouting;
+import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
+import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
@@ -28,31 +27,44 @@ import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
  */
 //TODO migrate to MvpNullObjectPresenter base class?
 public abstract class ViperFragmentBaseRxPresenter
-        <ViewType extends MvpView,  // I prefer readability rather than conventions
+        <ViewType extends ViperView,  // I prefer readability rather than conventions
                 InteractorType extends MoviperRxInteractor,
                 RoutingType extends MoviperRxRouting>
-        extends WipeBaseRxPresenter<ViewType, InteractorType>
+        extends MoviperBaseRxPresenter<ViewType>
         implements MoviperPresenter<ViewType>,
         MoviperPresenterForInteractor<InteractorType>,
-        MoviperFragmentPresenterForRouting<RoutingType> {
+        MoviperPresenterForRouting<RoutingType> {
 
     @NonNull
     private RoutingType routing;
 
-    public ViperFragmentBaseRxPresenter(@NonNull Fragment fragment) {
+    @NonNull
+    private InteractorType interactor;
+
+    public ViperFragmentBaseRxPresenter() {
         super();
-        this.routing = createRouting(fragment);
+        this.routing = createRouting();
+        this.interactor = createInteractor();
     }
 
-    public ViperFragmentBaseRxPresenter(@NonNull Fragment fragment, Bundle args) {
+    public ViperFragmentBaseRxPresenter(Bundle args) {
         super(args);
-        this.routing = createRouting(fragment);
+        this.routing = createRouting();
+        this.interactor = createInteractor();
+    }
+
+    @Override
+    public void attachView(ViewType view) {
+        super.attachView(view);
+        routing.attachActivity(view);
     }
 
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
+        routing.detachActivity();
         routing.onPresenterDetached(retainInstance);
+        interactor.onPresenterDetached(retainInstance);
     }
 
     @Override
@@ -61,9 +73,21 @@ public abstract class ViperFragmentBaseRxPresenter
         return routing != null;
     }
 
+    @Override
+    @Deprecated
+    public boolean isInteractorAttached() {
+        return interactor != null;
+    }
+
     @NonNull
     @Override
     public RoutingType getRouting() {
         return routing;
+    }
+
+    @NonNull
+    @Override
+    public InteractorType getInteractor() {
+        return interactor;
     }
 }

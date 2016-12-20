@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
-import android.app.Activity;
 import android.support.annotation.NonNull;
 
 import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
@@ -17,12 +16,7 @@ public class ListingPresenter
         <ListingContract.View,
                 ListingContract.Interactor,
                 ListingContract.Routing>
-        implements
-        ListingContract.Presenter {
-
-    public ListingPresenter(Activity activity) {
-        super(activity);
-    }
+        implements ListingContract.Presenter {
 
     @Override
     public void onViewCreated() {
@@ -50,8 +44,8 @@ public class ListingPresenter
 
     @NonNull
     @Override
-    public ListingContract.Routing createRouting(@NonNull Activity activity) {
-        return new ListingRouting(activity);
+    public ListingContract.Routing createRouting() {
+        return new ListingRouting();
     }
 
     @NonNull

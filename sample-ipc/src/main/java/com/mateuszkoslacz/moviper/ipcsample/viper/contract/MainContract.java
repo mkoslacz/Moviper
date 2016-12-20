@@ -1,9 +1,9 @@
 package com.mateuszkoslacz.moviper.ipcsample.viper.contract;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
+import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 public interface MainContract {
 
@@ -12,7 +12,7 @@ public interface MainContract {
         void onViewCreated();
     }
 
-    interface View extends MvpView {
+    interface View extends ViperView {
 
         int getViewSlotIdForPosition(int position);
     }

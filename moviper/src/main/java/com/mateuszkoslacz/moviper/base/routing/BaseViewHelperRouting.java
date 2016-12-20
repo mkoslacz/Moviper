@@ -1,7 +1,5 @@
 package com.mateuszkoslacz.moviper.base.routing;
 
-import android.app.Activity;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
@@ -15,15 +13,11 @@ import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
  * Activity version of base Routing class with ViewHelper. (see {@link MoviperViewHelperRouting},
  * {@link MoviperViewHelper} and {@link MoviperPresenterForRouting})
  */
-public abstract class ActivityBaseViewHelperRouting
+public abstract class BaseViewHelperRouting
         <PresenterType extends MoviperPresenterForRouting,  // I prefer readability rather than conventions
                 ViewHelperType extends MoviperViewHelper>
-        extends ActivityBaseRouting<PresenterType>
+        extends BaseRouting<PresenterType>
         implements MoviperViewHelperRouting<PresenterType, ViewHelperType> {
-
-    public ActivityBaseViewHelperRouting(@NonNull Activity activity) {
-        super(activity);
-    }
 
     @Nullable
     @Override

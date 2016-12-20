@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.hannesdorfmann.mosby.mvp.MvpFragment;
-import com.mateuszkoslacz.moviper.base.presenter.WipeBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.MoviperBasePresenter;
 import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 
 import junit.framework.Assert;
@@ -57,7 +57,7 @@ public class FragmentTestRule<FragmentType extends MvpFragment> extends Activity
     @Override
     protected void afterActivityFinished() {
         super.afterActivityFinished();
-        Moviper.getInstance().getPresenters(WipeBaseRxPresenter.class)
+        Moviper.getInstance().getPresenters(MoviperBasePresenter.class)
                 .subscribe(Moviper.getInstance()::unregister);
     }
 

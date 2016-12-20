@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.widget.TextView;
 
-import com.hannesdorfmann.mosby.mvp.MvpActivity;
+import com.mateuszkoslacz.moviper.base.view.activity.ViperActivity;
 import com.mateuszkoslacz.rxpresenter.viper.contract.SampleContract;
 import com.mateuszkoslacz.rxpresenter.viper.presenter.SamplePresenter;
 
@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SampleActivity
-        extends MvpActivity<SampleContract.View, SampleContract.Presenter>
+        extends ViperActivity<SampleContract.View, SampleContract.Presenter>
         implements SampleContract.View {
 
     @BindView(R.id.txtNumber)
@@ -37,7 +37,7 @@ public class SampleActivity
     @NonNull
     @Override
     public SampleContract.Presenter createPresenter() {
-        return new SamplePresenter(this);
+        return new SamplePresenter();
     }
 
     @Override

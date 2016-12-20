@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.iface.view;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpView;
 
@@ -10,5 +11,6 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
 
 public interface ViperView extends MvpView {
 
+    @NonNull
     Activity getActivity();
 }

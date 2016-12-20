@@ -28,4 +28,12 @@ public interface MoviperPresenterForRouting<RoutingType extends MoviperRxRouting
      */
     @NonNull
     RoutingType getRouting();
+
+    /**
+     * Instantiate a Routing instance here.
+     *
+     * @return The {@link MoviperRouting} for this view
+     */
+    @NonNull
+    RoutingType createRouting();
 }
