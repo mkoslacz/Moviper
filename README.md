@@ -12,15 +12,19 @@ To avoid manually creating all VIPER class files and managing their dependencies
 
 ### Great! But I'm used to go with Mosby. What about all of its goodies?
 
-You are able to use all of the Mosby's MVP Views with Moviper. MvpFragment, MvpLceActivity, ViewStateFragment etc. are fully compatibile with Moviper presenters.
+Moviper has all of the Mosby's MVP Views mapped to fit VIPER requirements. Just simply replace `Mvp` with `Viper` and let the Android Studio do the autoimport for you.
+
+For example `MvpFragment` maps to `ViperFragment`.
 
 ## Dependency
 
 ```groovy
 dependencies {
-    compile 'com.mateuszkoslacz.moviper:moviper:1.1.0-alpha'
+    compile 'com.mateuszkoslacz.moviper:moviper:1.2.0-alpha'
 }
 ```
+
+If you are upgrading Moviper you should probably check out the [Changelog](https://github.com/mkoslacz/Moviper/blob/master/CHANGELOG.md) and/or the [Migration guide](https://github.com/mkoslacz/Moviper/blob/master/MIGRATION_GUIDE.md).
 
 ## Getting started
 
@@ -67,9 +71,22 @@ Moviper.getInstance().getPresenterInstance(SomePresenter.class, "someName")
         .subscribe(somePresenter -> somePresenter.someMethod(false)); // exactly one or zero Presenters with given name and class goes here
 ```
 
+### VIPER ViewHolders
+
+For complex RecyclerView list elements and/or multiple views on RecyclerViewlist you can design your app in the way that treats every list element as a separate VIPER View with its own contract.
+Generating such ViewHolders is supported in the  [Moviper Template Generator](https://github.com/mkoslacz/MoviperTemplateGenerator).
+For the sample usage check out the `sample-recyclerview`.
+
 ## Examples
 
-For the basic usage just check out the `rxsample` (or `sample`, if you aren't familiar with [RxJava](https://github.com/ReactiveX/RxJava)) module in this repo. For the IPC usage check out the `ipcsample` module.
+For the basic usage just check out the `sample-rx` (or `sample`, if you aren't familiar with [RxJava](https://github.com/ReactiveX/RxJava)) module in this repo. Most of samples include showcases of test scenarios for given Moviper usecases.
+
+More advanced usage:
+- Inter-Presenter-Communication — `sample-ipc`,
+- VIPER ViewHolders - `sample-recyclerview`,
+- Repository Design Pattern usage in Interactors and tests - `sample-rx-rdp`
+- ViewState usage - `sample-rx-viewstate`
+- Activity/Fragment retaining presenter - `sample-rx-presenter`
 
 ## Credits
 

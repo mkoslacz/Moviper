@@ -1,3 +1,41 @@
+## 1.2.0-alpha
+
+### Breaking changes
+
+This release introduces some breaking changes. All stuff listed below is also mentioned in the [Migration guide](https://github.com/mkoslacz/Moviper/blob/master/MIGRATION_GUIDE.md).
+* Simplified Moviper internals to ease the troubleshooting and debugging.
+* Rename some methods to make them more self-explaining.
+* Removed Wipe (View-Interactor-Presenter-Entity) and Perv (Presenter-Entity-Routing-View) components as they did not add much value to the project but still needed the maintenance.
+* Removed deprecated methods.
+
+### General
+
+* Introduced even more samples, now with VIPER testing showcases inside.
+
+### Enhancements
+
+* Added support for `ViewHolder`s. Now they can represent a View in a VIPER architecture. See `sample-recyclerview`.
+
+### Internal
+
+* Routing activity attaching moved from constructor to the routing lifecycle.
+* Simplified a VIPER components lifecycle.
+* Simplified a presenter architecture.
+* Simplified a routing architecture.
+* Bumped dependencies versions:
+    - RxJava to 1.2.3
+    - buildtools to 25.0.2
+    - support libs to 25.1.0
+
+
+### Credits
+
+Many thanks to guys that helped me in Moviper development implementing my ideas.
+* [Tomasz Najda](https://github.com/tomasznajda) - simplifying Moviper architecture,
+* [Bartosz Wilk](https://github.com/bartoszwilk) - Moviper templates,
+* [Jakub Jodelka](https://github.com/jakubjodelka) - Moviper samples, VIPER ViewHolders.
+
+
 ## 1.1.0-alpha
 
 ### General
