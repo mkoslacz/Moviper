@@ -3,11 +3,9 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter;
 import android.view.ViewGroup;
 
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegatesManager;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.mateuszkoslacz.moviper.base.view.MvpRecyclerViewAdapter;
-import com.mateuszkoslacz.moviper.base.view.MvpBaseViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.HeaderListingItem;
+import com.mateuszkoslacz.moviper.base.view.ViperRecyclerViewAdapter;
+import com.mateuszkoslacz.moviper.base.view.ViperViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ListingItem;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ProductListingItem;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.delegate.HeaderAdapterDelegate;
@@ -21,8 +19,7 @@ import java.util.List;
  */
 
 public class ProductAdapter
-        extends MvpRecyclerViewAdapter<MvpView, MvpPresenter<MvpView>,
-        MvpBaseViewHolder> {
+        extends ViperRecyclerViewAdapter<ViperViewHolder> {
 
     private List<ListingItem> mListingItems;
     private AdapterDelegatesManager<List<ListingItem>> mDelegatesManager;
@@ -36,12 +33,12 @@ public class ProductAdapter
     }
 
     @Override
-    public MvpBaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return (MvpBaseViewHolder) mDelegatesManager.onCreateViewHolder(parent, viewType);
+    public ViperViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return (ViperViewHolder) mDelegatesManager.onCreateViewHolder(parent, viewType);
     }
 
     @Override
-    public void onBindViewHolder(MvpBaseViewHolder holder, int position) {
+    public void onBindViewHolder(ViperViewHolder holder, int position) {
         mDelegatesManager.onBindViewHolder(mListingItems, position, holder);
     }
 

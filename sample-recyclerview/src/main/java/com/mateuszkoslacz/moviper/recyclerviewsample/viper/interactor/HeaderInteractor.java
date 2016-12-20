@@ -1,6 +1,6 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.interactor;
 
-import com.mateuszkoslacz.moviper.base.interactor.BaseInteractor;
+import com.mateuszkoslacz.moviper.base.interactor.BaseRxInteractor;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.HeaderContract;
 
 /**
@@ -8,7 +8,7 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.HeaderContra
  */
 
 public class HeaderInteractor
-        extends BaseInteractor
+        extends BaseRxInteractor
         implements HeaderContract.Interactor {
 
 }

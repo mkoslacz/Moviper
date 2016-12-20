@@ -3,8 +3,8 @@ package com.mateuszkoslacz.moviper.ipcsample.viper.contract;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.annotation.ExternalCall;
-import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
+import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
+import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 
 public interface ColorWidgetContract {
 
@@ -27,11 +27,11 @@ public interface ColorWidgetContract {
         void setBackgroundColor(int color);
     }
 
-    interface Interactor extends MoviperRxInteractor {
+    interface Interactor extends ViperRxInteractor {
 
     }
 
-    interface Routing extends MoviperRxRouting {
+    interface Routing extends ViperRxRouting {
 
     }
 }

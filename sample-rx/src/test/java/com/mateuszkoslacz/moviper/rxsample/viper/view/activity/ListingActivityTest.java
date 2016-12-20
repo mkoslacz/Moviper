@@ -55,14 +55,10 @@ public class ListingActivityTest {
 
     @Test
     public void onViewCreated() throws Exception {
-        // FIXME: 24.11.2016 this is how it should look to
-        // inject mocks first, and invoke onCreate
-        // then, but there is exactly the same problem as when
-        // using Glide with Robolectric + Mockito @injectMocks
         ActivityController<ListingActivity> listingActivityLifecycleController =
                 Robolectric.buildActivity(ListingActivity.class);
         mListingActivity = listingActivityLifecycleController.get();
-        MockitoAnnotations.initMocks(this);
+        mListingActivity.setPresenter(mListingPresenter);
         listingActivityLifecycleController.create();
         Mockito.verify(mListingPresenter).onViewCreated();
     }

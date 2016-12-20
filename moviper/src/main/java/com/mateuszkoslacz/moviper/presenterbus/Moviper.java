@@ -1,9 +1,11 @@
 package com.mateuszkoslacz.moviper.presenterbus;
 
+import android.support.annotation.VisibleForTesting;
+
 import com.mateuszkoslacz.moviper.base.exception.PresenterAlreadyRegisteredException;
 import com.mateuszkoslacz.moviper.base.exception.PresenterInstancesAccessNotEnabled;
 import com.mateuszkoslacz.moviper.base.exception.PresentersAccessUtilNotEnabled;
-import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
+import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -31,7 +33,7 @@ public class Moviper {
     // TODO: 28.10.2016 create config for
     // - enabling bus (and add runtime exception on getPresenters if not enabled)
     // - enabling named instance presenters (and add runtime exception on getPresenterInstance if not enabled)
-    private List<MoviperPresenter> mPresenters = new CopyOnWriteArrayList<>();
+    private List<ViperPresenter> mPresenters = new CopyOnWriteArrayList<>();
 
     private PublishSubject<MoviperBundle> registerSynchronizer = PublishSubject.create();
 
@@ -49,13 +51,13 @@ public class Moviper {
         mConfig = config;
     }
 
-    public void register(MoviperPresenter presenter) {
+    public void register(ViperPresenter presenter) {
         if (mConfig.isPresenterAccessUtilEnabled()) {
             registerSynchronizer.onNext(new MoviperBundle(presenter, true));
         }
     }
 
-    public void unregister(MoviperPresenter presenter) {
+    public void unregister(ViperPresenter presenter) {
         if (mConfig.isPresenterAccessUtilEnabled()) {
             registerSynchronizer.onNext(new MoviperBundle(presenter, false));
         }
@@ -71,7 +73,7 @@ public class Moviper {
         }
     }
 
-    public <PresenterType extends MoviperPresenter> Observable<PresenterType> getPresenters(
+    public <PresenterType extends ViperPresenter> Observable<PresenterType> getPresenters(
             final Class<PresenterType> presenterTypeClass) {
         if (!mConfig.isPresenterAccessUtilEnabled()) throw new PresentersAccessUtilNotEnabled();
         return Observable.from(mPresenters)
@@ -80,7 +82,7 @@ public class Moviper {
                 .subscribeOn(Schedulers.computation()); // TODO: reconsider moving to computation scheduler
     }
 
-    public <PresenterType extends MoviperPresenter> Observable<PresenterType> getPresenterInstance(
+    public <PresenterType extends ViperPresenter> Observable<PresenterType> getPresenterInstance(
             final Class<PresenterType> presenterTypeClass, String name) {
         if (!mConfig.isInstancePresentersEnabled()) throw new PresenterInstancesAccessNotEnabled();
         return Observable.from(mPresenters)
@@ -91,26 +93,31 @@ public class Moviper {
                 .subscribeOn(Schedulers.computation());
     }
 
-    private void registerSync(MoviperPresenter presenter) {
+    private void registerSync(ViperPresenter presenter) {
         mPresenters.add(presenter);
     }
 
-    private void unregisterSync(MoviperPresenter presenter) {
+    private void unregisterSync(ViperPresenter presenter) {
         mPresenters.remove(presenter);
+    }
+
+    @VisibleForTesting
+    public void unregisterAll() {
+        mPresenters.clear();
     }
 
     private class MoviperBundle {
 
-        private MoviperPresenter mPresenter;
+        private ViperPresenter mPresenter;
 
         private boolean mRegister;
 
-        public MoviperBundle(MoviperPresenter presenter, boolean register) {
+        public MoviperBundle(ViperPresenter presenter, boolean register) {
             mPresenter = presenter;
             mRegister = register;
         }
 
-        public MoviperPresenter getPresenter() {
+        public ViperPresenter getPresenter() {
             return mPresenter;
         }
 

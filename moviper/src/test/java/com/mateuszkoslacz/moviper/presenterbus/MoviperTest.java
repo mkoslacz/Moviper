@@ -1,23 +1,22 @@
 package com.mateuszkoslacz.moviper.presenterbus;
 
-import com.mateuszkoslacz.moviper.base.exception.PresenterAlreadyRegisteredException;
 import com.mateuszkoslacz.moviper.base.exception.PresenterInstancesAccessNotEnabled;
 import com.mateuszkoslacz.moviper.base.exception.PresentersAccessUtilNotEnabled;
-import com.mateuszkoslacz.moviper.base.presenter.MoviperBasePresenter;
-import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.BaseRxPresenter;
+import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import rx.exceptions.OnErrorFailedException;
-import rx.exceptions.OnErrorNotImplementedException;
 import rx.observers.TestSubscriber;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
 
 /**
  * Created by mateuszkoslacz on 29.10.2016.
@@ -33,6 +32,11 @@ public class MoviperTest {
         Moviper.getInstance().setConfig(new Config.Builder().build());
     }
 
+    @After
+    public void clear() throws Exception {
+        Moviper.getInstance().unregisterAll();
+    }
+
     @Test
     public void getInstance() throws Exception {
         assertNotNull(Moviper.getInstance());
@@ -44,7 +48,7 @@ public class MoviperTest {
                 .withPresenterAccessUtilEnabled(true)
                 .build());
         TestSubscriber<TestPresenter> testSubscriber = TestSubscriber.create();
-        TestPresenter mockPresenter= Mockito.mock(TestPresenter.class);
+        TestPresenter mockPresenter = Mockito.mock(TestPresenter.class);
         Moviper.getInstance().register(mockPresenter);
         Moviper.getInstance().getPresenters(TestPresenter.class)
                 .subscribe(testSubscriber);
@@ -62,7 +66,7 @@ public class MoviperTest {
                 .withInstancePresentersEnabled(true)
                 .build());
         TestSubscriber<TestPresenter> testSubscriber = TestSubscriber.create();
-        TestPresenter mockPresenter= Mockito.mock(TestPresenter.class);
+        TestPresenter mockPresenter = Mockito.mock(TestPresenter.class);
         Mockito.when(mockPresenter.getName()).thenReturn("testPresenter");
         Moviper.getInstance().register(mockPresenter);
         Moviper.getInstance().getPresenterInstance(TestPresenter.class, "testPresenter")
@@ -80,24 +84,23 @@ public class MoviperTest {
                 .withPresenterAccessUtilEnabled(true)
                 .withInstancePresentersEnabled(true)
                 .build());
-        TestPresenter mockPresenter = new TestPresenter();
-        TestPresenter secondMockPresenter= new TestPresenter();
+        TestPresenter mockPresenter = Mockito.mock(TestPresenter.class);
+        TestPresenter secondMockPresenter = Mockito.mock(TestPresenter.class);
         Moviper.getInstance().register(mockPresenter);
-        mExpectedException.expect(OnErrorNotImplementedException.class); // TODO how to better handle unwraped rx exceptions?
         Moviper.getInstance().register(secondMockPresenter);
     }
 
     @Test
-    public void gettingPresenterWithNoAccesEnabled() throws Exception {
+    public void gettingPresenterWithNoAccessEnabled() throws Exception {
         mExpectedException.expect(PresentersAccessUtilNotEnabled.class);
         Moviper.getInstance().getPresenters(TestPresenter.class).subscribe();
     }
 
     @Test
-    public void gettingPresenterInstanceWithNoAccesEnabled() throws Exception {
+    public void gettingPresenterInstanceWithNoAccessEnabled() throws Exception {
         mExpectedException.expect(PresenterInstancesAccessNotEnabled.class);
         Moviper.getInstance()
-                .getPresenterInstance(TestPresenter.class, MoviperPresenter.DEFAULT_NAME)
+                .getPresenterInstance(TestPresenter.class, ViperPresenter.DEFAULT_NAME)
                 .subscribe();
     }
 
@@ -116,8 +119,6 @@ public class MoviperTest {
 
     }
 
-    public static class TestPresenter extends MoviperBasePresenter implements MoviperPresenter{
-
+    private static abstract class TestPresenter extends BaseRxPresenter {
     }
-
 }

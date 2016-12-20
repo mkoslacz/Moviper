@@ -81,6 +81,6 @@ public class ColorWidgetFragment
     @NonNull
     @Override
     public ColorWidgetContract.Presenter createPresenter() {
-        return new ColorWidgetPresenter(this, getArguments());
+        return new ColorWidgetPresenter(getArguments());
     }
 }

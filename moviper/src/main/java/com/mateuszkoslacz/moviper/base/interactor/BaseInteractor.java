@@ -3,8 +3,8 @@ package com.mateuszkoslacz.moviper.base.interactor;
 
 import android.support.annotation.Nullable;
 
-import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
-import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
+import com.mateuszkoslacz.moviper.iface.interactor.ViperInteractor;
+import com.mateuszkoslacz.moviper.iface.presenter.interactor.ViperPresenterForInteractor;
 import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
 
 import java.lang.ref.WeakReference;
@@ -14,10 +14,10 @@ import java.lang.ref.WeakReference;
  * <p>
  * Adapted and modified by mateuszkoslacz on 08.08.2016.
  * <p>
- * Base Interactor class. (see {@link MoviperInteractor})
+ * Base Interactor class. (see {@link ViperInteractor})
  */
-public abstract class BaseInteractor<PresenterType extends MoviperPresenterForInteractor>
-        implements MoviperInteractor<PresenterType> {
+public abstract class BaseInteractor<PresenterType extends ViperPresenterForInteractor>
+        implements ViperInteractor<PresenterType> {
 
     @Nullable
     private WeakReference<PresenterType> presenter;
@@ -34,24 +34,13 @@ public abstract class BaseInteractor<PresenterType extends MoviperPresenterForIn
     }
 
     @Override
-    public void attachPresenter(PresenterType presenter) {
+    public void attach(PresenterType presenter) {
         this.presenter = new WeakReference<>(presenter);
     }
 
     @Override
-    public void detachPresenter() {
+    public void detach(boolean retainInstance) {
         WeakReferenceUtils.detach(presenter);
     }
 
-    @Override
-    public void onPresenterDetached(boolean retainInstance) {
-        onPresenterDetached();
-        // stub
-    }
-
-    @Override
-    @Deprecated
-    public void onPresenterDetached() {
-        // stub
-    }
 }

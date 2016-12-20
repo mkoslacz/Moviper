@@ -2,8 +2,8 @@ package com.mateuszkoslacz.moviper.ipcsample.viper.contract;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
+import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
+import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 
 public interface MainContract {
 
@@ -17,11 +17,11 @@ public interface MainContract {
         int getViewSlotIdForPosition(int position);
     }
 
-    interface Interactor extends MoviperRxInteractor {
+    interface Interactor extends ViperRxInteractor {
 
     }
 
-    interface Routing extends MoviperRxRouting {
+    interface Routing extends ViperRxRouting {
 
         void createAndAddWidgetToSlotWithGivenId(String widgetName, int widgetColor,
                                                  int destinationSlotId);

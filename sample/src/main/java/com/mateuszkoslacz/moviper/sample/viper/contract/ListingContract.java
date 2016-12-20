@@ -2,10 +2,10 @@ package com.mateuszkoslacz.moviper.sample.viper.contract;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
-import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
-import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperActivityPresenterForRouting;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperRouting;
+import com.mateuszkoslacz.moviper.iface.interactor.ViperInteractor;
+import com.mateuszkoslacz.moviper.iface.presenter.interactor.ViperPresenterForInteractor;
+import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
+import com.mateuszkoslacz.moviper.iface.routing.ViperRouting;
 import com.mateuszkoslacz.moviper.sample.viper.entity.User;
 
 import java.util.List;
@@ -34,14 +34,14 @@ public interface ListingContract {
         void showContent();
     }
 
-    interface Interactor extends MoviperInteractor<PresenterForInteractor> {
+    interface Interactor extends ViperInteractor<PresenterForInteractor> {
         // Defines what methods the Presenter can invoke on the Interactor.
         // In most cases there will be data saving and querying.
 
         void getUserList();
     }
 
-    interface PresenterForInteractor extends MoviperPresenterForInteractor<Interactor> {
+    interface PresenterForInteractor extends ViperPresenterForInteractor<Interactor> {
         // Defines what methods the Interactor could invoke on the Presenter.
         // In most cases there will be data received callbacks and error notifying.
 
@@ -50,7 +50,7 @@ public interface ListingContract {
         void onUserListFetchedError(Throwable throwable);
     }
 
-    interface Routing extends MoviperRouting<PresenterForRouting> {
+    interface Routing extends ViperRouting<PresenterForRouting> {
         // Defines what methods the Presenter can invoke on the Routing.
         // In most cases there will be starting another activities, services and using system
         // framework, ie. scheduling alarms or sending broadcasts.
@@ -60,7 +60,7 @@ public interface ListingContract {
         void startUserDetailsActivity(User user);
     }
 
-    interface PresenterForRouting extends MoviperActivityPresenterForRouting<Routing> {
+    interface PresenterForRouting extends ViperPresenterForRouting<Routing> {
         // Defines what methods the Routing can invoke on the Presenter.
         // In most cases there will be system framework interaction callbacks and error notifying.
 

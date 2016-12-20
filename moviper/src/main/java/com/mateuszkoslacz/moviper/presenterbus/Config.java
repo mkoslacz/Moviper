@@ -9,7 +9,7 @@ public class Config {
 
     private boolean instancePresentersEnabled;
 
-    Config(){};
+    Config(){}
 
     private Config(Builder builder) {
         presenterAccessUtilEnabled = builder.presenterAccessUtilEnabled;

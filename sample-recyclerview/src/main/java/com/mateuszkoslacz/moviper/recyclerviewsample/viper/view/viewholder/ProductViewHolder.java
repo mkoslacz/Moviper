@@ -1,11 +1,12 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.viewholder;
 
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.mateuszkoslacz.moviper.base.view.MvpBaseViewHolder;
+import com.mateuszkoslacz.moviper.base.view.ViperViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.R;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.ProductContract;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
@@ -19,7 +20,7 @@ import butterknife.ButterKnife;
  */
 
 public class ProductViewHolder
-        extends MvpBaseViewHolder<Product, ProductContract.View, ProductContract.Presenter>
+        extends ViperViewHolder<Product, ProductContract.View, ProductContract.Presenter>
         implements ProductContract.View {
 
     @BindView(R.id.product_photo)
@@ -55,8 +56,9 @@ public class ProductViewHolder
     }
 
     @Override
+    @NonNull
     public ProductContract.Presenter createPresenter() {
-        return new ProductPresenter(itemView);
+        return new ProductPresenter();
     }
 
 }

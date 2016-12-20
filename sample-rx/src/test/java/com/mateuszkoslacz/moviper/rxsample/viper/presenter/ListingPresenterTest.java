@@ -42,7 +42,7 @@ public class ListingPresenterTest {
     protected ListingActivity mView;
 
     @InjectMocks
-    protected ListingPresenter mPresenter = new ListingPresenter(mView);
+    protected ListingPresenter mPresenter = new ListingPresenter();
 
     @Before
     public void setUpPresenter() {

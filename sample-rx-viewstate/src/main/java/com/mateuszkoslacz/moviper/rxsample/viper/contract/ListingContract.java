@@ -2,8 +2,8 @@ package com.mateuszkoslacz.moviper.rxsample.viper.contract;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
-import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
+import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
+import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
 import java.util.List;
@@ -45,7 +45,7 @@ public interface ListingContract {
         }
     }
 
-    interface Interactor extends MoviperRxInteractor {
+    interface Interactor extends ViperRxInteractor {
         // Defines what methods the Presenter can invoke on the Interactor.
         // In most cases there will be data saving and querying.
         // It's just a marker interface.
@@ -53,7 +53,7 @@ public interface ListingContract {
         Observable<List<User>> getUserList();
     }
 
-    interface Routing extends MoviperRxRouting {
+    interface Routing extends ViperRxRouting {
         // Defines what methods the Presenter can invoke on the Routing.
         // In most cases there will be starting another activities, services and using system
         // framework, ie. scheduling alarms or sending broadcasts.
