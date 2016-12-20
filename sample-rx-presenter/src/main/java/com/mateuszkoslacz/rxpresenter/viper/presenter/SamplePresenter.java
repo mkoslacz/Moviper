@@ -2,9 +2,8 @@ package com.mateuszkoslacz.rxpresenter.viper.presenter;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.app.Activity;
 
-import com.mateuszkoslacz.moviper.base.presenter.ViperActivityBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.ViperBaseRxPresenter;
 import com.mateuszkoslacz.rxpresenter.viper.contract.SampleContract;
 import com.mateuszkoslacz.rxpresenter.viper.interactor.SampleInteractor;
 import com.mateuszkoslacz.rxpresenter.viper.routing.SampleRouting;
@@ -16,20 +15,15 @@ import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 
 public class SamplePresenter
-        extends ViperActivityBaseRxPresenter
-        <SampleContract.View,
-                SampleContract.Interactor,
-                SampleContract.Routing>
+        extends ViperBaseRxPresenter<SampleContract.View,
+                        SampleContract.Interactor,
+                        SampleContract.Routing>
         implements SampleContract.Presenter {
-
-    public SamplePresenter(Activity activity) {
-        super(activity);
-    }
 
     @NonNull
     @Override
-    public SampleContract.Routing createRouting(@NonNull Activity activity) {
-        return new SampleRouting(activity);
+    public SampleContract.Routing createRouting() {
+        return new SampleRouting();
     }
 
     @NonNull

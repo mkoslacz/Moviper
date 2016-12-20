@@ -6,22 +6,21 @@ import android.os.Bundle;
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.presenter.MoviperPresenter;
-import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 
 /**
  * Created by mateuszkoslacz on 24.10.2016.
  */
 
-public abstract class MoviperBasePresenter<V extends MvpView>
+public abstract class CommonBasePresenter<V extends MvpView>
         extends MvpBasePresenter<V>
         implements MoviperPresenter<V> {
 
     private Bundle args;
 
-    public MoviperBasePresenter() {
+    public CommonBasePresenter() {
     }
 
-    public MoviperBasePresenter(Bundle args) {
+    public CommonBasePresenter(Bundle args) {
         this.args = args;
     }
 
@@ -32,18 +31,6 @@ public abstract class MoviperBasePresenter<V extends MvpView>
     @Override
     public String getName() {
         return DEFAULT_NAME;
-    }
-
-    @Override
-    public void attachView(V view) {
-        super.attachView(view);
-        Moviper.getInstance().register(this);
-    }
-
-    @Override
-    public void detachView(boolean retainInstance) {
-        Moviper.getInstance().unregister(this);
-        super.detachView(retainInstance);
     }
 
     public Bundle getArgs() {
@@ -57,9 +44,9 @@ public abstract class MoviperBasePresenter<V extends MvpView>
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof MoviperBasePresenter)) return false;
+        if (!(o instanceof CommonBasePresenter)) return false;
 
-        MoviperBasePresenter<?> that = (MoviperBasePresenter<?>) o;
+        CommonBasePresenter<?> that = (CommonBasePresenter<?>) o;
 
         if (!getName().equals(that.getName())) return false;
         return getClassName().equals(that.getClassName());

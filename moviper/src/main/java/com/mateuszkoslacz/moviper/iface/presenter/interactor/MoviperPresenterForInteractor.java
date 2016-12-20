@@ -18,13 +18,8 @@ import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
 // I prefer readability rather than conventions
 public interface MoviperPresenterForInteractor<InteractorType extends MoviperRxInteractor> {
 
-    @Deprecated
-    boolean isInteractorAttached();
 
     /**
-     * Remember to call {@link #isInteractorAttached()} before getting the Interactor to avoid
-     * {@link NullPointerException}s.
-     *
      * @return attached {@link MoviperInteractor} subclass instance or
      * null if it's detached (View got destroyed)
      */

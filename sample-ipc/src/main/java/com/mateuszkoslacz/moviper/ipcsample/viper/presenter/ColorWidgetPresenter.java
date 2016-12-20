@@ -1,12 +1,10 @@
 package com.mateuszkoslacz.moviper.ipcsample.viper.presenter;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 
 import com.mateuszkoslacz.moviper.annotation.ExternalCall;
-import com.mateuszkoslacz.moviper.base.presenter.ViperFragmentBaseRxPresenter;
+import com.mateuszkoslacz.moviper.base.presenter.ViperBaseRxPresenter;
 import com.mateuszkoslacz.moviper.ipcsample.viper.contract.ColorWidgetContract;
 import com.mateuszkoslacz.moviper.ipcsample.viper.interactor.ColorWidgetInteractor;
 import com.mateuszkoslacz.moviper.ipcsample.viper.routing.ColorWidgetRouting;
@@ -15,12 +13,11 @@ import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 import rx.android.schedulers.AndroidSchedulers;
 
 public class ColorWidgetPresenter
-        extends ViperFragmentBaseRxPresenter
+        extends ViperBaseRxPresenter
         <ColorWidgetContract.View,
                 ColorWidgetContract.Interactor,
                 ColorWidgetContract.Routing>
-        implements
-        ColorWidgetContract.Presenter {
+        implements ColorWidgetContract.Presenter {
 
     public static final String FRAGMENT_COLOR_NAME = "FRAGMENT_COLOR_NAME";
     public static final String FRAGMENT_BACKGROUND_COLOR = "FRAGMENT_BACKGROUND_COLOR";
@@ -28,8 +25,8 @@ public class ColorWidgetPresenter
     private String colorName;
     private int backgroundColor;
 
-    public ColorWidgetPresenter(Fragment fragment, Bundle bundle) {
-        super(fragment, bundle);
+    public ColorWidgetPresenter(Bundle bundle) {
+        super(bundle);
     }
 
     @Override
@@ -74,8 +71,8 @@ public class ColorWidgetPresenter
 
     @NonNull
     @Override
-    public ColorWidgetContract.Routing createRouting(@NonNull Fragment fragment) {
-        return new ColorWidgetRouting(fragment);
+    public ColorWidgetContract.Routing createRouting() {
+        return new ColorWidgetRouting();
     }
 
     @NonNull

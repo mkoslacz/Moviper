@@ -56,7 +56,7 @@ public class ProductViewHolder
 
     @Override
     public ProductContract.Presenter createPresenter() {
-        return new ProductPresenter(itemView);
+        return new ProductPresenter();
     }
 
 }

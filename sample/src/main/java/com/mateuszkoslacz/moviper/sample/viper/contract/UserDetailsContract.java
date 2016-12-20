@@ -1,12 +1,11 @@
 package com.mateuszkoslacz.moviper.sample.viper.contract;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.interactor.MoviperPresenterForInteractor;
-import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperActivityPresenterForRouting;
+import com.mateuszkoslacz.moviper.iface.presenter.routing.MoviperPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperViewHelperRouting;
+import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 import com.mateuszkoslacz.moviper.iface.viewhelper.MoviperViewHelper;
 import com.mateuszkoslacz.moviper.sample.viper.entity.User;
 
@@ -21,7 +20,7 @@ public interface UserDetailsContract {
         void onAvatarClicked(String avatarUrl);
     }
 
-    interface View extends MvpView, MvpLceView<User> {
+    interface View extends ViperLceView<User> {
         // Defines what methods the Presenter can invoke on the View
         // In most cases there will be manipulating ui and displaying data or errors.
 
@@ -54,7 +53,7 @@ public interface UserDetailsContract {
         void startFullscreenPhotoActivity(String avatarUrl);
     }
 
-    interface PresenterForRouting extends MoviperActivityPresenterForRouting<Routing> {
+    interface PresenterForRouting extends MoviperPresenterForRouting<Routing> {
         // Defines what methods the Routing can invoke on the Presenter.
         // In most cases there will be system framework interaction callbacks and error notifying.
 

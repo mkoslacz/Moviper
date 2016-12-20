@@ -1,10 +1,10 @@
 package com.mateuszkoslacz.moviper.ipcsample.viper.contract;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.annotation.ExternalCall;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
+import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 public interface ColorWidgetContract {
 
@@ -20,7 +20,7 @@ public interface ColorWidgetContract {
         void changeColorTo(int color);
     }
 
-    interface View extends MvpView {
+    interface View extends ViperView {
 
         void setName(String name);
 

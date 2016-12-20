@@ -16,16 +16,18 @@ import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
 // I prefer readability rather than conventions
 public interface MoviperPresenterForRouting<RoutingType extends MoviperRxRouting> {
 
-    @Deprecated
-    boolean isRoutingAttached();
-
     /**
-     * Remember to call {@link #isRoutingAttached()} before getting the Routing to avoid
-     * {@link NullPointerException}s.
-     *
      * @return attached {@link MoviperRouting} subclass instance or
      * null if it's detached (View got destroyed)
      */
     @NonNull
     RoutingType getRouting();
+
+    /**
+     * Instantiate a Routing instance here.
+     *
+     * @return The {@link MoviperRouting} for this view
+     */
+    @NonNull
+    RoutingType createRouting();
 }

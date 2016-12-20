@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.hannesdorfmann.mosby.mvp.MvpActivity;
+import com.mateuszkoslacz.moviper.base.view.activity.ViperActivity;
 import com.mateuszkoslacz.moviper.rxsample.R;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.FullscreenPhotoContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.presenter.FullscreenPhotoPresenter;
@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 
 public class FullscreenPhotoActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.
-        extends MvpActivity<FullscreenPhotoContract.View, FullscreenPhotoContract.Presenter>
+        extends ViperActivity<FullscreenPhotoContract.View, FullscreenPhotoContract.Presenter>
         implements FullscreenPhotoContract.View {
 
     public static final String PHOTO_URL_EXTRA_STRING = "PHOTO_URL_EXTRA_STRING";
@@ -56,6 +56,6 @@ public class FullscreenPhotoActivity
     @NonNull
     @Override
     public FullscreenPhotoContract.Presenter createPresenter() {
-        return new FullscreenPhotoPresenter(this, getIntent().getExtras());
+        return new FullscreenPhotoPresenter(getIntent().getExtras());
     }
 }

@@ -1,9 +1,9 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.MoviperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.MoviperRxRouting;
+import com.mateuszkoslacz.moviper.iface.view.ViperView;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ListingItem;
 
@@ -20,7 +20,7 @@ public interface MainContract {
         void onViewCreated();
     }
 
-    interface View extends MvpView {
+    interface View extends ViperView {
 
         void setData(List<ListingItem> listingItems);
     }

@@ -3,6 +3,8 @@ package com.mateuszkoslacz.moviper.iface.routing;
 import android.app.Activity;
 import android.support.annotation.Nullable;
 
+import com.mateuszkoslacz.moviper.iface.view.ViperView;
+
 /**
  * Created by mateuszkoslacz on 08.08.2016.
  * <p>
@@ -32,7 +34,7 @@ public interface MoviperRxRouting {
 
     boolean isActivityAttached();
 
-    void attachActivity(Activity activity);
+    void attachActivity(ViperView view);
 
     void detachActivity();
 
