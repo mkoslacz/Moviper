@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.delegate;
 
-import android.preference.PreferenceActivity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
