@@ -17,7 +17,7 @@ public class MoviperTestApplication extends MoviperApplication {
     public void onCreate() {
         super.onCreate();
 
-        DIProvider.init(this);
+        DIProvider.getInstance().init(this);
         SpecificationComponent specificationComponent = DaggerSpecificationTestComponent.builder()
                 .allUsersSpecificationTestModule(new AllUsersSpecificationTestModule())
                 .userByUsernameStreamSpecificationTestModule(new UserByUsernameStreamSpecificationTestModule())
@@ -27,7 +27,7 @@ public class MoviperTestApplication extends MoviperApplication {
                 .userRepositoryTestModule(new UserRepositoryTestModule())
                 .build();
 
-        DIProvider.setSpecificationComponent(specificationComponent);
-        DIProvider.setRepositoryComponent(repositoryComponent);
+        DIProvider.getInstance().setSpecificationComponent(specificationComponent);
+        DIProvider.getInstance().setRepositoryComponent(repositoryComponent);
     }
 }

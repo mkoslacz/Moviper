@@ -14,11 +14,23 @@ import com.mateuszkoslacz.moviper.rxsample.di.modules.specification.UserByUserna
 
 public class DIProvider {
 
-    private static RepositoryComponent repositoryComponent;
-    private static SpecificationComponent specificationComponent;
-    private static Context context;
+    private static DIProvider instance;
+    private RepositoryComponent repositoryComponent;
+    private SpecificationComponent specificationComponent;
+    private Context context;
 
-    public static RepositoryComponent getRepositoryComponent() {
+    private DIProvider() {
+
+    }
+
+    public static DIProvider getInstance() {
+        if (instance == null) {
+            instance = new DIProvider();
+        }
+        return instance;
+    }
+
+    public RepositoryComponent getRepositoryComponent() {
         assertNonNullContext();
         if (repositoryComponent == null) {
             repositoryComponent = DaggerRepositoryComponent.builder()
@@ -28,7 +40,7 @@ public class DIProvider {
         return repositoryComponent;
     }
 
-    public static SpecificationComponent getSpecificationComponent() {
+    public SpecificationComponent getSpecificationComponent() {
         assertNonNullContext();
         if (specificationComponent == null) {
             specificationComponent = DaggerSpecificationComponent.builder()
@@ -39,21 +51,21 @@ public class DIProvider {
         return specificationComponent;
     }
 
-    public static void init(Context pContext) {
-        context = pContext;
+    public void init(Context context) {
+        this.context = context;
     }
 
     @VisibleForTesting
-    public static void setRepositoryComponent(RepositoryComponent component) {
+    public void setRepositoryComponent(RepositoryComponent component) {
         repositoryComponent = component;
     }
 
     @VisibleForTesting
-    public static void setSpecificationComponent(SpecificationComponent component) {
+    public void setSpecificationComponent(SpecificationComponent component) {
         specificationComponent = component;
     }
 
-    private static void assertNonNullContext() {
+    private void assertNonNullContext() {
         if (context == null) {
             throw new IllegalStateException("You have to init DIProvider with context first");
         }

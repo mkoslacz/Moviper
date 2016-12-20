@@ -17,13 +17,15 @@ public class ListingInteractor
     private Repository<User> mUserRepository;
 
     public ListingInteractor() {
-        mUserRepository = DIProvider.getRepositoryComponent().provideUserRepository();
+        mUserRepository = DIProvider.getInstance().getRepositoryComponent().provideUserRepository();
     }
 
     @Override
     public Observable<List<User>> getUserList() {
-        return mUserRepository.query(DIProvider
-                .getSpecificationComponent()
-                .provideAllUsersSpecification());
+        return mUserRepository.query(
+                DIProvider.getInstance()
+                        .getSpecificationComponent()
+                        .provideAllUsersSpecification()
+        );
     }
 }
