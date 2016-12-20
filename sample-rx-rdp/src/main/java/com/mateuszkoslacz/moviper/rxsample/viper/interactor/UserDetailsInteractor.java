@@ -15,14 +15,16 @@ public class UserDetailsInteractor
     private Repository<User> mUserRepository;
 
     public UserDetailsInteractor() {
-        mUserRepository = DIProvider.getRepositoryComponent().provideUserRepository();
+        mUserRepository = DIProvider.getInstance().getRepositoryComponent().provideUserRepository();
     }
 
     @Override
     public Observable<User> getUserForUsername(String user) {
-        return mUserRepository.streamQuery(DIProvider
-                .getSpecificationComponent()
-                .provideUserByUsernameStreamSpecification()
-                .setUserName(user));
+        return mUserRepository.streamQuery(
+                DIProvider.getInstance()
+                        .getSpecificationComponent()
+                        .provideUserByUsernameStreamSpecification()
+                        .setUserName(user)
+        );
     }
 }

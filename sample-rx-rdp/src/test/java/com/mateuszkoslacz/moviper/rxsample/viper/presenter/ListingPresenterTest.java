@@ -50,7 +50,7 @@ public class ListingPresenterTest {
 
     @BeforeClass
     public static void setUpClass() {
-        DIProvider.init(mock(Context.class));
+        DIProvider.getInstance().init(mock(Context.class));
     }
 
     @Before

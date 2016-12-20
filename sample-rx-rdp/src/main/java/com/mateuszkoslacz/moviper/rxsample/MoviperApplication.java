@@ -9,6 +9,6 @@ public class MoviperApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        DIProvider.init(getApplicationContext());
+        DIProvider.getInstance().init(getApplicationContext());
     }
 }

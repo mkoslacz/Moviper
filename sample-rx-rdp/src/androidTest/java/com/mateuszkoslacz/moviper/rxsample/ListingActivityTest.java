@@ -32,7 +32,9 @@ public class ListingActivityTest {
     @Test
     public void testDataFetchingWithSuccess() {
         shouldLoadingViewBeDisplayed();
-        ((TestRepository<User>) DIProvider.getRepositoryComponent().provideUserRepository())
+        ((TestRepository<User>) DIProvider.getInstance()
+                .getRepositoryComponent()
+                .provideUserRepository())
                 .triggerContentReturn();
         shouldContentViewBeDisplayed();
     }
@@ -40,7 +42,9 @@ public class ListingActivityTest {
     @Test
     public void testDataFetchingWithError() {
         shouldLoadingViewBeDisplayed();
-        ((TestRepository<User>) DIProvider.getRepositoryComponent().provideUserRepository())
+        ((TestRepository<User>) DIProvider.getInstance()
+                .getRepositoryComponent()
+                .provideUserRepository())
                 .triggerError(new IllegalStateException());
         shouldErrorViewBeDisplayed();
     }
@@ -48,7 +52,9 @@ public class ListingActivityTest {
     @Test
     public void testDataLoadingToRecyclerView() {
         shouldLoadingViewBeDisplayed();
-        ((TestRepository<User>) DIProvider.getRepositoryComponent().provideUserRepository())
+        ((TestRepository<User>) DIProvider.getInstance()
+                .getRepositoryComponent()
+                .provideUserRepository())
                 .triggerContentReturn();
         shouldContentViewBeDisplayed();
         onView(withRecyclerView(R.id.recycler_view).atPosition(3))
