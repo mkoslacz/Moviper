@@ -166,7 +166,5 @@ public abstract class MvpAiActivity<V extends MvpView, P extends MvpPresenter<V>
         // stub
     }
 
-    protected int getLayoutId(){
-        return 0;
-    }
+    abstract protected int getLayoutId();
 }
