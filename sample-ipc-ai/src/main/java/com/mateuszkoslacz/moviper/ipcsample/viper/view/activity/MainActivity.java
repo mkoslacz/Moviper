@@ -1,10 +1,8 @@
 package com.mateuszkoslacz.moviper.ipcsample.viper.view.activity;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.mateuszkoslacz.moviper.base.view.activity.ViperActivity;
-import com.mateuszkoslacz.moviper.base.view.activity.butterknife.ViperButterKnifeActivity;
+import com.mateuszkoslacz.moviper.base.view.activity.autoinject.butterknife.ViperButterKnifeActivity;
 import com.mateuszkoslacz.moviper.ipcsample.R;
 import com.mateuszkoslacz.moviper.ipcsample.viper.contract.MainContract;
 import com.mateuszkoslacz.moviper.ipcsample.viper.presenter.MainPresenter;

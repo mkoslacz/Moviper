@@ -2,21 +2,18 @@ package com.mateuszkoslacz.moviper.rxsample.viper.view.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.mateuszkoslacz.moviper.base.view.activity.ViperActivity;
-import com.mateuszkoslacz.moviper.base.view.activity.butterknife.ViperButterKnifeActivity;
+import com.mateuszkoslacz.moviper.base.view.activity.autoinject.butterknife.ViperButterKnifeActivity;
 import com.mateuszkoslacz.moviper.rxsample.R;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.FullscreenPhotoContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.presenter.FullscreenPhotoPresenter;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class FullscreenPhotoActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.

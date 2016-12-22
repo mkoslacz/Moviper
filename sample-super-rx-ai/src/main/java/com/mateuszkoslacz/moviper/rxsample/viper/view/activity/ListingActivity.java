@@ -2,7 +2,6 @@ package com.mateuszkoslacz.moviper.rxsample.viper.view.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -13,18 +12,16 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.mateuszkoslacz.moviper.base.view.activity.ViperActivity;
-import com.mateuszkoslacz.moviper.base.view.activity.butterknife.ViperButterKnifeActivity;
+import com.mateuszkoslacz.moviper.base.view.activity.autoinject.butterknife.ViperButterKnifeActivity;
 import com.mateuszkoslacz.moviper.rxsample.R;
-import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
-import com.mateuszkoslacz.moviper.rxsample.viper.view.adapter.UserAdapter;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
+import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.presenter.ListingPresenter;
+import com.mateuszkoslacz.moviper.rxsample.viper.view.adapter.UserAdapter;
 
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import rx.subjects.PublishSubject;
 import rx.subjects.Subject;
 

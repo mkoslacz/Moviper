@@ -2,7 +2,6 @@ package com.mateuszkoslacz.moviper.rxsample.viper.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,15 +9,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.mateuszkoslacz.moviper.base.view.activity.ViperLceActivity;
-import com.mateuszkoslacz.moviper.base.view.activity.butterknife.ViperButterKnifeLceActivity;
+import com.mateuszkoslacz.moviper.base.view.activity.autoinject.butterknife.ViperButterKnifeLceActivity;
 import com.mateuszkoslacz.moviper.rxsample.R;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.presenter.UserDetailsPresenter;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class UserDetailsActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.

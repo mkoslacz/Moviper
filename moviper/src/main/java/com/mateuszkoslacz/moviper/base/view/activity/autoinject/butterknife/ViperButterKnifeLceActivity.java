@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.base.view.activity.butterknife;
+package com.mateuszkoslacz.moviper.base.view.activity.autoinject.butterknife;
 
 import android.view.View;
 
