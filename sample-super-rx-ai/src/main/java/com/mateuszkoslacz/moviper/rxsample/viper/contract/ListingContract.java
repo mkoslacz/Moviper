@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.contract;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
@@ -12,12 +11,6 @@ import rx.Observable;
 import rx.subjects.Subject;
 
 public interface ListingContract {
-
-    interface Presenter extends MvpPresenter<View> {
-        // Defines what methods the View can invoke on the Presenter.
-        // In most cases there will be user interactions and View lifecycle events.
-
-    }
 
     interface View extends MvpView {
         // Defines what methods the Presenter can invoke on the View

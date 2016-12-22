@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.contract;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.ViperViewHelperRxRouting;
@@ -8,15 +7,9 @@ import com.mateuszkoslacz.moviper.iface.viewhelper.ViperViewHelper;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
 import rx.Observable;
+import rx.subjects.Subject;
 
 public interface UserDetailsContract {
-
-    interface Presenter extends MvpPresenter<View> {
-        // Defines what methods the View can invoke on the Presenter.
-        // In most cases there will be user interactions and View lifecycle events.
-
-        void onAvatarClicked(String avatarUrl);
-    }
 
     interface View extends MvpLceView<User> {
         // Defines what methods the Presenter can invoke on the View
@@ -24,6 +17,7 @@ public interface UserDetailsContract {
         // In Super Rx version it also provides getters for Observables emmiting user click events.
 
         void bindDataToViews(User user);
+        Subject<String, String> getAvatarClicks();
     }
 
     interface Interactor extends ViperRxInteractor {

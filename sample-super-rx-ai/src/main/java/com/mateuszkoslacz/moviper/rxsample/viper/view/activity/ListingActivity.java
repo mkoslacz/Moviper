@@ -12,7 +12,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.mateuszkoslacz.moviper.base.view.activity.autoinject.butterknife.ViperButterKnifeActivity;
+import com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.ViperAiPassiveActivity;
+import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.rxsample.R;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
@@ -22,12 +23,13 @@ import com.mateuszkoslacz.moviper.rxsample.viper.view.adapter.UserAdapter;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import rx.subjects.PublishSubject;
 import rx.subjects.Subject;
 
 public class ListingActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.
-        extends ViperButterKnifeActivity<ListingContract.View, ListingContract.Presenter>
+        extends ViperAiPassiveActivity<ListingContract.View>
         implements ListingContract.View, UserAdapter.UserClickListener {
 
     public static final String PHOTO_URL_EXTRA_STRING = "PHOTO_URL_EXTRA_STRING";
@@ -107,13 +109,14 @@ public class ListingActivity
 
     @NonNull
     @Override
-    public ListingContract.Presenter createPresenter() {
+    public ViperPresenter<ListingContract.View> createPresenter() {
         return new ListingPresenter();
     }
 
     @Override
     protected void injectViews() {
         super.injectViews();
+        ButterKnife.bind(this);
         prepareRecyclerView();
     }
 

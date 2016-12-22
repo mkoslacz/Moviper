@@ -3,7 +3,7 @@ package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 import android.support.annotation.NonNull;
 
 import com.mateuszkoslacz.moviper.base.presenter.BaseRxPresenter;
-import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
+import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.interactor.ListingInteractor;
 import com.mateuszkoslacz.moviper.rxsample.viper.routing.ListingRouting;
@@ -15,7 +15,7 @@ public class ListingPresenter
         extends BaseRxPresenter<ListingContract.View,
                                 ListingContract.Interactor,
                                 ListingContract.Routing>
-        implements ListingContract.Presenter {
+        implements ViperPresenter<ListingContract.View> {
 
 
     @Override

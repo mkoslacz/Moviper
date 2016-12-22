@@ -9,21 +9,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.mateuszkoslacz.moviper.base.view.activity.autoinject.butterknife.ViperButterKnifeLceActivity;
+import com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.ViperLceAiPassiveActivity;
+import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.rxsample.R;
-import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract;
+import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.presenter.UserDetailsPresenter;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import rx.subjects.PublishSubject;
+import rx.subjects.Subject;
 
 public class UserDetailsActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.
-        extends ViperButterKnifeLceActivity
+        extends ViperLceAiPassiveActivity
         <LinearLayout,
                 User,
-                UserDetailsContract.View,
-                UserDetailsContract.Presenter>
+                UserDetailsContract.View>
         implements UserDetailsContract.View, UserDetailsContract.ViewHelper {
 
     public final static String USER_EXTRA = "USER_EXTRA";
@@ -45,6 +48,8 @@ public class UserDetailsActivity
     @BindView(R.id.email)
     TextView mEmailTextView;
 
+    PublishSubject<String> mAvatarClicks = PublishSubject.create();
+
     public static void start(Context context, User user) {
         Intent starter = new Intent(context, UserDetailsActivity.class);
         starter.putExtra(USER_EXTRA, user.getLogin());
@@ -63,8 +68,12 @@ public class UserDetailsActivity
         Glide.with(this)
                 .load(user.getAvatarUrl())
                 .into(mAvatarImageView);
-        mAvatarImageView.setOnClickListener(v ->
-                getPresenter().onAvatarClicked(user.getAvatarUrl()));
+        mAvatarImageView.setOnClickListener(v -> mAvatarClicks.onNext(user.getAvatarUrl()));
+    }
+
+    @Override
+    public Subject<String, String> getAvatarClicks() {
+        return mAvatarClicks;
     }
 
     @Override
@@ -88,12 +97,18 @@ public class UserDetailsActivity
 
     @NonNull
     @Override
-    public UserDetailsContract.Presenter createPresenter() {
+    public ViperPresenter<UserDetailsContract.View> createPresenter() {
         return new UserDetailsPresenter(getIntent().getExtras());
     }
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_user_details;
+    }
+
+    @Override
+    protected void injectViews() {
+        super.injectViews();
+        ButterKnife.bind(this);
     }
 }
