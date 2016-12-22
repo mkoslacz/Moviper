@@ -25,7 +25,6 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegate;
 import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegateCallback;
 import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegateImpl;
-import com.mateuszkoslacz.moviper.iface.view.inject.AutoInjectViews;
 
 /**
  * An Activity that uses an {@link MvpPresenter} to implement a Model-View-Presenter
