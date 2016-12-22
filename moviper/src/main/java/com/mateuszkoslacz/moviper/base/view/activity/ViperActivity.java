@@ -23,4 +23,5 @@ public abstract class ViperActivity
     public Activity getActivity() {
         return this;
     }
+
 }

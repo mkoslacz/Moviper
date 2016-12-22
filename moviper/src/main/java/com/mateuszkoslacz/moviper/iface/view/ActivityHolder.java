@@ -6,8 +6,9 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
 
 /**
  * Created by mateuszkoslacz on 15.12.2016.
- * </p>
- * Interface used in pair with {@link MvpView}. It's used for providing Activity to the routing.
+ * <p/>
+ * It's used for providing Activity to the routing. Used in pair with {@link MvpView} in Moviper
+ * views.
  */
 
 public interface ActivityHolder {

@@ -30,9 +30,6 @@ public class Moviper {
     // for every external call we do n reads where n is the size of the presenters list.
     // that makes
     // TODO: 28.10.2016 reconsider no-checking if presenter exists
-    // TODO: 28.10.2016 create config for
-    // - enabling bus (and add runtime exception on getPresenters if not enabled)
-    // - enabling named instance presenters (and add runtime exception on getPresenterInstance if not enabled)
     private List<ViperPresenter> mPresenters = new CopyOnWriteArrayList<>();
 
     private PublishSubject<MoviperBundle> registerSynchronizer = PublishSubject.create();

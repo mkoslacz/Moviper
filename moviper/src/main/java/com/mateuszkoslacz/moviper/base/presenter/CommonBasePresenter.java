@@ -11,7 +11,7 @@ import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
  * Created by mateuszkoslacz on 24.10.2016.
  */
 
-public abstract class CommonBasePresenter<V extends MvpView>
+abstract class CommonBasePresenter<V extends MvpView>
         extends MvpBasePresenter<V>
         implements ViperPresenter<V> {
 

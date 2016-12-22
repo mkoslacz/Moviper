@@ -18,19 +18,21 @@ import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
- * <p>
- * Viper - View, Interactor, Presenter, Entities, Routing
- * <p>
- * This is a Activity version of base presenter class for mentioned set of concepts.
- * (see {@link MvpBasePresenter})
- * <p>
- * You can use any Mosby Activity View with this class
- * ({@link com.hannesdorfmann.mosby.mvp.MvpActivity},
- * {@link com.hannesdorfmann.mosby.mvp.lce.MvpLceActivity},
- * {@link com.hannesdorfmann.mosby.mvp.viewstate.MvpViewStateActivity},
- * {@link com.hannesdorfmann.mosby.mvp.viewstate.lce.MvpLceViewStateActivity})
+ * <p/>
+ * This is a base presenter class for rx VIPER concept. (see {@link
+ * MvpBasePresenter})
+ * <p/>
+ * It contains the business logic of given VIPER screen.
+ * <p/>
+ * You can use any Viper View with this class ({@link com.mateuszkoslacz.moviper.base.view.activity.ViperActivity},
+ * <br/> {@link com.mateuszkoslacz.moviper.base.view.activity.ViperLceActivity}, <br/> {@link
+ * com.mateuszkoslacz.moviper.base.view.activity.ViperViewStateActivity}, <br/> {@link
+ * com.mateuszkoslacz.moviper.base.view.activity.ViperLceViewStateActivity}, <br/> {@link
+ * com.mateuszkoslacz.moviper.base.view.fragment.ViperFragment}, <br/> {@link
+ * com.mateuszkoslacz.moviper.base.view.fragment.ViperLceFragment}, <br/> {@link
+ * com.mateuszkoslacz.moviper.base.view.fragment.ViperLceViewStateFragment}, <br/> {@link
+ * com.mateuszkoslacz.moviper.base.view.fragment.ViperViewStateFragment},)
  */
-//TODO migrate to MvpNullObjectPresenter base class?
 public abstract class BaseRxPresenter
         <ViewType extends MvpView,  // I prefer readability rather than conventions
                 InteractorType extends ViperRxInteractor,

@@ -8,22 +8,21 @@ import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 
 /**
  * Created by mateuszkoslacz on  08.08.2016.
- * <p>
- * It defines presenter interface which Interactor ({@link ViperInteractor}) needs to communicate
- * with Presenter ({@link ViperPresenter} for proper execution of given tasks. There are mostly
- * callbacks for displaying data from interactor, interactor's error messages etc.
+ * <p/>
+ * Interface used by Interactor ({@link ViperInteractor}) to communicate with Presenter ({@link
+ * ViperPresenter}. There are mostly callbacks for displaying data from interactor, interactor's
+ * error messages etc.
  */
 public interface ViperPresenterForInteractor<InteractorType extends CommonViperInteractor> {
 
     /**
-     * @return attached {@link ViperInteractor} subclass instance or
-     * null if it's detached (View got destroyed)
+     * @return attached {@link ViperInteractor}.
      */
     @NonNull
     InteractorType getInteractor();
 
     /**
-     * Instantiate a Interactor instance here.
+     * Override this and return a instantiated Interactor object here.
      *
      * @return The {@link ViperInteractor} for this view
      */
