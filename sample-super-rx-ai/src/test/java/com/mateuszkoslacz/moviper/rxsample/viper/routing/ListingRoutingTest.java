@@ -44,7 +44,7 @@ public class ListingRoutingTest {
         User user = new User();
         mRouting.startUserDetailsActivity(user);
         verifyStatic();
-        UserDetailsActivity.start(mActivity, user);
+        UserDetailsActivity.getStartingIntent(mActivity, user);
     }
 
     @Test
@@ -54,6 +54,6 @@ public class ListingRoutingTest {
         User user = new User();
         mRouting.startUserDetailsActivity(user);
         verifyStatic(never());
-        UserDetailsActivity.start(any(), any());
+        UserDetailsActivity.getStartingIntent(any(), any());
     }
 }
