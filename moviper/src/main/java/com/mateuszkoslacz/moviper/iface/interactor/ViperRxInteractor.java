@@ -7,8 +7,8 @@ import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 /**
  * Created by mateuszkoslacz on  08.08.2016 Based on lucas.urbas implementation.
  * <p/>
- * It's responsible of manipulating data on behalf of Presenter (see {@link ViperPresenter}). It
- * queries an API, DB etc.
+ * It's responsible of manipulating data on behalf of Presenter (see {@link ViperPresenter}), ie. saving data to db, getting
+ * data from remotes etc.
  * <p/>
  * It has no Presenter reference as it should return Observables to asynchronously pass data to
  * Presenter. If you are looking for solution adopted to regular, non-Rx approach, see {@link

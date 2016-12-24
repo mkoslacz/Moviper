@@ -19,10 +19,10 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * Created by mateuszkoslacz on 08.08.2016.
  * <p/>
- * This is a base presenter class for rx VIPER concept. (see {@link
- * MvpBasePresenter})
+ * This is a base presenter class for rx VIPER concept. (see {@link MvpBasePresenter})
  * <p/>
- * It contains the business logic of given VIPER screen.
+ * It contains the business logic of given VIPER screen and references Interactor and Routing to
+ * delegate them data and framework specific tasks.
  * <p/>
  * You can use any Viper View with this class ({@link com.mateuszkoslacz.moviper.base.view.activity.ViperActivity},
  * <br/> {@link com.mateuszkoslacz.moviper.base.view.activity.ViperLceActivity}, <br/> {@link
