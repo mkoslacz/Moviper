@@ -1,0 +1,139 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:transitionName="@string/avatar_transition"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="20dp" />
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="65dp"/>
+
+    <ProgressBar
+            android:id="@+id/loadingView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="150dp"
+            android:indeterminate="true"
+            android:layout_marginTop="130dp" />
+
+    <TextView
+            android:id="@+id/errorView"
+            android:text="@string/data_loading_error"
+            android:layout_marginTop="130dp"
+            android:textSize="25dp"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        android:layout_marginTop="130dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="@string/name"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginBottom="10dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="@string/company"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="@string/blog"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/blog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginBottom="10dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="@string/location"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="@string/email"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+</RelativeLayout>

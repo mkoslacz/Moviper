@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.base.view.activity;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -25,5 +26,10 @@ public abstract class ViperLceActivity
     @Override
     public Activity getActivity() {
         return this;
+    }
+
+    @Override
+    public Bundle getArgs() {
+        return getIntent().getExtras();
     }
 }

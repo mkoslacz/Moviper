@@ -1,5 +1,7 @@
 package com.mateuszkoslacz.moviper.base.view.fragment;
 
+import android.os.Bundle;
+
 import com.hannesdorfmann.mosby.mvp.MvpFragment;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
@@ -14,5 +16,10 @@ public abstract class ViperFragment
                 Presenter extends MvpPresenter<ViewType>>
         extends MvpFragment<ViewType, Presenter>
         implements ViperView {
+
+    @Override
+    public Bundle getArgs() {
+        return getArguments();
+    }
 
 }

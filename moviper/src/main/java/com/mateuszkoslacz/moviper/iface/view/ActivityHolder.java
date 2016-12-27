@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.iface.view;
 
 import android.app.Activity;
+import android.os.Bundle;
 
 import com.hannesdorfmann.mosby.mvp.MvpView;
 
@@ -14,4 +15,6 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
 public interface ActivityHolder {
 
     Activity getActivity();
+
+    Bundle getArgs();
 }

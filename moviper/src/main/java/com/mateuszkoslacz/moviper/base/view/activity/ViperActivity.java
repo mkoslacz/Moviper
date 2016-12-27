@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.base.view.activity;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
@@ -14,7 +15,7 @@ import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 public abstract class ViperActivity
         <ViewType extends MvpView,
-                Presenter extends MvpPresenter<ViewType>>
+                Presenter extends MvpPresenter<ViewType>> //// TODO: 27.12.2016 why it's not a ViperPresenter?
         extends MvpActivity<ViewType, Presenter>
         implements ViperView {
 
@@ -24,4 +25,8 @@ public abstract class ViperActivity
         return this;
     }
 
+    @Override
+    public Bundle getArgs() {
+        return getIntent().getExtras();
+    }
 }
