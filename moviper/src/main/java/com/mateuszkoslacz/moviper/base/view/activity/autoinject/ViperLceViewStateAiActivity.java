@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.base.view.activity.autoinject;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -33,5 +34,10 @@ public abstract class ViperLceViewStateAiActivity
     @Override
     public Activity getActivity() {
         return this;
+    }
+
+    @Override
+    public Bundle getArgs() {
+        return getIntent().getExtras();
     }
 }

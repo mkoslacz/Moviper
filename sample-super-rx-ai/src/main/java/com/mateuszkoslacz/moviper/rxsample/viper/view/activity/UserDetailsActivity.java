@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.ViperLceAiPassiveActivity;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.rxsample.R;
-import com.mateuszkoslacz.moviper.rxsample.viper.server.MoviperServer;
+import com.mateuszkoslacz.moviper.rxsample.viper.server.MoviperPresentersDispatcher;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
@@ -49,6 +49,10 @@ public class UserDetailsActivity
     TextView mEmailTextView;
 
     PublishSubject<String> mAvatarClicks = PublishSubject.create();
+
+    public static void start(Context context, User user) {
+        context.startActivity(getStartingIntent(context, user));
+    }
 
     public static Intent getStartingIntent(Context context, User user) {
         Intent starter = new Intent(context, UserDetailsActivity.class);
@@ -98,8 +102,7 @@ public class UserDetailsActivity
     @NonNull
     @Override
     public ViperPresenter<UserDetailsContract.View> createPresenter() {
-        return MoviperServer.getInstance()
-                .getPresenterForView(getIntent().getIntExtra(MoviperServer.VIEW_ID_EXTRA, 0));
+        return MoviperPresentersDispatcher.getInstance().getPresenterForView(this);
     }
 
     @Override

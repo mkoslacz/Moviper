@@ -17,7 +17,6 @@ public class ListingPresenter
                                 ListingContract.Routing>
         implements ViperPresenter<ListingContract.View> {
 
-
     @Override
     public void attachView(ListingContract.View view) {
         super.attachView(view);

@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
+import com.mateuszkoslacz.moviper.base.exception.PresenterAccessFromPassiveView;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.ViperLceAiActivity;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
@@ -20,13 +21,19 @@ public abstract class ViperLceAiPassiveActivity
         implements ViperLceView<Model> {
 
     /**
-     * This method should not be used because of fact that this view should be
-     * completely passive (independent from presenter type).
+     * <b>DO NOT</b> use this method because of a fact that this view should be completely passive
+     * (independent from the presenter type)! <br/>
+     * Every call to this method will result in throwing
+     * {@link PresenterAccessFromPassiveView} exception. Instead you should use getters to provide
+     * event sources that will notify presenter after presenter's registration to them. To use
+     * getPresenter() method you shall use non-passive Moviper view.
+     *
+     * @return Nothing. It always throws {@link PresenterAccessFromPassiveView} exception.
      */
     @NonNull
     @Override
     @Deprecated
     public ViperPresenter<ViewType> getPresenter() {
-        return super.getPresenter();
+        throw new PresenterAccessFromPassiveView(this);
     }
 }

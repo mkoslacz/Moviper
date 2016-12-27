@@ -26,4 +26,8 @@ public abstract class ViperAiActivity
         return this;
     }
 
+    @Override
+    public Bundle getArgs() {
+        return getIntent().getExtras();
+    }
 }

@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.base.view.fragment.butterknife;
+package com.mateuszkoslacz.moviper.base.view.fragment.autoinject.butterknife;
 
 import android.view.View;
 
@@ -6,7 +6,6 @@ import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
 import com.mateuszkoslacz.moviper.base.view.fragment.autoinject.ViperLceViewStateAiFragment;
-import com.mateuszkoslacz.moviper.base.view.fragment.mvp.MvpLceViewStateAiFragment;
 import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 
 import butterknife.ButterKnife;

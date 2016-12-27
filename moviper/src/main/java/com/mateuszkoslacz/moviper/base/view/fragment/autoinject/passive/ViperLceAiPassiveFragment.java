@@ -1,20 +1,24 @@
-package com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive;
+package com.mateuszkoslacz.moviper.base.view.fragment.autoinject.passive;
 
 import android.support.annotation.NonNull;
+import android.view.View;
 
-import com.hannesdorfmann.mosby.mvp.MvpView;
+import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.mateuszkoslacz.moviper.base.exception.PresenterAccessFromPassiveView;
-import com.mateuszkoslacz.moviper.base.view.activity.autoinject.ViperAiActivity;
+import com.mateuszkoslacz.moviper.base.view.fragment.autoinject.ViperLceAiFragment;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
-import com.mateuszkoslacz.moviper.iface.view.ViperView;
+import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 
 /**
- * Created by bwilk on 12/22/16.
+ * Created by mateuszkoslacz on 14.12.2016.
  */
 
-public abstract class ViperAiPassiveActivity<ViewType extends MvpView>
-        extends ViperAiActivity<ViewType, ViperPresenter<ViewType>>
-        implements ViperView {
+public abstract class ViperLceAiPassiveFragment
+        <ContentView extends View,
+                Model,
+                ViewType extends MvpLceView<Model>>
+        extends ViperLceAiFragment<ContentView, Model, ViewType, ViperPresenter<ViewType>>
+        implements ViperLceView<Model> {
 
     /**
      * <b>DO NOT</b> use this method because of a fact that this view should be completely passive
@@ -32,4 +36,6 @@ public abstract class ViperAiPassiveActivity<ViewType extends MvpView>
     public ViperPresenter<ViewType> getPresenter() {
         throw new PresenterAccessFromPassiveView(this);
     }
+
+
 }

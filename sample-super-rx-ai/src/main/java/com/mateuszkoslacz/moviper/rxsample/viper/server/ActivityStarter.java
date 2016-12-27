@@ -10,16 +10,32 @@ import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
  * Created by bwilk on 12/22/16.
  */
 
-public class Config<ViewType extends MvpView> {
+public class ActivityStarter {
 
-    Context context;
-    Intent intent;
-    ViperPresenter<ViewType> presenter;
+    private Context mContext;
+    private Intent mIntent;
+    private ViperPresenter mPresenter;
 
-    private Config(Builder builder) {
-        context = builder.context;
-        intent = builder.intent;
-        presenter = builder.presenter;
+    public Context getContext() {
+        return mContext;
+    }
+
+    public Intent getIntent() {
+        return mIntent;
+    }
+
+    public ViperPresenter getPresenter() {
+        return mPresenter;
+    }
+
+    private ActivityStarter(Builder builder) {
+        mContext = builder.context;
+        mIntent = builder.intent;
+        mPresenter = builder.presenter;
+    }
+
+    public static Builder newBuilder(){
+        return new Builder();
     }
 
     public static final class Builder<ViewType extends MvpView> {
@@ -28,7 +44,7 @@ public class Config<ViewType extends MvpView> {
         private Intent intent;
         private ViperPresenter<ViewType> presenter;
 
-        public Builder() {
+        private Builder() {
         }
 
         public Builder withContext(Context val) {
@@ -46,8 +62,8 @@ public class Config<ViewType extends MvpView> {
             return this;
         }
 
-        public Config build() {
-            return new Config(this);
+        public ActivityStarter build() {
+            return new ActivityStarter(this);
         }
     }
 }

@@ -1,11 +1,10 @@
-package com.mateuszkoslacz.moviper.base.view.fragment.butterknife;
+package com.mateuszkoslacz.moviper.base.view.fragment.autoinject.butterknife;
 
 import android.view.View;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.base.view.fragment.autoinject.ViperAiFragment;
-import com.mateuszkoslacz.moviper.base.view.fragment.mvp.MvpAiFragment;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 import butterknife.ButterKnife;
