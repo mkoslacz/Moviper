@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.ipcsample;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.mateuszkoslacz.moviper.ipcsample.viper.presenter.ColorWidgetPresenter;
 import com.mateuszkoslacz.moviper.ipcsample.viper.view.fragment.ColorWidgetFragment;
@@ -13,11 +14,15 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.support.v4.SupportFragmentTestUtil;
 
 import static org.mockito.Mockito.verify;
+import static org.junit.Assert.assertEquals;
+
+
 
 /**
  * Created by bwilk on 12/5/16.
@@ -42,6 +47,7 @@ public class ColorWidgetFragmentUnitTest {
     public void testFragment() {
         Assert.assertNotNull(mPresenter);
         SupportFragmentTestUtil.startVisibleFragment(mFragment);
-        verify(mPresenter).onViewCreated();
+        mFragment.setName("testName");
+        assertEquals("testName", ((TextView) mFragment.getView().findViewById(R.id.color_name)).getText().toString());
     }
 }

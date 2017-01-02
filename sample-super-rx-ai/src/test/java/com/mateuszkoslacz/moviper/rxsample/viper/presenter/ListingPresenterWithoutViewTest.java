@@ -25,19 +25,13 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class ListingPresenterWithoutViewTest extends ListingPresenterTest {
 
-    @Before
-    public void setUpPresenter() {
-        mPresenter.detachView(false);
-    }
-
-
     @Test
     public void onViewCreatedUsersReceived() throws Exception {
         List<User> users = new ArrayList<>();
         TestScheduler scheduler = new TestScheduler();
         TestSubject<List<User>> subject = TestSubject.create(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
-        mPresenter.onViewCreated();
+        mPresenter.attachView(null);
         verify(mView, never()).showLoading();
         verify(mInteractor).getUserList();
         subject.onNext(users);
@@ -52,7 +46,7 @@ public class ListingPresenterWithoutViewTest extends ListingPresenterTest {
         TestScheduler scheduler = new TestScheduler();
         TestSubject<List<User>> subject = TestSubject.create(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
-        mPresenter.onViewCreated();
+        mPresenter.attachView(null);
         verify(mView, never()).showLoading();
         verify(mInteractor).getUserList();
         IOException e = new IOException();

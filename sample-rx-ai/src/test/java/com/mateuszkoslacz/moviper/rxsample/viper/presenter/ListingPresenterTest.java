@@ -56,7 +56,7 @@ public class ListingPresenterTest {
         TestScheduler scheduler = new TestScheduler();
         TestSubject<List<User>> subject = TestSubject.create(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
-        mPresenter.onViewCreated();
+        mPresenter.attachView(mView);
         verify(mView).showLoading();
         verify(mInteractor).getUserList();
         subject.onNext(users);
@@ -71,7 +71,7 @@ public class ListingPresenterTest {
         TestScheduler scheduler = new TestScheduler();
         TestSubject<List<User>> subject = TestSubject.create(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
-        mPresenter.onViewCreated();
+        mPresenter.attachView(mView);
         verify(mView).showLoading();
         verify(mInteractor).getUserList();
         IOException e = new IOException();

@@ -54,16 +54,6 @@ public class ListingActivityTest {
     }
 
     @Test
-    public void onViewCreated() throws Exception {
-        ActivityController<ListingActivity> listingActivityLifecycleController =
-                Robolectric.buildActivity(ListingActivity.class);
-        mListingActivity = listingActivityLifecycleController.get();
-        mListingActivity.setPresenter(mListingPresenter);
-        listingActivityLifecycleController.create();
-        Mockito.verify(mListingPresenter).onViewCreated();
-    }
-
-    @Test
     public void testActivity() throws Exception {
         User user = new User();
         mListingActivity.onUserClick(user);

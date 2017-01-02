@@ -23,6 +23,10 @@ import org.robolectric.util.ActivityController;
 
 import java.util.Arrays;
 
+import rx.observers.TestSubscriber;
+import rx.schedulers.TestScheduler;
+import rx.subjects.TestSubject;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -54,20 +58,14 @@ public class ListingActivityTest {
     }
 
     @Test
-    public void onViewCreated() throws Exception {
-        ActivityController<ListingActivity> listingActivityLifecycleController =
-                Robolectric.buildActivity(ListingActivity.class);
-        mListingActivity = listingActivityLifecycleController.get();
-        mListingActivity.setPresenter(mListingPresenter);
-        listingActivityLifecycleController.create();
-        Mockito.verify(mListingPresenter).onViewCreated();
-    }
-
-    @Test
     public void testActivity() throws Exception {
+        TestSubscriber<User> testSubscriber = TestSubscriber.create();
+        mListingActivity.getUserClicks().subscribe(testSubscriber);
         User user = new User();
         mListingActivity.onUserClick(user);
-        Mockito.verify(mListingPresenter).onItemClicked(user);
+        testSubscriber.assertNoErrors();
+        testSubscriber.assertNotCompleted();
+        testSubscriber.assertReceivedOnNext(Arrays.asList(user));
     }
 
     @Test
@@ -129,6 +127,8 @@ public class ListingActivityTest {
         user1.setLogin("first");
         user2.setLogin("second");
         user3.setLogin("third");
+        TestSubscriber<User> testSubscriber = TestSubscriber.create();
+        mListingActivity.getUserClicks().subscribe(testSubscriber);
         mListingActivity.setUserList(Arrays.asList(user1, user2, user3));
         mListingActivity.showContent();
         mRecyclerView.findViewHolderForAdapterPosition(0).itemView.performClick();
@@ -137,6 +137,8 @@ public class ListingActivityTest {
         mRecyclerView.measure(0, 0);
         mRecyclerView.layout(0, 0, 100, 1000);
 
-        Mockito.verify(mListingPresenter).onItemClicked(user1);
+        testSubscriber.assertNoErrors();
+        testSubscriber.assertNotCompleted();
+        testSubscriber.assertReceivedOnNext(Arrays.asList(user1));
     }
 }

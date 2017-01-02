@@ -37,7 +37,7 @@ public class ListingPresenterWithoutViewTest extends ListingPresenterTest {
         TestScheduler scheduler = new TestScheduler();
         TestSubject<List<User>> subject = TestSubject.create(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
-        mPresenter.onViewCreated();
+        mPresenter.attachView(null);
         verify(mView, never()).showLoading();
         verify(mInteractor).getUserList();
         subject.onNext(users);
@@ -52,7 +52,7 @@ public class ListingPresenterWithoutViewTest extends ListingPresenterTest {
         TestScheduler scheduler = new TestScheduler();
         TestSubject<List<User>> subject = TestSubject.create(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
-        mPresenter.onViewCreated();
+        mPresenter.attachView(null);
         verify(mView, never()).showLoading();
         verify(mInteractor).getUserList();
         IOException e = new IOException();

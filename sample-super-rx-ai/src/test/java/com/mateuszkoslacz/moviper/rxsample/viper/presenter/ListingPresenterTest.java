@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.IOException;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx.schedulers.TestScheduler;
+import rx.subjects.PublishSubject;
 import rx.subjects.TestSubject;
 
 import static org.mockito.Mockito.*;
@@ -43,12 +45,13 @@ public class ListingPresenterTest {
 
     @InjectMocks
     protected ListingPresenter mPresenter = new ListingPresenter();
+    private PublishSubject<User> mUserClicks;
 
     @Before
-    public void setUpPresenter() {
-        mPresenter.attachView(mView);
+    public void setUpViewMock(){
+        mUserClicks = PublishSubject.create();
+        Mockito.when(mView.getUserClicks()).thenReturn(mUserClicks);
     }
-
 
     @Test
     public void onViewCreatedUsersReceived() throws Exception {
@@ -56,7 +59,7 @@ public class ListingPresenterTest {
         TestScheduler scheduler = new TestScheduler();
         TestSubject<List<User>> subject = TestSubject.create(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
-        mPresenter.onViewCreated();
+        mPresenter.attachView(mView);
         verify(mView).showLoading();
         verify(mInteractor).getUserList();
         subject.onNext(users);
@@ -71,7 +74,7 @@ public class ListingPresenterTest {
         TestScheduler scheduler = new TestScheduler();
         TestSubject<List<User>> subject = TestSubject.create(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
-        mPresenter.onViewCreated();
+        mPresenter.attachView(mView);
         verify(mView).showLoading();
         verify(mInteractor).getUserList();
         IOException e = new IOException();
@@ -84,8 +87,12 @@ public class ListingPresenterTest {
 
     @Test
     public void onItemClicked() throws Exception {
+        TestScheduler scheduler = new TestScheduler();
+        TestSubject<List<User>> subject = TestSubject.create(scheduler);
+        when(mInteractor.getUserList()).thenReturn(subject);
         User user = new User();
-        mPresenter.onItemClicked(user);
+        mPresenter.attachView(mView);
+        mUserClicks.onNext(user);
         verify(mRouting).startUserDetailsActivity(user);
     }
 }

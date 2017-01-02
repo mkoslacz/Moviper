@@ -2,6 +2,7 @@ package com.mateuszkoslacz.moviper.ipcsample;
 
 import android.os.Bundle;
 import android.support.test.rule.ActivityTestRule;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
@@ -14,7 +15,7 @@ import junit.framework.Assert;
 /**
  * Created by bwilk on 12/5/16.
  */
-public class FragmentTestRule<FragmentType extends MvpFragment> extends ActivityTestRule<TestActivity> {
+public class FragmentTestRule<FragmentType extends Fragment> extends ActivityTestRule<TestActivity> {
 
     private final Class<FragmentType> mFragmentClass;
     private FragmentType mFragment;
