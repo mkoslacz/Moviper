@@ -12,9 +12,9 @@ import com.bumptech.glide.Glide;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.ViperLceAiPassiveActivity;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.rxsample.R;
-import com.mateuszkoslacz.moviper.rxsample.viper.server.MoviperPresentersDispatcher;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
+import com.mateuszkoslacz.moviper.server.MoviperPresentersDispatcher;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

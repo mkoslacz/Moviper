@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.rxsample.viper.server;
+package com.mateuszkoslacz.moviper.server;
 
 import android.content.Context;
 import android.content.Intent;
