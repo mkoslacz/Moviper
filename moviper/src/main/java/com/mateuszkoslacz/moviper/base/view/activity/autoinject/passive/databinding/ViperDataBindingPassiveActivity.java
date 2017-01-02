@@ -21,7 +21,7 @@ public abstract class ViperDataBindingPassiveActivity
     protected Binding mBinding;
 
     @Override
-    public void setContentView(@LayoutRes int layoutResID) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResID);
+    protected void injectViews() {
+        mBinding = DataBindingUtil.setContentView(this, getLayoutId());
     }
 }
