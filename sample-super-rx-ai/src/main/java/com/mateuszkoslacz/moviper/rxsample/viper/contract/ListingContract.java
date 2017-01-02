@@ -17,7 +17,7 @@ public interface ListingContract {
         // In most cases there will be manipulating ui and displaying data or errors.
         // In Super Rx version it also provides getters for Observables emmiting user click events.
 
-        Subject<User, User> getUserClicks();
+        Observable<User> getUserClicks();
 
         void setUserList(List<User> userList);
 

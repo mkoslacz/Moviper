@@ -24,6 +24,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.Observable;
 import rx.subjects.PublishSubject;
 import rx.subjects.Subject;
 
@@ -58,7 +59,7 @@ public class ListingActivity
     }
 
     @Override
-    public Subject<User, User> getUserClicks() {
+    public Observable<User> getUserClicks() {
         return mUserClicks;
     }
 
