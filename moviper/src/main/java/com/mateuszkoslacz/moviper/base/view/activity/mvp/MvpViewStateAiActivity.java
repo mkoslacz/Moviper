@@ -34,7 +34,7 @@ import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
  * overriding {@link #onNewViewStateInstance()}
  * </p>
  *
- * @author Hannes Dorfmann
+ * @author Hannes Dorfmann, modified by Mateusz Koślacz
  * @since 1.0.0
  */
 public abstract class MvpViewStateAiActivity<V extends MvpView, P extends MvpPresenter<V>>

@@ -10,10 +10,8 @@ import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.ViperLceAiActivity;
 import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 
-import butterknife.ButterKnife;
-
 /**
- * Created by tomasznajda on 14.12.2016.
+ * Created by mateuszkoslacz on 14.12.2016.
  */
 
 public abstract class ViperDataBindingLceActivity

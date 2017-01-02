@@ -30,7 +30,7 @@ import com.mateuszkoslacz.moviper.base.view.activity.mvp.MvpLceAiActivity;
 /**
  * A {@link MvpLceActivity} with {@link ViewState} support.
  *
- * @author Hannes Dorfmann
+ * @author Hannes Dorfmann, modified by Mateusz Koślacz
  * @since 1.0.0
  */
 public abstract class MvpLceViewStateAiActivity<CV extends View, M, V extends MvpLceView<M>, P extends MvpPresenter<V>>

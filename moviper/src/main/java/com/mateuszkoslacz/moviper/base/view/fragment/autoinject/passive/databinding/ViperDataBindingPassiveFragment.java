@@ -13,7 +13,7 @@ import com.mateuszkoslacz.moviper.base.view.fragment.autoinject.passive.ViperAiP
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 /**
- * Created by tomasznajda on 14.12.2016.
+ * Created by mateuszkoslacz on 14.12.2016.
  */
 
 public abstract class ViperDataBindingPassiveFragment
