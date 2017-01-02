@@ -11,6 +11,10 @@ version = "1.2.0-alpha"
 
 android {
 
+    dataBinding{
+        enabled = true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
