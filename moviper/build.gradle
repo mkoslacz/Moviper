@@ -4,14 +4,12 @@ apply plugin: "com.jfrog.bintray"
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'android-apt'
 
-
-
 // This is the library version used when deploying the artifact
 version = "1.2.0-alpha"
 
 android {
 
-    dataBinding{
+    dataBinding {
         enabled = true
     }
 
@@ -20,14 +18,14 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 25
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 3
-        versionName "1.2.0-aplha"
+        versionName version
     }
     buildTypes {
         release {
@@ -39,20 +37,19 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:2.2.9'
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support:recyclerview-v7:25.1.0'
-    compile 'com.hannesdorfmann.mosby:mvp:2.0.1'
-    compile 'com.hannesdorfmann.mosby:viewstate:2.0.1'
+    testCompile 'junit:junit:' + rootProject.ext.junitVersion
+    testCompile 'org.mockito:mockito-core:' + rootProject.ext.mockitoVersion
+    compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportVersion
+    compile 'com.android.support:recyclerview-v7:' + rootProject.ext.supportVersion
+    compile 'com.hannesdorfmann.mosby:mvp:' + rootProject.ext.mosbyVersion
+    compile 'com.hannesdorfmann.mosby:viewstate:' + rootProject.ext.mosbyVersion
 
-    // TODO: probably should split to two flavours to
-    // avoid including rxJava in projects that don't
-    // use rx
-    compile 'io.reactivex:rxjava:1.2.3'
+    // TODO: probably should split to two flavours to avoid
+    // including rxJava in projects that don't use rx
+    compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
 
-    compile 'com.jakewharton:butterknife:8.4.0'
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.jakewharton:butterknife:' + rootProject.ext.butterKnifeVersion
+    apt 'com.jakewharton:butterknife-compiler:' + rootProject.ext.butterKnifeVersion
 
 }
 
@@ -142,7 +139,8 @@ bintray {
         version {
             gpg {
                 sign = true //Determines whether to GPG sign the files. The default is false
-                passphrase = properties.getProperty("bintray.gpg.password") //Optional. The passphrase for GPG signing'
+                passphrase = properties.getProperty("bintray.gpg.password")
+                //Optional. The passphrase for GPG signing'
             }
         }
     }
