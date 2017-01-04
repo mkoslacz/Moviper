@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.base.view.activity;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
@@ -29,5 +30,10 @@ public abstract class ViperViewStateActivity
     @Override
     public Activity getActivity() {
         return this;
+    }
+
+    @Override
+    public Bundle getArgs() {
+        return getIntent().getExtras();
     }
 }

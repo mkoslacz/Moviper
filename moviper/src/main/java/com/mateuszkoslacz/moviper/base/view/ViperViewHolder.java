@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.base.view;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
@@ -22,6 +23,7 @@ public abstract class ViperViewHolder<DataObject, View extends MvpDataView, Pres
         extends RecyclerView.ViewHolder
         implements BaseMvpDelegateCallback<View, Presenter>, ViperDataView<DataObject> {
 
+    private Bundle args;
     private Presenter mPresenter;
     private ViewGroupMvpDelegate<View, Presenter> mvpDelegate;
     private DataObject mDataObject;
@@ -46,6 +48,15 @@ public abstract class ViperViewHolder<DataObject, View extends MvpDataView, Pres
     }
 
     @Override
+    public Bundle getArgs() {
+        return args;
+    }
+
+    public void setArgs(Bundle args) {
+        this.args = args;
+    }
+
+    @Override
     public DataObject getDataObject() {
         return mDataObject;
     }
@@ -62,10 +73,6 @@ public abstract class ViperViewHolder<DataObject, View extends MvpDataView, Pres
     public void unbindPresenter() {
         getMvpDelegate().onDetachedFromWindow();
     }
-
-    @Override
-    @NonNull
-    public abstract Presenter createPresenter();
 
     @Override
     public Presenter getPresenter() {

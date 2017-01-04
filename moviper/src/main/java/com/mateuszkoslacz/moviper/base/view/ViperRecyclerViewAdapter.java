@@ -16,18 +16,8 @@ public abstract class ViperRecyclerViewAdapter<ViewHolder extends ViperViewHolde
         extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
-    }
-
-    @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.bindPresenter();
-    }
-
-    @Override
-    public int getItemCount() {
-        return 0;
     }
 
     @Override
@@ -40,10 +30,5 @@ public abstract class ViperRecyclerViewAdapter<ViewHolder extends ViperViewHolde
     public boolean onFailedToRecycleView(ViewHolder holder) {
         holder.unbindPresenter();
         return super.onFailedToRecycleView(holder);
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return super.getItemViewType(position);
     }
 }

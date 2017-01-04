@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.presenterbus;
 
+import android.app.Application;
 import android.support.annotation.VisibleForTesting;
 
 import com.mateuszkoslacz.moviper.base.exception.PresenterAlreadyRegisteredException;
@@ -30,9 +31,6 @@ public class Moviper {
     // for every external call we do n reads where n is the size of the presenters list.
     // that makes
     // TODO: 28.10.2016 reconsider no-checking if presenter exists
-    // TODO: 28.10.2016 create config for
-    // - enabling bus (and add runtime exception on getPresenters if not enabled)
-    // - enabling named instance presenters (and add runtime exception on getPresenterInstance if not enabled)
     private List<ViperPresenter> mPresenters = new CopyOnWriteArrayList<>();
 
     private PublishSubject<MoviperBundle> registerSynchronizer = PublishSubject.create();
@@ -47,6 +45,11 @@ public class Moviper {
         return instance;
     }
 
+    /**
+     * Use it in {@link Application#onCreate()} to setup IPC and IPC Instance Presenter Access to
+     * let you make use of {@link #getPresenters(Class)} and {@link #getPresenterInstance(Class,
+     * String)}.
+     */
     public void setConfig(Config config) {
         mConfig = config;
     }
@@ -73,6 +76,15 @@ public class Moviper {
         }
     }
 
+    /**
+     * * Make sure that you have enabled IPC Instance Presenter Access by using {@link
+     * #setConfig(Config)} with {@link Config.Builder#withPresenterAccessUtilEnabled(boolean)} set
+     * to true to avoid {@link PresenterInstancesAccessNotEnabled}
+     *
+     * @param presenterTypeClass class of presenters you want to get
+     * @return {@link Observable} that emmits all (from zero to n) registered presenters of given
+     * class. It operates on the {@link Schedulers#computation()}.
+     */
     public <PresenterType extends ViperPresenter> Observable<PresenterType> getPresenters(
             final Class<PresenterType> presenterTypeClass) {
         if (!mConfig.isPresenterAccessUtilEnabled()) throw new PresentersAccessUtilNotEnabled();
@@ -82,6 +94,23 @@ public class Moviper {
                 .subscribeOn(Schedulers.computation()); // TODO: reconsider moving to computation scheduler
     }
 
+    /**
+     * Make sure that you have fulfilled the requirements of ue the general IPC ({@link
+     * #getPresenters(Class)}.
+     * <p/>
+     * Make sure that you have enabled IPC Instance Presenter Access by using {@link
+     * #setConfig(Config)} with {@link Config.Builder#withInstancePresentersEnabled(boolean)} set to
+     * true to avoid {@link PresenterInstancesAccessNotEnabled}
+     * <p/>
+     * If you create two presenters with the same name (not assuring that this method will return an
+     * unique name for each presenter) with the IPC Instance Presenters Access enabled, a {@link
+     * com.mateuszkoslacz.moviper.base.exception.PresenterAlreadyRegisteredException} is thrown.
+     *
+     * @param presenterTypeClass class of presenter you want to get
+     * @param name               name of a presenter you want to get here. You shall set it up by
+     *                           returning proper name in {@link ViperPresenter#getName()}.
+     * @return {@link Observable} that emits (or not) Presenter instance of given name and class.
+     */
     public <PresenterType extends ViperPresenter> Observable<PresenterType> getPresenterInstance(
             final Class<PresenterType> presenterTypeClass, String name) {
         if (!mConfig.isInstancePresentersEnabled()) throw new PresenterInstancesAccessNotEnabled();
