@@ -3,6 +3,7 @@ package com.mateuszkoslacz.moviper.server;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.annotation.VisibleForTesting;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 
@@ -31,6 +32,11 @@ public class MoviperPresentersDispatcher {
             mInstance = new MoviperPresentersDispatcher();
         }
         return mInstance;
+    }
+
+    @VisibleForTesting
+    public static void setInstance(MoviperPresentersDispatcher mInstance) {
+        MoviperPresentersDispatcher.mInstance = mInstance;
     }
 
     public ViperPresenter getPresenterForView(ViperView view) {

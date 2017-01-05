@@ -1,1 +1,4 @@
-include ':moviper', ':sample', ':sample-rx', ':sample-rx-ai', ':sample-super-rx-ai',  ':sample-super-rx-databinding', ':sample-ipc', ':sample-ipc-ai', ':sample-recyclerview', ':sample-rx-presenter', 'sample-rx-viewstate', ':sample-rx-rdp'
+include ':moviper', ':sample', ':sample-rx', ':sample-rx-ai', ':sample-super-rx-ai',
+        ':sample-super-rx-ai-kotlin', ':sample-super-rx-databinding', ':sample-ipc',
+        ':sample-ipc-ai', ':sample-recyclerview', ':sample-rx-presenter', 'sample-rx-viewstate',
+        ':sample-rx-rdp'
