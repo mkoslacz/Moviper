@@ -36,7 +36,7 @@ public class ListingRoutingRobolectricTest {
     }
 
     @Test
-    public void startUserDetailsActivity() throws Exception {
+    public void startUserDetailsActivityIntentTest() throws Exception {
         User user = new User();
         user.setLogin("testUser");
         mRouting.startUserDetailsActivity(user);
