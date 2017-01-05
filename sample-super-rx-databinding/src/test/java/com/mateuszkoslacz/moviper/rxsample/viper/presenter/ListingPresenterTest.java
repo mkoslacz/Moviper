@@ -2,18 +2,16 @@ package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.interactor.ListingInteractor;
-import com.mateuszkoslacz.moviper.rxsample.viper.utils.RxAndroidSchedulersOverrideRule;
 import com.mateuszkoslacz.moviper.rxsample.viper.routing.ListingRouting;
+import com.mateuszkoslacz.moviper.rxsample.viper.utils.RxAndroidSchedulersOverrideRule;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.ListingActivity;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.IOException;
@@ -21,10 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx.schedulers.TestScheduler;
-import rx.subjects.PublishSubject;
 import rx.subjects.TestSubject;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by mateuszkoslacz on 17.11.2016.
@@ -46,25 +46,32 @@ public class ListingPresenterTest {
 
     @InjectMocks
     protected ListingPresenter mPresenter = new ListingPresenter();
-    private PublishSubject<User> mUserClicks;
+
+    TestScheduler mGetUserListScheduler = new TestScheduler();
+    TestSubject<List<User>> mGetUserListSubject = TestSubject.create(mGetUserListScheduler);
+    TestScheduler mGetUserClicksScheduler = new TestScheduler();
+    TestSubject<User> mGetUserClicksSubject = TestSubject.create(mGetUserClicksScheduler);
 
     @Before
-    public void setUpViewMock(){
-        mUserClicks = PublishSubject.create();
-        Mockito.when(mView.getUserClicks()).thenReturn(mUserClicks);
+    public void setUpPresenter() {
+        //detach presenter
+        mPresenter.detachView(false);
+
+        //mock observables used in attach method
+        when(mInteractor.getUserList()).thenReturn(mGetUserListSubject);
+        when(mView.getUserClicks()).thenReturn(mGetUserClicksSubject);
+
+        //attach view
+        mPresenter.attachView(mView);
     }
 
     @Test
     public void onViewCreatedUsersReceived() throws Exception {
         List<User> users = new ArrayList<>();
-        TestScheduler scheduler = new TestScheduler();
-        TestSubject<List<User>> subject = TestSubject.create(scheduler);
-        when(mInteractor.getUserList()).thenReturn(subject);
-        mPresenter.attachView(mView);
         verify(mView).showLoading();
         verify(mInteractor).getUserList();
-        subject.onNext(users);
-        scheduler.triggerActions();
+        mGetUserListSubject.onNext(users);
+        mGetUserListScheduler.triggerActions();
         verify(mView).setUserList(users);
         verify(mView).showContent();
         verify(mView, never()).showError(any());
@@ -72,15 +79,11 @@ public class ListingPresenterTest {
 
     @Test
     public void onViewCreatedFailed() throws Exception {
-        TestScheduler scheduler = new TestScheduler();
-        TestSubject<List<User>> subject = TestSubject.create(scheduler);
-        when(mInteractor.getUserList()).thenReturn(subject);
-        mPresenter.attachView(mView);
         verify(mView).showLoading();
         verify(mInteractor).getUserList();
         IOException e = new IOException();
-        subject.onError(e);
-        scheduler.triggerActions();
+        mGetUserListSubject.onError(e);
+        mGetUserListScheduler.triggerActions();
         verify(mView, never()).setUserList(any());
         verify(mView, never()).showContent();
         verify(mView).showError(e);
@@ -88,12 +91,9 @@ public class ListingPresenterTest {
 
     @Test
     public void onItemClicked() throws Exception {
-        TestScheduler scheduler = new TestScheduler();
-        TestSubject<List<User>> subject = TestSubject.create(scheduler);
-        when(mInteractor.getUserList()).thenReturn(subject);
         User user = new User();
-        mPresenter.attachView(mView);
-        mUserClicks.onNext(user);
+        mGetUserClicksSubject.onNext(user);
+        mGetUserClicksScheduler.triggerActions();
         verify(mRouting).startUserDetailsActivity(user);
     }
 }
