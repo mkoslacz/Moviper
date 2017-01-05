@@ -17,6 +17,7 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
+import org.robolectric.util.ActivityController;
 
 import java.util.Arrays;
 
@@ -36,8 +37,7 @@ public class ListingActivityTest {
 
     @Mock
     private ListingPresenter mListingPresenter;
-
-    private ListingActivity mListingActivity = Robolectric.setupActivity(ListingActivity.class);
+    private ListingActivity mListingActivity;
 
     private RecyclerView mRecyclerView;
     private ProgressBar mProgressBar;
@@ -46,7 +46,12 @@ public class ListingActivityTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
+        ActivityController<ListingActivity> listingActivityLifecycleController =
+                Robolectric.buildActivity(ListingActivity.class);
+        mListingActivity = listingActivityLifecycleController.get();
         mListingActivity.setPresenter(mListingPresenter);
+        listingActivityLifecycleController.create().start().resume().visible().get();
+
         mErrorTextView = (TextView) mListingActivity.findViewById(R.id.errorView);
         mProgressBar = (ProgressBar) mListingActivity.findViewById(R.id.loadingView);
         mRecyclerView = (RecyclerView) mListingActivity.findViewById(R.id.recycler_view);
@@ -96,8 +101,6 @@ public class ListingActivityTest {
         assertFalse("Error textview is visible", mErrorTextView.isShown());
     }
 
-    // TODO: 22.11.2016 this test is dependent on testShowContent() (it will fail for sure if
-    // testShowContent have failed). Can we define that test A is dependent on test B, like in TestNG?
     @Test
     public void testSetContent() throws Exception {
         User user1 = new User();
