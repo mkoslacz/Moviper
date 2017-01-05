@@ -44,23 +44,28 @@ public class ListingPresenterTest {
     @InjectMocks
     protected ListingPresenter mPresenter = new ListingPresenter();
 
+    TestScheduler mGetUserListScheduler = new TestScheduler();
+    TestSubject<List<User>> mGetUserListSubject = TestSubject.create(mGetUserListScheduler);
+
     @Before
     public void setUpPresenter() {
+        //detach presenter
+        mPresenter.detachView(false);
+
+        //mock observables used in attach method
+        when(mInteractor.getUserList()).thenReturn(mGetUserListSubject);
+
+        //attach view
         mPresenter.attachView(mView);
     }
-
 
     @Test
     public void onViewCreatedUsersReceived() throws Exception {
         List<User> users = new ArrayList<>();
-        TestScheduler scheduler = new TestScheduler();
-        TestSubject<List<User>> subject = TestSubject.create(scheduler);
-        when(mInteractor.getUserList()).thenReturn(subject);
-        mPresenter.attachView(mView);
         verify(mView).showLoading();
         verify(mInteractor).getUserList();
-        subject.onNext(users);
-        scheduler.triggerActions();
+        mGetUserListSubject.onNext(users);
+        mGetUserListScheduler.triggerActions();
         verify(mView).setUserList(users);
         verify(mView).showContent();
         verify(mView, never()).showError(any());
@@ -68,15 +73,11 @@ public class ListingPresenterTest {
 
     @Test
     public void onViewCreatedFailed() throws Exception {
-        TestScheduler scheduler = new TestScheduler();
-        TestSubject<List<User>> subject = TestSubject.create(scheduler);
-        when(mInteractor.getUserList()).thenReturn(subject);
-        mPresenter.attachView(mView);
         verify(mView).showLoading();
         verify(mInteractor).getUserList();
         IOException e = new IOException();
-        subject.onError(e);
-        scheduler.triggerActions();
+        mGetUserListSubject.onError(e);
+        mGetUserListScheduler.triggerActions();
         verify(mView, never()).setUserList(any());
         verify(mView, never()).showContent();
         verify(mView).showError(e);
