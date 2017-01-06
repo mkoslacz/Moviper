@@ -56,7 +56,6 @@ public class ListingPresenterTest {
 
     @Before
     public void setUpPresenter() {
-        Mockito.when(mView.getActivity()).thenReturn(mView);
         mPresenter.attachView(mView);
         mRouting.attach(mView);
     }
