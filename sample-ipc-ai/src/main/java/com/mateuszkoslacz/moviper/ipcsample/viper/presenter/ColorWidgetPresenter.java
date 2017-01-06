@@ -44,14 +44,16 @@ public class ColorWidgetPresenter
     public void synchronizeWidgetsColor() {
         Moviper.getInstance().getPresenters(ColorWidgetPresenter.class)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(presenter -> presenter.changeColorTo(backgroundColor));
+                .subscribe(presenter -> presenter.changeColorTo(backgroundColor),
+                        Throwable::printStackTrace);
     }
 
     @Override
     public void synchronizeColorOfWidgetNamed(String widgetName) {
         Moviper.getInstance().getPresenterInstance(ColorWidgetPresenter.class, widgetName)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(presenter -> presenter.changeColorTo(backgroundColor));
+                .subscribe(presenter -> presenter.changeColorTo(backgroundColor),
+                        Throwable::printStackTrace);
     }
 
     @ExternalCall
