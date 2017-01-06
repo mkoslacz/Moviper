@@ -118,7 +118,7 @@ public class Moviper {
                 .filter(moviperPresenter -> moviperPresenter.getName().equals(name))
                 .filter(presenterTypeClass::isInstance)
                 .map(presenterTypeClass::cast)
-                .first()
+                .takeFirst(presenterType -> true)
                 .subscribeOn(Schedulers.computation());
     }
 
