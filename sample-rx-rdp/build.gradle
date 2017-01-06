@@ -61,10 +61,5 @@ dependencies {
     })
     testCompile 'junit:junit:' + rootProject.ext.junitVersion
     testCompile 'org.mockito:mockito-core:' + rootProject.ext.mockitoVersion
-    testCompile 'org.powermock:powermock:' + rootProject.ext.powermockVersion
-    testCompile 'org.powermock:powermock-module-junit4:' + rootProject.ext.powermockVersion
-    testCompile 'org.powermock:powermock-api-mockito2:' + rootProject.ext.powermockVersion
-    testCompile 'org.powermock:powermock-module-junit4-rule:' + rootProject.ext.powermockVersion
-    testCompile 'org.powermock:powermock-classloading-xstream:' + rootProject.ext.powermockVersion
     testCompile 'org.robolectric:robolectric:' + rootProject.ext.robolectricVersion
 }
