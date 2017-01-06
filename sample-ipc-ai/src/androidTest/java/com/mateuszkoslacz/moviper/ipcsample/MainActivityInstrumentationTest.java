@@ -6,7 +6,6 @@ import android.support.test.runner.AndroidJUnit4;
 import com.mateuszkoslacz.moviper.ipcsample.constants.Constants;
 import com.mateuszkoslacz.moviper.ipcsample.viper.view.activity.MainActivity;
 
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,17 +25,14 @@ import static org.hamcrest.CoreMatchers.allOf;
 @RunWith(AndroidJUnit4.class)
 public class MainActivityInstrumentationTest {
 
-    private MainActivity mActivity;
-
     @Rule
     public MoviperActivityTestRule<MainActivity>
             mActivityTestRule = new MoviperActivityTestRule<>(MainActivity.class);
 
-    @Before
-    public void setUp() {
-        mActivity = mActivityTestRule.getActivity();
-    }
-
+    // TODO: 06.01.2017 why de fuk this is failing ONLY when all tests are run together
+    // and device HAS ANIMATIONS CONFIGURED like on the espresso docs?
+    // if it's run as a single test it passes, if it's run in a bunch of tests on a
+    // NOT espresso configured device it works. (at least on my workstation)
     @Test
     public void shouldButtonClickChangeFragmentColorFoundById() {
         ColorDrawable firstFragmentColor = getFragmentBackgroundDrawable(R.id.fragment_first);
@@ -62,7 +58,7 @@ public class MainActivityInstrumentationTest {
     }
 
     private ColorDrawable getFragmentBackgroundDrawable(int fragmentId) {
-        return ((ColorDrawable) mActivity.getSupportFragmentManager()
+        return ((ColorDrawable) mActivityTestRule.getActivity().getSupportFragmentManager()
                 .findFragmentById(fragmentId).getView().getBackground());
     }
 }
