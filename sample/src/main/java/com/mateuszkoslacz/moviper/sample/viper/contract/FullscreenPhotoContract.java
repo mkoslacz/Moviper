@@ -29,7 +29,7 @@ public interface FullscreenPhotoContract {
 
     }
 
-    interface PresenterForInteractor extends ViperPresenterForInteractor<Interactor> {
+    interface PresenterForInteractor extends ViperPresenterForInteractor {
         // Defines what methods the Interactor could invoke on the Presenter.
         // In most cases there will be data received callbacks and error notifying.
 
@@ -44,7 +44,7 @@ public interface FullscreenPhotoContract {
 
     }
 
-    interface PresenterForRouting extends ViperPresenterForRouting<Routing> {
+    interface PresenterForRouting extends ViperPresenterForRouting {
         // Defines what methods the Routing can invoke on the Presenter.
         // In most cases there will be system framework interaction callbacks and error notifying.
 

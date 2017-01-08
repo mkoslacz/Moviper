@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
 import com.mateuszkoslacz.moviper.base.view.fragment.autoinject.passive.ViperLceViewStateAiPassiveFragment;
-import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 
 /**
  * Created by mateuszkoslacz on 14.12.2016.
@@ -24,7 +23,7 @@ public abstract class ViperDataBindingLceViewStatePassiveFragment
                 ViewStateType extends ViewState<ViewType>,
                 Binding extends ViewDataBinding>
         extends ViperLceViewStateAiPassiveFragment<ContentView, Model, ViewType, ViewStateType>
-        implements ViperLceView<Model> {
+        implements MvpLceView<Model>, com.mateuszkoslacz.moviper.iface.view.ViperView {
 
     protected Binding mBinding;
 

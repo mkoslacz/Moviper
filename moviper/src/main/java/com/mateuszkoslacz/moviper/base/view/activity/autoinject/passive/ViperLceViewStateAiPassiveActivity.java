@@ -5,10 +5,8 @@ import android.view.View;
 
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
-import com.mateuszkoslacz.moviper.base.exception.PresenterAccessFromPassiveView;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.ViperLceViewStateAiActivity;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
-import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 
 /**
  * Created by bwilk on 12/22/16.
@@ -20,7 +18,7 @@ public abstract class ViperLceViewStateAiPassiveActivity
                 ViewType extends MvpLceView<Model>,
                 ViewStateType extends ViewState<ViewType>>
         extends ViperLceViewStateAiActivity<ContentView, Model, ViewType, ViperPresenter<ViewType>, ViewStateType>
-        implements ViperLceView<Model> {
+        implements MvpLceView<Model>, com.mateuszkoslacz.moviper.iface.view.ViperView {
 
     /**
      * <b>DO NOT</b> use this method because of a fact that this view should be completely passive

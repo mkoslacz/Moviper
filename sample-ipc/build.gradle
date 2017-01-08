@@ -40,7 +40,8 @@ dependencies {
 
     compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
     compile 'io.reactivex:rxandroid:' + rootProject.ext.rxAndroidVersion
-    compile project(path: ':moviper')
+    compile project(path: ':moviper-rx')
+    compile project(path: ':moviper-ipc')
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:' + rootProject.ext.espressoVersion, {
         exclude group: 'com.android.support', module: 'support-annotations'

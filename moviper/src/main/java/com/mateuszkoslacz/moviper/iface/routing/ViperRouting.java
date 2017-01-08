@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
-import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016. Based on lucas.urbas implementation.

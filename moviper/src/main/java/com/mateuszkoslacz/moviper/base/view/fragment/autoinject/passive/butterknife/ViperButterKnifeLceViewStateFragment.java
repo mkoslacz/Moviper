@@ -5,7 +5,6 @@ import android.view.View;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
 import com.mateuszkoslacz.moviper.base.view.fragment.autoinject.passive.ViperLceViewStateAiPassiveFragment;
-import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 
 import butterknife.ButterKnife;
 
@@ -19,7 +18,7 @@ public abstract class ViperButterKnifeLceViewStateFragment
                 ViewType extends MvpLceView<Model>,
                 ViewStateType extends ViewState<ViewType>>
         extends ViperLceViewStateAiPassiveFragment<ContentView, Model, ViewType, ViewStateType>
-        implements ViperLceView<Model> {
+        implements MvpLceView<Model>, com.mateuszkoslacz.moviper.iface.view.ViperView {
 
     @Override
     protected void injectViews(View view) {
