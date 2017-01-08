@@ -16,7 +16,7 @@ class UserDetailsPresenter(bundle: Bundle) :
         BaseRxPresenter<UserDetailsContract.View,
                 UserDetailsContract.Interactor,
                 UserDetailsContract.Routing>(bundle),
-        ViperPresenter<UserDetailsContract.View> {
+        ViperPresenter<UserDetailsContract.View, UserDetailsContract.Interactor, UserDetailsContract.Routing> {
 
     override fun attachView(view: UserDetailsContract.View) {
         super.attachView(view)
