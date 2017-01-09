@@ -1,8 +1,23 @@
 #Viper-framework TODOs:
- -  create super rx versions of base classes
- -  create Android Studio plugin for creating appropriate classes and interfaces set
-    - choosing root viper dir
-    - choosing view name
-    - choosing framework (Mvp, Perv, etc.) and displaying this use-case description
-    - for Viper and Perv - choosing Activity or Fragment base
-    - for Viper and Perv - choosing if ViewHelper should be included
+ - add sample showcasing multiple passive presenters attached to one view
+ - develop service vipers without view
+    - shall they have lifecycle similar to the view ones? or maybe completely different
+ - develop application context attached vipers without view allowing to create independent, self sustainable vipers
+    - shall they have lifecycle similar to the view ones? or maybe completely different?
+        - actually, they won't be bound to any lifecycle-driven component, so probably not
+    - shall we create the singleton to keep their references to keep them alive independently of any components?
+ - shall we rethink the way of the creation of vipers?
+ - shall we develop some kind of direct communication and management of vipers (I mean non-ipc)
+ - split the lib to:
+    - core
+    - rx
+    - standard
+    - ipc (with rxjava)
+    - presentersDispatcher
+    - ai / passive ?
+    - butterknife
+    - databinding
+    - kotlin
+ -  AS Plugin:
+    - Kotlin versions
+    - Ai, Butterknife, DataBinding

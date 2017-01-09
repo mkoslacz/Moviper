@@ -40,6 +40,7 @@ public class ProductAdapter
     @Override
     public void onBindViewHolder(ViperViewHolder holder, int position) {
         mDelegatesManager.onBindViewHolder(mListingItems, position, holder);
+        super.onBindViewHolder(holder, position);
     }
 
     @Override

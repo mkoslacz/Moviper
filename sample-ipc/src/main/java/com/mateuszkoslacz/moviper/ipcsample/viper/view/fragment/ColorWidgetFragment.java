@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.hannesdorfmann.mosby.mvp.MvpFragment;
+import com.mateuszkoslacz.moviper.base.view.fragment.ViperFragment;
 import com.mateuszkoslacz.moviper.ipcsample.R;
 import com.mateuszkoslacz.moviper.ipcsample.constants.Constants;
 import com.mateuszkoslacz.moviper.ipcsample.viper.contract.ColorWidgetContract;
@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ColorWidgetFragment
-        extends MvpFragment<ColorWidgetContract.View, ColorWidgetContract.Presenter>
+        extends ViperFragment<ColorWidgetContract.View, ColorWidgetContract.Presenter>
         implements ColorWidgetContract.View {
 
     @BindView(R.id.color_name)

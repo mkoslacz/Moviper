@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'android-apt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportVersion
+    compile 'com.android.support:design:' + rootProject.ext.supportVersion
+    compile 'com.android.support:support-v4:' + rootProject.ext.supportVersion
+
+    compile 'com.jakewharton:butterknife:' + rootProject.ext.butterKnifeVersion
+    apt 'com.jakewharton:butterknife-compiler:' + rootProject.ext.butterKnifeVersion
+
+    compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
+    compile 'io.reactivex:rxandroid:' + rootProject.ext.rxAndroidVersion
+    compile project(path: ':moviper')
+
+    androidTestCompile('com.android.support.test.espresso:espresso-core:' + rootProject.ext.espressoVersion, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestCompile project(':moviper-test')
+    testCompile 'junit:junit:' + rootProject.ext.junitVersion
+    testCompile 'org.mockito:mockito-core:' + rootProject.ext.mockitoVersion
+    testCompile 'org.robolectric:robolectric:' + rootProject.ext.robolectricVersion
+    testCompile 'org.robolectric:shadows-support-v4:3.0'
+}
