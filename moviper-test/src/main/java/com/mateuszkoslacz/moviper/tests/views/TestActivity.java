@@ -1,10 +1,12 @@
-package com.mateuszkoslacz.moviper.ipcsample;
+package com.mateuszkoslacz.moviper.tests.views;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
+
+import com.mateuszkoslacz.moviper.R;
 
 /**
  * Created by bwilk on 12/5/16.

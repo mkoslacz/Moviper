@@ -51,4 +51,5 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:' + rootProject.ext.junitVersion
+    testCompile project(':moviper-test')
 }

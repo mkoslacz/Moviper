@@ -5,6 +5,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.mateuszkoslacz.moviper.ipcsample.constants.Constants;
 import com.mateuszkoslacz.moviper.ipcsample.viper.view.activity.MainActivity;
+import com.mateuszkoslacz.moviper.tests.rules.MoviperActivityTestRule;
 
 import org.junit.Rule;
 import org.junit.Test;

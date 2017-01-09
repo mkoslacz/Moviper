@@ -4,9 +4,9 @@ import android.support.test.espresso.Espresso;
 import android.support.test.runner.AndroidJUnit4;
 import android.view.View;
 
-import com.mateuszkoslacz.moviper.recyclerviewsample.rules.ViewHolderInstrumentedTestRule;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.viewholder.ProductViewHolder;
+import com.mateuszkoslacz.moviper.tests.rules.ViewHolderInstrumentedTestRule;
 
 import org.junit.Rule;
 import org.junit.Test;

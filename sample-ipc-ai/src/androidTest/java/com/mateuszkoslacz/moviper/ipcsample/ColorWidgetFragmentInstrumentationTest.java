@@ -6,6 +6,7 @@ import android.support.test.runner.AndroidJUnit4;
 import com.mateuszkoslacz.moviper.ipcsample.constants.Constants;
 import com.mateuszkoslacz.moviper.ipcsample.viper.presenter.ColorWidgetPresenter;
 import com.mateuszkoslacz.moviper.ipcsample.viper.view.fragment.ColorWidgetFragment;
+import com.mateuszkoslacz.moviper.tests.rules.FragmentTestRule;
 
 import org.junit.BeforeClass;
 import org.junit.Rule;

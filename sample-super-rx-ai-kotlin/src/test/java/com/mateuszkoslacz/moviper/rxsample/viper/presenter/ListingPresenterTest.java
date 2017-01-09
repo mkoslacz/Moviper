@@ -2,9 +2,9 @@ package com.mateuszkoslacz.moviper.rxsample.viper.presenter;
 
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.interactor.ListingInteractor;
-import com.mateuszkoslacz.moviper.rxsample.viper.utils.RxAndroidSchedulersOverrideRule;
 import com.mateuszkoslacz.moviper.rxsample.viper.routing.ListingRouting;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.ListingActivity;
+import com.mateuszkoslacz.moviper.tests.rules.RxAndroidSchedulersOverrideRule;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -23,7 +23,10 @@ import rx.schedulers.TestScheduler;
 import rx.subjects.PublishSubject;
 import rx.subjects.TestSubject;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by mateuszkoslacz on 17.11.2016.

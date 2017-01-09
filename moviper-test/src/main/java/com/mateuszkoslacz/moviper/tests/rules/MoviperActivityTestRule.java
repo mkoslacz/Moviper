@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.ipcsample;
+package com.mateuszkoslacz.moviper.tests.rules;
 
 import android.app.Activity;
 import android.support.test.rule.ActivityTestRule;

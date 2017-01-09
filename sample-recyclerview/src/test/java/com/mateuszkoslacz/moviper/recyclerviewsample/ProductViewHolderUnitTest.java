@@ -1,9 +1,9 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample;
 
-import com.mateuszkoslacz.moviper.recyclerviewsample.utils.ViewHolderUnitTestActivity;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.presenter.ProductPresenter;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.viewholder.ProductViewHolder;
+import com.mateuszkoslacz.moviper.tests.views.ViewHolderUnitTestActivity;
 
 import org.junit.Before;
 import org.junit.Test;

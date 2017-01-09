@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.recyclerviewsample.utils;
+package com.mateuszkoslacz.moviper.tests.views;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.mateuszkoslacz.moviper.recyclerviewsample.R;
+import com.mateuszkoslacz.moviper.R;
 
 /**
  * Created by tomasznajda on 05.12.2016.

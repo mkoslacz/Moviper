@@ -1,20 +1,22 @@
-package com.mateuszkoslacz.moviper.ipcsample;
+package com.mateuszkoslacz.moviper.tests.rules;
 
 import android.os.Bundle;
 import android.support.test.rule.ActivityTestRule;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-import com.hannesdorfmann.mosby.mvp.MvpFragment;
+import com.mateuszkoslacz.moviper.R;
 import com.mateuszkoslacz.moviper.base.presenter.BaseRxPresenter;
 import com.mateuszkoslacz.moviper.presenterbus.Moviper;
+import com.mateuszkoslacz.moviper.tests.views.TestActivity;
 
 import junit.framework.Assert;
 
 /**
  * Created by bwilk on 12/5/16.
  */
-public class FragmentTestRule<FragmentType extends MvpFragment> extends ActivityTestRule<TestActivity> {
+public class FragmentTestRule<FragmentType extends Fragment> extends ActivityTestRule<TestActivity> {
 
     private final Class<FragmentType> mFragmentClass;
     private FragmentType mFragment;
@@ -43,7 +45,14 @@ public class FragmentTestRule<FragmentType extends MvpFragment> extends Activity
                 mFragment.setArguments(mArguments != null ? mArguments : new Bundle());
                 transaction.replace(R.id.container, mFragment);
                 transaction.commit();
-            } catch (InstantiationException | IllegalAccessException e) {
+            } catch (InstantiationException e) {
+                Assert.fail(
+                        String.format("%s: Could not insert %s into TestActivity: %s",
+                                getClass().getSimpleName(),
+                                mFragmentClass.getSimpleName(),
+                                e.getMessage())
+                );
+            } catch (IllegalAccessException e) {
                 Assert.fail(
                         String.format("%s: Could not insert %s into TestActivity: %s",
                                 getClass().getSimpleName(),

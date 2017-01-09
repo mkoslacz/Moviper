@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.rxsample.viper.utils;
+package com.mateuszkoslacz.moviper.tests.rules;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;

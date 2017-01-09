@@ -1,10 +1,10 @@
-package com.mateuszkoslacz.moviper.recyclerviewsample.rules;
+package com.mateuszkoslacz.moviper.tests.rules;
 
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 
 import com.mateuszkoslacz.moviper.base.view.ViperViewHolder;
-import com.mateuszkoslacz.moviper.recyclerviewsample.utils.ViewHolderInstrumentedTestActivity;
+import com.mateuszkoslacz.moviper.tests.views.ViewHolderInstrumentedTestActivity;
 
 /**
  * Created by tomasznajda on 05.12.2016.
