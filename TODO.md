@@ -1,4 +1,5 @@
 #Viper-framework TODOs:
+ - develop multi presenters views
  - add sample showcasing multiple passive presenters attached to one view
  - develop service vipers without view
     - shall they have lifecycle similar to the view ones? or maybe completely different
