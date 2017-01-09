@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.server;
+package com.mateuszkoslacz.moviper.presentersdispatcher;
 
 import android.app.Activity;
 import android.app.Fragment;

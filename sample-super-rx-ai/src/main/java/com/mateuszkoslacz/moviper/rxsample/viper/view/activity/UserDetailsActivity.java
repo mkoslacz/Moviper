@@ -14,7 +14,7 @@ import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.rxsample.R;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
-import com.mateuszkoslacz.moviper.server.MoviperPresentersDispatcher;
+import com.mateuszkoslacz.moviper.presentersdispatcher.MoviperPresentersDispatcher;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

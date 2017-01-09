@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.server;
+package com.mateuszkoslacz.moviper.presentersdispatcher;
 
 import android.content.Context;
 import android.content.Intent;

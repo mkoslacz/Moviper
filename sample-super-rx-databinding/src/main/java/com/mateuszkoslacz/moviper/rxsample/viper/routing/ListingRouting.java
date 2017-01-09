@@ -7,8 +7,8 @@ import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.presenter.UserDetailsPresenter;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.UserDetailsActivity;
-import com.mateuszkoslacz.moviper.server.ActivityStarter;
-import com.mateuszkoslacz.moviper.server.MoviperPresentersDispatcher;
+import com.mateuszkoslacz.moviper.presentersdispatcher.ActivityStarter;
+import com.mateuszkoslacz.moviper.presentersdispatcher.MoviperPresentersDispatcher;
 
 public class ListingRouting
         extends BaseRxRouting
