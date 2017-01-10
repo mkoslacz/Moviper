@@ -5,10 +5,10 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.mateuszkoslacz.moviper.rxsample.di.DIProvider;
-import com.mateuszkoslacz.moviper.rxsample.utils.RecyclerViewMatcher;
 import com.mateuszkoslacz.moviper.rxsample.utils.data.rdp.repository.TestRepository;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.ListingActivity;
+import com.mateuszkoslacz.moviper.tests.RecyclerViewMatcher;
 
 import org.junit.Rule;
 import org.junit.Test;
