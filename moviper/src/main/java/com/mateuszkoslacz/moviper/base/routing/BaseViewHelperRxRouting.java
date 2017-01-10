@@ -1,10 +1,10 @@
 package com.mateuszkoslacz.moviper.base.routing;
 
+import android.content.Context;
 import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.routing.ViperViewHelperRxRouting;
 import com.mateuszkoslacz.moviper.iface.viewhelper.ViperViewHelper;
-import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
@@ -20,19 +20,21 @@ import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
  * It also provides Android Views to use in Android Transaction with shared views, see {@link
  * BaseViewHelperRouting}
  */
-public abstract class BaseViewHelperRxRouting<ViewHelperType extends ViperViewHelper> // I prefer readability rather than conventions
-        extends BaseRxRouting
-        implements ViperViewHelperRxRouting<ViewHelperType> {
+public abstract class BaseViewHelperRxRouting
+        <RelatedContext extends Context,
+                ViewHelperType extends ViperViewHelper>
+        extends BaseRxRouting<RelatedContext>
+        implements ViperViewHelperRxRouting<RelatedContext, ViewHelperType> {
 
     @Nullable
     @Override
     public ViewHelperType getViewHelper() {
         //noinspection unchecked
-        return (ViewHelperType) WeakReferenceUtils.get(activity);
+        return (ViewHelperType) getRelatedContext();
     }
 
     @Override
     public boolean isViewHelperAttached() {
-        return isActivityAttached();
+        return isContextAttached();
     }
 }

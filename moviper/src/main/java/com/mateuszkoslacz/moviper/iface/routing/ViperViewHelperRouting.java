@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.iface.routing;
 
+import android.content.Context;
 import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
@@ -13,9 +14,10 @@ import com.mateuszkoslacz.moviper.iface.viewhelper.ViperViewHelper;
  * to allow performing Android Transitions with shared Views.
  */
 public interface ViperViewHelperRouting
-        <PresenterType extends ViperPresenterForRouting,
+        <RelatedContext extends Context,
+                PresenterType extends ViperPresenterForRouting,
                 ViewHelperType extends ViperViewHelper>
-        extends ViperRouting<PresenterType> {
+        extends ViperRouting<RelatedContext, PresenterType> {
 
     /**
      * Remember to call {@link #isViewHelperAttached()} before getting the ViewHelper to avoid

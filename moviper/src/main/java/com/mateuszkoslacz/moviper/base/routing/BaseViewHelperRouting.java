@@ -1,11 +1,11 @@
 package com.mateuszkoslacz.moviper.base.routing;
 
+import android.content.Context;
 import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.ViperViewHelperRouting;
 import com.mateuszkoslacz.moviper.iface.viewhelper.ViperViewHelper;
-import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
@@ -20,21 +20,22 @@ import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
  * {@link BaseViewHelperRouting}
  */
 public abstract class BaseViewHelperRouting
-        <PresenterType extends ViperPresenterForRouting,  // I prefer readability rather than conventions
+        <RelatedContext extends Context,
+                PresenterType extends ViperPresenterForRouting,
                 ViewHelperType extends ViperViewHelper>
-        extends BaseRouting<PresenterType>
-        implements ViperViewHelperRouting<PresenterType, ViewHelperType> {
+        extends BaseRouting<RelatedContext, PresenterType>
+        implements ViperViewHelperRouting<RelatedContext, PresenterType, ViewHelperType> {
 
     @Nullable
     @Override
     public ViewHelperType getViewHelper() {
         //noinspection unchecked
-        return (ViewHelperType) WeakReferenceUtils.get(activity);
+        return (ViewHelperType) getRelatedContext();
     }
 
     @Override
     public boolean isViewHelperAttached() {
-        return isActivityAttached();
+        return isContextAttached();
     }
 
 }

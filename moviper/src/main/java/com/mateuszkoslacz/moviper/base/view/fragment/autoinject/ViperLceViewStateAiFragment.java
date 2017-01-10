@@ -1,6 +1,8 @@
 package com.mateuszkoslacz.moviper.base.view.fragment.autoinject;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
@@ -25,6 +27,12 @@ public abstract class ViperLceViewStateAiFragment
     @Override
     public ViewStateType getViewState() {
         return (ViewStateType) super.getViewState();
+    }
+
+    @NonNull
+    @Override
+    public Context getContext() {
+        return getActivity();
     }
 
     @Override

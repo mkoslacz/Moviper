@@ -9,6 +9,6 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
  * It shall not be used in Contract.
  */
 
-public interface ViperView extends MvpView, ActivityHolder {
+public interface ViperView extends MvpView, ContextHolder {
 
 }

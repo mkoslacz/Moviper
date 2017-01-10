@@ -1,11 +1,12 @@
 package com.mateuszkoslacz.moviper.iface.routing;
 
+import android.content.Context;
 import android.support.annotation.Nullable;
 
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
-import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
+import com.mateuszkoslacz.moviper.iface.view.ContextHolder;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016. Based on lucas.urbas implementation.
@@ -19,11 +20,14 @@ import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
  * In complex use cases you will probably want to include here separate classes for handling alarms
  * scheduling, Services creating etc. for better separation of concepts.
  * <p/>
- * If you are looking for solution providing Android Views to use in Android Transaction with shared
+ * If you are looking for solution providing Android Views to use in Android Transaction with
+ * shared
  * views, see {@link ViperViewHelperRouting}
  */
-public interface ViperRouting<PresenterType extends ViperPresenterForRouting>
-        extends CommonViperRouting {
+public interface ViperRouting
+        <RelatedContext extends Context,
+                PresenterType extends ViperPresenterForRouting>
+        extends CommonViperRouting<RelatedContext> {
 
     /**
      * Remember to call {@link #isPresenterAttached()} before getting the Presenter to avoid {@link
@@ -47,5 +51,5 @@ public interface ViperRouting<PresenterType extends ViperPresenterForRouting>
      * Attaches a presenter to this interactor. Will be called right after view is attached to the
      * presenter. This method is invoked from {@link ViperPresenter#attachView(MvpView)}.
      */
-    void attach(ActivityHolder activityHolder, PresenterType presenter);
+    void attach(ContextHolder contextHolder, PresenterType presenter);
 }

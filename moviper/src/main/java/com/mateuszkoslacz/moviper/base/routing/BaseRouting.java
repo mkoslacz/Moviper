@@ -1,11 +1,11 @@
 package com.mateuszkoslacz.moviper.base.routing;
 
-import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRouting;
-import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
+import com.mateuszkoslacz.moviper.iface.view.ContextHolder;
 import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
 
 import java.lang.ref.WeakReference;
@@ -19,15 +19,19 @@ import java.lang.ref.WeakReference;
  * It's also responsible of UI changes outside of given view, ie. Fragment presenter uses this
  * routing for switching Fragments in parent Activity.
  * <p/>
- * If you are looking for solution providing Android Views to use in Android Transaction with shared
- * views, see {@link BaseViewHelperRouting}. If you are looking for solution adopted to Rx approach,
+ * If you are looking for solution providing Android Views to use in Android Transaction with
+ * shared
+ * views, see {@link BaseViewHelperRouting}. If you are looking for solution adopted to Rx
+ * approach,
  * see {@link BaseRxRouting}. If both, see {@link BaseViewHelperRxRouting}.
  */
-public class BaseRouting<PresenterType extends ViperPresenterForRouting>  // I prefer readability rather than conventions
-        implements ViperRouting<PresenterType> {
+public abstract class BaseRouting
+        <RelatedContext extends Context,
+                PresenterType extends ViperPresenterForRouting>
+        implements ViperRouting<RelatedContext, PresenterType> {
 
     @Nullable
-    WeakReference<Activity> activity;
+    WeakReference<RelatedContext> context;
     @Nullable
     private WeakReference<PresenterType> presenter;
 
@@ -37,32 +41,32 @@ public class BaseRouting<PresenterType extends ViperPresenterForRouting>  // I p
         return WeakReferenceUtils.get(presenter);
     }
 
-    @Nullable
-    @Override
-    public Activity getActivity() {
-        return WeakReferenceUtils.get(activity);
-    }
-
     @Override
     public boolean isPresenterAttached() {
         return WeakReferenceUtils.isAttached(presenter);
     }
 
+    @Nullable
     @Override
-    public boolean isActivityAttached() {
-        return WeakReferenceUtils.isAttached(activity);
+    public RelatedContext getRelatedContext() {
+        return WeakReferenceUtils.get(context);
     }
 
     @Override
-    public void attach(ActivityHolder activityHolder, PresenterType presenter) {
-        this.activity = new WeakReference<>(activityHolder.getActivity());
+    public boolean isContextAttached() {
+        return WeakReferenceUtils.isAttached(context);
+    }
+
+    @Override
+    public void attach(ContextHolder contextHolder, PresenterType presenter) {
+        this.context = new WeakReference<>((RelatedContext) contextHolder.getContext());
         this.presenter = new WeakReference<>(presenter);
     }
 
     @Override
     public void detach(boolean retainInstance) {
         WeakReferenceUtils.detach(presenter);
-        WeakReferenceUtils.detach(activity);
+        WeakReferenceUtils.detach(context);
     }
 
 }
