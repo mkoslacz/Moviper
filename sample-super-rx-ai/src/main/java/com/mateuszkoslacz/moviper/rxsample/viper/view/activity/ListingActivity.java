@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.mateuszkoslacz.moviper.base.presenter.ViperPresentersList;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.ViperAiPassiveActivity;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.rxsample.R;
@@ -111,7 +112,9 @@ public class ListingActivity
     @NonNull
     @Override
     public ViperPresenter<ListingContract.View> createPresenter() {
-        return new ListingPresenter();
+        return new ViperPresentersList<>(new ListingPresenter());   // you can attach multiple
+                                                                    // presenters to
+                                                                    // the passive view like this
     }
 
     @Override

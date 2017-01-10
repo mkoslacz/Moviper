@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.ImageView
+import com.mateuszkoslacz.moviper.base.presenter.ViperPresentersList
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.ViperAiPassiveActivity
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter
 import com.mateuszkoslacz.moviper.rxsample.R
@@ -66,7 +67,9 @@ open class ListingActivity :
         recycler_view.visibility = View.VISIBLE
     }
 
-    override fun createPresenter(): ViperPresenter<ListingContract.View> = ListingPresenter()
+    override fun createPresenter(): ViperPresenter<ListingContract.View>
+            = ViperPresentersList(ListingPresenter())   // you can attach multiple presenters to
+                                                        // the passive view like this
 
     override fun injectViews() = prepareRecyclerView()
 
