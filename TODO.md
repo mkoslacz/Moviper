@@ -1,6 +1,14 @@
 #Viper-framework TODOs:
  - develop multi presenters views
- - add sample showcasing multiple passive presenters attached to one view
+     - add sample showcasing multiple passive presenters attached to one view
+ - add missing viper viewholders types
+    - add ai/passive butterknife/databinding recyclerview viewholders
+    - add viewhelper recyclerview viewholders
+ - add registering callback presenters to ipc
+ - allow users not to use ipc in presenters (not even importing - now every presenter is registered to ipc)
+ - split moviper to modules
+     - split moviper-common to have the viewstate classes separately (like in mosby)
+     - remove recyclerview dependency from presenters dispatcher module
  - develop service vipers without view
     - shall they have lifecycle similar to the view ones? or maybe completely different
  - develop application context attached vipers without view allowing to create independent, self sustainable vipers
