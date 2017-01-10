@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.routing;
 
+import android.app.Activity;
 import android.content.Intent;
 
 import com.mateuszkoslacz.moviper.base.routing.BaseRxRouting;
@@ -11,16 +12,16 @@ import com.mateuszkoslacz.moviper.presentersdispatcher.ActivityStarter;
 import com.mateuszkoslacz.moviper.presentersdispatcher.MoviperPresentersDispatcher;
 
 public class ListingRouting
-        extends BaseRxRouting
+        extends BaseRxRouting<Activity>
         implements ListingContract.Routing {
 
     @Override
     public void startUserDetailsActivity(User user) {
-        if (isActivityAttached()) {
-            Intent startingIntent = UserDetailsActivity.getStartingIntent(getActivity(), user);
+        if (isContextAttached()) {
+            Intent startingIntent = UserDetailsActivity.getStartingIntent(getRelatedContext(), user);
             MoviperPresentersDispatcher.getInstance().startActivity(
                     ActivityStarter.newBuilder()
-                            .withContext(getActivity())
+                            .withContext(getRelatedContext())
                             .withIntent(startingIntent)
                             .withPresenter(new UserDetailsPresenter(startingIntent.getExtras()))
                             .build());

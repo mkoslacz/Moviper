@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.iface.routing;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.Nullable;
 
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
@@ -21,21 +22,21 @@ import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
  * views, see {@link ViperViewHelperRouting}
  */
 
-public interface CommonViperRouting {
+public interface CommonViperRouting<RelatedContext extends Context> {
 
     /**
-     * Remember to call {@link #isActivityAttached()} before getting the Activity to avoid {@link
+     * Remember to call {@link #isContextAttached()} before getting the Activity to avoid {@link
      * NullPointerException}s.
      *
      * @return attached Activity instance or null if it's detached (ie. View got destroyed)
      */
     @Nullable
-    Activity getActivity();
+    RelatedContext getRelatedContext();
 
     /**
      * Checks if a activity is attached to this routing.
      */
-    boolean isActivityAttached();
+    boolean isContextAttached();
 
     /**
      * You can override this to perform an action on presenter detach (ie. free the resources etc.).

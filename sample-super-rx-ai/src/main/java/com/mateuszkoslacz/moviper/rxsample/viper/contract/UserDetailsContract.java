@@ -1,5 +1,7 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.contract;
 
+import android.app.Activity;
+
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.ViperViewHelperRxRouting;
@@ -28,7 +30,7 @@ public interface UserDetailsContract {
         Observable<User> getUserForUsername(String user);
     }
 
-    interface Routing extends ViperViewHelperRxRouting<ViewHelper> {
+    interface Routing extends ViperViewHelperRxRouting<Activity, ViewHelper> {
         // Defines what methods the Presenter can invoke on the Routing.
         // In most cases there will be starting another activities, services and using system
         // framework, ie. scheduling alarms or sending broadcasts.

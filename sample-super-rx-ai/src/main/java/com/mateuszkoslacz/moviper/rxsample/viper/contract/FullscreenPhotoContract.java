@@ -1,5 +1,7 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.contract;
 
+import android.app.Activity;
+
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
@@ -28,7 +30,7 @@ public interface FullscreenPhotoContract {
 
     }
 
-    interface Routing extends ViperRxRouting {
+    interface Routing extends ViperRxRouting<Activity> {
         // Defines what methods the Presenter can invoke on the Routing.
         // In most cases there will be starting another activities, services and using system
         // framework, ie. scheduling alarms or sending broadcasts.

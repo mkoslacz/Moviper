@@ -1,5 +1,7 @@
 package com.mateuszkoslacz.moviper.ipcsample.viper.contract;
 
+import android.app.Activity;
+
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.annotation.ExternalCall;
@@ -31,7 +33,7 @@ public interface ColorWidgetContract {
 
     }
 
-    interface Routing extends ViperRxRouting {
+    interface Routing extends ViperRxRouting<Activity> {
 
     }
 }

@@ -1,5 +1,7 @@
 package com.mateuszkoslacz.moviper.ipcsample.viper.contract;
 
+import android.app.Activity;
+
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
@@ -20,7 +22,7 @@ public interface MainContract {
 
     }
 
-    interface Routing extends ViperRxRouting {
+    interface Routing extends ViperRxRouting<Activity> {
 
         void createAndAddWidgetToSlotWithGivenId(String widgetName, int widgetColor,
                                                  int destinationSlotId);

@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.contract
 
+import android.app.Activity
 import com.hannesdorfmann.mosby.mvp.MvpPresenter
 import com.hannesdorfmann.mosby.mvp.MvpView
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor
@@ -15,5 +16,6 @@ interface FullscreenPhotoContract {
 
     interface Interactor : ViperRxInteractor
 
-    interface Routing : ViperRxRouting
+    interface Routing : ViperRxRouting<Activity>
+
 }
