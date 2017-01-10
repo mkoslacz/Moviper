@@ -1,32 +1,36 @@
 #Viper-framework TODOs:
- - develop multi presenters views
-     - add sample showcasing multiple passive presenters attached to one view
- - add missing viper viewholders types
-    - add ai/passive butterknife/databinding recyclerview viewholders
-    - add viewhelper recyclerview viewholders
- - add registering callback presenters to ipc
- - allow users not to use ipc in presenters (not even importing - now every presenter is registered to ipc)
- - split moviper to modules
-     - split moviper-common to have the viewstate classes separately (like in mosby)
-     - remove recyclerview dependency from presenters dispatcher module
  - develop service vipers without view
     - shall they have lifecycle similar to the view ones? or maybe completely different
- - develop application context attached vipers without view allowing to create independent, self sustainable vipers
+    - there could be bound and started ones
+  - add missing viper viewholders types
+     - add ai/passive butterknife/databinding recyclerview viewholders
+     - add viewhelper recyclerview viewholders
+ - develop application context attached vipers without view nor service, allowing to create independent, self sustainable vipers.
+    - It could be useful ie. for pararell processing presenters that can be processed in a thread pool, as the every service is a singleton what prevents it for use its multiple instances in pararell processing.
     - shall they have lifecycle similar to the view ones? or maybe completely different?
         - actually, they won't be bound to any lifecycle-driven component, so probably not
     - shall we create the singleton to keep their references to keep them alive independently of any components?
+ - add registering callback presenters to ipc
+ - allow users not to use ipc in presenters (not even importing - now every presenter tries to registered to ipc)
  - shall we rethink the way of the creation of vipers?
- - shall we develop some kind of direct communication and management of vipers (I mean non-ipc)
- - split the lib to:
-    - core
-    - rx
-    - standard
-    - ipc (with rxjava)
-    - presentersDispatcher
-    - ai / passive ?
-    - butterknife
-    - databinding
-    - kotlin
- -  AS Plugin:
-    - Kotlin versions
-    - Ai, Butterknife, DataBinding
+ - shall we develop some kind of direct communication and management of vipers (I mean non-ipc)?
+  - split moviper to modules
+     - split moviper-common to have the viewstate classes separately (like in mosby)
+     - remove recyclerview dependency from presenters dispatcher module
+     - split the lib to:
+        - core
+        - rx
+        - standard
+        - ipc (with rxjava)
+        - viewhelper
+        - presentersDispatcher
+        - ai
+            - butterknife
+            - databinding
+        - passive
+            - butterknife
+            - databinding
+        - kotlin
+     -  AS Plugin:
+        - Kotlin versions
+        - Ai, Butterknife, DataBinding
