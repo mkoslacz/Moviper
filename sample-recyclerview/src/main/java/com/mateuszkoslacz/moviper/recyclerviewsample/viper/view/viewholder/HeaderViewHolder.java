@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 
-import com.mateuszkoslacz.moviper.base.view.ViperViewHolder;
+import com.mateuszkoslacz.moviper.base.view.viewholder.ViperViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.R;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.HeaderContract;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Category;

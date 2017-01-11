@@ -3,7 +3,7 @@ package com.mateuszkoslacz.moviper.tests.rules;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 
-import com.mateuszkoslacz.moviper.base.view.ViperViewHolder;
+import com.mateuszkoslacz.moviper.base.view.viewholder.ViperViewHolder;
 import com.mateuszkoslacz.moviper.tests.views.ViewHolderInstrumentedTestActivity;
 
 /**

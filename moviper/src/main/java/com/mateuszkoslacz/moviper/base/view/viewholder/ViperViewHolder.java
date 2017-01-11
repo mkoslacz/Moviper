@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.base.view;
+package com.mateuszkoslacz.moviper.base.view.viewholder;
 
 import android.app.Activity;
 import android.os.Bundle;

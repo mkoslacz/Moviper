@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegatesManager;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.HeaderListingItem;
 import com.mateuszkoslacz.moviper.base.view.ViperRecyclerViewAdapter;
-import com.mateuszkoslacz.moviper.base.view.ViperViewHolder;
+import com.mateuszkoslacz.moviper.base.view.viewholder.ViperViewHolder;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ListingItem;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.agregate.ProductListingItem;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.adapter.delegate.HeaderAdapterDelegate;
