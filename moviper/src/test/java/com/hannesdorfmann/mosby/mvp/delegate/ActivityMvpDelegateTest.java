@@ -3,7 +3,7 @@ package com.hannesdorfmann.mosby.mvp.delegate;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.BuildConfig;
-import com.mateuszkoslacz.moviper.rxpresenter.CustomPresenter;
+import com.mateuszkoslacz.moviper.presenterbus.presentertest.CustomPresenter;
 
 import org.junit.Before;
 import org.junit.Test;

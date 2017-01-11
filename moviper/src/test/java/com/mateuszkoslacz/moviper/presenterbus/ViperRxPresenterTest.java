@@ -2,7 +2,7 @@ package com.mateuszkoslacz.moviper.presenterbus;
 
 import com.mateuszkoslacz.moviper.base.interactor.BaseRxInteractor;
 import com.mateuszkoslacz.moviper.base.routing.BaseRxRouting;
-import com.mateuszkoslacz.moviper.presenterbus.presentertest.TestPresenter;
+import com.mateuszkoslacz.moviper.presenterbus.presentertest.CustomPresenter;
 
 import org.junit.After;
 import org.junit.Before;
@@ -25,7 +25,7 @@ public class ViperRxPresenterTest {
     BaseRxInteractor mBaseRxInteractor;
 
     @InjectMocks
-    TestPresenter mPresenter = new TestPresenter();
+    CustomPresenter mPresenter = new CustomPresenter();
 
     @Before
     public void setUp() {

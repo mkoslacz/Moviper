@@ -14,7 +14,7 @@ import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
  * Created by bwilk on 12/20/16.
  */
 
-public class TestPresenter
+public class CustomPresenter
         extends BaseRxPresenter<MvpView,
         ViperRxInteractor,
         ViperRxRouting>

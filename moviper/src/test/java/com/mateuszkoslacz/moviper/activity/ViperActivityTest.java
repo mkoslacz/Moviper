@@ -24,10 +24,10 @@ import org.robolectric.util.ActivityController;
 public class ViperActivityTest {
 
     @Mock
-    private ActivityMvpDelegate<MvpView, MvpPresenter<MvpView>> mvpDelegate;
-    private ActivityController<CustomViperActivity> testActivityLifecycleController =
+    private ActivityMvpDelegate<MvpView, MvpPresenter<MvpView>> mMvpDelegate;
+    private ActivityController<CustomViperActivity> mTestActivityLifecycleController =
             Robolectric.buildActivity(CustomViperActivity.class);
-    private CustomViperActivity activity = testActivityLifecycleController.get();
+    private CustomViperActivity mActivity = mTestActivityLifecycleController.get();
 
     @Before
     public void setUp() {
@@ -36,8 +36,8 @@ public class ViperActivityTest {
 
     @Test
     public void shouldMvpDelegateInvokeOnCreateWhenActivityStarted() {
-        activity.setMvpDelegate(mvpDelegate);
-        testActivityLifecycleController.create();
-        Mockito.verify(mvpDelegate).onCreate(Mockito.any());
+        mActivity.setMvpDelegate(mMvpDelegate);
+        mTestActivityLifecycleController.create();
+        Mockito.verify(mMvpDelegate).onCreate(Mockito.any());
     }
 }
