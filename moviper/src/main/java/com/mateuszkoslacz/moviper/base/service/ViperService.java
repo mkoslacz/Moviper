@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.base.view.service;
+package com.mateuszkoslacz.moviper.base.service;
 
 import android.content.Context;
 import android.content.Intent;

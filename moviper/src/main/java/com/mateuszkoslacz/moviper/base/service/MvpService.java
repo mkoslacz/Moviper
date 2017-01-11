@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.base.view.service;
+package com.mateuszkoslacz.moviper.base.service;
 
 import android.app.Service;
 import android.support.annotation.NonNull;
