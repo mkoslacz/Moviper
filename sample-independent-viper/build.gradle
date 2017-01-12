@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'android-apt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    defaultConfig {
+        applicationId "com.mateuszkoslacz.moviper.sample.independent.viper"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportVersion
+    compile project(path: ':moviper')
+
+    compile 'com.jakewharton:butterknife:' + rootProject.ext.butterKnifeVersion
+    apt 'com.jakewharton:butterknife-compiler:' + rootProject.ext.butterKnifeVersion
+
+    compile 'com.jakewharton.rxbinding:rxbinding:1.0.0'
+
+    compile 'com.squareup.retrofit2:retrofit:' + rootProject.ext.retrofitVersion
+    compile 'com.squareup.retrofit2:converter-gson:' + rootProject.ext.retrofitVersion
+    compile 'com.squareup.retrofit2:adapter-rxjava:' + rootProject.ext.retrofitVersion
+    compile 'com.squareup.okhttp3:logging-interceptor:' + rootProject.ext.okHttpVersion
+}
