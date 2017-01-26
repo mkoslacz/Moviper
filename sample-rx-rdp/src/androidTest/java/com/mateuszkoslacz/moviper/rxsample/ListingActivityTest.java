@@ -20,6 +20,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static com.mateuszkoslacz.moviper.tests.RecyclerViewMatcher.withRecyclerView;
 import static org.hamcrest.Matchers.not;
 
 @RunWith(AndroidJUnit4.class)
@@ -77,9 +78,5 @@ public class ListingActivityTest {
         onView(withId(R.id.loadingView)).check(matches(not(isDisplayed())));
         onView(withId(R.id.errorView)).check(matches(not(isDisplayed())));
         onView(withId(R.id.recycler_view)).check(matches(isDisplayed()));
-    }
-
-    public static RecyclerViewMatcher withRecyclerView(final int recyclerViewId) {
-        return new RecyclerViewMatcher(recyclerViewId);
     }
 }
