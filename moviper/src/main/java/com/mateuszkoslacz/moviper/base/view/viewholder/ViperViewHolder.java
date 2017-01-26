@@ -1,6 +1,6 @@
 package com.mateuszkoslacz.moviper.base.view.viewholder;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,7 +15,8 @@ import com.mateuszkoslacz.moviper.iface.view.ViperDataView;
 /**
  * Created by norbertbanaszek on 24.10.2016.
  * <p>
- * An {@link RecyclerView.Adapter} that uses an {@link MvpPresenter} to implement a Model-View-Presenter
+ * An {@link RecyclerView.Adapter} that uses an {@link MvpPresenter} to implement a
+ * Model-View-Presenter
  * architecture.
  */
 
@@ -42,9 +43,8 @@ public abstract class ViperViewHolder<DataObject, View extends MvpDataView, Pres
     }
 
     @NonNull
-    @Override
-    public Activity getActivity() {
-        return ((Activity) itemView.getContext());
+    public Context getContext() {
+        return itemView.getContext();
     }
 
     @Override
