@@ -1,12 +1,10 @@
 package com.mateuszkoslacz.moviper.base.routing;
 
-import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.Nullable;
 
-import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
-import com.mateuszkoslacz.moviper.iface.routing.ViperRouting;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
-import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
+import com.mateuszkoslacz.moviper.iface.view.ContextHolder;
 import com.mateuszkoslacz.moviper.util.WeakReferenceUtils;
 
 import java.lang.ref.WeakReference;
@@ -25,32 +23,34 @@ import java.lang.ref.WeakReference;
  * In complex use cases you will probably want to include here separate classes for handling alarms
  * scheduling, Services creating etc. for better separation of concepts.
  * <p/>
- * If you are looking for solution providing Android Views to use in Android Transaction with shared
+ * If you are looking for solution providing Android Views to use in Android Transaction with
+ * shared
  * views, see {@link BaseViewHelperRxRouting}
  */
-public abstract class BaseRxRouting implements ViperRxRouting {
+public abstract class BaseRxRouting<RelatedContext extends Context>
+        implements ViperRxRouting<RelatedContext> {
 
     @Nullable
-    WeakReference<Activity> activity;
+    WeakReference<RelatedContext> context;
 
     @Nullable
     @Override
-    public Activity getActivity() {
-        return WeakReferenceUtils.get(activity);
+    public RelatedContext getRelatedContext() {
+        return WeakReferenceUtils.get(context);
     }
 
     @Override
-    public boolean isActivityAttached() {
-        return WeakReferenceUtils.isAttached(activity);
+    public boolean isContextAttached() {
+        return WeakReferenceUtils.isAttached(context);
     }
 
     @Override
-    public void attach(ActivityHolder activityHolder) {
-        this.activity = new WeakReference<>(activityHolder.getActivity());
+    public void attach(ContextHolder contextHolder) {
+        this.context = new WeakReference<>((RelatedContext) contextHolder.getContext());
     }
 
     @Override
     public void detach(boolean retainInstance) {
-        WeakReferenceUtils.detach(activity);
+        WeakReferenceUtils.detach(context);
     }
 }

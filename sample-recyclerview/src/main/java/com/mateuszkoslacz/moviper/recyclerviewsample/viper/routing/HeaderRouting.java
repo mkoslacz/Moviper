@@ -1,5 +1,7 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.routing;
 
+import android.app.Activity;
+
 import com.mateuszkoslacz.moviper.base.routing.BaseRxRouting;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.HeaderContract;
 
@@ -8,7 +10,7 @@ import com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract.HeaderContra
  */
 
 public class HeaderRouting
-        extends BaseRxRouting
+        extends BaseRxRouting<Activity>
         implements HeaderContract.Routing {
 
 }

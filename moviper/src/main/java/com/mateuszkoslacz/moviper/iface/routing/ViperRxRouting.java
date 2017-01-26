@@ -1,8 +1,10 @@
 package com.mateuszkoslacz.moviper.iface.routing;
 
+import android.content.Context;
+
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
-import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
+import com.mateuszkoslacz.moviper.iface.view.ContextHolder;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016. Based on lucas.urbas implementation.
@@ -19,7 +21,8 @@ import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
  * If you are looking for solution providing Android Views to use in Android Transaction with shared
  * views, see {@link ViperViewHelperRouting}
  */
-public interface ViperRxRouting extends CommonViperRouting {
+public interface ViperRxRouting<RelatedContext extends Context>
+        extends CommonViperRouting<RelatedContext> {
 
     /**
      * You can override this to perform an action on presenter attach (ie. set up the resources,
@@ -28,5 +31,5 @@ public interface ViperRxRouting extends CommonViperRouting {
      * Attaches a presenter to this interactor. Will be called right after view is attached to the
      * presenter. This method is invoked from {@link ViperPresenter#attachView(MvpView)}.
      */
-    void attach(ActivityHolder activityHolder);
+    void attach(ContextHolder contextHolder);
 }

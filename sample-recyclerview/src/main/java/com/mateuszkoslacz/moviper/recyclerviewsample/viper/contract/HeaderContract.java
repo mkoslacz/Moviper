@@ -1,5 +1,7 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract;
 
+import android.app.Activity;
+
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
@@ -25,7 +27,7 @@ public interface HeaderContract {
 
     }
 
-    interface Routing extends ViperRxRouting {
+    interface Routing extends ViperRxRouting<Activity> {
 
     }
 }

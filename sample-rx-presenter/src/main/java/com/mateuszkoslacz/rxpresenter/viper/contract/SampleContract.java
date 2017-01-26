@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.rxpresenter.viper.contract;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
@@ -23,7 +24,7 @@ public interface SampleContract {
 
     }
 
-    interface Routing extends ViperRxRouting {
+    interface Routing extends ViperRxRouting<Activity> {
 
     }
 }

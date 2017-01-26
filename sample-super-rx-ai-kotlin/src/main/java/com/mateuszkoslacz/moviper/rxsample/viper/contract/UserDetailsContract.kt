@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.contract
 
+import android.app.Activity
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor
 import com.mateuszkoslacz.moviper.iface.routing.ViperViewHelperRxRouting
@@ -19,7 +20,7 @@ interface UserDetailsContract {
         fun getUserForUsername(user: String): Observable<User>
     }
 
-    interface Routing : ViperViewHelperRxRouting<ViewHelper> {
+    interface Routing : ViperViewHelperRxRouting<Activity, ViewHelper> {
         fun startFullscreenPhotoActivity(photoUrl: String)
     }
 

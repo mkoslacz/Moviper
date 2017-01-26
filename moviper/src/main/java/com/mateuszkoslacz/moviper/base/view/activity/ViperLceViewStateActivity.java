@@ -1,6 +1,6 @@
 package com.mateuszkoslacz.moviper.base.view.activity;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -31,7 +31,7 @@ public abstract class ViperLceViewStateActivity
 
     @NonNull
     @Override
-    public Activity getActivity() {
+    public Context getContext() {
         return this;
     }
 

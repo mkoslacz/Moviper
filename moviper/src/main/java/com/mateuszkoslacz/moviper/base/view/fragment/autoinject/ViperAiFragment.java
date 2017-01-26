@@ -1,6 +1,8 @@
 package com.mateuszkoslacz.moviper.base.view.fragment.autoinject;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
@@ -16,6 +18,12 @@ public abstract class ViperAiFragment
                 Presenter extends MvpPresenter<ViewType>>
         extends MvpAiFragment<ViewType, Presenter>
         implements ViperView {
+
+    @NonNull
+    @Override
+    public Context getContext() {
+        return getActivity();
+    }
 
     @Override
     public Bundle getArgs() {

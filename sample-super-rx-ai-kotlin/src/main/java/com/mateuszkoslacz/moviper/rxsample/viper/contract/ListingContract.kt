@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.rxsample.viper.contract
 
+import android.app.Activity
 import com.hannesdorfmann.mosby.mvp.MvpView
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting
@@ -24,7 +25,7 @@ interface ListingContract {
         val userList: Observable<List<User>>
     }
 
-    interface Routing : ViperRxRouting {
+    interface Routing : ViperRxRouting<Activity> {
         fun startUserDetailsActivity(user: User)
     }
 }

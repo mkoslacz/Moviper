@@ -1,6 +1,8 @@
 package com.mateuszkoslacz.moviper.base.view.fragment.autoinject;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
@@ -19,6 +21,12 @@ public abstract class ViperLceAiFragment
                 Presenter extends MvpPresenter<ViewType>>
         extends MvpLceAiFragment<ContentView, Model, ViewType, Presenter>
         implements ViperLceView<Model> {
+
+    @NonNull
+    @Override
+    public Context getContext() {
+        return getActivity();
+    }
 
     @Override
     public Bundle getArgs() {
