@@ -1,9 +1,9 @@
 package com.mateuszkoslacz.moviper.base.view;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.ViewGroup;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
+import com.mateuszkoslacz.moviper.base.view.viewholder.ViperViewHolder;
 
 /**
  * Created by norbertbanaszek on 24.10.2016.

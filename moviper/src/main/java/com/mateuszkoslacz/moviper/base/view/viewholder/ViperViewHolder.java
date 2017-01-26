@@ -1,4 +1,4 @@
-package com.mateuszkoslacz.moviper.base.view;
+package com.mateuszkoslacz.moviper.base.view.viewholder;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -43,7 +43,6 @@ public abstract class ViperViewHolder<DataObject, View extends MvpDataView, Pres
     }
 
     @NonNull
-    @Override
     public Context getContext() {
         return itemView.getContext();
     }
