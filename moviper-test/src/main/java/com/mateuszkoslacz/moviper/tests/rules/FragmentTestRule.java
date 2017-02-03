@@ -15,6 +15,9 @@ import junit.framework.Assert;
 
 /**
  * Created by bwilk on 12/5/16.
+ *
+ * REMEMBER TO ADD moviper-test MODULE TO YOUR GRADLE FILE USING debugCompile, NOT testCompile TO MAKE
+ * IT WORK!
  */
 public class FragmentTestRule<FragmentType extends Fragment> extends ActivityTestRule<TestActivity> {
 

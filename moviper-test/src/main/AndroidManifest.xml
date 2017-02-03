@@ -1,5 +1,9 @@
-<manifest package="com.mateuszkoslacz.moviper.tests">
+<manifest package="com.mateuszkoslacz.moviper.tests"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <application/>
+    <application>
+        <activity android:name=".views.TestActivity"
+                  android:theme="@style/Theme.AppCompat"/>
+    </application>
 
 </manifest>

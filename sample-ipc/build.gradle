@@ -46,7 +46,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:' + rootProject.ext.espressoVersion, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    androidTestCompile project(':moviper-test')
+    debugCompile project(':moviper-test')
     testCompile 'junit:junit:' + rootProject.ext.junitVersion
     testCompile 'org.mockito:mockito-core:' + rootProject.ext.mockitoVersion
     testCompile 'org.robolectric:robolectric:' + rootProject.ext.robolectricVersion
