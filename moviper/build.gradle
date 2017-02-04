@@ -37,9 +37,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:' + rootProject.ext.espressoVersion, {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
     testCompile 'junit:junit:' + rootProject.ext.junitVersion
     testCompile 'org.mockito:mockito-core:' + rootProject.ext.mockitoVersion
     testCompile 'org.robolectric:robolectric:' + rootProject.ext.robolectricVersion
@@ -51,7 +48,6 @@ dependencies {
     // TODO: probably should split to two flavours to avoid
     // including rxJava in projects that don't use rx
     compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
-    compile 'io.reactivex:rxandroid:' + rootProject.ext.rxAndroidVersion
 
     compile 'com.jakewharton:butterknife:' + rootProject.ext.butterKnifeVersion
     apt 'com.jakewharton:butterknife-compiler:' + rootProject.ext.butterKnifeVersion
