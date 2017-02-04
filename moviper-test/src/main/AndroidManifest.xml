@@ -4,6 +4,7 @@
     <application>
         <activity android:name=".views.TestActivity"
                   android:theme="@style/Theme.AppCompat"/>
+        <activity android:name=".views.ViewHolderInstrumentedTestActivity"/>
     </application>
 
 </manifest>
