@@ -10,14 +10,14 @@ import com.mateuszkoslacz.moviper.tests.views.ViewHolderInstrumentedTestActivity
  * Created by tomasznajda on 05.12.2016.
  */
 
-public class ViewHolderInstrumentedTestRule<M> extends ActivityTestRule<ViewHolderInstrumentedTestActivity> {
+public class ViewHolderTestRule<M> extends ActivityTestRule<ViewHolderInstrumentedTestActivity> {
 
     private final ViewHolderDelegate mViewHolderDelegate;
     private final int mViewId;
     private final M mModelObject;
     private ViperViewHolder mViewHolder;
 
-    private ViewHolderInstrumentedTestRule(Builder builder) {
+    private ViewHolderTestRule(Builder builder) {
         super(ViewHolderInstrumentedTestActivity.class, true, false);
         mViewHolderDelegate = builder.mViewHolderDelegate;
         mViewId = builder.mViewId;
@@ -69,8 +69,8 @@ public class ViewHolderInstrumentedTestRule<M> extends ActivityTestRule<ViewHold
             return this;
         }
 
-        public ViewHolderInstrumentedTestRule build() {
-            return new ViewHolderInstrumentedTestRule(this);
+        public ViewHolderTestRule build() {
+            return new ViewHolderTestRule(this);
         }
     }
 }

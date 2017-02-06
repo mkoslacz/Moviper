@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.entity.Product;
 import com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.viewholder.ProductViewHolder;
-import com.mateuszkoslacz.moviper.tests.rules.ViewHolderInstrumentedTestRule;
+import com.mateuszkoslacz.moviper.tests.rules.ViewHolderTestRule;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -22,8 +22,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.*;
 public class ProductViewHolderInstrumentedTest {
 
     @Rule
-    public ViewHolderInstrumentedTestRule<Product> mTestRule =
-            ViewHolderInstrumentedTestRule.builder()
+    public ViewHolderTestRule<Product> mTestRule =
+            ViewHolderTestRule.builder()
                     .withViewId(R.layout.vh_product)
                     .withModelObject(createTestProduct())
                     .withViewHolderDelegate(this::getViewHolder)
