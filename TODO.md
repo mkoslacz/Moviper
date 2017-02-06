@@ -1,18 +1,14 @@
 #Viper-framework TODOs:
- - develop service vipers without view
-    - shall they have lifecycle similar to the view ones? or maybe completely different
-    - there could be bound and started ones
+ - update the readme, cleanup the migration guide
+ - take a closer look at the new samples (service-vipers, independent vipers)
+ - take a closer look at the idea of creating base bound and started VIPER Services.
   - add missing viper viewholders types
      - add ai/passive butterknife/databinding recyclerview viewholders
      - add viewhelper recyclerview viewholders
- - develop application context attached vipers without view nor service, allowing to create independent, self sustainable vipers.
-    - It could be useful ie. for pararell processing presenters that can be processed in a thread pool, as the every service is a singleton what prevents it for use its multiple instances in pararell processing.
-    - shall they have lifecycle similar to the view ones? or maybe completely different?
-        - actually, they won't be bound to any lifecycle-driven component, so probably not
-    - shall we create the singleton to keep their references to keep them alive independently of any components?
+ - independent vipers: shall we create the in-lib singleton to keep their references to keep them alive independently of any components?
  - add registering callback presenters to ipc
  - allow users not to use ipc in presenters (not even importing - now every presenter tries to registered to ipc)
- - shall we rethink the way of the creation of vipers?
+ - shall we rethink the way of the creation of vipers? Maybe we should create a "Builder" component that will abstract-out the creation of VIPERs?
  - shall we develop some kind of direct communication and management of vipers (I mean non-ipc)?
   - split moviper to modules
      - split moviper-common to have the viewstate classes separately (like in mosby)
