@@ -42,8 +42,9 @@ dependencies {
     testCompile 'org.robolectric:robolectric:' + rootProject.ext.robolectricVersion
     compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportVersion
     compile 'com.android.support:recyclerview-v7:' + rootProject.ext.supportVersion
-    compile 'com.hannesdorfmann.mosby:mvp:' + rootProject.ext.mosbyVersion
-    compile 'com.hannesdorfmann.mosby:viewstate:' + rootProject.ext.mosbyVersion
+    compile 'com.hannesdorfmann.mosby3:mvp:' + rootProject.ext.mosbyVersion
+    compile 'com.hannesdorfmann.mosby3:mvi:' + rootProject.ext.mosbyVersion
+    compile 'com.hannesdorfmann.mosby3:viewstate:' + rootProject.ext.mosbyVersion
 
     // TODO: probably should split to two flavours to avoid
     // including rxJava in projects that don't use rx
