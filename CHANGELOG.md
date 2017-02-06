@@ -1,3 +1,51 @@
+## 1.3.0-alpha
+
+## Enhancements
+
+* Introduced AutoInject (Ai) Views that allows you to skip overriding the `onCreate(...)` / `onViewCreated(..)` method but provide the layout id by overrriding `getLayoutId()` method and
+ perform any view injections, getting references to views etc by overriding a `injectViews()` method. It contains the pre-baked classes, where view injections are done inside of base classes for:
+    - Butterknife,
+    - DataBinding,
+    - for Kotlin Android Extensions you have to use regular Ai Views.
+* Introduced Passive Views (based on AutoInject ones) that enforces developer to create passive views, that are not aware of existence of Presenter. All communication from View to Presenter has to be done through providing Observables with given UI events. It's enforced by the fact that `getPresenter()` method of this kind of views does not return Presenter of some exact type, but as a general `ViperPresenter`, so calling any meaningful methods on it is impossible. It also contains the pre baked classes for:
+    - Butterknife,
+    - DataBinding,
+    - for Kotlin Android Extensions you have to use regular AiPassive Views.
+* Introduced `MoviperPresentersDispatcher` tool that allows you to choose the View's (especially Activity )presenter on the runtime without a need of putting it to the `Bundle` with all it's limitations.
+* Introduced `ViperPresentersList` that allows you to easily attach multiple presenters to the Passive Views.
+* Introduced `Service` based VIPERs to allow you to maintain a uniform architecture between your app's views and services. It includes support for:
+    - regular `Service`'s
+    - `IntentService`'s
+* Introduced independent VIPERS to allow you to maintain a uniform architecture between your app's views and complex task objects that aren't strictly connected with any specific Android component.
+* Introduced a `moviper-test` module that contains useful testing tools:
+    - `FragmentTestRule` to perform Fragment instrumentation tests in isolation,
+    - `MoviperActivityTestRule` to perform Viper Activity instrumentation tests with proper cleanup,
+    - `ViewHolderTestRule` to perform Recyclerview's ViewHolder instrumentation tests in isolation,
+    - `RxAndroidSchedulersOverrideRule` to override `AndroidSchedulers.mainThread()` behaviour in unit tests,
+    - `ViewHolderUnitTestAcrivity` to perform Recyclerview's ViewHolder Robolectric unit tests in isolation,
+    - `RecyclerViewMatcher` to match RecyclerView's contents in Espresso instrumentation tests.
+
+### General
+
+* Introduced even more samples:
+    - sample-super-rx-ai-kotlin
+
+### Enhancements
+
+* Added some more Javadocs
+
+### Internal
+
+* Increase tests coverage, also for non-TDD libs that we base onto.
+
+### Credits
+
+Once again, many thanks to guys that helped me in Moviper development implementing my ideas under my guidance:
+* [Tomasz Najda](https://github.com/tomasznajda) - extracting moviper-test module, implementing Viper services and independent Vipers and samples for the latter,
+* [Bartosz Wilk](https://github.com/bartoszwilk) - Moviper templates, some Ai Views, improving test coverage, implementing `MoviperPresetnersDispatcher`, super-rx-ai sample,
+* [Jakub Jodelka](https://github.com/jakubjodelka) - Viper service sample.
+
+
 ## 1.2.0-alpha
 
 ### Breaking changes
