@@ -3,8 +3,8 @@ package com.mateuszkoslacz.moviper.base.view.fragment.autoinject.passive;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
+import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
 import com.mateuszkoslacz.moviper.base.exception.PresenterAccessFromPassiveView;
 import com.mateuszkoslacz.moviper.base.view.fragment.autoinject.ViperLceViewStateAiFragment;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;

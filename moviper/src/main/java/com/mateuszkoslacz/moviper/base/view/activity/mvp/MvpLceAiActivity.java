@@ -20,11 +20,11 @@ import android.support.annotation.CallSuper;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.hannesdorfmann.mosby.mvp.MvpActivity;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.R;
-import com.hannesdorfmann.mosby.mvp.lce.LceAnimator;
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
+import com.hannesdorfmann.mosby3.mvp.MvpActivity;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.R;
+import com.hannesdorfmann.mosby3.mvp.lce.LceAnimator;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
 import com.mateuszkoslacz.moviper.base.view.activity.mvp.MvpAiActivity;
 
 /**

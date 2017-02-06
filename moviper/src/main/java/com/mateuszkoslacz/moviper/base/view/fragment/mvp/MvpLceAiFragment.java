@@ -22,11 +22,11 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.hannesdorfmann.mosby.mvp.MvpFragment;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.R;
-import com.hannesdorfmann.mosby.mvp.lce.LceAnimator;
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
+import com.hannesdorfmann.mosby3.mvp.MvpFragment;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.R;
+import com.hannesdorfmann.mosby3.mvp.lce.LceAnimator;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
 
 /**
  * A {@link MvpFragment} that implements {@link MvpLceView} which gives you 3 options:

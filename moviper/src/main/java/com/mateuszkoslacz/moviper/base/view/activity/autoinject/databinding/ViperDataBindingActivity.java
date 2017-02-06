@@ -4,8 +4,8 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.annotation.LayoutRes;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.ViperAiActivity;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 

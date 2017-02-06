@@ -2,7 +2,7 @@ package com.mateuszkoslacz.moviper.base.view.fragment.autoinject.passive.butterk
 
 import android.view.View;
 
-import com.hannesdorfmann.mosby.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.mateuszkoslacz.moviper.base.view.fragment.autoinject.passive.ViperAiPassiveFragment;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 

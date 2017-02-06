@@ -1,7 +1,7 @@
-package com.hannesdorfmann.mosby.mvp.delegate;
+package com.hannesdorfmann.mosby3.mvp.delegate;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
 
 /**
  * Created by bwilk on 12/21/16.

@@ -16,17 +16,17 @@
 
 package com.mateuszkoslacz.moviper.base.view.activity.mvp;
 
-import com.hannesdorfmann.mosby.mvp.MvpActivity;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegate;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpViewStateDelegateCallback;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpViewStateDelegateImpl;
-import com.hannesdorfmann.mosby.mvp.viewstate.RestorableViewState;
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.MvpActivity;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpDelegate;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpViewStateDelegateCallback;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpViewStateDelegateImpl;
+import com.hannesdorfmann.mosby3.mvp.viewstate.RestorableViewState;
+import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
 
 /**
- * This is a enhancement of {@link com.hannesdorfmann.mosby.mvp.MvpActivity} that introduces the
+ * This is a enhancement of {@link com.hannesdorfmann.mosby3.mvp.MvpActivity} that introduces the
  * support of {@link RestorableViewState}.
  * <p>
  * You can change the behaviour of what to do if the viewstate is empty (usually if the activity

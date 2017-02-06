@@ -5,8 +5,8 @@ import android.databinding.ViewDataBinding;
 import android.support.annotation.LayoutRes;
 import android.view.View;
 
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
+import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.ViperLceViewStateAiPassiveActivity;
 import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 

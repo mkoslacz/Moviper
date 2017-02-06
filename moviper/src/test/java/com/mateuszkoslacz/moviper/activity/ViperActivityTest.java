@@ -1,8 +1,8 @@
 package com.mateuszkoslacz.moviper.activity;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegate;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpDelegate;
 import com.mateuszkoslacz.moviper.BuildConfig;
 
 import org.junit.Before;

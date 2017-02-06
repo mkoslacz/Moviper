@@ -3,11 +3,11 @@ package com.mateuszkoslacz.moviper.base.service;
 import android.app.Service;
 import android.support.annotation.NonNull;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegate;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegateCallback;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegateImpl;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpDelegate;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpDelegateCallback;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpDelegateImpl;
 
 public abstract class MvpService
         <ViewType extends MvpView,

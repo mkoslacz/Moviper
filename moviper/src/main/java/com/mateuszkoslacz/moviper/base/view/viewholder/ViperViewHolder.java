@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpDelegateCallback;
-import com.hannesdorfmann.mosby.mvp.delegate.ViewGroupMvpDelegate;
-import com.hannesdorfmann.mosby.mvp.delegate.ViewGroupMvpDelegateImpl;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.delegate.BaseMvpDelegateCallback;
+import com.hannesdorfmann.mosby3.mvp.delegate.ViewGroupMvpDelegate;
+import com.hannesdorfmann.mosby3.mvp.delegate.ViewGroupMvpDelegateImpl;
 import com.mateuszkoslacz.moviper.iface.view.MvpDataView;
 import com.mateuszkoslacz.moviper.iface.view.ViperDataView;
 

@@ -2,9 +2,9 @@ package com.mateuszkoslacz.moviper.activity;
 
 import android.support.annotation.NonNull;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegate;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpDelegate;
 import com.mateuszkoslacz.moviper.base.view.activity.ViperActivity;
 
 /**
