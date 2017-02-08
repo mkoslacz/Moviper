@@ -1,3 +1,30 @@
+# 1.2.0-alpha to 1.3.0-alpha
+
+## Classes
+
+| 1.2.0-alpha                                          | 1.3.0-alpha                                                           |
+|------------------------------------------------------|-----------------------------------------------------------------------|
+| BaseRouting<PresenterType>                           | BaseRouting<RelatedContext, PresenterType>                            |
+| BaseRxRouting                                        | BaseRxRouting<RelatedContext>                                         |
+| BaseViewHelperRouting<PresenterType, ViewHelperType> | BaseViewHelperRouting<ReleatedContext, PresenterType, ViewHelperType> |
+| BaseViewHelperRxRouting<ViewHelperType>              | BaseViewHelperRxRouting<ReleatedContext, ViewHelperType>              |
+
+## Interfaces
+
+| 1.2.0-alpha                                          | 1.3.0-alpha                                                           |
+|------------------------------------------------------|-----------------------------------------------------------------------|
+| ActivityHolder                                       | ContextHolder                                                         |
+
+## Methods
+
+| 1.2.0-alpha                                          | 1.3.0-alpha                                                           |
+|------------------------------------------------------|-----------------------------------------------------------------------|
+| ActivityHolder#getActivity()                         | ContextHolder#getContext()                                            |
+| CommonViperRouting#isActivityAttached()              | CommonViperRouting#isContextAttached()                                |
+| CommonViperRouting#getActivity()                     | CommonViperRouting#getRelatedContext()                                |
+
+# 1.1.0-alpha to 1.2.0-alpha
+
 ## Classes
 
 | **1.1.0-alpha**                 | **1.2.0-alpha**           |
