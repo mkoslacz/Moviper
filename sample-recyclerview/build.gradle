@@ -37,12 +37,12 @@ dependencies {
     compile 'com.android.support:support-v4:' + rootProject.ext.supportVersion
 
     compile 'com.github.bumptech.glide:glide:' + rootProject.ext.glideVersion
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.squareup.picasso:picasso:' + rootProject.ext.picassoVersion
 
     compile 'com.jakewharton:butterknife:' + rootProject.ext.butterKnifeVersion
     apt 'com.jakewharton:butterknife-compiler:' + rootProject.ext.butterKnifeVersion
 
-    compile 'com.hannesdorfmann:adapterdelegates3:3.0.0'
+    compile 'com.hannesdorfmann:adapterdelegates3:' + rootProject.ext.adapterdelegates3Version
 
     compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
     compile 'io.reactivex:rxandroid:' + rootProject.ext.rxAndroidVersion

@@ -34,7 +34,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:' + rootProject.ext.butterKnifeVersion
     apt 'com.jakewharton:butterknife-compiler:' + rootProject.ext.butterKnifeVersion
 
-    compile 'com.jakewharton.rxbinding:rxbinding:1.0.0'
+    compile 'com.jakewharton.rxbinding:rxbinding:' + rootProject.ext.rxBindingVersion
 
     compile 'com.squareup.retrofit2:retrofit:' + rootProject.ext.retrofitVersion
     compile 'com.squareup.retrofit2:converter-gson:' + rootProject.ext.retrofitVersion

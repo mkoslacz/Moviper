@@ -54,7 +54,7 @@ dependencies {
     testCompile project(':moviper-test')
 
     testCompile 'org.khronos:opengl-api:' + rootProject.ext.openglApiVersion
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.ext.kotlinVersion"
 
 }
 repositories {

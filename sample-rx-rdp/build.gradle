@@ -38,14 +38,14 @@ dependencies {
     compile 'com.android.support:support-v4:' + rootProject.ext.supportVersion
 
     compile 'com.github.bumptech.glide:glide:' + rootProject.ext.glideVersion
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.squareup.picasso:picasso:' + rootProject.ext.picassoVersion
 
     compile 'com.jakewharton:butterknife:' + rootProject.ext.butterKnifeVersion
     apt 'com.jakewharton:butterknife-compiler:' + rootProject.ext.butterKnifeVersion
 
-    apt 'com.google.dagger:dagger-compiler:2.7'
-    compile 'com.google.dagger:dagger:2.7'
-    provided 'javax.annotation:jsr250-api:1.0'
+    apt 'com.google.dagger:dagger-compiler:' + rootProject.ext.daggerVersion
+    compile 'com.google.dagger:dagger:' + rootProject.ext.daggerVersion
+    provided 'javax.annotation:jsr250-api:' + rootProject.ext.jsr250ApiVersion
 
     compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
     compile 'io.reactivex:rxandroid:' + rootProject.ext.rxAndroidVersion
@@ -55,7 +55,7 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:' + rootProject.ext.okHttpVersion
     compile project(path: ':moviper')
 
-    androidTestApt 'com.google.dagger:dagger-compiler:2.7'
+    androidTestApt 'com.google.dagger:dagger-compiler:' + rootProject.ext.daggerVersion
     androidTestCompile('com.android.support.test.espresso:espresso-core:' + rootProject.ext.espressoVersion, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })

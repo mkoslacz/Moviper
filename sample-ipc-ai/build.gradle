@@ -49,5 +49,5 @@ dependencies {
     testCompile 'junit:junit:' + rootProject.ext.junitVersion
     testCompile 'org.mockito:mockito-core:' + rootProject.ext.mockitoVersion
     testCompile 'org.robolectric:robolectric:' + rootProject.ext.robolectricVersion
-    testCompile 'org.robolectric:shadows-support-v4:3.0'
+    testCompile 'org.robolectric:shadows-support-v4:' + rootProject.ext.robolectricVersion
 }
