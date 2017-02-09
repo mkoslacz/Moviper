@@ -5,7 +5,7 @@ apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'android-apt'
 
 // This is the library version used when deploying the artifact
-version = "1.2.0-alpha"
+version = rootProject.ext.releaseVersionName
 
 android {
 
@@ -24,7 +24,7 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 3
+        versionCode rootProject.ext.releaseVersionCode
         versionName version
     }
     buildTypes {
