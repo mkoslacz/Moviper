@@ -45,7 +45,7 @@ public class MoviperPresentersDispatcher {
 
     /**
      * It starts an {@link Activity} with selected presenter configured in a way provided in the
-     * given {@link ActivityStarter}.<p/>
+     * given {@link ActivityStarter}.<p>
      *
      * Given {@link Activity} has to be passive (from package {@link com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive}),
      * and has to return value from {@link #getPresenterForView(ViperView)} method in {@link
@@ -59,31 +59,25 @@ public class MoviperPresentersDispatcher {
     }
 
     /**
-     * It processes given {@link MvpFragment} to start with a given presenter. <p/>
+     * It processes given {@link MvpFragment} to start with a given presenter. <p>
      *
      * Given {@link Fragment} has to be passive (from package {@link com.mateuszkoslacz.moviper.base.view.fragment.autoinject.passive}),
      * and has to return value from {@link #getPresenterForView(ViperView)} method in {@link
      * MvpFragment#createPresenter()}.
-     * <p/>
+     * <p>
      * The alternative way to achieve this is to set the fragment presenter like this:
-     * <pre>
-     * {@code
-     * @fakeformat
+     * <p><blockquote><pre>
      *   SomeViperFragment fragment = new SomeViperFragment();
      *   fragment.setPresenter(somePresenter);
-     * }
-     * </pre>
+     * </pre></blockquote><p>
      * and return the current presenter if it's not null inside fragment, in {@link
      * MvpFragment#createPresenter()}
-     * <pre>
-     *     {@code
-     *     @fakeformat
+     * <p><blockquote><pre>
      * public SomePresenter createPresenter() {
      *    if (presenter != null) return presenter;
      *    else return new SomePresenter();
      * }
-     *     }
-     * </pre>
+     * </pre></blockquote><p>
      */
     public MvpFragment startFragment(MvpFragment fragment, ViperPresenter presenter) {
         int viewId = new Random().nextInt();
@@ -95,31 +89,25 @@ public class MoviperPresentersDispatcher {
     }
 
     /**
-     * It processes given {@link ViperViewHolder} to start with a given presenter. <p/>
+     * It processes given {@link ViperViewHolder} to start with a given presenter. <p>
      *
      * Given {@link ViperViewHolder} has to be passive (from package XXX), // TODO create passive viewholders
      * and has to return value from {@link #getPresenterForView(ViperView)} method in {@link
      * ViperViewHolder#createPresenter()}.
-     * <p/>
+     * <p>
      * The alternative way to achieve this is to set the {@link ViperViewHolder} presenter like this:
-     * <pre>
-     * {@code
-     * @fakeformat
+     * <p><blockquote><pre>
      *   SomeViperViewHolder holder = new SomeViperViewHolder();
      *   holder.setPresenter(somePresenter);
-     * }
-     * </pre>
+     * </pre></blockquote><p>
      * and return the current presenter if it's not null inside {@link ViperViewHolder}, in {@link
      * ViperViewHolder#createPresenter()}
-     * <pre>
-     *     {@code
-     *     @fakeformat
+     * <p><blockquote><pre>
      * public SomePresenter createPresenter() {
      *    if (presenter != null) return presenter;
      *    else return new SomePresenter();
      * }
-     *     }
-     * </pre>
+     * </pre></blockquote><p>
      */
     public RecyclerView.ViewHolder startViewHolder(ViperViewHolder viewHolder,
                                                    ViperPresenter presenter) {

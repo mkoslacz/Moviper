@@ -97,11 +97,11 @@ public class Moviper {
     /**
      * Make sure that you have fulfilled the requirements of ue the general IPC ({@link
      * #getPresenters(Class)}.
-     * <p/>
+     * <p>
      * Make sure that you have enabled IPC Instance Presenter Access by using {@link
      * #setConfig(Config)} with {@link Config.Builder#withInstancePresentersEnabled(boolean)} set to
      * true to avoid {@link PresenterInstancesAccessNotEnabled}
-     * <p/>
+     * <p>
      * If you create two presenters with the same name (not assuring that this method will return an
      * unique name for each presenter) with the IPC Instance Presenters Access enabled, a {@link
      * com.mateuszkoslacz.moviper.base.exception.PresenterAlreadyRegisteredException} is thrown.

@@ -12,16 +12,16 @@ import java.lang.ref.WeakReference;
 
 /**
  * Created by lucas.urbas on 29/08/15.
- * <p/>
+ * <p>
  * Adapted and modified by mateuszkoslacz on 08.08.2016.
- * <p/>
+ * <p>
  * Base Interactor class. (see {@link ViperInteractor})
- * <p/>
+ * <p>
  * It's responsible for manipulating data on behalf of presenter, ie. saving data to db, getting
  * data from remotes etc.
- * <p/>
+ * <p>
  * It provides Presenter reference to return data to it using callbacks.
- * <p/>
+ * <p>
  * If you are looking for solution adopted to Rx approach, see {@link BaseRxInteractor}.
  */
 public abstract class BaseInteractor<PresenterType extends ViperPresenterForInteractor>

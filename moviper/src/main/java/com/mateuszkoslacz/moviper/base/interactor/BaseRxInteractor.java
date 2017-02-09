@@ -6,14 +6,14 @@ import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 
 /**
  * Created by lucas.urbas on 29/08/15.
- * <p/>
+ * <p>
  * Adapted and modified by mateuszkoslacz on 21.10.2016.
- * <p/>
+ * <p>
  * Base Interactor class. (see {@link ViperInteractor})
- * <p/>
+ * <p>
  * It's responsible for manipulating data on behalf of presenter, ie. saving data to db, getting
  * data from remotes etc.
- * <p/>
+ * <p>
  * It has no Presenter reference as it should return Observables to asynchronously pass data to
  * Presenter. If you are looking for solution adopted to regular, non-Rx approach, see {@link
  * BaseRxInteractor}.

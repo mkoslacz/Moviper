@@ -4,7 +4,7 @@ import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 /**
  * Created by mateuszkoslacz on 24.10.2016.
- * <p/>
+ * <p>
  *
  * Thrown when a passive view tries to access a presenter.
  *

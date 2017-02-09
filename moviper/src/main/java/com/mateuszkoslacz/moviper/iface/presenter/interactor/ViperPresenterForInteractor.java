@@ -8,7 +8,7 @@ import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 
 /**
  * Created by mateuszkoslacz on  08.08.2016.
- * <p/>
+ * <p>
  * Interface used by Interactor ({@link ViperInteractor}) to communicate with Presenter ({@link
  * ViperPresenter}. There are mostly callbacks for displaying data from interactor, interactor's
  * error messages etc.

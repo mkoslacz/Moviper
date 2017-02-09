@@ -22,7 +22,7 @@ public abstract class ViperLceAiPassiveFragment
 
     /**
      * <b>DO NOT</b> use this method because of a fact that this view should be completely passive
-     * (independent from the presenter type)! <br/>
+     * (independent from the presenter type)! <br>
      * Instead you should use getters to provide
      * event sources that will notify presenter after presenter's registration to them. To use
      * getPresenter() method you shall use non-passive Moviper view.
