@@ -1,23 +1,29 @@
 ## 1.3.0-alpha
 
-## Enhancements
+### Breaking changes:
 
-* Introduced AutoInject (Ai) Views that allows you to skip overriding the `onCreate(...)` / `onViewCreated(..)` method but provide the layout id by overrriding `getLayoutId()` method and
- perform any view injections, getting references to views etc by overriding a `injectViews()` method. It contains the pre-baked classes, where view injections are done inside of base classes for:
+This release introduces some breaking changes. All stuff listed below is also mentioned in the [Migration guide](https://github.com/mkoslacz/Moviper/blob/master/MIGRATION_GUIDE.md).
+* Unified methods for getting context in Routings.
+
+### Enhancements
+
+Introduced:
+* AutoInject (Ai) Views that allow you to skip overriding the `onCreate(...)` / `onViewCreated(..)` method. Instead, in plain Ai Views you have to provide the layout id by overriding a `getLayoutId()` method and
+to perform any view injections, getting references to views etc. by overriding a `injectViews()` method. In addition, it contains the pre-baked classes, where these methods are already implemented inside of base classes for:
     - Butterknife,
     - DataBinding,
     - for Kotlin Android Extensions you have to use regular Ai Views.
-* Introduced Passive Views (based on AutoInject ones) that enforces developer to create passive views, that are not aware of existence of Presenter. All communication from View to Presenter has to be done through providing Observables with given UI events. It's enforced by the fact that `getPresenter()` method of this kind of views does not return Presenter of some exact type, but as a general `ViperPresenter`, so calling any meaningful methods on it is impossible. It also contains the pre baked classes for:
+* Passive Views (based on AutoInject ones) that enforces developer to create passive views, that are not aware of existence of Presenter. All communication from View to Presenter has to be done through providing Observables with given UI events. It's enforced by the fact that `getPresenter()` method of this kind of views does not return Presenter of some exact type, but as a general `ViperPresenter`, so calling any meaningful methods on it is impossible. As in the previous point, it also contains the pre baked classes for:
     - Butterknife,
     - DataBinding,
     - for Kotlin Android Extensions you have to use regular AiPassive Views.
-* Introduced `MoviperPresentersDispatcher` tool that allows you to choose the View's (especially Activity )presenter on the runtime without a need of putting it to the `Bundle` with all it's limitations.
-* Introduced `ViperPresentersList` that allows you to easily attach multiple presenters to the Passive Views.
-* Introduced `Service` based VIPERs to allow you to maintain a uniform architecture between your app's views and services. It includes support for:
+* `MoviperPresentersDispatcher` tool that allows you to choose the View's (especially Activity) presenter on the runtime without a need of putting it to the `Bundle` with all it's limitations.
+* `ViperPresentersList` that allows you to easily attach multiple presenters to the Passive Views.
+* `Service` based VIPERs to allow you to maintain a uniform architecture between your app's views and services. It includes support for:
     - regular `Service`'s
     - `IntentService`'s
-* Introduced independent VIPERS to allow you to maintain a uniform architecture between your app's views and complex task objects that aren't strictly connected with any specific Android component.
-* Introduced a `moviper-test` module that contains useful testing tools:
+* independent VIPERS to allow you to maintain a uniform architecture between your app's views and complex task objects that aren't strictly connected with any specific Android component.
+* a `moviper-test` module that contains useful testing tools:
     - `FragmentTestRule` to perform Fragment instrumentation tests in isolation,
     - `MoviperActivityTestRule` to perform Viper Activity instrumentation tests with proper cleanup,
     - `ViewHolderTestRule` to perform Recyclerview's ViewHolder instrumentation tests in isolation,
@@ -25,18 +31,25 @@
     - `ViewHolderUnitTestAcrivity` to perform Recyclerview's ViewHolder Robolectric unit tests in isolation,
     - `RecyclerViewMatcher` to match RecyclerView's contents in Espresso instrumentation tests.
 
+And added some more Javadocs
+
 ### General
 
-* Introduced even more samples:
+* Introduced even more samples for new features:
     - sample-super-rx-ai-kotlin
-
-### Enhancements
-
-* Added some more Javadocs
+    - sample-independent-viper
+    - sample-ipc-ai
+    - sample-rx-ai
+    - sample-service
+    - sample-super-rx-ai
+    - sample-super-rx-ai-kotlin
+    - sample-super-rx-databinding
 
 ### Internal
 
 * Increase tests coverage, also for non-TDD libs that we base onto.
+* Bumped dependencies versions:
+    - RxJava to 1.2.6
 
 ### Credits
 
@@ -74,7 +87,6 @@ This release introduces some breaking changes. All stuff listed below is also me
     - RxJava to 1.2.3
     - buildtools to 25.0.2
     - support libs to 25.1.0
-
 
 ### Credits
 

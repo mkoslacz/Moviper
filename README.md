@@ -18,9 +18,12 @@ For example `MvpFragment` maps to `ViperFragment`.
 
 ## Dependency
 
+Import the Moviper module to your module gradle file.
+
 ```groovy
 dependencies {
-    compile 'com.mateuszkoslacz.moviper:moviper:1.2.0-alpha'
+    compile 'com.mateuszkoslacz.moviper:moviper:1.3.0-alpha'
+    debugCompile 'com.mateuszkoslacz.moviper:moviper-test:1.3.0-alpha' // optional testing utils
 }
 ```
 
@@ -77,16 +80,72 @@ For complex RecyclerView list elements and/or multiple views on RecyclerViewlist
 Generating such ViewHolders is supported in the  [Moviper Template Generator](https://github.com/mkoslacz/MoviperTemplateGenerator).
 For the sample usage check out the `sample-recyclerview`.
 
+### Autoinject Views
+
+AutoInject (Ai) Views that allow you to skip overriding the `onCreate(...)` / `onViewCreated(..)` method. Instead, in plain Ai Views you have to provide the layout id by overriding a `getLayoutId()` method and
+to perform any view injections, getting references to views etc. by overriding a `injectViews()` method. In addition, it contains the pre-baked classes, where these methods are already implemented inside of base classes for:
+   - Butterknife (check out `sample-rx-ai`),
+   - DataBinding  (just like in `sample-super-rx-databinding`, but not using passive views),
+   - for Kotlin Android Extensions you have to use regular Ai Views (just like in `sample-super-rx-ai-kotlin`, but not using passive views).
+
+### Passive Views
+
+Passive Views (based on AutoInject ones) that enforces developer to create passive views, that are not aware of existence of Presenter. All communication from View to Presenter has to be done through providing Observables with given UI events. It's enforced by the fact that `getPresenter()` method of this kind of views does not return Presenter of some exact type, but as a general `ViperPresenter`, so calling any meaningful methods on it is impossible. As in the previous point, it also contains the pre baked classes for:
+   - Butterknife(just like in `sample-super-rx-ai-kotlin`, but using passive views),
+   - DataBinding (check out `sample-super-rx-databinding`),
+   - for Kotlin Android Extensions you have to use regular AiPassive Views (check out `sample-super-rx-ai-kotlin`).
+
+### Choosing Presenter on runtime
+
+A `MoviperPresentersDispatcher` tool allows you to choose the View's (especially Activity) presenter on the runtime without a need of putting it to the `Bundle` with all it's limitations or switching in .
+Sample launching of Activity with given presenter is available in `sample-super-rx-ai`, in `ListingRouting#startUserDetailsActivity(...)`, and adjusting Activity to be started with any presenter is showcased in `UserDetailsActivity#createPresenter()`.
+
+### Attaching multiple presenters to the View
+
+`ViperPresentersList` allows you to easily attach multiple presenters to the Passive Views. Sample usage is very simple and available in sample-super-rx-au in `UserDetailsActivity#createPresenter()`.
+
+### `Service` based VIPERs
+
+Allow you to maintain a uniform architecture between your app's views and services. It includes support for:
+   - regular `Service`'s
+   - `IntentService`'s
+
+Sample usage is showcased in `sample-service`
+
+### Independent VIPERS
+
+Allow you to maintain a uniform architecture between your app's views and complex task objects that aren't strictly connected with any specific Android component. Sample usage available in `sample-independent-viper`.
+
+### Test utils
+
+Optional `moviper-test` module (see Dependencies paragraph) contains useful testing tools:
+   - `FragmentTestRule` to perform Fragment instrumentation tests in isolation,
+   - `MoviperActivityTestRule` to perform Viper Activity instrumentation tests with proper cleanup,
+   - `ViewHolderTestRule` to perform Recyclerview's ViewHolder instrumentation tests in isolation,
+   - `RxAndroidSchedulersOverrideRule` to override `AndroidSchedulers.mainThread()` behaviour in unit tests,
+   - `ViewHolderUnitTestAcrivity` to perform Recyclerview's ViewHolder Robolectric unit tests in isolation,
+   - `RecyclerViewMatcher` to match RecyclerView's contents in Espresso instrumentation tests.
+
+CCheck out the test modules of the samples to check out how easy is testing with Moviper and to see various usecases of `moviper-test` module.
+
 ## Examples
 
 For the basic usage just check out the `sample-rx` (or `sample`, if you aren't familiar with [RxJava](https://github.com/ReactiveX/RxJava)) module in this repo. Most of samples include showcases of test scenarios for given Moviper usecases.
 
 More advanced usage:
-- Inter-Presenter-Communication — `sample-ipc`,
-- VIPER ViewHolders - `sample-recyclerview`,
-- Repository Design Pattern usage in Interactors and tests - `sample-rx-rdp`
-- ViewState usage - `sample-rx-viewstate`
-- Activity/Fragment retaining presenter - `sample-rx-presenter`
+   - Auto Inject Butterknife Views - `sample-rx-ai`
+   - Independent Viper Modiles - `sample-independent-viper`
+   - Inter-Presenter-Communication — `sample-ipc`,
+   - Inter-Presenter-Communication with Auto Inject Butterknife Views — `sample-ipc-ai`,
+   - VIPER ViewHolders - `sample-recyclerview`,
+   - Repository Design Pattern usage in Interactors and tests - `sample-rx-rdp`
+   - ViewState usage - `sample-rx-viewstate`
+   - Activity/Fragment retaining presenter - `sample-rx-presenter`
+   - Viper Services - `sample-service`
+   - Independent Viper - `sample-independent-viper`
+   - Passive Auto Inject Butterknife Views - `sample-super-rx-ai`
+   - Passive Auto Inject Databinding Views - `sample-super-rx-ai-databinding`
+   - Kotlin usage with Passive Auto Inject Kotlin Android Extensions - `sample-super-rx-ai-kotlin`
 
 ## Credits
 
@@ -96,9 +155,15 @@ I've also used a Lucas Urbas Interactor implementation idea presented in his [Se
 
 I have followed [Publish AAR to jCenter and Maven Central](https://gist.github.com/lopspower/6f62fe1492726d848d6d) by Lopez Mikhael to publish Moviper to jCenter.
 
+The great thanks for the my team that helped me in Moviper development implementing my ideas under my guidance:
+* [Tomasz Najda](https://github.com/tomasznajda)
+* [Bartosz Wilk](https://github.com/bartoszwilk)
+* [Jakub Jodelka](https://github.com/jakubjodelka)
+
+
 ## License
 ```
-Copyright 2016 Mateusz Koślacz
+Copyright 2017 Mateusz Koślacz
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
