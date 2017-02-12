@@ -1,9 +1,10 @@
 #Viper-framework TODOs:
+ - add Mosbys MVI support
+ - add proper javadocs!
  - update the readme, cleanup the migration guide
- - take a closer look at the new samples (service-vipers, independent vipers)
+ - take a closer look at the new samples (service-vipers, independent vipers) and optimize them
  - take a closer look at the idea of creating base bound and started VIPER Services.
   - add missing viper viewholders types
-     - add ai/passive butterknife/databinding recyclerview viewholders
      - add viewhelper recyclerview viewholders
  - independent vipers: shall we create the in-lib singleton to keep their references to keep them alive independently of any components?
  - add registering callback presenters to ipc
