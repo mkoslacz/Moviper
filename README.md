@@ -45,8 +45,8 @@ For more basic usage you shall check out:
 
 - `sample` - a basic usage without [RxJava](https://github.com/ReactiveX/RxJava),
 - `sample-independent-viper` - [independent Viper modules](#independent-vipers), not connected with any Android module,
-- `sample-ipc` - [Moviper Inter-Presenter-Communication](#moviper-inter--presenter--communication)
-- `sample-recyclerview` - RecyclerView with [Viper module for each ViewHolder](viper-viewholders) cell in the listing,
+- `sample-ipc` - [Moviper Inter-Presenter-Communication](#moviper-inter-presenter-communication)
+- `sample-recyclerview` - RecyclerView with [Viper module for each ViewHolder](#viper-viewholders) cell in the listing,
 - `sample-rx` - a basic usage with [RxJava](https://github.com/ReactiveX/RxJava),
 - `sample-rx-ai` - a [Butterknife](https://github.com/JakeWharton/butterknife) autoinject usage with [RxJava](https://github.com/ReactiveX/RxJava),
 - `sample-rx-rdp` - a sample showcasing how to use and test [Repository Design Pattern](https://medium.com/@krzychukosobudzki/repository-design-pattern-bc490b256006#.2dqugtik2) with Moviper,
@@ -60,11 +60,13 @@ For more basic usage you shall check out:
 
 ### Args Bundle
 
-You can easily pass extras from your Activity or Fragment to the presenter using Moviper Args Bundle. You can check out how to use it in the Sample's `FullscreenPhotoPresenter` [constructor and its call](https://github.com/mkoslacz/Moviper/blob/master/rxsample/src/main/java/com/mateuszkoslacz/moviper/rxsample/viper/presenter/FullscreenPhotoPresenter.java#L25).
+You can easily pass extras from your Activity or Fragment to the presenter using Moviper Args Bundle. You can check out how to use it in the Sample's `FullscreenPhotoPresenter` [constructor](https://github.com/mkoslacz/Moviper/blob/master/sample-rx/src/main/java/com/mateuszkoslacz/moviper/rxsample/viper/presenter/FullscreenPhotoPresenter.java#L20) and [its call](https://github.com/mkoslacz/Moviper/blob/master/sample-rx/src/main/java/com/mateuszkoslacz/moviper/rxsample/viper/view/activity/FullscreenPhotoActivity.java#L59).
 
 ### Moviper Inter-Presenter-Communication
 
-Referenced as IPC. It's [RxJava](https://github.com/ReactiveX/RxJava) based.
+Referenced as IPC. It's [RxJava](https://github.com/ReactiveX/RxJava) based, so it works only on the Rx-flavor of Moviper.
+
+Sample usage available in `sample-ipc`
 
 ##### Quickstart
 
@@ -122,11 +124,11 @@ Passive Views (based on AutoInject ones) that enforces developer to create passi
 ### Choosing Presenter on runtime
 
 A `MoviperPresentersDispatcher` tool allows you to choose the View's (especially Activity) presenter on the runtime without a need of putting it to the `Bundle` with all it's limitations or switching in .
-Sample launching of Activity with given presenter is available in `sample-super-rx-ai`, in `ListingRouting#startUserDetailsActivity(...)`, and adjusting Activity to be started with any presenter is showcased in `UserDetailsActivity#createPresenter()`.
+Sample launching of Activity with given presenter is available in `sample-super-rx-ai`, in `ListingRouting#startUserDetailsActivity(...)` [here](https://github.com/mkoslacz/Moviper/blob/master/sample-super-rx-ai/src/main/java/com/mateuszkoslacz/moviper/rxsample/viper/view/activity/UserDetailsActivity.java#L105), and adjusting Activity to be started with any presenter that fits the View interface is showcased in `UserDetailsActivity#createPresenter()` [here](https://github.com/mkoslacz/Moviper/blob/master/sample-super-rx-ai/src/main/java/com/mateuszkoslacz/moviper/rxsample/viper/routing/ListingRouting.java#L21).
 
 ### Attaching multiple presenters to the View
 
-`ViperPresentersList` allows you to easily attach multiple presenters to the Passive Views. Sample usage is very simple and available in sample-super-rx-au in `UserDetailsActivity#createPresenter()`.
+`ViperPresentersList` allows you to easily attach multiple presenters to the Passive Views. Sample usage is very simple and available in `sample-super-rx-ai` in `UserDetailsActivity#createPresenter()` [here](https://github.com/mkoslacz/Moviper/blob/master/sample-super-rx-ai/src/main/java/com/mateuszkoslacz/moviper/rxsample/viper/view/activity/ListingActivity.java#L115).
 
 ### `Service` based VIPERs
 
@@ -138,11 +140,13 @@ Sample usage is showcased in `sample-service`
 
 ### Independent VIPERS
 
-Allow you to maintain a uniform architecture between your app's views and complex task objects that aren't strictly connected with any specific Android component. Sample usage available in `sample-independent-viper`.
+Allow you to maintain a uniform architecture between your app's views and complex task objects that aren't strictly connected with any specific Android component.
+
+Sample usage available in `sample-independent-viper`.
 
 ### Test utils
 
-Optional `moviper-test` module (see [Dependency paragraph](#dependency)) contains useful testing tools:
+Optional `moviper-test` module (see [Dependency](#dependency)) contains useful testing tools:
    - `FragmentTestRule` to perform Fragment instrumentation tests in isolation,
    - `MoviperActivityTestRule` to perform Viper Activity instrumentation tests with proper cleanup,
    - `ViewHolderTestRule` to perform Recyclerview's ViewHolder instrumentation tests in isolation,
