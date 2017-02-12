@@ -31,8 +31,30 @@ If you are upgrading Moviper you should probably check out the [Changelog](https
 
 ## Getting started
 
-First of all, check out the samples. After that, just create a VIPER files set using [Moviper Template Generator](https://github.com/mkoslacz/MoviperTemplateGenerator), fill up the contract, generate missing methods using Android Studio autofix
-and implement them. Most probably you will want to check out a sample module provided in this repository to see how to use Moviper. You have two flavours of Moviper. The "regular" one — to use with callbacks, and the Rx one, to use with RxJava.
+First of all, check out the samples. I recommend starting with `sample-super-rx-ai` for Java with [RxJava](https://github.com/ReactiveX/RxJava) and `sample-super-rx-ai-kotlin` for [Kotlin](https://kotlinlang.org/) with [RxJava](https://github.com/ReactiveX/RxJava) to see the most powerful Moviper architecture classes.
+
+After that, just create a VIPER files set in your project using [Moviper Template Generator](https://github.com/mkoslacz/MoviperTemplateGenerator), fill up the contract, generate missing methods using Android Studio autofix
+and implement them. That's simple!
+
+For more basic usage you shall check out:
+- `sample` - a basic usage without [RxJava](https://github.com/ReactiveX/RxJava),
+- `sample-rx` - a basic usage with [RxJava](https://github.com/ReactiveX/RxJava),
+- `sample-rx-ai` - a [Butterknife](https://github.com/JakeWharton/butterknife) autoinject usage with [RxJava](https://github.com/ReactiveX/RxJava),
+
+## Samples listing
+
+- `sample` - a basic usage without [RxJava](https://github.com/ReactiveX/RxJava),
+- `sample-independent-viper` - [independent Viper modules](#independent-vipers), not connected with any Android module,
+- `sample-ipc` - [Moviper Inter-Presenter-Communication](#moviper-inter--presenter--communication)
+- `sample-recyclerview` - RecyclerView with [Viper module for each ViewHolder](viper-viewholders) cell in the listing,
+- `sample-rx` - a basic usage with [RxJava](https://github.com/ReactiveX/RxJava),
+- `sample-rx-ai` - a [Butterknife](https://github.com/JakeWharton/butterknife) autoinject usage with [RxJava](https://github.com/ReactiveX/RxJava),
+- `sample-rx-rdp` - a sample showcasing how to use and test [Repository Design Pattern](https://medium.com/@krzychukosobudzki/repository-design-pattern-bc490b256006#.2dqugtik2) with Moviper,
+- `sample-rx-viewstate` - a sample showcasing how to use the [Mosby's Viewstate](http://hannesdorfmann.com/mosby/viewstate/) feature with Moviper,
+- `sample-service` - Viper modules for Android Services,
+- `sample-super-rx-ai` - pasive Views with a [Butterknife](https://github.com/JakeWharton/butterknife) autoinject,
+- `sample-super-rx-ai-kotlin` - pasive Views with [Kotlin Android Extensions](https://kotlinlang.org/docs/tutorials/android-plugin.html),
+- `sample-super-rx-ai-databinding` - pasive Views with [Data Binding library](https://developer.android.com/topic/libraries/data-binding/index.html).
 
 ## Advanced features
 
@@ -40,7 +62,9 @@ and implement them. Most probably you will want to check out a sample module pro
 
 You can easily pass extras from your Activity or Fragment to the presenter using Moviper Args Bundle. You can check out how to use it in the Sample's `FullscreenPhotoPresenter` [constructor and its call](https://github.com/mkoslacz/Moviper/blob/master/rxsample/src/main/java/com/mateuszkoslacz/moviper/rxsample/viper/presenter/FullscreenPhotoPresenter.java#L25).
 
-### Moviper Inter-Presenter-Communication (IPC) (RxJava)
+### Moviper Inter-Presenter-Communication
+
+Referenced as IPC. It's [RxJava](https://github.com/ReactiveX/RxJava) based.
 
 ##### Quickstart
 
@@ -118,7 +142,7 @@ Allow you to maintain a uniform architecture between your app's views and comple
 
 ### Test utils
 
-Optional `moviper-test` module (see Dependencies paragraph) contains useful testing tools:
+Optional `moviper-test` module (see [Dependency paragraph](#dependency)) contains useful testing tools:
    - `FragmentTestRule` to perform Fragment instrumentation tests in isolation,
    - `MoviperActivityTestRule` to perform Viper Activity instrumentation tests with proper cleanup,
    - `ViewHolderTestRule` to perform Recyclerview's ViewHolder instrumentation tests in isolation,
@@ -126,26 +150,7 @@ Optional `moviper-test` module (see Dependencies paragraph) contains useful test
    - `ViewHolderUnitTestAcrivity` to perform Recyclerview's ViewHolder Robolectric unit tests in isolation,
    - `RecyclerViewMatcher` to match RecyclerView's contents in Espresso instrumentation tests.
 
-CCheck out the test modules of the samples to check out how easy is testing with Moviper and to see various usecases of `moviper-test` module.
-
-## Examples
-
-For the basic usage just check out the `sample-rx` (or `sample`, if you aren't familiar with [RxJava](https://github.com/ReactiveX/RxJava)) module in this repo. Most of samples include showcases of test scenarios for given Moviper usecases.
-
-More advanced usage:
-   - Auto Inject Butterknife Views - `sample-rx-ai`
-   - Independent Viper Modiles - `sample-independent-viper`
-   - Inter-Presenter-Communication — `sample-ipc`,
-   - Inter-Presenter-Communication with Auto Inject Butterknife Views — `sample-ipc-ai`,
-   - VIPER ViewHolders - `sample-recyclerview`,
-   - Repository Design Pattern usage in Interactors and tests - `sample-rx-rdp`
-   - ViewState usage - `sample-rx-viewstate`
-   - Activity/Fragment retaining presenter - `sample-rx-presenter`
-   - Viper Services - `sample-service`
-   - Independent Viper - `sample-independent-viper`
-   - Passive Auto Inject Butterknife Views - `sample-super-rx-ai`
-   - Passive Auto Inject Databinding Views - `sample-super-rx-ai-databinding`
-   - Kotlin usage with Passive Auto Inject Kotlin Android Extensions - `sample-super-rx-ai-kotlin`
+Check out the test modules of the samples to check out how easy is testing with Moviper and to see various usecases of `moviper-test` module.
 
 ## Credits
 
