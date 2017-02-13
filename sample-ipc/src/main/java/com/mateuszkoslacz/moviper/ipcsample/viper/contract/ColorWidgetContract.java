@@ -2,8 +2,8 @@ package com.mateuszkoslacz.moviper.ipcsample.viper.contract;
 
 import android.app.Activity;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.mateuszkoslacz.moviper.annotation.ExternalCall;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;

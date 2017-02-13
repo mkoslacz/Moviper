@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
 import com.mateuszkoslacz.moviper.base.view.activity.ViperViewStateActivity;
 import com.mateuszkoslacz.moviper.rxsample.R;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;

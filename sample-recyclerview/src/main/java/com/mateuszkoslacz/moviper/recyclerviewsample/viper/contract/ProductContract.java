@@ -2,7 +2,7 @@ package com.mateuszkoslacz.moviper.recyclerviewsample.viper.contract;
 
 import android.app.Activity;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 import com.mateuszkoslacz.moviper.iface.view.MvpDataView;

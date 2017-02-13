@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.butterknife.ViperButterKnifeActivity;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.databinding.ViperDataBindingPassiveActivity;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
