@@ -30,7 +30,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpDelegateImpl;
 import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpDelegate;
-import com.hannesdorfmann.mosby3.mvp.delegate.BaseMvpDelegateCallback;
+import com.hannesdorfmann.mosby3.mvp.delegate.MvpDelegateCallback;
 
 
 /**
@@ -41,7 +41,7 @@ import com.hannesdorfmann.mosby3.mvp.delegate.BaseMvpDelegateCallback;
  * @since 1.0.0
  */
 public abstract class MvpAiFragment<V extends MvpView, P extends MvpPresenter<V>> extends Fragment
-        implements BaseMvpDelegateCallback<V, P>, MvpView {
+        implements MvpDelegateCallback<V, P>, MvpView {
 
     protected FragmentMvpDelegate<V, P> mvpDelegate;
 

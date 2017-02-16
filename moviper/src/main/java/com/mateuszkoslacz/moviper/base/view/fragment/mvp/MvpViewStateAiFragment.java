@@ -23,7 +23,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpViewStateDelegateImpl;
 import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpDelegate;
-import com.hannesdorfmann.mosby3.mvp.delegate.BaseMvpViewStateDelegateCallback;
+import com.hannesdorfmann.mosby3.mvp.delegate.MvpViewStateDelegateCallback;
 import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
 
 /**
@@ -39,7 +39,7 @@ import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
  * @since 1.0.0
  */
 public abstract class MvpViewStateAiFragment<V extends MvpView, P extends MvpPresenter<V>>
-        extends MvpAiFragment<V, P> implements BaseMvpViewStateDelegateCallback<V, P> {
+        extends MvpAiFragment<V, P> implements MvpViewStateDelegateCallback<V, P> {
 
     /**
      * The viewstate will be instantiated by calling {@link #createViewState()} in {@link

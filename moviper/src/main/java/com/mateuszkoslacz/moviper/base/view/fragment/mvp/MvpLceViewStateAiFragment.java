@@ -21,7 +21,7 @@ import android.view.View;
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpViewStateDelegateImpl;
 import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpDelegate;
-import com.hannesdorfmann.mosby3.mvp.delegate.BaseMvpViewStateDelegateCallback;
+import com.hannesdorfmann.mosby3.mvp.delegate.MvpViewStateDelegateCallback;
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceFragment;
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
 import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
@@ -35,7 +35,7 @@ import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState;
  */
 public abstract class MvpLceViewStateAiFragment<CV extends View, M, V extends MvpLceView<M>, P extends MvpPresenter<V>>
         extends MvpLceAiFragment<CV, M, V, P> implements MvpLceView<M>,
-        BaseMvpViewStateDelegateCallback<V, P> {
+        MvpViewStateDelegateCallback<V, P> {
 
     /**
      * The viewstate will be instantiated by calling {@link #createViewState()} in {@link
