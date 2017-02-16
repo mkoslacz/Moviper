@@ -1,4 +1,6 @@
 #Viper-framework TODOs:
+ - make moviper-test module be importable as a androidTest dependency (it adds too much metods to debug apk)
+ - reduce methods count im moviper / split modules!
  - add Mosbys MVI support
  - add proper javadocs!
  - update the readme, cleanup the migration guide
