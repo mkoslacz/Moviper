@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.viewholder;
 
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
@@ -61,4 +62,13 @@ public class ProductViewHolder
         return new ProductPresenter();
     }
 
+    @Override
+    public Parcelable superOnSaveInstanceState() {
+        return null;
+    }
+
+    @Override
+    public void superOnRestoreInstanceState(Parcelable state) {
+
+    }
 }

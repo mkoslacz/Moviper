@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.recyclerviewsample.viper.view.viewholder;
 
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
@@ -38,5 +39,15 @@ public class HeaderViewHolder
     @NonNull
     public HeaderContract.Presenter createPresenter() {
         return new HeaderPresenter();
+    }
+
+    @Override
+    public Parcelable superOnSaveInstanceState() {
+        return null;
+    }
+
+    @Override
+    public void superOnRestoreInstanceState(Parcelable state) {
+
     }
 }

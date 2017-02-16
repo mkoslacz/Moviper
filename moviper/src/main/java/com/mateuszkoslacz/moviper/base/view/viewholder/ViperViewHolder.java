@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby3.mvp.delegate.BaseMvpDelegateCallback;
+import com.hannesdorfmann.mosby3.mvp.delegate.ViewGroupDelegateCallback;
 import com.hannesdorfmann.mosby3.mvp.delegate.ViewGroupMvpDelegate;
 import com.hannesdorfmann.mosby3.mvp.delegate.ViewGroupMvpDelegateImpl;
 import com.mateuszkoslacz.moviper.iface.view.MvpDataView;
@@ -22,7 +22,7 @@ import com.mateuszkoslacz.moviper.iface.view.ViperDataView;
 
 public abstract class ViperViewHolder<DataObject, View extends MvpDataView, Presenter extends MvpPresenter<View>>
         extends RecyclerView.ViewHolder
-        implements BaseMvpDelegateCallback<View, Presenter>, ViperDataView<DataObject> {
+        implements ViewGroupDelegateCallback<View, Presenter>, ViperDataView<DataObject> {
 
     private Bundle args;
     private Presenter mPresenter;
