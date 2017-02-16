@@ -50,10 +50,6 @@ dependencies {
 
     compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
     compile 'io.reactivex:rxandroid:' + rootProject.ext.rxAndroidVersion
-    compile 'com.squareup.retrofit2:retrofit:' + rootProject.ext.retrofitVersion
-    compile 'com.squareup.retrofit2:converter-gson:' + rootProject.ext.retrofitVersion
-    compile 'com.squareup.retrofit2:adapter-rxjava:' + rootProject.ext.retrofitVersion
-    compile 'com.squareup.okhttp3:logging-interceptor:' + rootProject.ext.okHttpVersion
     compile project(path: ':moviper')
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:' + rootProject.ext.espressoVersion, {
