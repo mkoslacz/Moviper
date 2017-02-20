@@ -15,8 +15,8 @@ import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.presentersdispatcher.MoviperPresentersDispatcher;
 
-import rx.Observable;
-import rx.subjects.PublishSubject;
+import io.reactivex.Observable;
+import io.reactivex.subjects.PublishSubject;
 
 public class UserDetailsActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.

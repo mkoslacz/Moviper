@@ -4,7 +4,7 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 public interface MainContract {
 
@@ -14,9 +14,9 @@ public interface MainContract {
 
         void enableStop();
 
-        Observable<Void> onStartClicks();
+        Observable<Object> onStartClicks();
 
-        Observable<Void> onStopClicks();
+        Observable<Object> onStopClicks();
     }
 
     interface Interactor extends ViperRxInteractor {

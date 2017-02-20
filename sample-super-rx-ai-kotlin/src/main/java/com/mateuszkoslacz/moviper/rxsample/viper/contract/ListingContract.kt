@@ -5,7 +5,7 @@ import com.hannesdorfmann.mosby.mvp.MvpView
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User
-import rx.Observable
+import io.reactivex.Observable
 
 interface ListingContract {
 

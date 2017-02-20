@@ -10,8 +10,8 @@ import com.mateuszkoslacz.moviper.rxsample.viper.presenter.MainPresenter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import rx.Observable;
-import rx.subjects.PublishSubject;
+import io.reactivex.Observable;
+import io.reactivex.subjects.PublishSubject;
 
 public class MainActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.

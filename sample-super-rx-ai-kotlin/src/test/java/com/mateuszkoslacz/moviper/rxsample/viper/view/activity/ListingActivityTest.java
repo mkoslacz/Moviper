@@ -21,7 +21,7 @@ import org.robolectric.util.ActivityController;
 
 import java.util.Arrays;
 
-import rx.observers.TestSubscriber;
+import io.reactivex.observers.TestSubscriber;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

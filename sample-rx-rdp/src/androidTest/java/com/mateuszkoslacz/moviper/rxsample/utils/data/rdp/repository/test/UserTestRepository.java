@@ -2,25 +2,26 @@ package com.mateuszkoslacz.moviper.rxsample.utils.data.rdp.repository.test;
 
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.base.Specification;
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.stream.base.StreamSpecification;
-import com.mateuszkoslacz.moviper.rxsample.utils.data.rdp.specification.list.test.impl.AllUsersTestSpecification;
 import com.mateuszkoslacz.moviper.rxsample.utils.data.rdp.repository.TestRepository;
+import com.mateuszkoslacz.moviper.rxsample.utils.data.rdp.specification.list.test.impl.AllUsersTestSpecification;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
 import java.util.List;
 
-import rx.Observable;
-import rx.schedulers.TestScheduler;
-import rx.subjects.TestSubject;
+import io.reactivex.Observable;
+import io.reactivex.schedulers.TestScheduler;
+import io.reactivex.subjects.PublishSubject;
 
 
 public class UserTestRepository implements TestRepository<User> {
 
     private TestScheduler testScheduler;
-    private TestSubject<List<User>> testUsersSubject;
+    private PublishSubject<List<User>> testUsersSubject;
 
     public UserTestRepository() {
         this.testScheduler = new TestScheduler();
-        this.testUsersSubject = TestSubject.create(testScheduler);
+        this.testUsersSubject = PublishSubject.create();
+        this.testUsersSubject.subscribeOn(this.testScheduler);
     }
 
     @Override

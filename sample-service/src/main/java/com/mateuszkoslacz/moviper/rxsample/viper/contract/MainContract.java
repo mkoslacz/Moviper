@@ -7,7 +7,7 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 public interface MainContract {
 

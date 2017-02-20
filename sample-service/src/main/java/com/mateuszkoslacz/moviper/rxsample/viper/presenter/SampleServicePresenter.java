@@ -8,8 +8,8 @@ import com.mateuszkoslacz.moviper.rxsample.viper.contract.SampleServiceContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.interactor.SampleServiceInteractor;
 import com.mateuszkoslacz.moviper.rxsample.viper.routing.SampleServiceRouting;
 
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class SampleServicePresenter
         extends BaseRxPresenter<SampleServiceContract.View,

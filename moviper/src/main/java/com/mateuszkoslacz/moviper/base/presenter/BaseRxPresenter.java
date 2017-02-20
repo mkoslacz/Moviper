@@ -13,8 +13,10 @@ import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
+import org.reactivestreams.Subscription;
+
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by mateuszkoslacz on 08.08.2016.
@@ -49,7 +51,7 @@ public abstract class BaseRxPresenter
     private InteractorType interactor;
 
 
-    private CompositeSubscription compositeSubscription;
+    private CompositeDisposable compositeSubscription;
 
     public BaseRxPresenter() {
         this(null);
@@ -57,7 +59,7 @@ public abstract class BaseRxPresenter
 
     public BaseRxPresenter(Bundle args) {
         super(args);
-        this.compositeSubscription = new CompositeSubscription();
+        this.compositeSubscription = new CompositeDisposable();
         this.routing = createRouting();
         this.interactor = createInteractor();
     }
@@ -91,7 +93,7 @@ public abstract class BaseRxPresenter
         return interactor;
     }
 
-    protected void addSubscription(Subscription subscription) {
+    protected void addSubscription(Disposable subscription) {
         if (compositeSubscription != null) compositeSubscription.add(subscription);
     }
 

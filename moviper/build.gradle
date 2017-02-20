@@ -47,7 +47,7 @@ dependencies {
 
     // TODO: probably should split to two flavours to avoid
     // including rxJava in projects that don't use rx
-    compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
+    compile 'io.reactivex.rxjava2:rxjava:' + rootProject.ext.rxJavaVersion
 
     compile 'com.jakewharton:butterknife:' + rootProject.ext.butterKnifeVersion
     apt 'com.jakewharton:butterknife-compiler:' + rootProject.ext.butterKnifeVersion

@@ -18,8 +18,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.schedulers.TestScheduler;
-import rx.subjects.TestSubject;
+import io.reactivex.schedulers.TestScheduler;
+import io.reactivex.subjects.TestSubject;
 
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.never;

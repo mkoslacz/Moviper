@@ -8,7 +8,7 @@ import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 public interface SampleServiceContract {
 

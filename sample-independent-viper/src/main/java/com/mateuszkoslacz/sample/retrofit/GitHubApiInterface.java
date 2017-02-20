@@ -6,7 +6,7 @@ import java.util.List;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import rx.Observable;
+import io.reactivex.Observable;
 
 public interface GitHubApiInterface {
 

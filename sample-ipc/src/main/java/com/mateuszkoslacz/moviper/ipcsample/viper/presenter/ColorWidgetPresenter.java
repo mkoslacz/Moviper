@@ -10,7 +10,7 @@ import com.mateuszkoslacz.moviper.ipcsample.viper.interactor.ColorWidgetInteract
 import com.mateuszkoslacz.moviper.ipcsample.viper.routing.ColorWidgetRouting;
 import com.mateuszkoslacz.moviper.presenterbus.Moviper;
 
-import rx.android.schedulers.AndroidSchedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class ColorWidgetPresenter
         extends BaseRxPresenter<ColorWidgetContract.View,

@@ -12,8 +12,8 @@ import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User
 import com.mateuszkoslacz.moviper.presentersdispatcher.MoviperPresentersDispatcher
 import kotlinx.android.synthetic.main.activity_user_details.*
-import rx.Observable
-import rx.subjects.PublishSubject
+import io.reactivex.Observable
+import io.reactivex.subjects.PublishSubject
 
 class UserDetailsActivity :
         ViperLceAiPassiveActivity<LinearLayout, User, UserDetailsContract.View>(),

@@ -11,7 +11,8 @@ import com.mateuszkoslacz.sample.viper.contract.MainContract;
 import com.mateuszkoslacz.sample.viper.presenter.MainPresenter;
 
 import butterknife.BindView;
-import rx.Observable;
+import hu.akarnokd.rxjava.interop.RxJavaInterop;
+import io.reactivex.Observable;
 
 public class MainActivity
         extends ViperButterKnifePassiveActivity<MainContract.View>
@@ -46,12 +47,12 @@ public class MainActivity
     }
 
     @Override
-    public Observable<Void> onStartClicks() {
-        return RxView.clicks(btnStart);
+    public Observable<Object> onStartClicks() {
+        return RxJavaInterop.toV2Observable(RxView.clicks(btnStart).map(aVoid -> new Object()));
     }
 
     @Override
-    public Observable<Void> onStopClicks() {
-        return RxView.clicks(btnStop);
+    public Observable<Object> onStopClicks() {
+        return RxJavaInterop.toV2Observable(RxView.clicks(btnStop).map(aVoid -> new Object()));
     }
 }

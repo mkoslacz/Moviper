@@ -8,7 +8,7 @@ import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
 import java.util.List;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 public class ListingInteractor
         extends BaseRxInteractor

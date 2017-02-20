@@ -6,7 +6,7 @@ import com.mateuszkoslacz.moviper.rxsample.di.DIProvider;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 public class UserDetailsInteractor
         extends BaseRxInteractor

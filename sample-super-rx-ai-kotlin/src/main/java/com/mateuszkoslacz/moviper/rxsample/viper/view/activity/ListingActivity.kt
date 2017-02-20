@@ -16,8 +16,8 @@ import com.mateuszkoslacz.moviper.rxsample.viper.entity.User
 import com.mateuszkoslacz.moviper.rxsample.viper.presenter.ListingPresenter
 import com.mateuszkoslacz.moviper.rxsample.viper.view.adapter.UserAdapter
 import kotlinx.android.synthetic.main.activity_listing.*
-import rx.Observable
-import rx.subjects.PublishSubject
+import io.reactivex.Observable
+import io.reactivex.subjects.PublishSubject
 
 open class ListingActivity :
         ViperAiPassiveActivity<ListingContract.View>(),

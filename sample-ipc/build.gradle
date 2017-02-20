@@ -38,8 +38,8 @@ dependencies {
     compile 'com.jakewharton:butterknife:' + rootProject.ext.butterKnifeVersion
     apt 'com.jakewharton:butterknife-compiler:' + rootProject.ext.butterKnifeVersion
 
-    compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
-    compile 'io.reactivex:rxandroid:' + rootProject.ext.rxAndroidVersion
+    compile 'io.reactivex.rxjava2:rxjava:' + rootProject.ext.rxJavaVersion
+    compile 'io.reactivex.rxjava2:rxandroid:' + rootProject.ext.rxAndroidVersion
     compile project(path: ':moviper')
 
 
