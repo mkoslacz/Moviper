@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.schedulers.TestScheduler;
-import io.reactivex.subjects.TestSubject;
+import io.reactivex.subjects.PublishSubject;
 
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.never;
@@ -48,12 +48,15 @@ public class ListingPresenterTest {
     protected ListingPresenter mPresenter = new ListingPresenter();
 
     TestScheduler mGetUserListScheduler = new TestScheduler();
-    TestSubject<List<User>> mGetUserListSubject = TestSubject.create(mGetUserListScheduler);
+    PublishSubject<List<User>> mGetUserListSubject = PublishSubject.create();
     TestScheduler mGetUserClicksScheduler = new TestScheduler();
-    TestSubject<User> mGetUserClicksSubject = TestSubject.create(mGetUserClicksScheduler);
+    PublishSubject<User> mGetUserClicksSubject = PublishSubject.create();
 
     @Before
     public void setUpPresenter() {
+        mGetUserClicksSubject.subscribeOn(mGetUserClicksScheduler);
+        mGetUserListSubject.subscribeOn(mGetUserListScheduler);
+
         //detach presenter
         mPresenter.detachView(false);
 

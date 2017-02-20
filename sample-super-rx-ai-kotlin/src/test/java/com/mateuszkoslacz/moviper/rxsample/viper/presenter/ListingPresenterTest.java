@@ -21,7 +21,6 @@ import java.util.List;
 
 import io.reactivex.schedulers.TestScheduler;
 import io.reactivex.subjects.PublishSubject;
-import io.reactivex.subjects.TestSubject;
 
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.never;
@@ -60,7 +59,8 @@ public class ListingPresenterTest {
     public void onViewCreatedUsersReceived() throws Exception {
         List<User> users = new ArrayList<>();
         TestScheduler scheduler = new TestScheduler();
-        TestSubject<List<User>> subject = TestSubject.create(scheduler);
+        PublishSubject<List<User>> subject = PublishSubject.create();
+        subject.subscribeOn(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
         mPresenter.attachView(mView);
         verify(mView).showLoading();
@@ -75,7 +75,8 @@ public class ListingPresenterTest {
     @Test
     public void onViewCreatedFailed() throws Exception {
         TestScheduler scheduler = new TestScheduler();
-        TestSubject<List<User>> subject = TestSubject.create(scheduler);
+        PublishSubject<List<User>> subject = PublishSubject.create();
+        subject.subscribeOn(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
         mPresenter.attachView(mView);
         verify(mView).showLoading();
@@ -91,7 +92,8 @@ public class ListingPresenterTest {
     @Test
     public void onItemClicked() throws Exception {
         TestScheduler scheduler = new TestScheduler();
-        TestSubject<List<User>> subject = TestSubject.create(scheduler);
+        PublishSubject<List<User>> subject = PublishSubject.create();
+        subject.subscribeOn(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
         User user = new User();
         mPresenter.attachView(mView);

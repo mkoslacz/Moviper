@@ -12,7 +12,8 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
 
-import io.reactivex.observers.TestSubscriber;
+
+import io.reactivex.observers.TestObserver;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -47,16 +48,16 @@ public class MoviperTest {
         Moviper.getInstance().setConfig(new Config.Builder()
                 .withPresenterAccessUtilEnabled(true)
                 .build());
-        TestSubscriber<TestPresenter> testSubscriber = TestSubscriber.create();
+        TestObserver<TestPresenter> testSubscriber = TestObserver.create();
         TestPresenter mockPresenter = Mockito.mock(TestPresenter.class);
         Moviper.getInstance().register(mockPresenter);
         Moviper.getInstance().getPresenters(TestPresenter.class)
                 .subscribe(testSubscriber);
         testSubscriber.awaitTerminalEvent();
         testSubscriber.assertNoErrors();
-        testSubscriber.assertCompleted();
-        assertEquals(testSubscriber.getOnNextEvents().size(), 1);
-        assertSame(testSubscriber.getOnNextEvents().get(0), mockPresenter);
+        testSubscriber.assertComplete();
+        assertEquals(1, testSubscriber.valueCount());
+        assertSame(testSubscriber.values().get(0), mockPresenter);
     }
 
     @Test
@@ -65,7 +66,7 @@ public class MoviperTest {
                 .withPresenterAccessUtilEnabled(true)
                 .withInstancePresentersEnabled(true)
                 .build());
-        TestSubscriber<TestPresenter> testSubscriber = TestSubscriber.create();
+        TestObserver<TestPresenter> testSubscriber = TestObserver.create();
         TestPresenter mockPresenter = Mockito.mock(TestPresenter.class);
         Mockito.when(mockPresenter.getName()).thenReturn("testPresenter");
         Moviper.getInstance().register(mockPresenter);
@@ -73,9 +74,9 @@ public class MoviperTest {
                 .subscribe(testSubscriber);
         testSubscriber.awaitTerminalEvent();
         testSubscriber.assertNoErrors();
-        testSubscriber.assertCompleted();
-        assertEquals(testSubscriber.getOnNextEvents().size(), 1);
-        assertSame(testSubscriber.getOnNextEvents().get(0), mockPresenter);
+        testSubscriber.assertComplete();
+        assertEquals(1, testSubscriber.valueCount());
+        assertSame(testSubscriber.values().get(0), mockPresenter);
     }
 
     @Test

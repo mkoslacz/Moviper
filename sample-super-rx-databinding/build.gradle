@@ -60,4 +60,5 @@ dependencies {
     testCompile 'org.mockito:mockito-core:' + rootProject.ext.mockitoVersion
     testCompile 'org.robolectric:robolectric:' + rootProject.ext.robolectricVersion
     testCompile project(':moviper-test')
+    testCompile 'org.khronos:opengl-api:gl1.1-android-2.1_r1'
 }

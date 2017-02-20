@@ -19,7 +19,7 @@ public interface UserDetailsContract {
         // In Super Rx version it also provides getters for Observables emmiting user click events.
 
         void bindDataToViews(User user);
-        Subject<String, String> getAvatarClicks();
+        Subject<String> getAvatarClicks();
     }
 
     interface Interactor extends ViperRxInteractor {

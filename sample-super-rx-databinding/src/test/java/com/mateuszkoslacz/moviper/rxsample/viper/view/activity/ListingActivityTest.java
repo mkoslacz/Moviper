@@ -21,7 +21,7 @@ import org.robolectric.util.ActivityController;
 
 import java.util.Arrays;
 
-import io.reactivex.observers.TestSubscriber;
+import io.reactivex.observers.TestObserver;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -59,13 +59,13 @@ public class ListingActivityTest {
 
     @Test
     public void testActivity() throws Exception {
-        TestSubscriber<User> testSubscriber = TestSubscriber.create();
+        TestObserver<User> testSubscriber = TestObserver.create();
         mListingActivity.getUserClicks().subscribe(testSubscriber);
         User user = new User();
         mListingActivity.onUserClick(user);
         testSubscriber.assertNoErrors();
-        testSubscriber.assertNotCompleted();
-        testSubscriber.assertReceivedOnNext(Arrays.asList(user));
+        testSubscriber.assertNotComplete();
+        testSubscriber.assertValue(user);
     }
 
     @Test
@@ -125,7 +125,7 @@ public class ListingActivityTest {
         user1.setLogin("first");
         user2.setLogin("second");
         user3.setLogin("third");
-        TestSubscriber<User> testSubscriber = TestSubscriber.create();
+        TestObserver<User> testSubscriber = TestObserver.create();
         mListingActivity.getUserClicks().subscribe(testSubscriber);
         mListingActivity.setUserList(Arrays.asList(user1, user2, user3));
         mListingActivity.showContent();
@@ -136,7 +136,7 @@ public class ListingActivityTest {
         mRecyclerView.layout(0, 0, 100, 1000);
 
         testSubscriber.assertNoErrors();
-        testSubscriber.assertNotCompleted();
-        testSubscriber.assertReceivedOnNext(Arrays.asList(user1));
+        testSubscriber.assertNotComplete();
+        testSubscriber.assertValue(user1);
     }
 }
