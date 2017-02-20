@@ -39,7 +39,7 @@ ext {
     targetSdkVersion = 25
     compileSdkVersion = 25
     buildToolsVersion = '25.0.2'
-    supportVersion = '25.1.0'
+    supportVersion = '25.1.1'
     mosbyVersion = '2.0.1'
     rxJavaVersion = '2.0.3'
     rxAndroidVersion = '2.0.1'
