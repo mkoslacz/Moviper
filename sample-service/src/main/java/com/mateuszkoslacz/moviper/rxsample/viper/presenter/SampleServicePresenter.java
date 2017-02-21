@@ -18,7 +18,7 @@ public class SampleServicePresenter
         implements SampleServiceContract.Presenter {
 
     @Override
-    public void attachView(SampleServiceContract.View view) {
+    public void attachView(@NonNull SampleServiceContract.View view) {
         super.attachView(view);
 
         getInteractor().getUsers()

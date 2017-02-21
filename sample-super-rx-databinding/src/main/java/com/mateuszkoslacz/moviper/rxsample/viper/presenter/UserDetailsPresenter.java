@@ -24,7 +24,7 @@ public class UserDetailsPresenter
     }
 
     @Override
-    public void attachView(UserDetailsContract.View view) {
+    public void attachView(@NonNull UserDetailsContract.View view) {
         super.attachView(view);
         if (isViewAttached()) {
             getView().showLoading(false);

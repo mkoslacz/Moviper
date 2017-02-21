@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.base.presenter;
 
 import android.os.Bundle;
+import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
@@ -48,7 +49,7 @@ public abstract class BaseRxPresenter
     @NonNull
     private InteractorType interactor;
 
-
+    @NonNull
     private CompositeSubscription compositeSubscription;
 
     public BaseRxPresenter() {
@@ -63,7 +64,8 @@ public abstract class BaseRxPresenter
     }
 
     @Override
-    public void attachView(ViewType view) {
+    @CallSuper
+    public void attachView(@NonNull ViewType view) {
         super.attachView(view);
         Moviper.getInstance().register(this);
         routing.attach((ViperView) view);
@@ -71,6 +73,7 @@ public abstract class BaseRxPresenter
     }
 
     @Override
+    @CallSuper
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
         if (!retainInstance) unsubscribe();
@@ -92,10 +95,10 @@ public abstract class BaseRxPresenter
     }
 
     protected void addSubscription(Subscription subscription) {
-        if (compositeSubscription != null) compositeSubscription.add(subscription);
+        compositeSubscription.add(subscription);
     }
 
     private void unsubscribe() {
-        if (compositeSubscription != null) compositeSubscription.clear();
+        compositeSubscription.clear();
     }
 }

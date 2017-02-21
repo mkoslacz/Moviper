@@ -18,7 +18,7 @@ public class HeaderPresenter
         implements HeaderContract.Presenter {
 
     @Override
-    public void attachView(HeaderContract.View view) {
+    public void attachView(@NonNull HeaderContract.View view) {
         super.attachView(view);
         if (isViewAttached()) {
             getView().setTitle(getView().getDataObject().getName());

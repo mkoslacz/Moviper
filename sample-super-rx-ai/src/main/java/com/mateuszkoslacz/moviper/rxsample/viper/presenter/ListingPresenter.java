@@ -18,7 +18,7 @@ public class ListingPresenter
         implements ViperPresenter<ListingContract.View> {
 
     @Override
-    public void attachView(ListingContract.View view) {
+    public void attachView(@NonNull ListingContract.View view) {
         super.attachView(view);
         if (isViewAttached()) getView().showLoading();
 

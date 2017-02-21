@@ -1,6 +1,7 @@
 package com.mateuszkoslacz.moviper.base.presenter;
 
 import android.os.Bundle;
+import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
@@ -55,7 +56,8 @@ public abstract class BasePresenter
     }
 
     @Override
-    public void attachView(ViewType view) {
+    @CallSuper
+    public void attachView(@NonNull ViewType view) {
         super.attachView(view);
         //noinspection unchecked
         routing.attach((ViperView) view, this);
@@ -64,6 +66,7 @@ public abstract class BasePresenter
     }
 
     @Override
+    @CallSuper
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
         routing.detach(retainInstance);

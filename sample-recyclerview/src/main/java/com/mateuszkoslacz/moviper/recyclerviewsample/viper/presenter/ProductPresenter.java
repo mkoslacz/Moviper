@@ -19,7 +19,7 @@ public class ProductPresenter
         implements ProductContract.Presenter {
 
     @Override
-    public void attachView(ProductContract.View view) {
+    public void attachView(@NonNull ProductContract.View view) {
         super.attachView(view);
         if (isViewAttached()) {
             Product product = getView().getDataObject();
