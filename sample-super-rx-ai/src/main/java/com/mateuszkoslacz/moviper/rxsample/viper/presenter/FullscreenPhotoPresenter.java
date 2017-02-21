@@ -23,7 +23,7 @@ public class FullscreenPhotoPresenter
     }
 
     @Override
-    public void attachView(FullscreenPhotoContract.View view) {
+    public void attachView(@NonNull FullscreenPhotoContract.View view) {
         super.attachView(view);
         if (isViewAttached()) getView().setPhoto(mPhotoUrl);
     }

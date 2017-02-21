@@ -45,7 +45,7 @@ public class IndependentPresenter
     }
 
     @Override
-    public void attachView(ViperView view) {
+    public void attachView(@NonNull ViperView view) {
         super.attachView(view);
 
         subscription = getInteractor().getUserList()

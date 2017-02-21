@@ -31,7 +31,7 @@ public class MainPresenter
     }
 
     @Override
-    public void attachView(MainContract.View view) {
+    public void attachView(@NonNull MainContract.View view) {
         super.attachView(view);
         initButtons();
         handleViewEvents();

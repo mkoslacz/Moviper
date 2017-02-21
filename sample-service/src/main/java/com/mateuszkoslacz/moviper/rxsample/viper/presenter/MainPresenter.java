@@ -17,7 +17,7 @@ public class MainPresenter
     private boolean isServiceRunning = false;
 
     @Override
-    public void attachView(MainContract.View view) {
+    public void attachView(@NonNull MainContract.View view) {
         super.attachView(view);
 
         addSubscription(getView().getButtonClicks()

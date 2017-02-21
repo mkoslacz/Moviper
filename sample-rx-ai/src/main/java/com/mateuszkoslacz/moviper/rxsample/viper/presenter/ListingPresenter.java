@@ -19,7 +19,7 @@ public class ListingPresenter
 
 
     @Override
-    public void attachView(ListingContract.View view) {
+    public void attachView(@NonNull ListingContract.View view) {
         super.attachView(view);
         if (isViewAttached()) getView().showLoading();
 
