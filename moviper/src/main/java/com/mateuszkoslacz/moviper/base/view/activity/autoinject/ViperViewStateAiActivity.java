@@ -8,7 +8,7 @@ import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
 import com.mateuszkoslacz.moviper.base.view.activity.mvp.MvpViewStateAiActivity;
-import com.mateuszkoslacz.moviper.iface.view.ViperView;
+import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
 
 /**
  * Created by mateuszkoslacz on 14.12.2016.
@@ -19,7 +19,7 @@ public abstract class ViperViewStateAiActivity
                 Presenter extends MvpPresenter<ViewType>,
                 ViewStateType extends ViewState<ViewType>>
         extends MvpViewStateAiActivity<ViewType, Presenter>
-        implements ViperView {
+        implements MvpView, ActivityHolder {
 
     @Override
     public ViewStateType getViewState() {

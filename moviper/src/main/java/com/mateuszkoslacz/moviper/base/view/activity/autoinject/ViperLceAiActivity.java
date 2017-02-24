@@ -9,7 +9,6 @@ import android.view.View;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.mateuszkoslacz.moviper.base.view.activity.mvp.MvpLceAiActivity;
-import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 
 /**
  * Created by mateuszkoslacz on 14.12.2016.
@@ -21,7 +20,7 @@ public abstract class ViperLceAiActivity
                 ViewType extends MvpLceView<Model>,
                 Presenter extends MvpPresenter<ViewType>>
         extends MvpLceAiActivity<ContentView, Model, ViewType, Presenter>
-        implements ViperLceView<Model> {
+        implements MvpLceView<Model>, com.mateuszkoslacz.moviper.iface.view.ViperView {
 
     @NonNull
     @Override

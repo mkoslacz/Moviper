@@ -2,7 +2,7 @@ package com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.butterk
 
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.ViperAiPassiveActivity;
-import com.mateuszkoslacz.moviper.iface.view.ViperView;
+import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
 
 import butterknife.ButterKnife;
 
@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 public abstract class ViperButterKnifePassiveActivity
         <ViewType extends MvpView>
         extends ViperAiPassiveActivity<ViewType>
-        implements ViperView {
+        implements MvpView, ActivityHolder {
 
     @Override
     protected void injectViews() {

@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.base.view.fragment.autoinject.passive.ViperAiPassiveFragment;
-import com.mateuszkoslacz.moviper.iface.view.ViperView;
+import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
 
 import butterknife.ButterKnife;
 
@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 public abstract class ViperButterKnifePassiveFragment
         <ViewType extends MvpView>
         extends ViperAiPassiveFragment<ViewType>
-        implements ViperView {
+        implements MvpView, ActivityHolder {
 
     @Override
     protected void injectViews(View view) {

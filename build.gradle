@@ -41,6 +41,7 @@ ext {
     buildToolsVersion = '25.0.2'
     supportVersion = '25.1.1'
     mosbyVersion = '2.0.1'
+    databindingVersion = '1.2.1'
     rxJavaVersion = '1.2.3'
     rxAndroidVersion = '1.2.1'
     rxBindingVersion = '1.0.0'

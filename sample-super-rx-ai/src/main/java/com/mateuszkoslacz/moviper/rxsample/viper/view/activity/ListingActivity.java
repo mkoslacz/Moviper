@@ -111,10 +111,8 @@ public class ListingActivity
 
     @NonNull
     @Override
-    public ViperPresenter<ListingContract.View> createPresenter() {
-        return new ViperPresentersList<>(new ListingPresenter());   // you can attach multiple
-                                                                    // presenters to
-                                                                    // the passive view like this
+    public ViperPresenter<ListingContract.View, ?, ?> createPresenter() {
+        return new ListingPresenter();
     }
 
     @Override

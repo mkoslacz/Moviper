@@ -4,10 +4,9 @@ import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
-import com.mateuszkoslacz.moviper.base.exception.PresenterAccessFromPassiveView;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.ViperViewStateAiActivity;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
-import com.mateuszkoslacz.moviper.iface.view.ViperView;
+import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
 
 /**
  * Created by bwilk on 12/22/16.
@@ -17,7 +16,7 @@ public abstract class ViperViewStateAiPassiveActivity
         <ViewType extends MvpView,
                 ViewStateType extends ViewState<ViewType>>
         extends ViperViewStateAiActivity<ViewType, ViperPresenter<ViewType>, ViewStateType>
-        implements ViperView {
+        implements MvpView, ActivityHolder {
 
     /**
      * <b>DO NOT</b> use this method because of a fact that this view should be completely passive

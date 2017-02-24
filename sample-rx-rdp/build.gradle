@@ -53,7 +53,9 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:' + rootProject.ext.retrofitVersion
     compile 'com.squareup.retrofit2:adapter-rxjava:' + rootProject.ext.retrofitVersion
     compile 'com.squareup.okhttp3:logging-interceptor:' + rootProject.ext.okHttpVersion
-    compile project(path: ':moviper')
+    compile project(path: ':moviper-rx')
+    compile project(path: ':moviper-rx-viewhelper')
+
 
     androidTestApt 'com.google.dagger:dagger-compiler:' + rootProject.ext.daggerVersion
     androidTestCompile('com.android.support.test.espresso:espresso-core:' + rootProject.ext.espressoVersion, {

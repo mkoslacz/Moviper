@@ -1,5 +1,7 @@
 package com.mateuszkoslacz.moviper.iface.view;
 
+import com.hannesdorfmann.mosby.mvp.MvpView;
+
 /**
  * Created by mateuszkoslacz on 01.12.2016.
  * <p>
@@ -7,6 +9,6 @@ package com.mateuszkoslacz.moviper.iface.view;
  * It shall not be used in Contract.
  */
 
-public interface ViperDataView<DataObject> extends ViperView, MvpDataView<DataObject> {
+public interface ViperDataView<DataObject> extends MvpDataView<DataObject>,MvpView, ActivityHolder {
 
 }

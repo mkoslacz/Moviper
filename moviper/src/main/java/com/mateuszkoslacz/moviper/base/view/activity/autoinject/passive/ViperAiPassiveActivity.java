@@ -3,10 +3,9 @@ package com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive;
 import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.mateuszkoslacz.moviper.base.exception.PresenterAccessFromPassiveView;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.ViperAiActivity;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
-import com.mateuszkoslacz.moviper.iface.view.ViperView;
+import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
 
 /**
  * Created by bwilk on 12/22/16.
@@ -14,7 +13,7 @@ import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 public abstract class ViperAiPassiveActivity<ViewType extends MvpView>
         extends ViperAiActivity<ViewType, ViperPresenter<ViewType>>
-        implements ViperView {
+        implements MvpView, ActivityHolder {
 
     /**
      * <b>DO NOT</b> use this method because of a fact that this view should be completely passive

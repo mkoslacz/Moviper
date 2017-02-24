@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.base.view.activity.mvp.MvpAiActivity;
-import com.mateuszkoslacz.moviper.iface.view.ViperView;
+import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
 
 /**
  * Created by mateuszkoslacz on 14.12.2016.
@@ -17,7 +17,7 @@ public abstract class ViperAiActivity
         <ViewType extends MvpView,
                 Presenter extends MvpPresenter<ViewType>>
         extends MvpAiActivity<ViewType, Presenter>
-        implements ViperView {
+        implements MvpView, ActivityHolder {
 
     @NonNull
     @Override

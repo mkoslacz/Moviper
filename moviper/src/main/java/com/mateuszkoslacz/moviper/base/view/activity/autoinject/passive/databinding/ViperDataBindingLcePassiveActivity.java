@@ -2,12 +2,10 @@ package com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.databin
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.support.annotation.LayoutRes;
 import android.view.View;
 
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.ViperLceAiPassiveActivity;
-import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 
 /**
  * Created by mateuszkoslacz on 14.12.2016.
@@ -19,7 +17,7 @@ public abstract class ViperDataBindingLcePassiveActivity
                 ViewType extends MvpLceView<Model>,
                 Binding extends ViewDataBinding>
         extends ViperLceAiPassiveActivity<ContentView, Model, ViewType>
-        implements ViperLceView<Model> {
+        implements MvpLceView<Model>, com.mateuszkoslacz.moviper.iface.view.ViperView {
 
     protected Binding mBinding;
 

@@ -2,7 +2,6 @@ package com.mateuszkoslacz.moviper.iface.presenter.interactor;
 
 import android.support.annotation.NonNull;
 
-import com.mateuszkoslacz.moviper.iface.interactor.CommonViperInteractor;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 

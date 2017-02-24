@@ -22,7 +22,6 @@ import java.util.List;
 
 import rx.Observable;
 import rx.subjects.PublishSubject;
-import rx.subjects.Subject;
 
 public class ListingActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.
@@ -99,7 +98,7 @@ public class ListingActivity
 
     @NonNull
     @Override
-    public ViperPresenter<ListingContract.View> createPresenter() {
+    public ViperPresenter<ListingContract.View, ?, ?> createPresenter() {
         return new ListingPresenter();
     }
 

@@ -6,7 +6,9 @@ import android.view.View
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.ViperLceAiPassiveActivity
+import com.mateuszkoslacz.moviper.iface.interactor.CommonViperInteractor
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter
+import com.mateuszkoslacz.moviper.iface.routing.CommonViperRouting
 import com.mateuszkoslacz.moviper.rxsample.R
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.UserDetailsContract
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User
@@ -47,9 +49,9 @@ class UserDetailsActivity :
 
     override fun loadData(pullToRefresh: Boolean) {}
 
-    override fun createPresenter(): ViperPresenter<UserDetailsContract.View> =
+    override fun createPresenter(): ViperPresenter<UserDetailsContract.View, CommonViperInteractor, CommonViperRouting> =
             MoviperPresentersDispatcher.getInstance().getPresenterForView(this)
-                    as ViperPresenter<UserDetailsContract.View>
+                    as ViperPresenter<UserDetailsContract.View, CommonViperInteractor, CommonViperRouting>
 
     override fun getLayoutId(): Int = R.layout.activity_user_details
 
