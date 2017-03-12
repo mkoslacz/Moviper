@@ -6,7 +6,7 @@ import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.stream.retrofi
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
 import retrofit2.Retrofit;
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * Created by jjodelka on 23/11/2016.
@@ -16,6 +16,6 @@ public class AllUsersRetrofitStreamSpecification implements RetrofitStreamSpecif
 
     @Override
     public Observable<User> getResults(Retrofit retrofit) {
-        return new AllUsersRetrofitSpecification().getResults(retrofit).flatMap(Observable::from);
+        return new AllUsersRetrofitSpecification().getResults(retrofit).flatMap(Observable::fromIterable);
     }
 }

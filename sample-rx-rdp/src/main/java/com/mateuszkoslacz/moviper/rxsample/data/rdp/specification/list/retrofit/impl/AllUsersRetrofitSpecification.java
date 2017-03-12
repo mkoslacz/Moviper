@@ -8,7 +8,7 @@ import java.util.List;
 
 import retrofit2.Retrofit;
 import retrofit2.http.GET;
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * Created by jjodelka on 23/11/2016.

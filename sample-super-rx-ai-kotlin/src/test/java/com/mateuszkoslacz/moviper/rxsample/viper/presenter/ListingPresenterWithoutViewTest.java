@@ -14,10 +14,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.Observable;
-import rx.schedulers.TestScheduler;
-import rx.subjects.PublishSubject;
-import rx.subjects.TestSubject;
+import io.reactivex.Observable;
+import io.reactivex.schedulers.TestScheduler;
+import io.reactivex.subjects.PublishSubject;
 
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.never;
@@ -34,7 +33,8 @@ public class ListingPresenterWithoutViewTest extends ListingPresenterTest {
     public void onViewCreatedUsersReceived() throws Exception {
         List<User> users = new ArrayList<>();
         TestScheduler scheduler = new TestScheduler();
-        TestSubject<List<User>> subject = TestSubject.create(scheduler);
+        PublishSubject<List<User>> subject = PublishSubject.create();
+        subject.subscribeOn(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
         ListingActivity mock = Mockito.mock(ListingActivity.class, new Answer() {
             @Override
@@ -57,7 +57,8 @@ public class ListingPresenterWithoutViewTest extends ListingPresenterTest {
     @Test
     public void onViewCreatedFailed() throws Exception {
         TestScheduler scheduler = new TestScheduler();
-        TestSubject<List<User>> subject = TestSubject.create(scheduler);
+        PublishSubject<List<User>> subject = PublishSubject.create();
+        subject.subscribeOn(scheduler);
         when(mInteractor.getUserList()).thenReturn(subject);
         ListingActivity mock = Mockito.mock(ListingActivity.class, new Answer() {
             @Override

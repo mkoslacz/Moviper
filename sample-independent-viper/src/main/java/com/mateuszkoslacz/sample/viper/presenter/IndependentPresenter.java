@@ -11,10 +11,10 @@ import com.mateuszkoslacz.sample.viper.routing.IndependentRouting;
 
 import java.util.concurrent.TimeUnit;
 
-import rx.Observable;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class IndependentPresenter
         extends BaseRxPresenter
@@ -25,7 +25,7 @@ public class IndependentPresenter
 
     public static final String UNIQUE_NAME = "INDEPENDENT_PRESENTER";
 
-    private Subscription subscription;
+    private Disposable subscription;
 
     @Override
     public String getName() {
@@ -50,7 +50,7 @@ public class IndependentPresenter
 
         subscription = getInteractor().getUserList()
                 .flatMap(users -> Observable.zip(
-                        Observable.from(users),
+                        Observable.fromIterable(users),
                         Observable.interval(2, TimeUnit.SECONDS),
                         (user, aLong) -> user
                 ))
@@ -64,7 +64,7 @@ public class IndependentPresenter
 
     @Override
     public void detachView(boolean retainInstance) {
-        if (subscription != null && !subscription.isUnsubscribed()) subscription.unsubscribe();
+        if (subscription != null && !subscription.isDisposed()) subscription.dispose();
         super.detachView(retainInstance);
     }
 }

@@ -34,8 +34,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportVersion
-    compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
-    compile 'io.reactivex:rxandroid:' + rootProject.ext.rxAndroidVersion
+    compile 'io.reactivex.rxjava2:rxjava:' + rootProject.ext.rxJavaVersion
+    compile 'io.reactivex.rxjava2:rxandroid:' + rootProject.ext.rxAndroidVersion
 
     compile 'junit:junit:' + rootProject.ext.junitVersion
     compile project(':moviper-common')

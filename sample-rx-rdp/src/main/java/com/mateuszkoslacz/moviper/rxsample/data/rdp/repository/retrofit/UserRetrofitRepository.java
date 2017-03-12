@@ -1,5 +1,6 @@
 package com.mateuszkoslacz.moviper.rxsample.data.rdp.repository.retrofit;
 
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.repository.Repository;
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.base.Specification;
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.retrofit.RetrofitSpecification;
@@ -9,10 +10,9 @@ import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
 import java.util.List;
 
+import io.reactivex.Observable;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Observable;
 
 /**
  * Created by jjodelka on 23/11/2016.
@@ -28,7 +28,7 @@ public class UserRetrofitRepository implements Repository<User> {
         retrofit = new Retrofit.Builder()
                 .baseUrl(GITHUB_API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 

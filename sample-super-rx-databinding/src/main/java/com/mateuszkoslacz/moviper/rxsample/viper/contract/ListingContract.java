@@ -9,8 +9,8 @@ import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
 import java.util.List;
 
-import rx.Observable;
-import rx.subjects.Subject;
+import io.reactivex.Observable;
+import io.reactivex.subjects.Subject;
 
 public interface ListingContract {
 

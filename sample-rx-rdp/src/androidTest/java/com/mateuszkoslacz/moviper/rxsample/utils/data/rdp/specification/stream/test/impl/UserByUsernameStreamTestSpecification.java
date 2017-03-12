@@ -3,7 +3,7 @@ package com.mateuszkoslacz.moviper.rxsample.utils.data.rdp.specification.stream.
 import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.stream.UserByUsernameStreamSpecification;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * Created by bwilk on 11/29/16.

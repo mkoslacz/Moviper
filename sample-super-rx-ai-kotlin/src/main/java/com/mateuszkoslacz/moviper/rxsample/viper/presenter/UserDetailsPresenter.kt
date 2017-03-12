@@ -9,8 +9,8 @@ import com.mateuszkoslacz.moviper.rxsample.viper.interactor.UserDetailsInteracto
 import com.mateuszkoslacz.moviper.rxsample.viper.routing.UserDetailsRouting
 import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.UserDetailsActivity
 
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class UserDetailsPresenter(bundle: Bundle) :
         BaseRxPresenter<UserDetailsContract.View,

@@ -8,8 +8,8 @@ import com.mateuszkoslacz.moviper.iface.routing.ViperViewHelperRxRouting;
 import com.mateuszkoslacz.moviper.iface.viewhelper.ViperViewHelper;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 
-import rx.Observable;
-import rx.subjects.Subject;
+import io.reactivex.Observable;
+import io.reactivex.subjects.Subject;
 
 public interface UserDetailsContract {
 
@@ -19,7 +19,7 @@ public interface UserDetailsContract {
         // In Super Rx version it also provides getters for Observables emmiting user click events.
 
         void bindDataToViews(User user);
-        Subject<String, String> getAvatarClicks();
+        Subject<String> getAvatarClicks();
     }
 
     interface Interactor extends ViperRxInteractor {

@@ -20,8 +20,9 @@ import com.mateuszkoslacz.moviper.rxsample.viper.view.adapter.UserAdapter;
 
 import java.util.List;
 
-import rx.Observable;
-import rx.subjects.PublishSubject;
+import io.reactivex.Observable;
+import io.reactivex.subjects.PublishSubject;
+import io.reactivex.subjects.Subject;
 
 public class ListingActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.

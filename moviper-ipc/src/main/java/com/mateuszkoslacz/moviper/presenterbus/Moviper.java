@@ -11,9 +11,10 @@ import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import rx.Observable;
-import rx.schedulers.Schedulers;
-import rx.subjects.PublishSubject;
+import io.reactivex.Maybe;
+import io.reactivex.Observable;
+import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * Created by mateuszkoslacz on 24.10.2016.
@@ -88,7 +89,7 @@ public class Moviper {
     public <PresenterType extends ViperPresenter> Observable<PresenterType> getPresenters(
             final Class<PresenterType> presenterTypeClass) {
         if (!mConfig.isPresenterAccessUtilEnabled()) throw new PresentersAccessUtilNotEnabled();
-        return Observable.from(mPresenters)
+        return Observable.fromIterable(mPresenters)
                 .filter(presenterTypeClass::isInstance)
                 .map(presenterTypeClass::cast)
                 .subscribeOn(Schedulers.computation()); // TODO: reconsider moving to computation scheduler
@@ -111,14 +112,14 @@ public class Moviper {
      *                           returning proper name in {@link ViperPresenter#getName()}.
      * @return {@link Observable} that emits (or not) Presenter instance of given name and class.
      */
-    public <PresenterType extends ViperPresenter> Observable<PresenterType> getPresenterInstance(
+    public <PresenterType extends ViperPresenter> Maybe<PresenterType> getPresenterInstance(
             final Class<PresenterType> presenterTypeClass, String name) {
         if (!mConfig.isInstancePresentersEnabled()) throw new PresenterInstancesAccessNotEnabled();
-        return Observable.from(mPresenters)
+        return Observable.fromIterable(mPresenters)
                 .filter(moviperPresenter -> moviperPresenter.getName().equals(name))
                 .filter(presenterTypeClass::isInstance)
                 .map(presenterTypeClass::cast)
-                .takeFirst(presenterType -> true)
+                .firstElement()
                 .subscribeOn(Schedulers.computation());
     }
 

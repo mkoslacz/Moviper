@@ -41,11 +41,11 @@ dependencies {
 
     compile 'com.github.bumptech.glide:glide:' + rootProject.ext.glideVersion
 
-    compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
-    compile 'io.reactivex:rxandroid:' + rootProject.ext.rxAndroidVersion
+    compile 'io.reactivex.rxjava2:rxjava:' + rootProject.ext.rxJavaVersion
+    compile 'io.reactivex.rxjava2:rxandroid:' + rootProject.ext.rxAndroidVersion
     compile 'com.squareup.retrofit2:retrofit:' + rootProject.ext.retrofitVersion
     compile 'com.squareup.retrofit2:converter-gson:' + rootProject.ext.retrofitVersion
-    compile 'com.squareup.retrofit2:adapter-rxjava:' + rootProject.ext.retrofitVersion
+    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
     compile 'com.squareup.okhttp3:logging-interceptor:' + rootProject.ext.okHttpVersion
     compile project(path: ':moviper-rx')
     compile project(path: ':moviper-databinding')
@@ -57,4 +57,5 @@ dependencies {
     testCompile 'org.mockito:mockito-core:' + rootProject.ext.mockitoVersion
     testCompile 'org.robolectric:robolectric:' + rootProject.ext.robolectricVersion
     testCompile project(':moviper-test')
+    testCompile 'org.khronos:opengl-api:gl1.1-android-2.1_r1'
 }

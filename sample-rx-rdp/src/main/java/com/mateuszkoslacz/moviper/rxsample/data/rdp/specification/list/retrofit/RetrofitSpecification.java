@@ -5,7 +5,7 @@ import com.mateuszkoslacz.moviper.rxsample.data.rdp.specification.list.base.Spec
 import java.util.List;
 
 import retrofit2.Retrofit;
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * Created by jjodelka on 23/11/2016.

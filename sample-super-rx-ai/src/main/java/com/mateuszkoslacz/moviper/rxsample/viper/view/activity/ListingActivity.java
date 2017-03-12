@@ -25,9 +25,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import rx.Observable;
-import rx.subjects.PublishSubject;
-import rx.subjects.Subject;
+import io.reactivex.Observable;
+import io.reactivex.subjects.PublishSubject;
+import io.reactivex.subjects.Subject;
 
 public class ListingActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.

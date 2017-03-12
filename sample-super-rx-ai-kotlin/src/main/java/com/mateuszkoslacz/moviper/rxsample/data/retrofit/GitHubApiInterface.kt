@@ -4,7 +4,7 @@ import com.mateuszkoslacz.moviper.rxsample.viper.entity.User
 
 import retrofit2.http.GET
 import retrofit2.http.Path
-import rx.Observable
+import io.reactivex.Observable
 
 /**
  * Created by jjodelka on 17/10/16.

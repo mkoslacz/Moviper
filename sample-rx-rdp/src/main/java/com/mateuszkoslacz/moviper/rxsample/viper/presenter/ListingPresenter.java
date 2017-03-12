@@ -8,8 +8,9 @@ import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.interactor.ListingInteractor;
 import com.mateuszkoslacz.moviper.rxsample.viper.routing.ListingRouting;
 
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.plugins.RxJavaPlugins;
+import io.reactivex.schedulers.Schedulers;
 
 public class ListingPresenter
         extends BaseRxPresenter<ListingContract.View,

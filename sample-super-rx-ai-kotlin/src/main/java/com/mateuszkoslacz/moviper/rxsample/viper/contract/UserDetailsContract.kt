@@ -6,7 +6,7 @@ import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor
 import com.mateuszkoslacz.moviper.iface.routing.ViperViewHelperRxRouting
 import com.mateuszkoslacz.moviper.iface.viewhelper.ViperViewHelper
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User
-import rx.Observable
+import io.reactivex.Observable
 
 interface UserDetailsContract {
 

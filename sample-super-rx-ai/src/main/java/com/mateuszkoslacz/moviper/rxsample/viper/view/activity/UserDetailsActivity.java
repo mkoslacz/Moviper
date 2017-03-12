@@ -18,8 +18,8 @@ import com.mateuszkoslacz.moviper.presentersdispatcher.MoviperPresentersDispatch
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import rx.subjects.PublishSubject;
-import rx.subjects.Subject;
+import io.reactivex.subjects.PublishSubject;
+import io.reactivex.subjects.Subject;
 
 public class UserDetailsActivity
         // you can change base class to any Mosby Activity, ie. MvpLceActivity, MvpViewStateActivity, etc.
@@ -76,7 +76,7 @@ public class UserDetailsActivity
     }
 
     @Override
-    public Subject<String, String> getAvatarClicks() {
+    public Subject<String> getAvatarClicks() {
         return mAvatarClicks;
     }
 
