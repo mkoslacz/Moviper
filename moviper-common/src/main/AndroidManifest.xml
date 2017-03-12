@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.mateuszkoslacz.moviper.core">
+          package="com.mateuszkoslacz.moviper.common">
 
     <application
             android:allowBackup="true"

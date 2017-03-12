@@ -38,7 +38,10 @@ dependencies {
     compile 'io.reactivex:rxandroid:' + rootProject.ext.rxAndroidVersion
 
     compile 'junit:junit:' + rootProject.ext.junitVersion
-    compile project(':moviper')
+    compile project(':moviper-common')
+    compile 'com.android.support:recyclerview-v7:' + rootProject.ext.supportVersion
+    compile project(path: ':moviper-rx')
+    compile project(path: ':moviper-recyclerview') // TODO to be splitted!
 }
 
 

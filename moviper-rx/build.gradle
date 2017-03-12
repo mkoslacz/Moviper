@@ -1,8 +1,16 @@
 apply plugin: 'com.android.library'
+apply plugin: 'me.tatarka.retrolambda'
+
 
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 
     defaultConfig {
         minSdkVersion 16
@@ -22,14 +30,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    testCompile 'junit:junit:' + rootProject.ext.junitVersion
+    testCompile 'org.mockito:mockito-core:' + rootProject.ext.mockitoVersion
+    androidTestCompile('com.android.support.test.espresso:espresso-core:' + rootProject.ext.espressoVersion, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.0'
     compile project(path: ':moviper-common')
-    testCompile 'junit:junit:4.12'
     compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
 
-    compile project(path: ':moviper-ipc')
 }

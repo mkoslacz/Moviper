@@ -49,9 +49,9 @@ class UserDetailsActivity :
 
     override fun loadData(pullToRefresh: Boolean) {}
 
-    override fun createPresenter(): ViperPresenter<UserDetailsContract.View, CommonViperInteractor, CommonViperRouting> =
+    override fun createPresenter(): ViperPresenter<UserDetailsContract.View> =
             MoviperPresentersDispatcher.getInstance().getPresenterForView(this)
-                    as ViperPresenter<UserDetailsContract.View, CommonViperInteractor, CommonViperRouting>
+                    as ViperPresenter<UserDetailsContract.View>
 
     override fun getLayoutId(): Int = R.layout.activity_user_details
 

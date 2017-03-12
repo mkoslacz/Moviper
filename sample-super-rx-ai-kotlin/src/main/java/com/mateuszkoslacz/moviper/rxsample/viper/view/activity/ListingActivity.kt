@@ -69,7 +69,7 @@ open class ListingActivity :
         recycler_view.visibility = View.VISIBLE
     }
 
-    override fun createPresenter(): ViperPresenter<ListingContract.View, ListingContract.Interactor, ListingContract.Routing>  = ListingPresenter()
+    override fun createPresenter(): ViperPresenter<ListingContract.View>  = ListingPresenter()
 
     override fun injectViews() = prepareRecyclerView()
 

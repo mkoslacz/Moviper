@@ -1,9 +1,9 @@
 include ':moviper-test', ':sample-independent-viper', ':sample', ':sample-rx', ':sample-rx-ai',
-        ':sample-super-rx-ai', ':moviper-common', ':moviper-callbacks', ':moviper-rx',
-        ':moviper-callbacks-viewhelper', ':moviper-common-viewhelper', ':moviper-rx-viewhelper',
-        ':moviper-ipc', ':moviper-presentersdispatcher', ':moviper-recyclerview',
-        ':moviper-ai-views', ':moviper-ai-butterknife-views', ':moviper-ai-databinding-views',
-        ':moviper-passive-views', ':moviper-passive-butterknife-views', ':moviper-passive-databinding-views',
+        ':moviper-viewstate', ':moviper-databinding-viewstate',
+        ':moviper-butterknife-viewstate', ':moviper-recyclerview-butterknife',
+        ':moviper-recyclerview-databinding', ':sample-super-rx-ai', ':moviper-common',
+        ':moviper-callbacks', ':moviper-rx', ':moviper-recyclerview',
+        ':moviper-butterknife', ':moviper-databinding',
         ':sample-super-rx-ai-kotlin', ':sample-super-rx-databinding', ':sample-ipc',
-        ':sample-recyclerview', 'sample-rx-viewstate',
-        ':sample-rx-rdp', ':sample-service'
+        ':sample-recyclerview', 'sample-rx-viewstate', ':sample-rx-rdp', ':sample-service',
+        ':moviper-service'

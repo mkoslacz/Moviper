@@ -10,8 +10,7 @@ import android.view.ViewGroup;
 
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
-import com.mateuszkoslacz.moviper.base.view.fragment.autoinject.passive.ViperViewStateAiPassiveFragment;
-import com.mateuszkoslacz.moviper.iface.view.ActivityHolder;
+import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 /**
  * Created by mateuszkoslacz on 14.12.2016.
@@ -22,7 +21,7 @@ public abstract class ViperDataBindingViewStatePassiveFragment
                 ViewStateType extends ViewState<ViewType>,
                 Binding extends ViewDataBinding>
         extends ViperViewStateAiPassiveFragment<ViewType, ViewStateType>
-        implements MvpView, ActivityHolder {
+        implements ViperView {
 
     protected Binding mBinding;
 

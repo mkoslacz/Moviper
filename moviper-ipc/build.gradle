@@ -6,7 +6,10 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
 
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
     defaultConfig {
         minSdkVersion 16
@@ -35,4 +38,5 @@ dependencies {
     compile project(path: ':moviper-common')
     compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
 
+    testCompile 'org.mockito:mockito-core:2.5.4'
 }

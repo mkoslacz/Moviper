@@ -41,7 +41,7 @@ public class FullscreenPhotoActivity
 
     @NonNull
     @Override
-    public ViperPresenter<FullscreenPhotoContract.View, ?, ?> createPresenter() {
+    public ViperPresenter<FullscreenPhotoContract.View> createPresenter() {
         return new FullscreenPhotoPresenter(getIntent().getExtras());
     }
 

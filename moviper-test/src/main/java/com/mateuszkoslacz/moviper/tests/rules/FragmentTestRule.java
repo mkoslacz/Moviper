@@ -6,9 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-import com.mateuszkoslacz.moviper.R;
 import com.mateuszkoslacz.moviper.base.presenter.BaseRxPresenter;
 import com.mateuszkoslacz.moviper.presenterbus.Moviper;
+import com.mateuszkoslacz.moviper.tests.R;
 import com.mateuszkoslacz.moviper.tests.views.TestActivity;
 
 import junit.framework.Assert;

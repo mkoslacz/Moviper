@@ -1,6 +1,6 @@
 package com.mateuszkoslacz.moviper.base.view.activity.autoinject;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.view.View;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.mateuszkoslacz.moviper.base.view.activity.mvp.MvpLceAiActivity;
+import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 /**
@@ -20,11 +21,11 @@ public abstract class ViperLceAiActivity
                 ViewType extends MvpLceView<Model>,
                 Presenter extends MvpPresenter<ViewType>>
         extends MvpLceAiActivity<ContentView, Model, ViewType, Presenter>
-        implements MvpLceView<Model>, ViperView {
+        implements ViperLceView<Model> {
 
     @NonNull
     @Override
-    public Activity getActivity() {
+    public Context getContext() {
         return this;
     }
 

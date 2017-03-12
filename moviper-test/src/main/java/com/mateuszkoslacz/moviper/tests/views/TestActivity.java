@@ -6,7 +6,8 @@ import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
 
-import com.mateuszkoslacz.moviper.R;
+import com.mateuszkoslacz.moviper.tests.R;
+
 
 /**
  * Created by bwilk on 12/5/16.

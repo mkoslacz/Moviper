@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 
 import rx.observers.TestSubscriber;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
 

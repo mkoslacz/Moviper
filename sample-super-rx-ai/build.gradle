@@ -48,10 +48,7 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:' + rootProject.ext.retrofitVersion
     compile 'com.squareup.okhttp3:logging-interceptor:' + rootProject.ext.okHttpVersion
     compile project(path: ':moviper-rx')
-    compile project(path: ':moviper-rx-viewhelper')
-    compile project(path: ':moviper-passive-butterknife-views')
-    compile project(path: ':moviper-ai-butterknife-views')
-    compile project(path: ':moviper-presentersdispatcher')
+    compile project(path: ':moviper-butterknife')
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:' + rootProject.ext.espressoVersion, {
         exclude group: 'com.android.support', module: 'support-annotations'

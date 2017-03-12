@@ -7,6 +7,8 @@ import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
+import com.mateuszkoslacz.moviper.iface.presenter.interactor.ViperPresenterForInteractor;
+import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 import com.mateuszkoslacz.moviper.presenterbus.Moviper;
@@ -35,8 +37,10 @@ public abstract class BaseRxPresenter
         <ViewType extends MvpView,  // I prefer readability rather than conventions
                 InteractorType extends ViperRxInteractor,
                 RoutingType extends ViperRxRouting>
-        extends CommonBasePresenter<ViewType, InteractorType, RoutingType>
-        implements ViperPresenter<ViewType, InteractorType, RoutingType> {
+        extends CommonBasePresenter<ViewType>
+        implements ViperPresenter<ViewType>,
+        ViperPresenterForInteractor<InteractorType>,
+        ViperPresenterForRouting<RoutingType> {
 
     @NonNull
     private RoutingType routing;

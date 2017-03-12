@@ -9,16 +9,16 @@ import com.mateuszkoslacz.moviper.iface.interactor.CommonViperInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.iface.routing.CommonViperRouting;
 
+import static com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter.DEFAULT_NAME;
+
 /**
  * Created by mateuszkoslacz on 24.10.2016.
  */
 
 abstract class CommonBasePresenter
-        <ViewType extends MvpView,
-                InteractorType extends CommonViperInteractor,
-                RoutingType extends CommonViperRouting>
+        <ViewType extends MvpView>
         extends MvpBasePresenter<ViewType>
-        implements ViperPresenter<ViewType, InteractorType, RoutingType> {
+    implements ViperPresenter<ViewType>{
 
     private Bundle args;
 
@@ -52,7 +52,7 @@ abstract class CommonBasePresenter
         if (this == o) return true;
         if (!(o instanceof CommonBasePresenter)) return false;
 
-        CommonBasePresenter<?, ?, ?> that = (CommonBasePresenter<?, ?, ?>) o;
+        CommonBasePresenter<?> that = (CommonBasePresenter<?>) o;
 
         if (!getName().equals(that.getName())) return false;
         return getClassName().equals(that.getClassName());

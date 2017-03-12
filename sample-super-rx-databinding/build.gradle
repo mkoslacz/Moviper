@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'android-apt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -42,9 +41,6 @@ dependencies {
 
     compile 'com.github.bumptech.glide:glide:' + rootProject.ext.glideVersion
 
-    compile 'com.jakewharton:butterknife:' + rootProject.ext.butterKnifeVersion
-    apt 'com.jakewharton:butterknife-compiler:' + rootProject.ext.butterKnifeVersion
-
     compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
     compile 'io.reactivex:rxandroid:' + rootProject.ext.rxAndroidVersion
     compile 'com.squareup.retrofit2:retrofit:' + rootProject.ext.retrofitVersion
@@ -52,9 +48,7 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:' + rootProject.ext.retrofitVersion
     compile 'com.squareup.okhttp3:logging-interceptor:' + rootProject.ext.okHttpVersion
     compile project(path: ':moviper-rx')
-    compile project(path: ':moviper-rx-viewhelper')
-    compile project(path: ':moviper-passive-databinding-views')
-    compile project(path: ':moviper-presentersdispatcher')
+    compile project(path: ':moviper-databinding')
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:' + rootProject.ext.espressoVersion, {
         exclude group: 'com.android.support', module: 'support-annotations'

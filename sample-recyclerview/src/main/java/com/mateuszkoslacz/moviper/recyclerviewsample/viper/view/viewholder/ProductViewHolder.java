@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 
 public class ProductViewHolder
         extends ViperViewHolder<Product, ProductContract.View, ProductContract.Presenter>
-        implements ProductContract.View {
+        implements ProductContract.View{
 
     @BindView(R.id.product_photo)
     ImageView mProductPhoto;

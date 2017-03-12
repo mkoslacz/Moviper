@@ -111,7 +111,7 @@ public class ListingActivity
 
     @NonNull
     @Override
-    public ViperPresenter<ListingContract.View, ?, ?> createPresenter() {
+    public ViperPresenter<ListingContract.View> createPresenter() {
         return new ListingPresenter();
     }
 

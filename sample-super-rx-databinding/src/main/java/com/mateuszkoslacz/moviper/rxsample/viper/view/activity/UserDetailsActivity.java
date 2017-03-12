@@ -81,7 +81,7 @@ public class UserDetailsActivity
 
     @NonNull
     @Override
-    public ViperPresenter<UserDetailsContract.View, ?, ?>  createPresenter() {
+    public ViperPresenter<UserDetailsContract.View>  createPresenter() {
         return MoviperPresentersDispatcher.getInstance().getPresenterForView(this);
     }
 

@@ -7,8 +7,7 @@ import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.presenter.UserDetailsPresenter;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.ListingActivity;
 import com.mateuszkoslacz.moviper.rxsample.viper.view.activity.UserDetailsActivity;
-import com.mateuszkoslacz.moviper.presentersdispatcher.ActivityStarter;
-import com.mateuszkoslacz.moviper.presentersdispatcher.MoviperPresentersDispatcher;
+import com.mateuszkoslacz.moviper.presentersdispatcher.MoviperRecyclerPresentersDispatcher;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -40,7 +39,7 @@ public class ListingRoutingRobolectricTest {
 
     @Test
     public void startUserDetailsActivityIntentTest() throws Exception {
-        MoviperPresentersDispatcher.setInstance(null);
+        MoviperRecyclerPresentersDispatcher.setInstance(null);
         User user = new User();
         user.setLogin("testUser");
         mRouting.startUserDetailsActivity(user);
@@ -51,8 +50,8 @@ public class ListingRoutingRobolectricTest {
 
     @Test
     public void startUserDetailsActivityUnitTest() throws Exception {
-        MoviperPresentersDispatcher mPresentersDispatcher = Mockito.mock(MoviperPresentersDispatcher.class);
-        MoviperPresentersDispatcher.setInstance(mPresentersDispatcher);
+        MoviperRecyclerPresentersDispatcher mPresentersDispatcher = Mockito.mock(MoviperRecyclerPresentersDispatcher.class);
+        MoviperRecyclerPresentersDispatcher.setInstance(mPresentersDispatcher);
 
         User user = new User();
         user.setLogin("testUser");

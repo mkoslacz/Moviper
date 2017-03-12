@@ -11,7 +11,7 @@ import rx.schedulers.Schedulers
 
 open class ListingPresenter :
         BaseRxPresenter<ListingContract.View, ListingContract.Interactor, ListingContract.Routing>(),
-        ViperPresenter<ListingContract.View, ListingContract.Interactor, ListingContract.Routing> {
+        ViperPresenter<ListingContract.View> {
 
     override fun attachView(view: ListingContract.View) {
         super.attachView(view)

@@ -33,10 +33,10 @@ public abstract class BasePresenter
         <ViewType extends MvpView,  // I prefer readability rather than conventions
                 InteractorType extends ViperInteractor,
                 RoutingType extends ViperRouting>
-        extends CommonBasePresenter<ViewType, InteractorType, RoutingType>
-        implements ViperPresenter<ViewType, InteractorType, RoutingType>,
-        ViperPresenterForInteractor,
-        ViperPresenterForRouting {
+        extends CommonBasePresenter<ViewType>
+        implements ViperPresenter<ViewType>,
+        ViperPresenterForInteractor<InteractorType>,
+        ViperPresenterForRouting<RoutingType> {
 
     @NonNull
     private RoutingType routing;
