@@ -7,7 +7,7 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
 
 /**
  * Created by mateuszkoslacz on 15.12.2016.
- * <p/>
+ * <p>
  * It's used for providing Activity to the routing. Used in pair with {@link MvpView} in Moviper
  * views.
  */

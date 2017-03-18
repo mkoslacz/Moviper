@@ -1,22 +1,25 @@
 apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: "com.jfrog.bintray"
 
+// This is the library version used when deploying the artifact
+version = rootProject.ext.releaseVersionName
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.releaseVersionCode
+        versionName rootProject.ext.releaseVersionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -39,3 +42,14 @@ dependencies {
     compile 'io.reactivex:rxjava:' + rootProject.ext.rxJavaVersion
 
 }
+
+def submoduleName = 'rx'
+def projectFullName = "$rootProject.ext.groupNameAndArtifactPrefix$submoduleName"
+
+install.repositories.mavenInstaller.pom.project {
+    name = projectFullName
+    description = 'The rx Moviper flavour'
+}
+bintray.pkg.name = projectFullName
+
+apply from: '../upload.gradle'

@@ -1,16 +1,20 @@
 apply plugin: 'com.android.library'
 apply plugin: 'android-apt'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: "com.jfrog.bintray"
 
+// This is the library version used when deploying the artifact
+version = rootProject.ext.releaseVersionName
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.releaseVersionCode
+        versionName rootProject.ext.releaseVersionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -25,13 +29,24 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestCompile "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    testCompile 'junit:junit:4.12'
-    compile 'com.jakewharton:butterknife:' + rootProject.ext.butterKnifeVersion
-    apt 'com.jakewharton:butterknife-compiler:' + rootProject.ext.butterKnifeVersion
+    }
+    compile "com.android.support:appcompat-v7:$rootProject.ext.supportVersion"
+    testCompile "junit:junit:$rootProject.ext.junitVersion"
+    compile "com.jakewharton:butterknife:$rootProject.ext.butterKnifeVersion"
+    apt "com.jakewharton:butterknife-compiler:$rootProject.ext.butterKnifeVersion"
 
     compile project(path: ':moviper-common')
 }
+
+def submoduleName = 'butterknife'
+def projectFullName = "$rootProject.ext.groupNameAndArtifactPrefix$submoduleName"
+
+install.repositories.mavenInstaller.pom.project {
+    name = projectFullName
+    description = 'Butterknife view extensions for Moviper'
+}
+bintray.pkg.name = projectFullName
+
+apply from: '../upload.gradle'

@@ -12,7 +12,7 @@ import java.lang.ref.WeakReference;
 /**
  * Created by mateuszkoslacz on 08.08.2016.
  * <p>
- * It's a Rx version of {@link BaseRouting}
+ * It's a Rx version of BaseRouting
  * <p>
  * It's responsible for performing all platform-specific tasks in behalf of presenter, ie. starting
  * a new Activity, a new Service, scheduling alarms etc.
