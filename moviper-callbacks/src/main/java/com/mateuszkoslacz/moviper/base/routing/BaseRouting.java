@@ -23,7 +23,7 @@ import java.lang.ref.WeakReference;
  * shared
  * views, see {@link BaseViewHelperRouting}. If you are looking for solution adopted to Rx
  * approach,
- * see {@link BaseRxRouting}. If both, see {@link BaseViewHelperRxRouting}.
+ * see BaseRxRouting. If both, see BaseViewHelperRxRouting.
  */
 public abstract class BaseRouting
         <RelatedContext extends Context,

@@ -19,7 +19,7 @@ import com.mateuszkoslacz.moviper.iface.view.ContextHolder;
  * scheduling, Services creating etc. for better separation of concepts.
  * <p>
  * If you are looking for solution providing Android Views to use in Android Transaction with shared
- * views, see {@link ViperViewHelperRouting}
+ * views, see ViperViewHelperRouting
  */
 public interface ViperRxRouting<RelatedContext extends Context>
         extends CommonViperRouting<RelatedContext> {

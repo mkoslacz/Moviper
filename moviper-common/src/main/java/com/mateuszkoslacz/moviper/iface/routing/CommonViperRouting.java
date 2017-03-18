@@ -1,6 +1,5 @@
 package com.mateuszkoslacz.moviper.iface.routing;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.Nullable;
 
@@ -19,7 +18,7 @@ import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
  * scheduling, Services creating etc. for better separation of concepts.
  * <p>
  * If you are looking for solution providing Android Views to use in Android Transaction with shared
- * views, see {@link ViperViewHelperRouting}
+ * views, see ViperViewHelperRouting
  */
 
 public interface CommonViperRouting<RelatedContext extends Context> {

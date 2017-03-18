@@ -17,8 +17,8 @@ import com.mateuszkoslacz.moviper.iface.viewhelper.ViperViewHelper;
  * It's also responsible of UI changes outside of given view, ie. Fragment presenter uses this
  * routing for switching Fragments in parent Activity.
  * <p>
- * It also provides Android Views to use in Android Transaction with shared views, see {@link
- * BaseViewHelperRouting}
+ * It also provides Android Views to use in Android Transaction with shared views, see
+ * BaseViewHelperRouting../
  */
 public abstract class BaseViewHelperRxRouting
         <RelatedContext extends Context,

@@ -4,7 +4,7 @@ import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 
 /**
  * Created by mateuszkoslacz on 24.10.2016.
- * <p/>
+ * <p>
  * Thrown when you have IPC Presenter Instance Access enabled and you try to create new Presenter
  * with name that is already registered for its class. To avoid that you have to implement {@link
  * ViperPresenter#getName()} in the way that returns an unique name for each instance of presenter

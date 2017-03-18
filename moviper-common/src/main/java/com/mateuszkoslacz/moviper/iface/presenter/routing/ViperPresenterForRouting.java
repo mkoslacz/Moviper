@@ -8,13 +8,13 @@ import com.mateuszkoslacz.moviper.iface.routing.CommonViperRouting;
 /**
  * Created by mateuszkoslacz on 08.08.2016.
  * <p>
- * Interface used by Routing ({@link ViperRouting}) to communicate with Presenter ({@link
+ * Interface used by Routing (ViperRouting) to communicate with Presenter ({@link
  * ViperPresenter}). There are mostly callbacks for creating alarms, routing's error messages etc.
  */
 public interface ViperPresenterForRouting<RoutingType extends CommonViperRouting> {
 
     /**
-     * @return attached {@link ViperRouting}
+     * @return attached ViperRouting
      */
     @NonNull
     RoutingType getRouting();
@@ -22,7 +22,7 @@ public interface ViperPresenterForRouting<RoutingType extends CommonViperRouting
     /**
      * Override this and return a instantiated Routing object here.
      *
-     * @return The {@link ViperRouting} for this view
+     * @return The ViperRouting for this view
      */
     @NonNull
     RoutingType createRouting();
