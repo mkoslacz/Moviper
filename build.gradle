@@ -34,8 +34,8 @@ task clean(type: Delete) {
 ext {
     groupNameAndArtifactPrefix ='com.mateuszkoslacz.moviper:moviper-'
 
-    releaseVersionCode = 4
-    releaseVersionName = '1.4.0-rx2-prealpha'
+    releaseVersionCode = 10
+    releaseVersionName = '2.0.0'
 
     minSdkVersion = 16
     targetSdkVersion = 25
