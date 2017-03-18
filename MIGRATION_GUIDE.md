@@ -1,3 +1,11 @@
+# 1.5.0 to 2.0.0
+
+Library has migrated to RxJava 2.x. Change your IPC streams to be compatible with RxJava2.
+
+# 1.3.0-alpha to 1.5.0
+
+Library has ben split to multiple modules to avoid importing unnecessary dependencies to your project. See the [Dependency](https://github.com/mkoslacz/Moviper#dependency) paragraph of the readme to find out which ones you need.
+
 # 1.2.0-alpha to 1.3.0-alpha
 
 ## Classes

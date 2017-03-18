@@ -18,12 +18,49 @@ For example `MvpFragment` maps to `ViperFragment`.
 
 ## Dependency
 
-Import the Moviper module to your module gradle file.
+Import the selected Moviper modules to your module gradle file. Moviper-rx 2.0.0 is built on top of RxJava2. For RxJava1 legacy Moviper version 1.5.0 see below.
 
 ```groovy
 dependencies {
-    compile 'com.mateuszkoslacz.moviper:moviper:1.3.0-alpha'
-    debugCompile 'com.mateuszkoslacz.moviper:moviper-test:1.3.0-alpha' // optional testing utils
+    // core modules, in the most common scenario importing one of these two will be enough
+    compile 'com.mateuszkoslacz.moviper:moviper-rx:2.0.0' // RxJava communication based Moviper core (recommended)
+    compile 'com.mateuszkoslacz.moviper:moviper-callbacks:2.0.0' // callbacks communication based Moviper core 
+    
+    // Mosby's viewstate Moviper views 
+    compile 'com.mateuszkoslacz.moviper:moviper-viewstate:2.0.0'
+    
+    // Butterknife Moviper views
+    compile 'com.mateuszkoslacz.moviper:moviper-butterknife:2.0.0'
+    // Butterknife Moviper views with Mosby's viewstate
+    compile 'com.mateuszkoslacz.moviper:moviper-butterknife-viewstate:2.0.0'
+    
+    // Databinding Moviper Views 
+    compile 'com.mateuszkoslacz.moviper:moviper-databinding:2.0.0'
+    // Databinding Moviper Views Mosby's viewstate
+    compile 'com.mateuszkoslacz.moviper:moviper-databinding-viewstate:2.0.0'
+    
+    // Recyclerview Moviper extension, allows you create the Viper classes set for every RecyclerVew cell
+    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview:2.0.0'
+    // Butterknife Moviper Recyclerview cells
+    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview-butterknife:2.0.0'
+    // Databinding Moviper Recyclerview cells
+    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview-databinding:2.0.0'
+    
+    // Android Service Moviper extensions 
+    compile 'com.mateuszkoslacz.moviper:moviper-service:2.0.0'
+    
+    // optional testing utils, still beta, it has to be debug-compiled and causes some minor Manifest issues on debug builds
+    debugCompile 'com.mateuszkoslacz.moviper:moviper-test:2.0.0'
+}
+```
+
+RxJava1 legacy version:
+
+```groovy
+dependencies {
+    // legacy, RxJava1 based versions of Moviper modules. You can use them with combination of 2.0.0 modules not mentioned here
+    compile 'com.mateuszkoslacz.moviper:moviper-rx:1.5.0' 
+    debugCompile 'com.mateuszkoslacz.moviper:moviper-test:1.5.0'
 }
 ```
 
@@ -102,6 +139,8 @@ Moviper.getInstance().getPresenterInstance(SomePresenter.class, "someName")
 
 ### VIPER ViewHolders
 
+###### need importing `moviper-recyclerview` module
+
 For complex RecyclerView list elements and/or multiple views on RecyclerViewlist you can design your app in the way that treats every list element as a separate VIPER View with its own contract.
 Generating such ViewHolders is supported in the  [Moviper Template Generator](https://github.com/mkoslacz/MoviperTemplateGenerator).
 For the sample usage check out the `sample-recyclerview`.
@@ -110,16 +149,16 @@ For the sample usage check out the `sample-recyclerview`.
 
 AutoInject (Ai) Views that allow you to skip overriding the `onCreate(...)` / `onViewCreated(..)` method. Instead, in plain Ai Views you have to provide the layout id by overriding a `getLayoutId()` method and
 to perform any view injections, getting references to views etc. by overriding a `injectViews()` method. In addition, it contains the pre-baked classes, where these methods are already implemented inside of base classes for:
-   - Butterknife (check out `sample-rx-ai`),
-   - DataBinding  (just like in `sample-super-rx-databinding`, but not using passive views),
-   - for Kotlin Android Extensions you have to use regular Ai Views (just like in `sample-super-rx-ai-kotlin`, but not using passive views).
+   - Butterknife - `moviper-butterknife` module (check out `sample-rx-ai`),
+   - DataBinding -`moviper-databinding` module  (just like in `sample-super-rx-databinding`, but not using passive views),
+   - for Kotlin Android Extensions you shall use regular Ai Views from base module (just like in `sample-super-rx-ai-kotlin`, but not using passive views).
 
 ### Passive Views
 
 Passive Views (based on AutoInject ones) that enforces developer to create passive views, that are not aware of existence of Presenter. All communication from View to Presenter has to be done through providing Observables with given UI events. It's enforced by the fact that `getPresenter()` method of this kind of views does not return Presenter of some exact type, but as a general `ViperPresenter`, so calling any meaningful methods on it is impossible. As in the previous point, it also contains the pre baked classes for:
-   - Butterknife(just like in `sample-super-rx-ai-kotlin`, but using passive views),
-   - DataBinding (check out `sample-super-rx-databinding`),
-   - for Kotlin Android Extensions you have to use regular AiPassive Views (check out `sample-super-rx-ai-kotlin`).
+   - Butterknife - `moviper-butterknife` module (just like in `sample-super-rx-ai-kotlin`, but using passive views),
+   - DataBinding - `moviper-databinding` module (check out `sample-super-rx-databinding`),
+   - for Kotlin Android Extensions you shall use regular AiPassive Views from base module (check out `sample-super-rx-ai-kotlin`).
 
 ### Choosing Presenter on runtime
 
@@ -139,6 +178,8 @@ Allow you to maintain a uniform architecture between your app's views and servic
 Sample usage is showcased in `sample-service`
 
 ### Independent VIPERS
+
+###### need importing `moviper-service` module
 
 Allow you to maintain a uniform architecture between your app's views and complex task objects that aren't strictly connected with any specific Android component.
 

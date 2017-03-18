@@ -1,6 +1,20 @@
+## 2.0.0
+
+### Breaking change & enhancement
+
+Migrated Moviper to RxJava 2.x!
+
+
+## 1.5.0
+
+### Breaking change & enhancement
+
+Library has ben split to multiple modules to avoid importing unnecessary dependencies to your project. See the [Dependency](https://github.com/mkoslacz/Moviper#dependency) paragraph of the readme to find out which ones you need.
+
+
 ## 1.3.0-alpha
 
-### Breaking changes:
+### Breaking changes
 
 This release introduces some breaking changes. All stuff listed below is also mentioned in the [Migration guide](https://github.com/mkoslacz/Moviper/blob/master/MIGRATION_GUIDE.md).
 * Unified methods for getting context in Routings.
