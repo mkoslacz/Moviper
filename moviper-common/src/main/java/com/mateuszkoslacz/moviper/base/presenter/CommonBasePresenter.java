@@ -2,6 +2,7 @@ package com.mateuszkoslacz.moviper.base.presenter;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
@@ -9,7 +10,7 @@ import com.mateuszkoslacz.moviper.iface.interactor.CommonViperInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.iface.routing.CommonViperRouting;
 
-import static com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter.DEFAULT_NAME;
+import java.util.Random;
 
 /**
  * Created by mateuszkoslacz on 24.10.2016.
@@ -30,13 +31,10 @@ abstract class CommonBasePresenter
         this.args = args;
     }
 
-    private String getClassName() {
-        return getClass().getName();
-    }
-
     @Override
+    @NonNull
     public String getName() {
-        return DEFAULT_NAME;
+        return this.getClassName() + "_" + new Random().nextInt();
     }
 
     public Bundle getArgs() {
@@ -47,6 +45,10 @@ abstract class CommonBasePresenter
         this.args = args;
     }
 
+    private String getClassName() {
+        return getClass().getName();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -54,9 +56,7 @@ abstract class CommonBasePresenter
 
         CommonBasePresenter<?> that = (CommonBasePresenter<?>) o;
 
-        if (!getName().equals(that.getName())) return false;
-        return getClassName().equals(that.getClassName());
-
+        return this.getName().equals(that.getName());
     }
 
     @Override
