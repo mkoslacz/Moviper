@@ -1,23 +1,29 @@
 package com.mateuszkoslacz.moviper.presenterbus;
 
+import android.support.annotation.NonNull;
+
+import com.mateuszkoslacz.moviper.base.exception.PresenterAlreadyRegisteredException;
 import com.mateuszkoslacz.moviper.base.exception.PresenterInstancesAccessNotEnabled;
 import com.mateuszkoslacz.moviper.base.exception.PresentersAccessUtilNotEnabled;
 import com.mateuszkoslacz.moviper.base.presenter.BaseRxPresenter;
-import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
+import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
+import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
 
+import java.util.NoSuchElementException;
 
 import io.reactivex.observers.TestObserver;
+import io.reactivex.plugins.RxJavaPlugins;
+import io.reactivex.schedulers.Schedulers;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
 
 /**
  * Created by mateuszkoslacz on 29.10.2016.
@@ -26,6 +32,12 @@ public class MoviperTest {
 
     @Rule
     public ExpectedException mExpectedException = ExpectedException.none();
+
+    public MoviperTest() {
+        RxJavaPlugins.setComputationSchedulerHandler(scheduler -> Schedulers.trampoline());
+
+
+    }
 
     @Before
     public void setUp() throws Exception {
@@ -48,36 +60,54 @@ public class MoviperTest {
         Moviper.getInstance().setConfig(new Config.Builder()
                 .withPresenterAccessUtilEnabled(true)
                 .build());
-        TestObserver<TestPresenter> testSubscriber = TestObserver.create();
-        TestPresenter mockPresenter = Mockito.mock(TestPresenter.class);
-        Moviper.getInstance().register(mockPresenter);
-        Moviper.getInstance().getPresenters(TestPresenter.class)
-                .subscribe(testSubscriber);
-        testSubscriber.awaitTerminalEvent();
+        TestPresenter testPresenter = new TestPresenter();
+        Moviper.getInstance().register(testPresenter);
+        TestObserver<TestPresenter> testSubscriber =
+                Moviper.getInstance()
+                        .getPresenters(TestPresenter.class)
+                        .test();
         testSubscriber.assertNoErrors();
         testSubscriber.assertComplete();
-        assertEquals(1, testSubscriber.valueCount());
-        assertSame(testSubscriber.values().get(0), mockPresenter);
+        testSubscriber.assertValueCount(1);
+        testSubscriber.assertValue(testPresenter);
     }
 
+    // TODO this test fails when all tests are run, it succeeds when run alone
     @Test
     public void gettingRegisteredPresenterInstance() throws Exception {
         Moviper.getInstance().setConfig(new Config.Builder()
                 .withPresenterAccessUtilEnabled(true)
                 .withInstancePresentersEnabled(true)
                 .build());
-        TestObserver<TestPresenter> testSubscriber = TestObserver.create();
-        TestPresenter mockPresenter = Mockito.mock(TestPresenter.class);
-        Mockito.when(mockPresenter.getName()).thenReturn("testPresenter");
-        Moviper.getInstance().register(mockPresenter);
-        Moviper.getInstance().getPresenterInstance(TestPresenter.class, "testPresenter")
-                .subscribe(testSubscriber);
-        testSubscriber.awaitTerminalEvent();
+        TestPresenter testPresenter = new TestPresenter("testPresenter");
+        Moviper.getInstance().register(testPresenter);
+        TestObserver<TestPresenter> testSubscriber =
+                Moviper.getInstance()
+                        .getPresenterInstance(TestPresenter.class, "testPresenter")
+                        .test();
         testSubscriber.assertNoErrors();
-        testSubscriber.assertComplete();
-        assertEquals(1, testSubscriber.valueCount());
-        assertSame(testSubscriber.values().get(0), mockPresenter);
+//        testSubscriber.assertNotComplete(); // Maybe protocol says that if it receives the value it does not call oncomplete, but actually it makes testSubscriber completed.
+        testSubscriber.assertValue(testPresenter);
     }
+
+    @Test
+    public void gettingRegisteredPresenterInstanceOrError() throws Exception {
+        Moviper.getInstance().setConfig(new Config.Builder()
+                .withPresenterAccessUtilEnabled(true)
+                .withInstancePresentersEnabled(true)
+                .build());
+        TestPresenter testPresenter = new TestPresenter("testPresenter");
+        Moviper.getInstance().register(testPresenter);
+        TestObserver<TestPresenter> testSubscriber =
+                Moviper.getInstance()
+                        .getPresenterInstanceOrError(TestPresenter.class, "testPresenter")
+                        .test();
+        testSubscriber.assertNoErrors();
+//        testSubscriber.assertNotComplete(); // Single protocol says that it has not oncomplete, but actually it makes testSubscriber completed.
+        testSubscriber.assertValueCount(1);
+        testSubscriber.assertValue(testPresenter);
+    }
+
 
     @Test
     public void failureOnRegisteringTwoPresentersWithTheSameNameWhenInstancePresentersAreAllowed() throws Exception {
@@ -85,10 +115,13 @@ public class MoviperTest {
                 .withPresenterAccessUtilEnabled(true)
                 .withInstancePresentersEnabled(true)
                 .build());
-        TestPresenter mockPresenter = Mockito.mock(TestPresenter.class);
-        TestPresenter secondMockPresenter = Mockito.mock(TestPresenter.class);
-        Moviper.getInstance().register(mockPresenter);
-        Moviper.getInstance().register(secondMockPresenter);
+        final Throwable[] throwable = {null};
+        Moviper.getInstance().setErrorHandler(e -> throwable[0] = e);
+        TestPresenter testPresenter = new TestPresenter("testPresenter");
+        TestPresenter secondTestPresenter = new TestPresenter("testPresenter");
+        Moviper.getInstance().register(testPresenter);
+        Moviper.getInstance().register(secondTestPresenter);
+        Assert.assertTrue(throwable[0] instanceof PresenterAlreadyRegisteredException);
     }
 
     @Test
@@ -98,28 +131,71 @@ public class MoviperTest {
     }
 
     @Test
-    public void gettingPresenterInstanceWithNoAccessEnabled() throws Exception {
+    public void gettingPresenterInstanceWithNoInstanceAccessEnabled() throws Exception {
+        Moviper.getInstance().setConfig(new Config.Builder()
+                .withPresenterAccessUtilEnabled(true)
+                .build());
         mExpectedException.expect(PresenterInstancesAccessNotEnabled.class);
         Moviper.getInstance()
-                .getPresenterInstance(TestPresenter.class, ViperPresenter.DEFAULT_NAME)
+                .getPresenterInstance(TestPresenter.class, "irrelevant")
                 .subscribe();
     }
 
     @Test
-    public void unregister() throws Exception {
-
+    public void gettingPresenterInstanceWithNoRegisteredPresenter() throws Exception {
+        Moviper.getInstance().setConfig(new Config.Builder()
+                .withPresenterAccessUtilEnabled(true)
+                .withInstancePresentersEnabled(true)
+                .build());
+        TestObserver<TestPresenter> testSubscriber =
+                Moviper.getInstance()
+                        .getPresenterInstance(TestPresenter.class, "irrelevant")
+                        .test();
+        testSubscriber.assertNoValues();
+        testSubscriber.assertComplete();
     }
 
     @Test
-    public void getPresenters() throws Exception {
-
+    public void gettingPresenterInstanceOrErrorWithNoRegisteredPresenter() throws Exception {
+        Moviper.getInstance().setConfig(new Config.Builder()
+                .withPresenterAccessUtilEnabled(true)
+                .withInstancePresentersEnabled(true)
+                .build());
+        TestObserver<TestPresenter> testSubscriber =
+                Moviper.getInstance()
+                        .getPresenterInstanceOrError(TestPresenter.class, "irrelevant")
+                        .test();
+        testSubscriber.assertNoValues();
+        testSubscriber.assertError(NoSuchElementException.class);
     }
 
-    @Test
-    public void getPresenterInstance() throws Exception {
+    private static class TestPresenter extends BaseRxPresenter {
 
-    }
+        private String name = "name";
 
-    private static abstract class TestPresenter extends BaseRxPresenter {
+        public TestPresenter() {
+        }
+
+        public TestPresenter(String name) {
+            this.name = name;
+        }
+
+        @NonNull
+        @Override
+        public String getName() {
+            return name;
+        }
+
+        @NonNull
+        @Override
+        public ViperRxRouting createRouting() {
+            return Mockito.mock(ViperRxRouting.class);
+        }
+
+        @NonNull
+        @Override
+        public ViperRxInteractor createInteractor() {
+            return Mockito.mock(ViperRxInteractor.class);
+        }
     }
 }

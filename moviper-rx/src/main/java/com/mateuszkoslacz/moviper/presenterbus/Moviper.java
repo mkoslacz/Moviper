@@ -13,6 +13,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import io.reactivex.Maybe;
 import io.reactivex.Observable;
+import io.reactivex.Scheduler;
+import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.PublishSubject;
 
@@ -25,6 +27,13 @@ public class Moviper {
     private static final String TAG = "Moviper";
 
     private static final Moviper instance = new Moviper();
+    private MoviperErrorHandler errorHandler = new MoviperErrorHandler() {
+        @Override
+        public void onError(Throwable e) {
+            Thread.currentThread().getUncaughtExceptionHandler() // TODO how to crash?
+                    .uncaughtException(Thread.currentThread(), e);
+        }
+    };
 
     private Config mConfig = new Config();
 
@@ -40,11 +49,18 @@ public class Moviper {
     private Moviper() {
         registerSynchronizer
                 .subscribeOn(Schedulers.computation())
-                .subscribe(this::routeMoviperBundle);
+                .doOnNext(moviperBundle -> routeMoviperBundle(moviperBundle)) // TODO very important! if we do this onsubscribe and there is an error, it wont go to the doOnError, because it's too late! it will go to subscribes onerror and retry wont work!
+                .doOnError(throwable -> errorHandler.onError(throwable))
+                .retry()
+                .subscribe();
     }
 
     public static Moviper getInstance() {
         return instance;
+    }
+
+    public void setErrorHandler(MoviperErrorHandler handler) {
+        this.errorHandler = handler;
     }
 
     /**
@@ -79,24 +95,43 @@ public class Moviper {
     }
 
     /**
+     * <dl>
+     * <dt><b>Scheduler:</b></dt>
+     * <dd>{@code fromIterable} does not operate by default on a particular {@link Scheduler}.</dd>
+     * </dl>
+     *
      * * Make sure that you have enabled IPC Instance Presenter Access by using {@link
      * #setConfig(Config)} with {@link Config.Builder#withPresenterAccessUtilEnabled(boolean)} set
      * to true to avoid {@link PresenterInstancesAccessNotEnabled}
      *
      * @param presenterTypeClass class of presenters you want to get
-     * @return {@link Observable} that emmits all (from zero to n) registered presenters of given
-     * class. It operates on the {@link Schedulers#computation()}.
+     * @return {@link Observable} that emits all (from zero to n) registered presenters of given
+     * class.
      */
     public <PresenterType extends ViperPresenter> Observable<PresenterType> getPresenters(
             final Class<PresenterType> presenterTypeClass) {
         if (!mConfig.isPresenterAccessUtilEnabled()) throw new PresentersAccessUtilNotEnabled();
         return Observable.fromIterable(mPresenters)
                 .filter(presenterTypeClass::isInstance)
-                .map(presenterTypeClass::cast)
-                .subscribeOn(Schedulers.computation()); // TODO: reconsider moving to computation scheduler
+                .cast(presenterTypeClass);
+    }
+
+
+    private <PresenterType extends ViperPresenter> Observable<PresenterType> getPresenterInstanceObservable(
+            final Class<PresenterType> presenterTypeClass, String name) {
+        if (!mConfig.isInstancePresentersEnabled()) throw new PresenterInstancesAccessNotEnabled();
+        return getPresenters(presenterTypeClass)
+                .filter(moviperPresenter -> moviperPresenter.getName().equals(name));
     }
 
     /**
+     * It returns a given Presenter instance wrapped in the {@link Maybe}.
+     *
+     * <dl>
+     * <dt><b>Scheduler:</b></dt>
+     * <dd>{@code fromIterable} does not operate by default on a particular {@link Scheduler}.</dd>
+     * </dl>
+     *
      * Make sure that you have fulfilled the requirements of ue the general IPC ({@link
      * #getPresenters(Class)}.
      * <p>
@@ -111,18 +146,43 @@ public class Moviper {
      * @param presenterTypeClass class of presenter you want to get
      * @param name               name of a presenter you want to get here. You shall set it up by
      *                           returning proper name in {@link ViperPresenter#getName()}.
-     * @return {@link Observable} that emits (or not) Presenter instance of given name and class.
+     * @return {@link Maybe} that emits (or not) Presenter instance of given name and class.
      */
-    // TODO create Single version also
     public <PresenterType extends ViperPresenter> Maybe<PresenterType> getPresenterInstance(
             final Class<PresenterType> presenterTypeClass, String name) {
-        if (!mConfig.isInstancePresentersEnabled()) throw new PresenterInstancesAccessNotEnabled();
-        return Observable.fromIterable(mPresenters)
-                .filter(moviperPresenter -> moviperPresenter.getName().equals(name))
-                .filter(presenterTypeClass::isInstance)
-                .map(presenterTypeClass::cast)
-                .firstElement()
-                .subscribeOn(Schedulers.computation());
+        return getPresenterInstanceObservable(presenterTypeClass, name)
+                .firstElement();
+    }
+
+    /**
+     * It returns a given Presenter instance wrapped in the {@link Single} or error if not found.
+     *
+     * <dl>
+     * <dt><b>Scheduler:</b></dt>
+     * <dd>{@code fromIterable} does not operate by default on a particular {@link Scheduler}.</dd>
+     * </dl>
+     *
+     * Make sure that you have fulfilled the requirements of ue the general IPC ({@link
+     * #getPresenters(Class)}.
+     * <p>
+     * Make sure that you have enabled IPC Instance Presenter Access by using {@link
+     * #setConfig(Config)} with {@link Config.Builder#withInstancePresentersEnabled(boolean)} set to
+     * true to avoid {@link PresenterInstancesAccessNotEnabled}
+     * <p>
+     * If you create two presenters with the same name (not assuring that this method will return an
+     * unique name for each presenter) with the IPC Instance Presenters Access enabled, a {@link
+     * PresenterAlreadyRegisteredException} is thrown.
+     *
+     * @param presenterTypeClass class of presenter you want to get
+     * @param name               name of a presenter you want to get here. You shall set it up by
+     *                           returning proper name in {@link ViperPresenter#getName()}.
+     * @return {@link Single} that emits Presenter instance of given name and class or throws a
+     * {@link java.util.NoSuchElementException}.
+     */
+    public <PresenterType extends ViperPresenter> Single<PresenterType> getPresenterInstanceOrError(
+            final Class<PresenterType> presenterTypeClass, String name) {
+        return getPresenterInstanceObservable(presenterTypeClass, name)
+                .singleOrError();
     }
 
     private void registerSync(ViperPresenter presenter) {
@@ -136,6 +196,11 @@ public class Moviper {
     @VisibleForTesting
     public void unregisterAll() {
         mPresenters.clear();
+    }
+
+    public interface MoviperErrorHandler {
+
+        void onError(Throwable e);
     }
 
     private class MoviperBundle {
