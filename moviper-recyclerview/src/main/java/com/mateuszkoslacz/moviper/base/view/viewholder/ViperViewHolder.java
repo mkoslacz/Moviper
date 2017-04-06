@@ -91,17 +91,18 @@ public abstract class ViperViewHolder<DataObject, View extends MvpDataView, Pres
 
     @Override
     public boolean isRetainInstance() {
-        return true;
+        return false;
     }
 
     @Override
     public void setRetainInstance(boolean retainingInstance) {
-        throw new UnsupportedOperationException("Retaining Instance is not supported / implemented yet");
+        // TODO try to use com.hannesdorfmann.mosby3.mvp.delegate.PresenterManager from Mosby 3.0
+        throw new UnsupportedOperationException("ViewHolders are recycled throughout the views, so you can't retain your presenter in the view!");
     }
 
     @Override
     public boolean shouldInstanceBeRetained() {
-        return true;
+        return false;
     }
 
 }
