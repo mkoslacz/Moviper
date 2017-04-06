@@ -56,7 +56,7 @@ abstract class CommonBasePresenter
 
         CommonBasePresenter<?> that = (CommonBasePresenter<?>) o;
 
-        return this.getName().equals(that.getName());
+        return this.getName().equals(that.getName()) && this.getClassName().equals(that.getClassName());
     }
 
     @Override
