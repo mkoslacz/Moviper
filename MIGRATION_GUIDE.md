@@ -1,3 +1,11 @@
+# 2.0.1 to 2.0.2
+
+From now IPC methods do not operate by default on a particular `Scheduler`. Please review your IPC streams, as in some cases this may be a breaking change. 
+
+# 2.0.0 to 2.0.1
+
+*No changes needed*
+
 # 1.5.0 to 2.0.0
 
 Library has migrated to RxJava 2.x. Change your IPC streams to be compatible with RxJava2.

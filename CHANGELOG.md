@@ -1,3 +1,31 @@
+## 2.0.2
+
+### Breaking change
+
+* From now IPC methods do not operate by default on a particular `Scheduler`. Please review your IPC streams, as in some cases this may be a breaking change. 
+
+### Enhancements
+
+* Inter-Presenter Communication (IPC):
+ - from now IPC methods do not operate by default on a particular `Scheduler` (see above), 
+ - error handling adapted to RxJava 2.x,
+ - introduced error handler that allows you subscribe to IPC errors. By default it prints an error using `Log.e("Moviper, "IPC default error handler: ", e);`,
+ - added `getPresenterInstanceOrError` method that returns `Single`,
+ - fixed some bugs.
+* Presenters (`CommonBasePresenter`):
+ - fixed equality issues for presenters of different classes with the same name (regression introduced in `2.0.1`)
+* ViperViewHolder:
+ - fixed presenter detaching issue on scrolling the `RecyclerView` - presenters did not detach from a view on the recycle. 
+* Bumped dependencies versions.
+
+
+## 2.0.1
+
+### Enhancement
+
+* From now presenters have random names at default, so you can create multiple presenters of a given class without overriding `getName()` with `PresenterInstancesAccess` enabled. It's useful when you don't want to use presenter instance access on the particular class but just regular `PresentersAccessUtil`. 
+
+
 ## 2.0.0
 
 ### Breaking change & enhancement

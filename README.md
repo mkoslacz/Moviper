@@ -18,39 +18,39 @@ For example `MvpFragment` maps to `ViperFragment`.
 
 ## Dependency
 
-Import the selected Moviper modules to your module gradle file. Moviper-rx 2.0.0 is built on top of RxJava2. For RxJava1 legacy Moviper version 1.5.0 see below.
+Import the selected Moviper modules to your module gradle file. Moviper-rx 2.x.x is built on top of RxJava2. For RxJava1 legacy Moviper version 1.5.0 see below.
 
 ```groovy
 dependencies {
     // core modules, in the most common scenario importing one of these two will be enough
-    compile 'com.mateuszkoslacz.moviper:moviper-rx:2.0.0' // RxJava communication based Moviper core (recommended)
-    compile 'com.mateuszkoslacz.moviper:moviper-callbacks:2.0.0' // callbacks communication based Moviper core 
+    compile 'com.mateuszkoslacz.moviper:moviper-rx:2.0.2' // RxJava communication based Moviper core (recommended)
+    compile 'com.mateuszkoslacz.moviper:moviper-callbacks:2.0.2' // callbacks communication based Moviper core 
     
     // Mosby's viewstate Moviper views 
-    compile 'com.mateuszkoslacz.moviper:moviper-viewstate:2.0.0'
+    compile 'com.mateuszkoslacz.moviper:moviper-viewstate:2.0.2'
     
     // Butterknife Moviper views
-    compile 'com.mateuszkoslacz.moviper:moviper-butterknife:2.0.0'
+    compile 'com.mateuszkoslacz.moviper:moviper-butterknife:2.0.2'
     // Butterknife Moviper views with Mosby's viewstate
-    compile 'com.mateuszkoslacz.moviper:moviper-butterknife-viewstate:2.0.0'
+    compile 'com.mateuszkoslacz.moviper:moviper-butterknife-viewstate:2.0.2'
     
     // Databinding Moviper Views 
-    compile 'com.mateuszkoslacz.moviper:moviper-databinding:2.0.0'
+    compile 'com.mateuszkoslacz.moviper:moviper-databinding:2.0.2'
     // Databinding Moviper Views Mosby's viewstate
-    compile 'com.mateuszkoslacz.moviper:moviper-databinding-viewstate:2.0.0'
+    compile 'com.mateuszkoslacz.moviper:moviper-databinding-viewstate:2.0.2'
     
     // Recyclerview Moviper extension, allows you create the Viper classes set for every RecyclerVew cell
-    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview:2.0.0'
+    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview:2.0.2'
     // Butterknife Moviper Recyclerview cells
-    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview-butterknife:2.0.0'
+    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview-butterknife:2.0.2'
     // Databinding Moviper Recyclerview cells
-    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview-databinding:2.0.0'
+    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview-databinding:2.0.2'
     
     // Android Service Moviper extensions 
-    compile 'com.mateuszkoslacz.moviper:moviper-service:2.0.0'
+    compile 'com.mateuszkoslacz.moviper:moviper-service:2.0.2'
     
     // optional testing utils, still beta, it has to be debug-compiled and causes some minor Manifest issues on debug builds
-    debugCompile 'com.mateuszkoslacz.moviper:moviper-test:2.0.0'
+    debugCompile 'com.mateuszkoslacz.moviper:moviper-test:2.0.2'
 }
 ```
 
@@ -58,7 +58,7 @@ RxJava1 legacy version:
 
 ```groovy
 dependencies {
-    // legacy, RxJava1 based versions of Moviper modules. You can use them with combination of 2.0.0 modules not mentioned here
+    // legacy, RxJava1 based versions of Moviper modules. You can use them with combination of 2.x.x modules not mentioned here
     compile 'com.mateuszkoslacz.moviper:moviper-rx:1.5.0' 
     debugCompile 'com.mateuszkoslacz.moviper:moviper-test:1.5.0'
 }
