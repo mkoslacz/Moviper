@@ -1,7 +1,9 @@
 package com.mateuszkoslacz.moviper.presenterbus;
 
 import android.app.Application;
+import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
+import android.util.Log;
 
 import com.mateuszkoslacz.moviper.base.exception.PresenterAlreadyRegisteredException;
 import com.mateuszkoslacz.moviper.base.exception.PresenterInstancesAccessNotEnabled;
@@ -27,13 +29,7 @@ public class Moviper {
     private static final String TAG = "Moviper";
 
     private static final Moviper instance = new Moviper();
-    private MoviperErrorHandler errorHandler = new MoviperErrorHandler() {
-        @Override
-        public void onError(Throwable e) {
-            Thread.currentThread().getUncaughtExceptionHandler() // TODO how to crash?
-                    .uncaughtException(Thread.currentThread(), e);
-        }
-    };
+    private MoviperErrorHandler errorHandler = e -> Log.e(TAG, "IPC default error handler: ", e);
 
     private Config mConfig = new Config();
 
@@ -49,7 +45,7 @@ public class Moviper {
     private Moviper() {
         registerSynchronizer
                 .subscribeOn(Schedulers.computation())
-                .doOnNext(moviperBundle -> routeMoviperBundle(moviperBundle)) // TODO very important! if we do this onsubscribe and there is an error, it wont go to the doOnError, because it's too late! it will go to subscribes onerror and retry wont work!
+                .doOnNext(this::routeMoviperBundle)
                 .doOnError(throwable -> errorHandler.onError(throwable))
                 .retry()
                 .subscribe();
@@ -59,7 +55,7 @@ public class Moviper {
         return instance;
     }
 
-    public void setErrorHandler(MoviperErrorHandler handler) {
+    public void setErrorHandler(@NonNull MoviperErrorHandler handler) {
         this.errorHandler = handler;
     }
 
@@ -100,9 +96,9 @@ public class Moviper {
      * <dd>{@code fromIterable} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * * Make sure that you have enabled IPC Instance Presenter Access by using {@link
+     * Make sure that you have enabled IPC Instance Presenter Access by using {@link
      * #setConfig(Config)} with {@link Config.Builder#withPresenterAccessUtilEnabled(boolean)} set
-     * to true to avoid {@link PresenterInstancesAccessNotEnabled}
+     * to true to avoid {@link PresenterInstancesAccessNotEnabled} exception being thrown.
      *
      * @param presenterTypeClass class of presenters you want to get
      * @return {@link Observable} that emits all (from zero to n) registered presenters of given
@@ -112,7 +108,7 @@ public class Moviper {
             final Class<PresenterType> presenterTypeClass) {
         if (!mConfig.isPresenterAccessUtilEnabled()) throw new PresentersAccessUtilNotEnabled();
         return Observable.fromIterable(mPresenters)
-                .filter(presenterTypeClass::isInstance)
+                .filter(viperPresenter -> viperPresenter.getClass() == presenterTypeClass)
                 .cast(presenterTypeClass);
     }
 
@@ -137,11 +133,12 @@ public class Moviper {
      * <p>
      * Make sure that you have enabled IPC Instance Presenter Access by using {@link
      * #setConfig(Config)} with {@link Config.Builder#withInstancePresentersEnabled(boolean)} set to
-     * true to avoid {@link PresenterInstancesAccessNotEnabled}
+     * true to avoid {@link PresenterInstancesAccessNotEnabled} exception being thrown.
      * <p>
-     * If you create two presenters with the same name (not assuring that this method will return an
-     * unique name for each presenter) with the IPC Instance Presenters Access enabled, a {@link
-     * PresenterAlreadyRegisteredException} is thrown.
+     * If you create two or more presenters with the same name (making {@link ViperPresenter#getName()}
+     * method returns the the same name for them) with the IPC Instance Presenters Access
+     * enabled, a {@link PresenterAlreadyRegisteredException} is thrown. By default {@link ViperPresenter#getName()}
+     * method returns unique names.
      *
      * @param presenterTypeClass class of presenter you want to get
      * @param name               name of a presenter you want to get here. You shall set it up by
@@ -167,11 +164,12 @@ public class Moviper {
      * <p>
      * Make sure that you have enabled IPC Instance Presenter Access by using {@link
      * #setConfig(Config)} with {@link Config.Builder#withInstancePresentersEnabled(boolean)} set to
-     * true to avoid {@link PresenterInstancesAccessNotEnabled}
+     * true to avoid {@link PresenterInstancesAccessNotEnabled} exception being thrown.
      * <p>
-     * If you create two presenters with the same name (not assuring that this method will return an
-     * unique name for each presenter) with the IPC Instance Presenters Access enabled, a {@link
-     * PresenterAlreadyRegisteredException} is thrown.
+     * If you create two or more presenters with the same name (making {@link ViperPresenter#getName()}
+     * method returns the the same name for them) with the IPC Instance Presenters Access
+     * enabled, a {@link PresenterAlreadyRegisteredException} is thrown. By default {@link ViperPresenter#getName()}
+     * method returns unique names.
      *
      * @param presenterTypeClass class of presenter you want to get
      * @param name               name of a presenter you want to get here. You shall set it up by
