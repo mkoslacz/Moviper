@@ -4,7 +4,7 @@
 
 ## Why Moviper?
 
-You got tired because of fact that your Activities and Fragments were becoming god classes, so you have migrated to MVP. Now you're tired of your god-class presenters and you just want to stop continuously wondering if you should pass a context to your presenters and make them platform-dependent and harder to mock and test, or maybe you should let your view-activity manage the system connected work. That's why you're here. My Android VIPER interpretation allows you keep your code clean, neat, and more [SRP](https://en.wikipedia.org/wiki/Single_responsibility_principle) with minimal effort.
+You got tired because of fact that your Activities and Fragments were becoming god classes, so you have migrated to MVP. Now you're tired of your god-class presenters and you just want to stop continuously wondering if you should pass a context to your presenters and make them platform-dependent and harder to mock and test, or maybe you should let your view-activity manage the system connected work. That's why you're here. My Android VIPER interpretation allows you keep your code clean, neat, and more [SRP](https://en.wikipedia.org/wiki/Single_responsibility_principle) with minimal effort. You can find more info about benefits of using VIPER architecture in [this article](http://mateuszkoslacz.com/why-shall-i-choose-viper-architecture/).
 
 ### OK, but for every screen I have to create so many files!
 
@@ -68,7 +68,9 @@ If you are upgrading Moviper you should probably check out the [Changelog](https
 
 ## Getting started
 
-First of all, check out the samples. I recommend starting with `sample-super-rx-ai` for Java with [RxJava](https://github.com/ReactiveX/RxJava) and `sample-super-rx-ai-kotlin` for [Kotlin](https://kotlinlang.org/) with [RxJava](https://github.com/ReactiveX/RxJava) to see the most powerful Moviper architecture classes.
+I strongly recommend you starting with reading a step-by-step tutorial I included in [this blog post](http://mateuszkoslacz.com/moviper-the-android-viper-library/). 
+
+Alternatively you can check out the samples. I recommend starting with `sample-super-rx-ai` for Java with [RxJava](https://github.com/ReactiveX/RxJava) and [Moviper Showcase repo](https://github.com/mkoslacz/MoviperShowcase) or `sample-super-rx-ai-kotlin` for [Kotlin](https://kotlinlang.org/) with [RxJava](https://github.com/ReactiveX/RxJava) to see the most powerful Moviper architecture classes.
 
 After that, just create a VIPER files set in your project using [Moviper Template Generator](https://github.com/mkoslacz/MoviperTemplateGenerator), fill up the contract, generate missing methods using Android Studio autofix
 and implement them. That's simple!
