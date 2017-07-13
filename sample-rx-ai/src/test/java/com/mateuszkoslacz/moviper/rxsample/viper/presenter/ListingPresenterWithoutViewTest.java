@@ -30,7 +30,7 @@ public class ListingPresenterWithoutViewTest extends ListingPresenterTest {
     public void onViewCreatedUsersReceived() throws Exception {
         List<User> users = new ArrayList<>();
         mGetUserListSubject.onNext(users);
-        mGetUserListScheduler.triggerActions();
+        scheduler.triggerActions();
         verify(mView, never()).setUserList(users);
         verify(mView, never()).showContent();
         verify(mView, never()).showError(any());
@@ -40,7 +40,7 @@ public class ListingPresenterWithoutViewTest extends ListingPresenterTest {
     public void onViewCreatedFailed() throws Exception {
         IOException e = new IOException();
         mGetUserListSubject.onError(e);
-        mGetUserListScheduler.triggerActions();
+        scheduler.triggerActions();
         verify(mView, never()).setUserList(any());
         verify(mView, never()).showContent();
         verify(mView, never()).showError(e);

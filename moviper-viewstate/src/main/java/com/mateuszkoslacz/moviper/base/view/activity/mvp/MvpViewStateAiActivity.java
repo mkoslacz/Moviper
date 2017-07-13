@@ -16,14 +16,14 @@
 
 package com.mateuszkoslacz.moviper.base.view.activity.mvp;
 
-import com.hannesdorfmann.mosby.mvp.MvpActivity;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegate;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpViewStateDelegateCallback;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpViewStateDelegateImpl;
-import com.hannesdorfmann.mosby.mvp.viewstate.RestorableViewState;
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.MvpActivity;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpDelegate;
+import com.hannesdorfmann.mosby3.mvp.delegate.MvpViewStateDelegateCallback;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpViewStateDelegateImpl;
+import com.hannesdorfmann.mosby3.mvp.viewstate.RestorableViewState;
+import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
 
 /**
  * This is a enhancement of {@link MvpActivity} that introduces the
@@ -37,10 +37,10 @@ import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
  * @author Hannes Dorfmann, modified by Mateusz Koślacz
  * @since 1.0.0
  */
-public abstract class MvpViewStateAiActivity<V extends MvpView, P extends MvpPresenter<V>>
-        extends MvpAiActivity<V, P> implements ActivityMvpViewStateDelegateCallback<V, P> {
+public abstract class MvpViewStateAiActivity<V extends MvpView, P extends MvpPresenter<V>,  VS extends ViewState<V>>
+        extends MvpAiActivity<V, P> implements MvpViewStateDelegateCallback<V, P, VS> {
 
-    protected ViewState<V> viewState;
+    protected VS viewState;
 
     /**
      * A simple flag that indicates if the restoring ViewState  is in progress right now.
@@ -49,17 +49,17 @@ public abstract class MvpViewStateAiActivity<V extends MvpView, P extends MvpPre
 
     @Override protected ActivityMvpDelegate<V, P> getMvpDelegate() {
         if (mvpDelegate == null) {
-            mvpDelegate = new ActivityMvpViewStateDelegateImpl<>(this);
+            mvpDelegate = new ActivityMvpViewStateDelegateImpl<>(this, this, true);
         }
 
         return mvpDelegate;
     }
 
-    @Override public ViewState<V> getViewState() {
+    @Override public VS getViewState() {
         return viewState;
     }
 
-    @Override public void setViewState(ViewState<V> viewState) {
+    @Override public void setViewState(VS viewState) {
 
         this.viewState = viewState;
     }
@@ -75,9 +75,4 @@ public abstract class MvpViewStateAiActivity<V extends MvpView, P extends MvpPre
     @Override public void onViewStateInstanceRestored(boolean instanceStateRetained) {
         // not needed. You could override this is subclasses if needed
     }
-
-    /**
-     * Creates the ViewState instance
-     */
-    public abstract ViewState<V> createViewState();
 }

@@ -19,13 +19,13 @@ package com.mateuszkoslacz.moviper.base.view.fragment.mvp;
 import android.os.Bundle;
 import android.view.View;
 
-import com.hannesdorfmann.mosby.mvp.MvpFragment;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpViewStateDelegateCallback;
-import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegate;
-import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpViewStateDelegateImpl;
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.MvpFragment;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.delegate.BaseMvpViewStateDelegateCallback;
+import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpDelegate;
+import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpViewStateDelegateImpl;
+import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
 
 /**
  * This is a enhancement of {@link MvpFragment} that introduces the

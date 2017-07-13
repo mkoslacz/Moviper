@@ -62,12 +62,6 @@ public class UserDetailsActivity
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        setRetainInstance(true);
-    }
-
-    @Override
     public void bindDataToViews(User user) {
         mLoginTextView.setText(user.getLogin());
         mUrlTextView.setText(user.getUrl());

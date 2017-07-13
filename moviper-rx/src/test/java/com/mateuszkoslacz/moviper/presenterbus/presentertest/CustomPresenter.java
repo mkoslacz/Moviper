@@ -2,8 +2,8 @@ package com.mateuszkoslacz.moviper.presenterbus.presentertest;
 
 import android.support.annotation.NonNull;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.mateuszkoslacz.moviper.base.interactor.BaseRxInteractor;
 import com.mateuszkoslacz.moviper.base.presenter.BaseRxPresenter;
 import com.mateuszkoslacz.moviper.base.routing.BaseRxRouting;

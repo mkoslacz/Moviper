@@ -4,8 +4,9 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.view.View;
 
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
+import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.ViperLceViewStateAiPassiveActivity;
 import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 
@@ -17,7 +18,7 @@ public abstract class ViperDataBindingLceViewStatePassiveActivity
         <ContentView extends View,
                 Model,
                 ViewType extends MvpLceView<Model>,
-                ViewStateType extends ViewState<ViewType>,
+                ViewStateType extends LceViewState<Model, ViewType>,
                 Binding extends ViewDataBinding>
         extends ViperLceViewStateAiPassiveActivity<ContentView, Model, ViewType, ViewStateType>
         implements ViperLceView<Model> {

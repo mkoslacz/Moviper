@@ -17,15 +17,16 @@
 package com.mateuszkoslacz.moviper.base.view.activity.mvp;
 
 import android.support.annotation.CallSuper;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hannesdorfmann.mosby.mvp.MvpActivity;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.R;
-import com.hannesdorfmann.mosby.mvp.lce.LceAnimator;
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
+import com.hannesdorfmann.mosby3.mvp.MvpActivity;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.lce.R;
+import com.hannesdorfmann.mosby3.mvp.lce.LceAnimator;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
 
 /**
  * A {@link MvpActivity} that implements {@link MvpLceView} which gives you 3 options:
@@ -58,9 +59,9 @@ public abstract class MvpLceAiActivity<CV extends View, M, V extends MvpLceView<
 
     @CallSuper @Override public void onContentChanged() {
         super.onContentChanged();
-        loadingView = findViewById(R.id.loadingView);
-        contentView = (CV) findViewById(R.id.contentView);
-        errorView = (TextView) findViewById(R.id.errorView);
+        loadingView = createLoadingView();
+        contentView = createContentView();
+        errorView = createErrorView();
 
         if (loadingView == null) {
             throw new NullPointerException(
@@ -76,8 +77,8 @@ public abstract class MvpLceAiActivity<CV extends View, M, V extends MvpLceView<
 
         if (errorView == null) {
             throw new NullPointerException(
-                    "Error view is null! Have you specified a content view in your layout xml file?"
-                            + " You have to give your error View the id R.id.contentView");
+                    "Error view is null! Have you specified an error view in your layout xml file?"
+                            + " You have to give your error View the id R.id.errorView");
         }
 
         errorView.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +86,30 @@ public abstract class MvpLceAiActivity<CV extends View, M, V extends MvpLceView<
                 onErrorViewClicked();
             }
         });
+    }
+
+    /**
+     * Create the loading view. Default is {@code findViewById(R.id.loadingView)}
+     * @return the loading view
+     */
+    @NonNull protected View createLoadingView() {
+        return findViewById(R.id.loadingView);
+    }
+
+    /**
+     * Create the content view. Default is {@code findViewById(R.id.contentView)}
+     * @return the content view
+     */
+    @NonNull protected CV createContentView() {
+        return (CV) findViewById(R.id.contentView);
+    }
+
+    /**
+     * Create the loading view. Default is {@code findViewById(R.id.errorView)}
+     * @return the error view
+     */
+    @NonNull protected TextView createErrorView(){
+        return (TextView) findViewById(R.id.errorView);
     }
 
     /**
@@ -156,5 +181,6 @@ public abstract class MvpLceAiActivity<CV extends View, M, V extends MvpLceView<
         LceAnimator.showErrorView(loadingView, contentView, errorView);
     }
 }
+
 
 

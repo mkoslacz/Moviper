@@ -30,8 +30,8 @@ dependencies {
     testCompile 'org.robolectric:robolectric:' + rootProject.ext.robolectricVersion
     compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportVersion
     compile 'com.android.support:recyclerview-v7:' + rootProject.ext.supportVersion
-    compile 'com.hannesdorfmann.mosby:mvp:' + rootProject.ext.mosbyVersion
-    compile 'com.hannesdorfmann.mosby:viewstate:' + rootProject.ext.mosbyVersion
+    compile 'com.hannesdorfmann.mosby:mvp:' + rootProject.ext.oldMosbyVersion
+    compile 'com.hannesdorfmann.mosby:viewstate:' + rootProject.ext.oldMosbyVersion
 
     compile project(path: ':moviper-common')
 }

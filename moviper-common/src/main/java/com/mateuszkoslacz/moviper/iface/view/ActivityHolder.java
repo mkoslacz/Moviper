@@ -3,7 +3,7 @@ package com.mateuszkoslacz.moviper.iface.view;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.hannesdorfmann.mosby.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
 
 /**
  * Created by mateuszkoslacz on 15.12.2016.

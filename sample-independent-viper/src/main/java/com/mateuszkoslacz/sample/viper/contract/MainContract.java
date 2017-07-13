@@ -1,6 +1,6 @@
 package com.mateuszkoslacz.sample.viper.contract;
 
-import com.hannesdorfmann.mosby.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperRxInteractor;
 import com.mateuszkoslacz.moviper.iface.routing.ViperRxRouting;
 

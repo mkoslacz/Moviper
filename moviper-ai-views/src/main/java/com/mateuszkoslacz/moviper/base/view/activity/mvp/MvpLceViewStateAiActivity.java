@@ -18,14 +18,14 @@ package com.mateuszkoslacz.moviper.base.view.activity.mvp;
 
 import android.view.View;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegate;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpViewStateDelegateCallback;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpViewStateDelegateImpl;
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceActivity;
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
-import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpDelegate;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpViewStateDelegateCallback;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpViewStateDelegateImpl;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceActivity;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
+import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState;
 
 /**
  * A {@link MvpLceActivity} with {@link ViewState} support.

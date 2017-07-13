@@ -1,6 +1,6 @@
 package com.mateuszkoslacz.moviper.iface.view;
 
-import com.hannesdorfmann.mosby.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
 
 /**
  * Created by tomasznajda on 13.12.2016.

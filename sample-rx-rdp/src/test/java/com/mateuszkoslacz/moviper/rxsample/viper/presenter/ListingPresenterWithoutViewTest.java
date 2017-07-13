@@ -11,8 +11,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.android.plugins.RxAndroidPlugins;
+import io.reactivex.plugins.RxJavaPlugins;
 import io.reactivex.schedulers.TestScheduler;
-import io.reactivex.subjects.TestSubject;
+import io.reactivex.subjects.PublishSubject;
 
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.never;
@@ -35,7 +37,10 @@ public class ListingPresenterWithoutViewTest extends ListingPresenterTest {
     public void onViewCreatedUsersReceived() throws Exception {
         List<User> users = new ArrayList<>();
         TestScheduler scheduler = new TestScheduler();
-        TestSubject<List<User>> subject = TestSubject.create(scheduler);
+        RxAndroidPlugins.setMainThreadSchedulerHandler(scheduler1 -> scheduler);
+        RxJavaPlugins.setIoSchedulerHandler(scheduler1 -> scheduler);
+        RxJavaPlugins.setComputationSchedulerHandler(scheduler1 -> scheduler);
+        PublishSubject<List<User>> subject = PublishSubject.create();
         when(mInteractor.getUserList()).thenReturn(subject);
         mPresenter.onViewCreated();
         verify(mView, never()).showLoading();
@@ -50,7 +55,10 @@ public class ListingPresenterWithoutViewTest extends ListingPresenterTest {
     @Test
     public void onViewCreatedFailed() throws Exception {
         TestScheduler scheduler = new TestScheduler();
-        TestSubject<List<User>> subject = TestSubject.create(scheduler);
+        RxAndroidPlugins.setMainThreadSchedulerHandler(scheduler1 -> scheduler);
+        RxJavaPlugins.setIoSchedulerHandler(scheduler1 -> scheduler);
+        RxJavaPlugins.setComputationSchedulerHandler(scheduler1 -> scheduler);
+        PublishSubject<List<User>> subject = PublishSubject.create();
         when(mInteractor.getUserList()).thenReturn(subject);
         mPresenter.onViewCreated();
         verify(mView, never()).showLoading();

@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
 import com.mateuszkoslacz.moviper.base.view.activity.ViperViewStateActivity;
 import com.mateuszkoslacz.moviper.rxsample.R;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
@@ -62,7 +62,6 @@ public class ListingActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listing);
-        setRetainInstance(true);
         ButterKnife.bind(this);
         prepareRecyclerView();
     }
@@ -124,7 +123,7 @@ public class ListingActivity
 
     @NonNull
     @Override
-    public ViewState<ListingContract.View> createViewState() {
+    public ListingViewState createViewState() {
         return new ListingViewState();
     }
 

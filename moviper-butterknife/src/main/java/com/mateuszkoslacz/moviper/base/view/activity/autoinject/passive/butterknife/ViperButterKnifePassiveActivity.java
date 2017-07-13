@@ -1,6 +1,6 @@
 package com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.butterknife;
 
-import com.hannesdorfmann.mosby.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.ViperAiPassiveActivity;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 

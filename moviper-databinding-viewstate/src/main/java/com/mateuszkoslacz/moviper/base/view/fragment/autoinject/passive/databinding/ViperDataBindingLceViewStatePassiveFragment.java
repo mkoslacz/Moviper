@@ -8,8 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
+import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState;
 import com.mateuszkoslacz.moviper.base.view.fragment.autoinject.passive.ViperLceViewStateAiPassiveFragment;
 import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 
@@ -21,7 +22,7 @@ public abstract class ViperDataBindingLceViewStatePassiveFragment
         <ContentView extends View,
                 Model,
                 ViewType extends MvpLceView<Model>,
-                ViewStateType extends ViewState<ViewType>,
+                ViewStateType extends LceViewState<Model, ViewType>,
                 Binding extends ViewDataBinding>
         extends ViperLceViewStateAiPassiveFragment<ContentView, Model, ViewType, ViewStateType>
         implements ViperLceView<Model> {

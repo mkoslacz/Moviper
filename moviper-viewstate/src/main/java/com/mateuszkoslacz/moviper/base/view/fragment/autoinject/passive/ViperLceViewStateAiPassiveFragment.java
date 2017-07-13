@@ -3,8 +3,9 @@ package com.mateuszkoslacz.moviper.base.view.fragment.autoinject.passive;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
+import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState;
 import com.mateuszkoslacz.moviper.base.view.fragment.autoinject.ViperLceViewStateAiFragment;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
@@ -17,7 +18,7 @@ public abstract class ViperLceViewStateAiPassiveFragment
         <ContentView extends View,
                 Model,
                 ViewType extends MvpLceView<Model>,
-                ViewStateType extends ViewState<ViewType>>
+                ViewStateType extends LceViewState<Model,ViewType>>
         extends ViperLceViewStateAiFragment<ContentView, Model, ViewType, ViperPresenter<ViewType>, ViewStateType>
         implements ViperLceView<Model> {
 

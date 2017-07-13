@@ -27,8 +27,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportVersion
-    compile 'com.hannesdorfmann.mosby:mvp:' + rootProject.ext.mosbyVersion
-    compile 'com.hannesdorfmann.mosby:viewstate:' + rootProject.ext.mosbyVersion
+    compile 'com.hannesdorfmann.mosby3:mvp:' + rootProject.ext.mosbyVersion
+    compile 'com.hannesdorfmann.mosby3:viewstate:' + rootProject.ext.mosbyVersion
     testCompile 'junit:junit:4.12'
     compile project(path: ':moviper-common')
 }

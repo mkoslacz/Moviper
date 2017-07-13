@@ -1,7 +1,7 @@
 package com.mateuszkoslacz.moviper.iface.presenter;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
 
 /**
  * Created by mateuszkoslacz on 24.10.2016.

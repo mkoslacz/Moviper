@@ -26,11 +26,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpDelegateCallback;
-import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegate;
-import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegateImpl;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.delegate.MvpDelegateCallback;
+import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpDelegate;
+import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpDelegateImpl;
 
 
 /**
@@ -41,7 +41,7 @@ import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegateImpl;
  * @since 1.0.0
  */
 public abstract class MvpAiFragment<V extends MvpView, P extends MvpPresenter<V>> extends Fragment
-        implements BaseMvpDelegateCallback<V, P>, MvpView {
+        implements MvpDelegateCallback<V, P>, MvpView {
 
     protected FragmentMvpDelegate<V, P> mvpDelegate;
 
@@ -74,7 +74,7 @@ public abstract class MvpAiFragment<V extends MvpView, P extends MvpPresenter<V>
      */
     @NonNull protected FragmentMvpDelegate<V, P> getMvpDelegate() {
         if (mvpDelegate == null) {
-            mvpDelegate = new FragmentMvpDelegateImpl<>(this);
+            mvpDelegate = new FragmentMvpDelegateImpl<>(this, this, true, true);
         }
 
         return mvpDelegate;
@@ -88,16 +88,6 @@ public abstract class MvpAiFragment<V extends MvpView, P extends MvpPresenter<V>
         this.presenter = presenter;
     }
 
-    @Override public boolean isRetainInstance() {
-        return getRetainInstance();
-    }
-
-    @Override public boolean shouldInstanceBeRetained() {
-        FragmentActivity activity = getActivity();
-        boolean changingConfig = activity != null && activity.isChangingConfigurations();
-        return getRetainInstance() && changingConfig;
-    }
-
     @NonNull @Override public V getMvpView() {
         return (V) this;
     }
@@ -107,6 +97,7 @@ public abstract class MvpAiFragment<V extends MvpView, P extends MvpPresenter<V>
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(getLayoutId(), container, false);
     }
+
 
     @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

@@ -19,14 +19,14 @@ package com.mateuszkoslacz.moviper.base.view.fragment.mvp;
 import android.os.Bundle;
 import android.view.View;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpViewStateDelegateCallback;
-import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegate;
-import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpViewStateDelegateImpl;
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceFragment;
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
-import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.delegate.MvpViewStateDelegateCallback;
+import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpDelegate;
+import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpViewStateDelegateImpl;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceFragment;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
+import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState;
 
 /**
  * A {@link MvpLceFragment} with {@link ViewState} support.
@@ -36,7 +36,7 @@ import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
  */
 public abstract class MvpLceViewStateAiFragment<CV extends View, M, V extends MvpLceView<M>, P extends MvpPresenter<V>>
         extends MvpLceAiFragment<CV, M, V, P> implements MvpLceView<M>,
-        BaseMvpViewStateDelegateCallback<V, P> {
+        MvpViewStateDelegateCallback<V, P, LceViewState<M, V>> {
 
     /**
      * The viewstate will be instantiated by calling {@link #createViewState()} in {@link
@@ -49,25 +49,20 @@ public abstract class MvpLceViewStateAiFragment<CV extends View, M, V extends Mv
      */
     private boolean restoringViewState = false;
 
-    /**
-     * Create the view state object of this class
-     */
-    public abstract LceViewState<M, V> createViewState();
-
     @Override protected FragmentMvpDelegate<V, P> getMvpDelegate() {
         if (mvpDelegate == null) {
-            mvpDelegate = new FragmentMvpViewStateDelegateImpl<V, P>(this);
+            mvpDelegate = new FragmentMvpViewStateDelegateImpl<>(this, this, true, true);
         }
 
         return mvpDelegate;
     }
 
-    @Override public ViewState getViewState() {
+    @Override public LceViewState<M, V> getViewState() {
         return viewState;
     }
 
-    @Override public void setViewState(ViewState<V> viewState) {
-        this.viewState = (LceViewState<M, V>) viewState;
+    @Override public void setViewState(LceViewState<M, V> viewState) {
+        this.viewState = viewState;
     }
 
     @Override public void showContent() {

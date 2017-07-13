@@ -2,9 +2,10 @@ package com.mateuszkoslacz.moviper.base.view.activity.autoinject.butterknife;
 
 import android.view.View;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
+import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.ViperLceViewStateAiActivity;
 import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 
@@ -19,7 +20,7 @@ public abstract class ViperButterKnifeLceViewStateActivity
                 Model,
                 ViewType extends MvpLceView<Model>,
                 Presenter extends MvpPresenter<ViewType>,
-                ViewStateType extends ViewState<ViewType>>
+                ViewStateType extends LceViewState<Model, ViewType>>
         extends ViperLceViewStateAiActivity<ContentView, Model, ViewType, Presenter, ViewStateType>
         implements ViperLceView<Model> {
 

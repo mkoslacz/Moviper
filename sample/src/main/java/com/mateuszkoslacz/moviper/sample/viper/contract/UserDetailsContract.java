@@ -2,8 +2,8 @@ package com.mateuszkoslacz.moviper.sample.viper.contract;
 
 import android.app.Activity;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
 import com.mateuszkoslacz.moviper.iface.interactor.ViperInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.interactor.ViperPresenterForInteractor;
 import com.mateuszkoslacz.moviper.iface.presenter.routing.ViperPresenterForRouting;

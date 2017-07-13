@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.VisibleForTesting;
 import android.util.SparseArray;
 
-import com.hannesdorfmann.mosby.mvp.MvpActivity;
-import com.hannesdorfmann.mosby.mvp.MvpFragment;
+import com.hannesdorfmann.mosby3.mvp.MvpActivity;
+import com.hannesdorfmann.mosby3.mvp.MvpFragment;
 import com.mateuszkoslacz.moviper.iface.presenter.ViperPresenter;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 

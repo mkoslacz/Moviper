@@ -1,60 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:background="@android:color/white"
-                android:layout_width="match_parent"
-                android:layout_height="100dp">
+<com.mateuszkoslacz.moviper.base.view.SuperFrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
 
-    <ImageView
-            android:id="@+id/product_photo"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_margin="5dp"/>
-
-    <TextView
-            android:id="@+id/product_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="25dp"
-            android:textSize="20dp"
-            tools:text="@string/fake_title"/>
-
-    <TextView
-            android:id="@+id/product_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp"
-            android:textSize="17dp"
-            tools:text="@string/fake_price"/>
-
-    <TextView
-            android:id="@+id/product_price_currency"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/product_price"
-            android:layout_marginTop="21dp"
-            android:textSize="15dp"
-            android:text="£"/>
-
-    <View
+    <RelativeLayout
+            android:background="@android:color/white"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="99dp"
-            android:background="@android:color/darker_gray"/>
+            android:layout_height="match_parent">
 
-    <TextView
-            android:id="@+id/product_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:textSize="12dp"
-            android:ellipsize="end"
-            android:layout_marginTop="50dp"
-            android:lines="2"
-            tools:text="@string/fake_descripton"
-            android:layout_alignParentTop="true"/>
+        <ImageView
+                android:id="@+id/product_photo"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_margin="5dp"/>
 
-</RelativeLayout>
+        <TextView
+                android:id="@+id/product_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="25dp"
+                android:textSize="20dp"
+                tools:text="@string/fake_title"/>
+
+        <TextView
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dp"
+                android:textSize="17dp"
+                tools:text="@string/fake_price"/>
+
+        <TextView
+                android:id="@+id/product_price_currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/product_price"
+                android:layout_marginTop="21dp"
+                android:textSize="15dp"
+                android:text="£"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="99dp"
+                android:background="@android:color/darker_gray"/>
+
+        <TextView
+                android:id="@+id/product_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:textSize="12dp"
+                android:ellipsize="end"
+                android:layout_marginTop="50dp"
+                android:lines="2"
+                tools:text="@string/fake_descripton"
+                android:layout_alignParentTop="true"/>
+
+    </RelativeLayout>
+</com.mateuszkoslacz.moviper.base.view.SuperFrameLayout>

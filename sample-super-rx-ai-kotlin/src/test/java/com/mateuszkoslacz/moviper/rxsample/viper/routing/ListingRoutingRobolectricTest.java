@@ -2,6 +2,7 @@ package com.mateuszkoslacz.moviper.rxsample.viper.routing;
 
 import android.content.Intent;
 
+import com.mateuszkoslacz.moviper.presentersdispatcher.ActivityStarter;
 import com.mateuszkoslacz.moviper.rxsample.BuildConfig;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 import com.mateuszkoslacz.moviper.rxsample.viper.presenter.UserDetailsPresenter;

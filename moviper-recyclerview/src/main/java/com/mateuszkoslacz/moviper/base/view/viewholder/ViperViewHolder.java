@@ -2,18 +2,23 @@ package com.mateuszkoslacz.moviper.base.view.viewholder;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpDelegateCallback;
-import com.hannesdorfmann.mosby.mvp.delegate.ViewGroupMvpDelegate;
-import com.hannesdorfmann.mosby.mvp.delegate.ViewGroupMvpDelegateImpl;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.delegate.MvpDelegateCallback;
+import com.hannesdorfmann.mosby3.mvp.delegate.ViewGroupDelegateCallback;
+import com.hannesdorfmann.mosby3.mvp.delegate.ViewGroupMvpDelegate;
+import com.hannesdorfmann.mosby3.mvp.delegate.ViewGroupMvpDelegateImpl;
+import com.mateuszkoslacz.moviper.base.view.SuperFrameLayout;
 import com.mateuszkoslacz.moviper.iface.view.MvpDataView;
 import com.mateuszkoslacz.moviper.iface.view.ViperDataView;
 
 /**
  * Created by norbertbanaszek on 24.10.2016.
+ * <p>
+ * You must wrap your Viewholder layout in SuperFrameLayout to use this ViewHolder!
  * <p>
  * An {@link RecyclerView.Adapter} that uses an {@link MvpPresenter} to implement a
  * Model-View-Presenter
@@ -22,7 +27,7 @@ import com.mateuszkoslacz.moviper.iface.view.ViperDataView;
 
 public abstract class ViperViewHolder<DataObject, View extends MvpDataView, Presenter extends MvpPresenter<View>>
         extends RecyclerView.ViewHolder
-        implements BaseMvpDelegateCallback<View, Presenter>, ViperDataView<DataObject> {
+        implements ViewGroupDelegateCallback<View, Presenter>, ViperDataView<DataObject> {
 
     private Bundle args;
     private Presenter mPresenter;
@@ -36,10 +41,20 @@ public abstract class ViperViewHolder<DataObject, View extends MvpDataView, Pres
     @NonNull
     private ViewGroupMvpDelegate<View, Presenter> getMvpDelegate() {
         if (mvpDelegate == null) {
-            mvpDelegate = new ViewGroupMvpDelegateImpl<>(this);
+            mvpDelegate = new ViewGroupMvpDelegateImpl<>(itemView, this, true);
         }
 
         return mvpDelegate;
+    }
+
+    @Override
+    public Parcelable superOnSaveInstanceState() {
+        return ((SuperFrameLayout) itemView).superOnSaveInstanceState();
+    }
+
+    @Override
+    public void superOnRestoreInstanceState(Parcelable state) {
+        ((SuperFrameLayout) itemView).superOnRestoreInstanceState(state);
     }
 
     @NonNull
@@ -88,21 +103,4 @@ public abstract class ViperViewHolder<DataObject, View extends MvpDataView, Pres
     public View getMvpView() {
         return (View) this;
     }
-
-    @Override
-    public boolean isRetainInstance() {
-        return false;
-    }
-
-    @Override
-    public void setRetainInstance(boolean retainingInstance) {
-        // TODO try to use com.hannesdorfmann.mosby3.mvp.delegate.PresenterManager from Mosby 3.0
-        throw new UnsupportedOperationException("ViewHolders are recycled throughout the views, so you can't retain your presenter in the view!");
-    }
-
-    @Override
-    public boolean shouldInstanceBeRetained() {
-        return false;
-    }
-
 }

@@ -2,7 +2,7 @@ package com.mateuszkoslacz.moviper.base.mateuszkoslacz.moviper.base.view.activit
 
 import android.view.View;
 
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
 import com.mateuszkoslacz.moviper.base.view.activity.autoinject.passive.ViperLceAiPassiveActivity;
 import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;

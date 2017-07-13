@@ -4,10 +4,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.hannesdorfmann.mosby.mvp.viewstate.MvpViewStateFragment;
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.viewstate.MvpViewStateFragment;
+import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 /**
@@ -18,7 +18,7 @@ public abstract class ViperViewStateFragment
         <ViewType extends MvpView,
                 Presenter extends MvpPresenter<ViewType>,
                 ViewStateType extends ViewState<ViewType>>
-        extends MvpViewStateFragment<ViewType, Presenter>
+        extends MvpViewStateFragment<ViewType, Presenter, ViewStateType>
         implements ViperView {
 
     @Override

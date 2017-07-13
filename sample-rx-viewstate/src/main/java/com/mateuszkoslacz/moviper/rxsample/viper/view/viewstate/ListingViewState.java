@@ -3,7 +3,7 @@ package com.mateuszkoslacz.moviper.rxsample.viper.view.viewstate;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.hannesdorfmann.mosby.mvp.viewstate.RestorableViewState;
+import com.hannesdorfmann.mosby3.mvp.viewstate.RestorableViewState;
 import com.mateuszkoslacz.moviper.rxsample.viper.contract.ListingContract;
 import com.mateuszkoslacz.moviper.rxsample.viper.entity.User;
 

@@ -20,11 +20,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegate;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegateCallback;
-import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegateImpl;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpDelegate;
+import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpDelegateImpl;
+import com.hannesdorfmann.mosby3.mvp.delegate.MvpDelegateCallback;
 
 /**
  * An Activity that uses an {@link MvpPresenter} to implement a Model-View-Presenter
@@ -34,7 +34,7 @@ import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegateImpl;
  * @since 1.0.0
  */
 public abstract class MvpAiActivity<V extends MvpView, P extends MvpPresenter<V>>
-        extends AppCompatActivity implements ActivityMvpDelegateCallback<V, P>, MvpView {
+        extends AppCompatActivity implements MvpDelegateCallback<V, P>, MvpView {
 
     protected ActivityMvpDelegate mvpDelegate;
     protected P presenter;
@@ -115,7 +115,7 @@ public abstract class MvpAiActivity<V extends MvpView, P extends MvpPresenter<V>
      */
     @NonNull protected ActivityMvpDelegate<V, P> getMvpDelegate() {
         if (mvpDelegate == null) {
-            mvpDelegate = new ActivityMvpDelegateImpl(this);
+            mvpDelegate = new ActivityMvpDelegateImpl(this, this, true);
         }
 
         return mvpDelegate;
@@ -133,33 +133,6 @@ public abstract class MvpAiActivity<V extends MvpView, P extends MvpPresenter<V>
         return (V) this;
     }
 
-    @Override public boolean isRetainInstance() {
-        return retainInstance;
-    }
-
-    @Override public boolean shouldInstanceBeRetained() {
-        return retainInstance && isChangingConfigurations();
-    }
-
-    @Override public void setRetainInstance(boolean retainInstance) {
-        this.retainInstance = retainInstance;
-    }
-
-    @Override public Object onRetainNonMosbyCustomNonConfigurationInstance() {
-        return null;
-    }
-
-    /**
-     * Internally used by Mosby. Use {@link #onRetainNonMosbyCustomNonConfigurationInstance()} and
-     * {@link #getNonMosbyLastCustomNonConfigurationInstance()}
-     */
-    @Override public final Object onRetainCustomNonConfigurationInstance() {
-        return getMvpDelegate().onRetainCustomNonConfigurationInstance();
-    }
-
-    @Override public final Object getNonMosbyLastCustomNonConfigurationInstance() {
-        return getMvpDelegate().getNonMosbyLastCustomNonConfigurationInstance();
-    }
 
     protected void injectViews(){
         // stub
@@ -167,3 +140,4 @@ public abstract class MvpAiActivity<V extends MvpView, P extends MvpPresenter<V>
 
     abstract protected int getLayoutId();
 }
+
