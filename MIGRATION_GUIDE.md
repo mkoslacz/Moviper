@@ -1,3 +1,11 @@
+# 2.0.3 to 2.0.4
+
+*No changes needed*
+
+# 2.0.2 to 2.0.3
+
+*No changes needed although migrating to splitted `injectViews()` and `bindViews()` in ViperAiViewHolder and ViperAiPassiveViewHolder is strongly recommended (see methods docs).*
+
 # 2.0.1 to 2.0.2
 
 From now IPC methods do not operate by default on a particular `Scheduler`. Please review your IPC streams, as in some cases this may be a breaking change. 

@@ -23,34 +23,34 @@ Import the selected Moviper modules to your module gradle file. Moviper-rx 2.x.x
 ```groovy
 dependencies {
     // core modules, in the most common scenario importing one of these two will be enough
-    compile 'com.mateuszkoslacz.moviper:moviper-rx:2.0.2' // RxJava communication based Moviper core (recommended)
-    compile 'com.mateuszkoslacz.moviper:moviper-callbacks:2.0.2' // callbacks communication based Moviper core 
+    compile 'com.mateuszkoslacz.moviper:moviper-rx:2.0.4' // RxJava communication based Moviper core (recommended)
+    compile 'com.mateuszkoslacz.moviper:moviper-callbacks:2.0.4' // callbacks communication based Moviper core 
     
     // Mosby's viewstate Moviper views 
-    compile 'com.mateuszkoslacz.moviper:moviper-viewstate:2.0.2'
+    compile 'com.mateuszkoslacz.moviper:moviper-viewstate:2.0.4'
     
     // Butterknife Moviper views
-    compile 'com.mateuszkoslacz.moviper:moviper-butterknife:2.0.2'
+    compile 'com.mateuszkoslacz.moviper:moviper-butterknife:2.0.4'
     // Butterknife Moviper views with Mosby's viewstate
-    compile 'com.mateuszkoslacz.moviper:moviper-butterknife-viewstate:2.0.2'
+    compile 'com.mateuszkoslacz.moviper:moviper-butterknife-viewstate:2.0.4'
     
     // Databinding Moviper Views 
-    compile 'com.mateuszkoslacz.moviper:moviper-databinding:2.0.2'
+    compile 'com.mateuszkoslacz.moviper:moviper-databinding:2.0.4'
     // Databinding Moviper Views Mosby's viewstate
-    compile 'com.mateuszkoslacz.moviper:moviper-databinding-viewstate:2.0.2'
+    compile 'com.mateuszkoslacz.moviper:moviper-databinding-viewstate:2.0.4'
     
     // Recyclerview Moviper extension, allows you create the Viper classes set for every RecyclerVew cell
-    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview:2.0.2'
+    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview:2.0.4'
     // Butterknife Moviper Recyclerview cells
-    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview-butterknife:2.0.2'
+    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview-butterknife:2.0.4'
     // Databinding Moviper Recyclerview cells
-    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview-databinding:2.0.2'
+    compile 'com.mateuszkoslacz.moviper:moviper-recyclerview-databinding:2.0.4'
     
     // Android Service Moviper extensions 
-    compile 'com.mateuszkoslacz.moviper:moviper-service:2.0.2'
+    compile 'com.mateuszkoslacz.moviper:moviper-service:2.0.4'
     
     // optional testing utils, still beta, it has to be debug-compiled and causes some minor Manifest issues on debug builds
-    debugCompile 'com.mateuszkoslacz.moviper:moviper-test:2.0.2'
+    debugCompile 'com.mateuszkoslacz.moviper:moviper-test:2.0.4'
 }
 ```
 

@@ -1,3 +1,19 @@
+## 2.0.4
+
+### Fix
+
+* ViperButterKnifeFragments (all):
+ - missing views unbinding added.
+
+
+## 2.0.3
+
+### Enhancement
+
+* ViperAiViewHolder and ViperAiPassiveViewHolder:
+ - `bindViews()` method added to ease recycling views management and separate view creation and view binding logic. Although it is not necessary to migrate to it from the regular `injectViews` it is strongly recommended for performance purposes. 
+
+
 ## 2.0.2
 
 ### Breaking change
