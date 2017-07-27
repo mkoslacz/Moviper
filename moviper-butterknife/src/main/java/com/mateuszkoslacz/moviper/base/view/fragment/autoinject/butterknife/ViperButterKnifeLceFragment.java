@@ -9,6 +9,7 @@ import com.mateuszkoslacz.moviper.iface.view.ViperLceView;
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by mateuszkoslacz on 14.12.2016.
@@ -22,9 +23,17 @@ public abstract class ViperButterKnifeLceFragment
         extends ViperLceAiFragment<ContentView, Model, ViewType, Presenter>
         implements ViperLceView<Model> {
 
+    private Unbinder unbinder;
+
     @Override
     protected void injectViews(View view) {
         super.injectViews(view);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }

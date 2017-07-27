@@ -7,6 +7,7 @@ import com.mateuszkoslacz.moviper.base.view.fragment.autoinject.passive.ViperAiP
 import com.mateuszkoslacz.moviper.iface.view.ViperView;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by mateuszkoslacz on 14.12.2016.
@@ -17,9 +18,17 @@ public abstract class ViperButterKnifePassiveFragment
         extends ViperAiPassiveFragment<ViewType>
         implements ViperView {
 
+    private Unbinder unbinder;
+
     @Override
     protected void injectViews(View view) {
         super.injectViews(view);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }
