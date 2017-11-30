@@ -1,9 +1,1 @@
-include ':moviper-test', ':sample-independent-viper', ':sample', ':sample-rx', ':sample-rx-ai',
-        ':moviper-viewstate', ':moviper-databinding-viewstate',
-        ':moviper-butterknife-viewstate', ':moviper-recyclerview-butterknife',
-        ':moviper-recyclerview-databinding', ':sample-super-rx-ai', ':moviper-common',
-        ':moviper-callbacks', ':moviper-rx', ':moviper-recyclerview',
-        ':moviper-butterknife', ':moviper-databinding',
-        ':sample-super-rx-ai-kotlin', ':sample-super-rx-databinding', ':sample-ipc',
-        ':sample-recyclerview', 'sample-rx-viewstate', ':sample-rx-rdp', ':sample-service',
-        ':moviper-service'
+include ':moviper3'
