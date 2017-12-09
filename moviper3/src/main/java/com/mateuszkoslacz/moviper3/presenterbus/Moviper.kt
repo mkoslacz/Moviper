@@ -6,6 +6,7 @@ import android.util.Log
 
 import com.mateuszkoslacz.moviper3.exception.PresenterAlreadyRegisteredException
 import com.mateuszkoslacz.moviper3.exception.PresenterInstancesAccessNotEnabled
+import com.mateuszkoslacz.moviper3.exception.PresenterNotFoundException
 import com.mateuszkoslacz.moviper3.exception.PresentersAccessUtilNotEnabled
 import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
 import java.util.concurrent.CopyOnWriteArrayList
@@ -32,7 +33,7 @@ class Moviper private constructor() {
     // for every external call we do n reads where n is the size of the presenters list.
     // that makes
     // TODO: 28.10.2016 reconsider no-checking if presenter exists
-    private val presenters = CopyOnWriteArrayList<ViperRxPresenter<*, *, *>>()
+    private val presenters = CopyOnWriteArrayList<ViperRxPresenter<*>>()
 
     private val registerSynchronizer = PublishSubject.create<MoviperBundle>()
 
@@ -57,13 +58,13 @@ class Moviper private constructor() {
         this.config = config
     }
 
-    fun register(presenter: ViperRxPresenter<*, *, *>) {
+    fun register(presenter: ViperRxPresenter<*>) {
         if (config.isPresenterAccessUtilEnabled) {
             registerSynchronizer.onNext(MoviperBundle(presenter, true))
         }
     }
 
-    fun unregister(presenter: ViperRxPresenter<*, *, *>) {
+    fun unregister(presenter: ViperRxPresenter<*>) {
         if (config.isPresenterAccessUtilEnabled) {
             registerSynchronizer.onNext(MoviperBundle(presenter, false))
         }
@@ -92,16 +93,16 @@ class Moviper private constructor() {
      * @return [Observable] that emits all (from zero to n) registered presenters of given
      * class.
      */
-    fun <PresenterType : ViperRxPresenter<*, *, *>> getPresenters(
+    fun <PresenterType : ViperRxPresenter<*>> getPresenters(
             presenterTypeClass: Class<PresenterType>): Observable<PresenterType> {
         if (!config.isPresenterAccessUtilEnabled) throw PresentersAccessUtilNotEnabled()
-        return Observable.fromIterable<ViperRxPresenter<*, *, *>>(presenters)
+        return Observable.fromIterable<ViperRxPresenter<*>>(presenters)
                 .filter { viperPresenter -> viperPresenter.javaClass == presenterTypeClass }
                 .cast(presenterTypeClass)
     }
 
 
-    private fun <PresenterType : ViperRxPresenter<*, *, *>> getPresenterInstanceObservable(
+    private fun <PresenterType : ViperRxPresenter<*>> getPresenterInstanceObservable(
             presenterTypeClass: Class<PresenterType>, name: String): Observable<PresenterType> {
         if (!config.isInstancePresentersEnabled) throw PresenterInstancesAccessNotEnabled()
         return getPresenters(presenterTypeClass)
@@ -133,7 +134,7 @@ class Moviper private constructor() {
      * returning proper name in [ViperRxPresenter.getName].
      * @return [Maybe] that emits (or not) Presenter instance of given name and class.
      */
-    fun <PresenterType : ViperRxPresenter<*, *, *>> getPresenterInstance(
+    fun <PresenterType : ViperRxPresenter<*>> getPresenterInstance(
             presenterTypeClass: Class<PresenterType>, name: String): Maybe<PresenterType> {
         return getPresenterInstanceObservable(presenterTypeClass, name)
                 .firstElement()
@@ -165,17 +166,19 @@ class Moviper private constructor() {
      * @return [Single] that emits Presenter instance of given name and class or throws a
      * [java.util.NoSuchElementException].
      */
-    fun <PresenterType : ViperRxPresenter<*, *, *>> getPresenterInstanceOrError(
+    fun <PresenterType : ViperRxPresenter<*>> getPresenterInstanceOrError(
             presenterTypeClass: Class<PresenterType>, name: String): Single<PresenterType> {
         return getPresenterInstanceObservable(presenterTypeClass, name)
-                .singleOrError()
+                .firstElement()
+                .doOnComplete { throw PresenterNotFoundException(presenterTypeClass, name) }
+                .toSingle()
     }
 
-    private fun registerSync(presenter: ViperRxPresenter<*, *, *>) {
+    private fun registerSync(presenter: ViperRxPresenter<*>) {
         presenters.add(presenter)
     }
 
-    private fun unregisterSync(presenter: ViperRxPresenter<*, *, *>) {
+    private fun unregisterSync(presenter: ViperRxPresenter<*>) {
         presenters.remove(presenter)
     }
 
@@ -184,7 +187,7 @@ class Moviper private constructor() {
         presenters.clear()
     }
 
-    private inner class MoviperBundle(val presenter: ViperRxPresenter<*, *, *>, val isRegister: Boolean)
+    private inner class MoviperBundle(val presenter: ViperRxPresenter<*>, val isRegister: Boolean)
 
     companion object {
 

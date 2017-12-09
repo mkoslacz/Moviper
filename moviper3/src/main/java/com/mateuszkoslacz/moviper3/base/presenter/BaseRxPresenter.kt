@@ -29,10 +29,10 @@ import java.util.*
 abstract class BaseRxPresenter<ViewType : MvpView,
         out InteractorType : ViperRxInteractor,
         out RoutingType : ViperRxRouting<*>>(val args: Bundle? = null)
-    : MvpBasePresenter<ViewType>(), ViperRxPresenter<ViewType, InteractorType, RoutingType> {
+    : MvpBasePresenter<ViewType>(), ViperRxPresenter<ViewType> {
 
-    final override val routing: RoutingType
-    final override val interactor: InteractorType
+    val routing: RoutingType
+    val interactor: InteractorType
 
     override val name = this.javaClass.name + "_" + Random().nextInt()
 
@@ -55,27 +55,44 @@ abstract class BaseRxPresenter<ViewType : MvpView,
         interactor.attach()
     }
 
+    @Deprecated("This method has been split into 2 methods: {@link #detachView()} and {@link #destroy()}")
     override fun detachView(retainInstance: Boolean) {
-        super.detachView(retainInstance)
-        if (!retainInstance) disposables.clear()
-        Moviper.instance.unregister(presenter = this)
-        routing.detach(retainInstance)
-        interactor.detach(retainInstance)
     }
 
-    override fun detachView() { // TODO
+    override fun detachView() {
         super.detachView()
-        routing.detach(true)
-        interactor.detach(true)
+        routing.detach()
+        interactor.detach()
     }
 
-    override fun destroy() { // TODO
+    override fun destroy() {
         super.destroy()
         disposables.clear()
         Moviper.instance.unregister(presenter = this)
-        routing.detach(false)
-        interactor.detach(false)
+        routing.destroy()
+        interactor.destroy()
     }
+
+
+    /**
+     * **DO NOT USE ANY CLASS FIELDS IN THIS METHOD** - they won't be initialized at the moment
+     * of calling this method!
+     *
+     * Override this and return a instantiated Routing object here.
+     *
+     * @return The ViperRouting for this view
+     */
+    abstract fun createRouting(): RoutingType
+
+    /**
+     * **DO NOT USE ANY CLASS FIELDS IN THIS METHOD** - they won't be initialized at the moment
+     * of calling this method!
+     *
+     * Override this and return a instantiated Interactor object here.
+     *
+     * @return The ViperInteractor for this view
+     */
+    abstract fun createInteractor(): InteractorType
 
     override fun toString() = name
 

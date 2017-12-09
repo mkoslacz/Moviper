@@ -6,4 +6,4 @@ import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
 
 data class ActivityStarter(val context: Context,
                            val intent: Intent,
-                           val presenter: ViperRxPresenter<*, *, *>)
+                           val presenter: ViperRxPresenter<*>)
