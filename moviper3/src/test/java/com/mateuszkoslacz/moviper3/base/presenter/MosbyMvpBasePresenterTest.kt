@@ -45,6 +45,10 @@ class MosbyMvpBasePresenterTest {
         override fun createInteractor(): ViperRxInteractor {
             return object : BaseRxInteractor(){}
         }
+
+        override fun initStreams() {
+
+        }
     }
 
     @Test

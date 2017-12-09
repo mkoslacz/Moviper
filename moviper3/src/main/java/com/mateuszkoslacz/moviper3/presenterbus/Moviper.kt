@@ -33,13 +33,13 @@ class Moviper private constructor() {
     // for every external call we do n reads where n is the size of the presenters list.
     // that makes
     // TODO: 28.10.2016 reconsider no-checking if presenter exists
-    private val presenters = CopyOnWriteArrayList<ViperRxPresenter<*>>()
+    private val presenters = CopyOnWriteArrayList<ViperRxPresenter<*>>() // TODO no more need of using it if operates on single thread, just use plain list
 
     private val registerSynchronizer = PublishSubject.create<MoviperBundle>()
 
     init {
         registerSynchronizer
-                .subscribeOn(Schedulers.computation())
+                .subscribeOn(Schedulers.computation()) //TODO this shall be done on single, dedicated thread that can be ovverriden for tests like in AndroidSchedulers
                 .doOnNext(Consumer<MoviperBundle> { this.routeMoviperBundle(it) })
                 .doOnError { throwable -> errorHandler.invoke(throwable) }
                 .retry()

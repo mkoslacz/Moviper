@@ -31,6 +31,7 @@ abstract class BaseRxPresenter<ViewType : MvpView,
         out RoutingType : ViperRxRouting<*>>(val args: Bundle? = null)
     : MvpBasePresenter<ViewType>(), ViperRxPresenter<ViewType> {
 
+    private var viewWasAttached = false
     val routing: RoutingType
     val interactor: InteractorType
 
@@ -48,11 +49,19 @@ abstract class BaseRxPresenter<ViewType : MvpView,
         this.interactor = createInteractor()
     }
 
+    abstract fun initStreams()
+
+    @Deprecated("do not override it to init your streams, use initStreams() instead! " +
+            "You can still override it to perform some actions on each reattach to view.")
     override fun attachView(view: ViewType) {
         super.attachView(view)
-        Moviper.instance.register(presenter = this)
         routing.attach(view as ViperView)
         interactor.attach()
+        if (viewWasAttached.not()){
+            Moviper.instance.register(presenter = this)
+            initStreams()
+        }
+        viewWasAttached = true
     }
 
     @Deprecated("This method has been split into 2 methods: {@link #detachView()} and {@link #destroy()}")

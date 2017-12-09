@@ -98,4 +98,7 @@ class BaseRxPresenterTest {
 class TestPresenter : BaseRxPresenter<MvpView, ViperRxInteractor, ViperRxRouting<*>>() {
     override fun createRouting(): ViperRxRouting<*> = mock()
     override fun createInteractor(): ViperRxInteractor = mock()
+    override fun initStreams() {
+
+    }
 }

@@ -17,7 +17,7 @@ class ViperPresentersList<ViewType : MvpView>(vararg presenters: ViperRxPresente
 
     private val presenters = LinkedList<ViperRxPresenter<ViewType>>().apply { addAll(presenters) }
 
-    override val name = "ViperPresentersList - won't be registered"
+    override val name = "ViperPresentersList - contents: ${presenters.fold(initial = "", operation = {allNames, presenter -> allNames + presenter.name + " "})}"
 
     override fun attachView(view: ViewType) {
         presenters.forEach { attachView(view) }

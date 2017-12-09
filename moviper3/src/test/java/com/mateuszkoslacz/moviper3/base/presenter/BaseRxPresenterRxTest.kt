@@ -16,7 +16,6 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.schedulers.TestScheduler
 import org.junit.After
 import org.junit.Test
-import org.mockito.Mockito
 import java.util.concurrent.TimeUnit
 
 class BaseRxPresenterRxTest {
@@ -33,9 +32,7 @@ class BaseRxPresenterRxTest {
         override fun createRouting(): ViperRxRouting<*> = mock()
         override fun createInteractor(): ViperRxInteractor = mock()
 
-        override fun attachView(incomingView: TestView) {
-            super.attachView(incomingView)
-
+        override fun initStreams() {
             disposables.add(
                     Observable.interval(100, TimeUnit.MILLISECONDS, scheduler)
                             .subscribeBy(onNext = { view?.testDisplay(it) }))
@@ -65,11 +62,9 @@ class BaseRxPresenterRxTest {
         presenter.scheduler.advanceTimeBy(301, TimeUnit.MILLISECONDS)
         verifyNoMoreInteractions(view)
         clearInvocations(view)
-        presenter.attachView(view)
+        presenter.attachView(view) // TODO shouldn't it somehow break on reattaching when destroyed?
         presenter.scheduler.advanceTimeBy(301, TimeUnit.MILLISECONDS)
-        verify(view).testDisplay(0)
-        verify(view).testDisplay(1)
-        verify(view).testDisplay(2)
+        verifyNoMoreInteractions(view)
     }
 
     @Test
@@ -82,13 +77,12 @@ class BaseRxPresenterRxTest {
         presenter.detachView()
         presenter.scheduler.advanceTimeBy(301, TimeUnit.MILLISECONDS)
         verifyNoMoreInteractions(view)
-        presenter.attachView(view) // TODO what will happen on reattaching view to the presenter? won't all of the observables from attachView be recreated?
+        presenter.attachView(view)
         presenter.scheduler.advanceTimeBy(301, TimeUnit.MILLISECONDS)
         verify(view).testDisplay(6)
         verify(view).testDisplay(7)
         verify(view).testDisplay(8)
-        verifyNoMoreInteractions(view) // TODO it will! we need to create new streams only when presenter is attached for the first time
-        // TODO moreover it will be registered to IPC twice in such case!
+        verifyNoMoreInteractions(view)
     }
 
     @Test
