@@ -16,9 +16,9 @@ import java.util.Random
  * Created by bwilk on 12/22/16.
  */
 class MoviperPresentersDispatcher protected constructor() {
-    private val mPresenters = SparseArray<ViperRxPresenter<*, *, *>>() // TODO: 27.12.2016 SparseArray or HashMap?
+    private val mPresenters = SparseArray<ViperRxPresenter<*>>() // TODO: 27.12.2016 SparseArray or HashMap?
 
-    fun getPresenterForView(view: ViperView): ViperRxPresenter<*, *, *> {
+    fun getPresenterForView(view: ViperView): ViperRxPresenter<*> {
         return view.args?.getInt(EXTRA_VIEW_ID)?.let {  mPresenters.get(it) } ?: throw IllegalStateException("View does not have viewId") // TODO when could it happen?
     }
 
@@ -64,7 +64,7 @@ class MoviperPresentersDispatcher protected constructor() {
     </pre></blockquote> *
      *
      */
-    fun startFragment(fragment: MvpFragment<*, *>, presenter: ViperRxPresenter<*, *, *>): MvpFragment<*, *> {
+    fun startFragment(fragment: MvpFragment<*, *>, presenter: ViperRxPresenter<*>): MvpFragment<*, *> {
         val viewId = Random().nextInt()
         val arguments = fragment.getArguments()
         arguments!!.putInt(EXTRA_VIEW_ID, viewId)

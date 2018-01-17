@@ -4,7 +4,6 @@ import android.content.Context
 
 import com.mateuszkoslacz.moviper3.iface.routing.ViperRxRouting
 import com.mateuszkoslacz.moviper3.iface.view.ContextHolder
-import com.mateuszkoslacz.moviper3.util.WeakReferenceUtils
 import io.reactivex.disposables.CompositeDisposable
 
 /**
@@ -31,13 +30,25 @@ abstract class BaseRxRouting<RelatedContext : Context> : ViperRxRouting<RelatedC
 
     internal var context: RelatedContext? = null
     protected val disposables = CompositeDisposable()
+    override val relatedContext: RelatedContext?
+        get() = context
 
 
     override fun attach(contextHolder: ContextHolder) {
-        this.context = contextHolder.getContext() as RelatedContext
+        this.context = contextHolder.getContext() as RelatedContext?
     }
 
     override fun detach(retainInstance: Boolean) {
+    }
+
+    override fun detach() {
+        detach(true)
         context = null
+    }
+
+    override fun destroy() {
+        detach(false)
+        context = null // TODO do we need it or it's always preceded by detach()?
+        disposables.dispose()
     }
 }

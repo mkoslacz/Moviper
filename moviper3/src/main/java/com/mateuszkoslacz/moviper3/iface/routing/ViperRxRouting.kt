@@ -60,7 +60,12 @@ interface ViperRxRouting<out RelatedContext : Context> {
      * This method is called on Presenter detach, ie. when the view has been destroyed. This method
      * is invoked from [ViperRxPresenter.detachView]}.
      */
+    @Deprecated("This method has been split into 2 methods: {@link #detachView()} and {@link #destroy()}")
     fun detach(retainInstance: Boolean)
+
+    fun detach()
+
+    fun destroy()
 
     /**
      * You can override this to perform an action on presenter attach (ie. set up the resources,

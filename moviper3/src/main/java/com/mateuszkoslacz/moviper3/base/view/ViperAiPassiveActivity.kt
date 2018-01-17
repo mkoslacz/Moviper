@@ -96,7 +96,7 @@ abstract class ViperAiPassiveActivity<V : MvpView, P : MvpPresenter<V>> : AppCom
      *
      * @return raw [ViperRxPresenter], so you can't call any custom methods on it anyway
      */
-    @Deprecated("Do not use this method if you want your view to me passive!")
+    @Deprecated("Do not use this method if you want your view to be passive!")
     override fun getPresenter() = presenter
 
     /**

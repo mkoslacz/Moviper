@@ -30,6 +30,14 @@ abstract class BaseRxInteractor : ViperRxInteractor {
     }
 
     override fun detach(retainInstance: Boolean) {
+    }
 
+    override fun detach() {
+        detach(retainInstance = true)
+    }
+
+    override fun destroy() {
+        detach(false)
+        disposables.dispose()
     }
 }

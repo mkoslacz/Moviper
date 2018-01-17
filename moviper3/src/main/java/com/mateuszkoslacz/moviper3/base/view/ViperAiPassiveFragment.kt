@@ -11,6 +11,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpView
 import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpDelegateImpl
 import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpDelegate
 import com.hannesdorfmann.mosby3.mvp.delegate.MvpDelegateCallback
+import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
 import com.mateuszkoslacz.moviper3.iface.view.ViperView
 
 /**
@@ -38,6 +39,16 @@ abstract class ViperAiPassiveFragment<V : MvpView, P : MvpPresenter<V>> : Fragme
      */
     abstract override fun createPresenter(): P
 
+    /**
+     * **DO NOT** use this method because of a fact that this view should be completely passive
+     * (independent from the presenter type)! <br></br>
+     * Instead you should use getters to provide
+     * event sources that will notify presenter after presenter's registration to them. To use
+     * getPresenter() method you shall use non-passive Moviper view.
+     *
+     * @return raw [ViperRxPresenter], so you can't call any custom methods on it anyway
+     */
+    @Deprecated("Do not use this method if you want your view to be passive!")
     override fun getPresenter(): P {
         return presenter
     }
