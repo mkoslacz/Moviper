@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.1"
+    buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "com.mateuszkoslacz.moviper3"
         minSdkVersion 16
@@ -22,7 +22,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile "org.mockito:mockito-core:2.13.0"
@@ -35,7 +35,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile 'com.hannesdorfmann.mosby3:mvp:3.1.0'
-    compile "io.reactivex.rxjava2:rxjava:2.1.7"
+    compile "io.reactivex.rxjava2:rxjava:2.1.8"
     compile 'io.reactivex.rxjava2:rxkotlin:2.2.0'
     compile 'com.akaita.java:rxjava2-debug:1.2.2'
 
@@ -43,4 +43,5 @@ dependencies {
 }
 repositories {
     mavenCentral()
+    google()
 }
