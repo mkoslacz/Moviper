@@ -33,7 +33,8 @@ interface ViperRxInteractor {
      * This method is called on Presenter detach, ie. when the view has been destroyed.  This method
      * is invoked from [ViperRxPresenter.detachView]}.
      */
-    @Deprecated("This method has been split into 2 methods: {@link #detachView()} and {@link #destroy()}")
+    @Deprecated("This method has been split into 2 methods: {@link #detachView()} " +
+            "and {@link #destroy()}", ReplaceWith("detachView()"))
     fun detach(retainInstance: Boolean)
 
     fun detach()

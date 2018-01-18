@@ -43,13 +43,11 @@ class BaseRxPresenterRxTest {
 
     init {
         RxJavaPlugins.setComputationSchedulerHandler { Schedulers.trampoline() }
-        Moviper.instance.setConfig(Config(isPresenterAccessUtilEnabled = true, isInstancePresentersEnabled = true))
+        Moviper.setConfig(Config(isPresenterAccessUtilEnabled = true, isInstancePresentersEnabled = true))
     }
 
     @After
-    fun cleanup() {
-        Moviper.instance.unregisterAll()
-    }
+    fun cleanup() = Moviper.unregisterAll()
 
     @Test
     fun `presenter disposes all disposables on destroy`() {
@@ -88,22 +86,22 @@ class BaseRxPresenterRxTest {
     @Test
     fun `presenter registers itself on Moviper IPC on attachView`() {
         presenter.attachView(view)
-        Moviper.instance.getPresenterInstanceOrError(TestPresenter::class.java, presenter.name).test().assertValue(presenter)
+        Moviper.getPresenterInstanceOrError(TestPresenter::class.java, presenter.name).test().assertValue(presenter)
     }
 
     @Test
     fun `presenter unregisters itself on Moviper IPC on destroy`() {
         presenter.attachView(view)
-        Moviper.instance.getPresenterInstanceOrError(TestPresenter::class.java, presenter.name).test().assertValue(presenter)
+        Moviper.getPresenterInstanceOrError(TestPresenter::class.java, presenter.name).test().assertValue(presenter)
         presenter.destroy()
-        Moviper.instance.getPresenters(TestPresenter::class.java).test().assertNoValues()
+        Moviper.getPresenters(TestPresenter::class.java).test().assertNoValues()
     }
 
     @Test
     fun `presenter doesn't unregister itself on Moviper IPC on detach`() {
         presenter.attachView(view)
-        Moviper.instance.getPresenterInstanceOrError(TestPresenter::class.java, presenter.name).test().assertValue(presenter)
+        Moviper.getPresenterInstanceOrError(TestPresenter::class.java, presenter.name).test().assertValue(presenter)
         presenter.detachView()
-        Moviper.instance.getPresenterInstanceOrError(TestPresenter::class.java, presenter.name).test().assertValue(presenter)
+        Moviper.getPresenterInstanceOrError(TestPresenter::class.java, presenter.name).test().assertValue(presenter)
     }
 }

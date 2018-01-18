@@ -16,41 +16,41 @@ class BaseRxPresenterTest {
     @Test
     fun `presenter attaches ContextHolder to routing on attachView`() {
         presenter.attachView(view)
-        verify(presenter.routing).attach(view)
+        verify(presenter.getRoutingForTesting()).attach(view)
     }
 
     @Test
     fun `presenter attaches interactor on attachView`() {
         presenter.attachView(view)
-        verify(presenter.interactor).attach()
+        verify(presenter.getInteractorForTesting()).attach()
     }
 
     @Test
     fun `presenter detaches routing on detachView`() {
         presenter.attachView(view)
         presenter.detachView()
-        verify(presenter.routing).detach()
+        verify(presenter.getRoutingForTesting()).detach()
     }
 
     @Test
     fun `presenter detaches interactor on detachView`() {
         presenter.attachView(view)
         presenter.detachView()
-        verify(presenter.interactor).detach()
+        verify(presenter.getInteractorForTesting()).detach()
     }
 
     @Test
     fun `presenter destroys routing on destroy`() {
         presenter.attachView(view)
         presenter.destroy()
-        verify(presenter.routing).destroy()
+        verify(presenter.getRoutingForTesting()).destroy()
     }
 
     @Test
     fun `presenter destroys interactor on destroy`() {
         presenter.attachView(view)
         presenter.destroy()
-        verify(presenter.interactor).destroy()
+        verify(presenter.getInteractorForTesting()).destroy()
     }
 
     @Test
@@ -96,9 +96,10 @@ class BaseRxPresenterTest {
 }
 
 class TestPresenter : BaseRxPresenter<MvpView, ViperRxInteractor, ViperRxRouting<*>>() {
+
     override fun createRouting(): ViperRxRouting<*> = mock()
     override fun createInteractor(): ViperRxInteractor = mock()
-    override fun initStreams() {
-
-    }
+    override fun initStreams() = Unit
+    fun getRoutingForTesting() = routing
+    fun getInteractorForTesting() = interactor
 }

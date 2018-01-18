@@ -21,8 +21,10 @@ import com.mateuszkoslacz.moviper3.iface.view.ViperView
  * @author Hannes Dorfmann
  * @since 1.0.0
  */
-abstract class ViperAiPassiveFragment<V : MvpView, P : MvpPresenter<V>> : Fragment(), MvpDelegateCallback<V, P>, MvpView, ViperView {
+abstract class ViperAiPassiveFragment<V : MvpView, P : MvpPresenter<V>>
+    : Fragment(), MvpDelegateCallback<V, P>, MvpView, ViperView {
 
+    @Suppress("MemberVisibilityCanPrivate")
     protected val mvpDelegate: FragmentMvpDelegate<*, *> by lazy {
         FragmentMvpDelegateImpl(this, this, true, true)
     }
@@ -49,21 +51,17 @@ abstract class ViperAiPassiveFragment<V : MvpView, P : MvpPresenter<V>> : Fragme
      * @return raw [ViperRxPresenter], so you can't call any custom methods on it anyway
      */
     @Deprecated("Do not use this method if you want your view to be passive!")
-    override fun getPresenter(): P {
-        return presenter
-    }
+    override fun getPresenter(): P = presenter
 
     override fun setPresenter(presenter: P) {
         this.presenter = presenter
     }
 
-    override fun getMvpView(): V {
-        return this as V
-    }
+    @Suppress("UNCHECKED_CAST")
+    override fun getMvpView(): V = this as V
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(layoutId, container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
+            = inflater.inflate(layoutId, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -126,7 +124,6 @@ abstract class ViperAiPassiveFragment<V : MvpView, P : MvpPresenter<V>> : Fragme
         mvpDelegate.onSaveInstanceState(outState)
     }
 
-    protected fun injectViews(view: View) {
-        // stub
-    }
+    @Suppress("MemberVisibilityCanPrivate")
+    protected fun injectViews(view: View) = Unit // stub
 }

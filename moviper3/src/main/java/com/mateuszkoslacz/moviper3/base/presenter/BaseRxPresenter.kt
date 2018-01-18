@@ -31,16 +31,15 @@ abstract class BaseRxPresenter<ViewType : MvpView,
         out RoutingType : ViperRxRouting<*>>(val args: Bundle? = null)
     : MvpBasePresenter<ViewType>(), ViperRxPresenter<ViewType> {
 
+    protected val routing: RoutingType
+    protected val interactor: InteractorType
     private var viewWasAttached = false
-    val routing: RoutingType
-    val interactor: InteractorType
+    protected val disposables = CompositeDisposable()
 
     override val name = this.javaClass.name + "_" + Random().nextInt()
 
-    protected val disposables = CompositeDisposable()
-
     init {
-        // TODO we shall not call non-final functions in constructor,
+        // we shall not call non-final functions in constructor,
         // because child-class fields won't be initialized in this moment,
         // so it's very important to not to use any class fields in these methods!
         @Suppress("LeakingThis")
@@ -52,21 +51,22 @@ abstract class BaseRxPresenter<ViewType : MvpView,
     abstract fun initStreams()
 
     @Deprecated("do not override it to init your streams, use initStreams() instead! " +
-            "You can still override it to perform some actions on each reattach to view.")
+            "You can still override it to perform some actions on each reattach to view.",
+            ReplaceWith("initStreams()"))
     override fun attachView(view: ViewType) {
         super.attachView(view)
         routing.attach(view as ViperView)
         interactor.attach()
-        if (viewWasAttached.not()){
-            Moviper.instance.register(presenter = this)
+        if (viewWasAttached.not()) {
+            Moviper.register(presenter = this)
             initStreams()
         }
         viewWasAttached = true
     }
 
-    @Deprecated("This method has been split into 2 methods: {@link #detachView()} and {@link #destroy()}")
-    override fun detachView(retainInstance: Boolean) {
-    }
+    @Deprecated("This method has been split into 2 methods: {@link #detachView()} " +
+            "and {@link #destroy()}", ReplaceWith("detachView()"))
+    override fun detachView(retainInstance: Boolean) = Unit
 
     override fun detachView() {
         super.detachView()
@@ -77,7 +77,7 @@ abstract class BaseRxPresenter<ViewType : MvpView,
     override fun destroy() {
         super.destroy()
         disposables.clear()
-        Moviper.instance.unregister(presenter = this)
+        Moviper.unregister(presenter = this)
         routing.destroy()
         interactor.destroy()
     }

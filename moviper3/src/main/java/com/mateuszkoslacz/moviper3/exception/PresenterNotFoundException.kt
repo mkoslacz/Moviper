@@ -8,7 +8,6 @@ import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
  *
  * Thrown when IPC couldn't find the presenter you requested.
  */
-
 class PresenterNotFoundException(presenterType: Class<*>,
                                  presenterName: String)
     : RuntimeException("Presenter $presenterType named $presenterName not found! Make sure it's registered.")

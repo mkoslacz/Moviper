@@ -10,8 +10,8 @@ import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
  * with name that is already registered for its class. To avoid that you have to implement [ ][ViperRxPresenter.getName] in the way that returns an unique name for each instance of presenter
  * of given class.
  */
-
-class PresenterAlreadyRegisteredException(presenter: ViperRxPresenter<*>) : RuntimeException(String.format(
+class PresenterAlreadyRegisteredException(presenter: ViperRxPresenter<*>)
+    : RuntimeException(String.format(
         "Presenter %1\$s named %2\$s is already registered! You enabled presenter " +
                 "instances access and tried to register two or more presenters of the " +
                 "same class and name. Override getName() method in your %1\$s presenter " +

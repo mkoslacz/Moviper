@@ -12,15 +12,15 @@ import com.mateuszkoslacz.moviper3.iface.view.ViperView
 
 import java.util.Random
 
-/**
- * Created by bwilk on 12/22/16.
- */
-class MoviperPresentersDispatcher protected constructor() {
+object MoviperPresentersDispatcher {
+
+    private val EXTRA_VIEW_ID = "EXTRA_VIEW_ID"
     private val mPresenters = SparseArray<ViperRxPresenter<*>>() // TODO: 27.12.2016 SparseArray or HashMap?
 
-    fun getPresenterForView(view: ViperView): ViperRxPresenter<*> {
-        return view.args?.getInt(EXTRA_VIEW_ID)?.let {  mPresenters.get(it) } ?: throw IllegalStateException("View does not have viewId") // TODO when could it happen?
-    }
+    fun getPresenterForView(view: ViperView): ViperRxPresenter<*>
+            = view.args?.getInt(EXTRA_VIEW_ID)
+            ?.let {  mPresenters.get(it) }
+            ?: throw IllegalStateException("View does not have viewId") // TODO when could it happen?
 
     /**
      * It starts an [Activity] with selected presenter configured in a way provided in the
@@ -71,19 +71,6 @@ class MoviperPresentersDispatcher protected constructor() {
         mPresenters.put(viewId, presenter)
         fragment.setArguments(arguments)
         return fragment
-    }
-
-    companion object {
-
-        private val EXTRA_VIEW_ID = "EXTRA_VIEW_ID"
-        @set:VisibleForTesting
-        var instance: MoviperPresentersDispatcher? = null
-            get() {
-                if (field == null) {
-                    instance = MoviperPresentersDispatcher()
-                }
-                return field
-            }
     }
 
 }

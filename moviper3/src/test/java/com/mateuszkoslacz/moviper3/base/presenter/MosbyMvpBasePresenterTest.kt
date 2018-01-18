@@ -38,17 +38,10 @@ import junit.framework.Assert.assertEquals
 class MosbyMvpBasePresenterTest {
 
     class TestPresenter : BaseRxPresenter<MvpView, ViperRxInteractor, ViperRxRouting<*>>(){
-        override fun createRouting(): ViperRxRouting<*> {
-            return object : BaseRxRouting<Context>(){}
-        }
 
-        override fun createInteractor(): ViperRxInteractor {
-            return object : BaseRxInteractor(){}
-        }
-
-        override fun initStreams() {
-
-        }
+        override fun createRouting(): ViperRxRouting<*> = object : BaseRxRouting<Context>(){}
+        override fun createInteractor(): ViperRxInteractor = object : BaseRxInteractor(){}
+        override fun initStreams() = Unit
     }
 
     @Test

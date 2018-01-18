@@ -33,13 +33,12 @@ abstract class BaseRxRouting<RelatedContext : Context> : ViperRxRouting<RelatedC
     override val relatedContext: RelatedContext?
         get() = context
 
-
+    @Suppress("UNCHECKED_CAST")
     override fun attach(contextHolder: ContextHolder) {
         this.context = contextHolder.getContext() as RelatedContext?
     }
 
-    override fun detach(retainInstance: Boolean) {
-    }
+    override fun detach(retainInstance: Boolean) = Unit
 
     override fun detach() {
         detach(true)

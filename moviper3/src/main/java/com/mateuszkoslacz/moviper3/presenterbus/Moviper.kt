@@ -19,12 +19,8 @@ import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
-
-/**
- * Created by mateuszkoslacz on 24.10.2016.
- */
-class Moviper private constructor() {
-    private var errorHandler: (Throwable) -> Unit = { e : Throwable -> Log.e(TAG, "IPC default error handler: ", e) }
+object Moviper{
+    private var errorHandler: (Throwable) -> Unit = { e: Throwable -> Log.e("Moviper", "IPC default error handler: ", e) }
 
     private var config = Config()
 
@@ -40,7 +36,7 @@ class Moviper private constructor() {
     init {
         registerSynchronizer
                 .subscribeOn(Schedulers.computation()) //TODO this shall be done on single, dedicated thread that can be ovverriden for tests like in AndroidSchedulers
-                .doOnNext(Consumer<MoviperBundle> { this.routeMoviperBundle(it) })
+                .doOnNext { this.routeMoviperBundle(it) }
                 .doOnError { throwable -> errorHandler.invoke(throwable) }
                 .retry()
                 .subscribe()
@@ -58,6 +54,7 @@ class Moviper private constructor() {
         this.config = config
     }
 
+    // TODO is this synchronisation needed? btw if we doesn't wait for completing this action here, it is possible that the presenter will start performing actions before register completes
     fun register(presenter: ViperRxPresenter<*>) {
         if (config.isPresenterAccessUtilEnabled) {
             registerSynchronizer.onNext(MoviperBundle(presenter, true))
@@ -70,15 +67,14 @@ class Moviper private constructor() {
         }
     }
 
-    private fun routeMoviperBundle(bundle: MoviperBundle) {
-        if (bundle.isRegister) {
-            if (config.isInstancePresentersEnabled && presenters.contains(bundle.presenter))
-                throw PresenterAlreadyRegisteredException(bundle.presenter)
-            registerSync(bundle.presenter)
-        } else {
-            unregisterSync(bundle.presenter)
-        }
-    }
+    private fun routeMoviperBundle(bundle: MoviperBundle) =
+            if (bundle.isRegister) {
+                if (config.isInstancePresentersEnabled && presenters.contains(bundle.presenter))
+                    throw PresenterAlreadyRegisteredException(bundle.presenter)
+                registerSync(bundle.presenter)
+            } else {
+                unregisterSync(bundle.presenter)
+            }
 
     /**
      * <dl>
@@ -187,13 +183,6 @@ class Moviper private constructor() {
         presenters.clear()
     }
 
-    private inner class MoviperBundle(val presenter: ViperRxPresenter<*>, val isRegister: Boolean)
-
-    companion object {
-
-        private val TAG = "Moviper"
-
-        val instance = Moviper()
-    }
+    private class MoviperBundle(val presenter: ViperRxPresenter<*>, val isRegister: Boolean)
 
 }

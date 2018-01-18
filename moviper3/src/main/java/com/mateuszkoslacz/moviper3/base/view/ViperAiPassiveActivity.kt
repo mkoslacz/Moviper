@@ -18,7 +18,8 @@ import com.mateuszkoslacz.moviper3.iface.view.ViperView
  * @author Hannes Dorfmann
  * @since 1.0.0
  */
-abstract class ViperAiPassiveActivity<V : MvpView, P : MvpPresenter<V>> : AppCompatActivity(), MvpView, ViperView, MvpDelegateCallback<V, P> {
+abstract class ViperAiPassiveActivity<V : MvpView, P : MvpPresenter<V>>
+    : AppCompatActivity(), MvpView, ViperView, MvpDelegateCallback<V, P> {
 
     protected val mvpDelegate: ActivityMvpDelegate<*, *> by lazy {
         ActivityMvpDelegateImpl(this, this, true)
@@ -106,11 +107,9 @@ abstract class ViperAiPassiveActivity<V : MvpView, P : MvpPresenter<V>> : AppCom
      */
     abstract override fun createPresenter(): P
 
-    override fun getMvpView(): V {
-        return this as V
-    }
+    @Suppress("UNCHECKED_CAST")
+    override fun getMvpView(): V = this as V
 
-    protected fun injectViews() {
-        // stub
-    }
+    @Suppress("MemberVisibilityCanPrivate")
+    protected fun injectViews() = Unit // stub
 }

@@ -19,22 +19,17 @@ import io.reactivex.disposables.CompositeDisposable
  *
  *
  * It has no Presenter reference as it should return Observables to asynchronously pass data to
- * Presenter. If you are looking for solution adopted to regular, non-Rx approach, see [ ].
+ * Presenter.
  */
 abstract class BaseRxInteractor : ViperRxInteractor {
 
-    protected val disposables = CompositeDisposable()
+    private val disposables = CompositeDisposable()
 
-    override fun attach() {
+    override fun attach() = Unit
 
-    }
+    override fun detach(retainInstance: Boolean) = Unit
 
-    override fun detach(retainInstance: Boolean) {
-    }
-
-    override fun detach() {
-        detach(retainInstance = true)
-    }
+    override fun detach() = detach(retainInstance = true)
 
     override fun destroy() {
         detach(false)

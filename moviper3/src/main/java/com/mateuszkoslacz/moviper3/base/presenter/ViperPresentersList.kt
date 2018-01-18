@@ -17,21 +17,18 @@ class ViperPresentersList<ViewType : MvpView>(vararg presenters: ViperRxPresente
 
     private val presenters = LinkedList<ViperRxPresenter<ViewType>>().apply { addAll(presenters) }
 
-    override val name by lazy {  "ViperPresentersList - contents: ${presenters.fold(initial = "", operation = {allNames, presenter -> allNames + presenter.name + " "})}" }
-
-    override fun attachView(view: ViewType) {
-        presenters.forEach { it.attachView(view) }
+    override val name by lazy {
+        "ViperPresentersList - contents: " +
+                presenters.fold(initial = "",
+                        operation = {allNames, presenter -> allNames + presenter.name + " "})
     }
 
-    override fun detachView(retainInstance: Boolean) {
-        presenters.forEach { it.detachView(retainInstance) }
-    }
+    override fun attachView(view: ViewType) = presenters.forEach { it.attachView(view) }
 
-    override fun detachView() {
-        presenters.forEach { it.detachView() }
-    }
+    override fun detachView(retainInstance: Boolean) =
+            presenters.forEach { it.detachView(retainInstance) }
 
-    override fun destroy() {
-        presenters.forEach { it.destroy() }
-    }
+    override fun detachView() = presenters.forEach { it.detachView() }
+
+    override fun destroy() = presenters.forEach { it.destroy() }
 }
