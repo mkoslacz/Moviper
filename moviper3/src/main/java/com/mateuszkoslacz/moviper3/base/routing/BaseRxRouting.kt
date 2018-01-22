@@ -26,9 +26,9 @@ import io.reactivex.disposables.CompositeDisposable
  *
  *
  */
-abstract class BaseRxRouting<RelatedContext : Context> : ViperRxRouting<RelatedContext> {
+abstract class BaseRxRouting<out RelatedContext : Context> : ViperRxRouting<RelatedContext> {
 
-    internal var context: RelatedContext? = null
+    private var context: RelatedContext? = null
     protected val disposables = CompositeDisposable()
     override val relatedContext: RelatedContext?
         get() = context

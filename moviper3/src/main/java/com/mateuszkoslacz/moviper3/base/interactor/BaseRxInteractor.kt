@@ -23,7 +23,7 @@ import io.reactivex.disposables.CompositeDisposable
  */
 abstract class BaseRxInteractor : ViperRxInteractor {
 
-    private val disposables = CompositeDisposable()
+    protected val disposables = CompositeDisposable()
 
     override fun attach() = Unit
 
