@@ -90,12 +90,36 @@ class BaseRxPresenterTest {
     }
 
     @Test
+    fun `presenter's default hashcode is unique`() {
+        assertFalse(TestPresenter().hashCode() == TestPresenter().hashCode())
+    }
+
+    @Test
     fun `presenter's toString returns its name`() {
         assertEquals(presenter.name, presenter.toString())
+    }
+
+    @Test
+    fun `presenter's equals matches presenters with the same name`() {
+        assertEquals(TestNamedPresenter("name"), TestNamedPresenter("name"))
+    }
+
+    @Test
+    fun `presenters with the same names have the same hashcode`() {
+        assertEquals(TestNamedPresenter("name").hashCode(), TestNamedPresenter("name").hashCode())
     }
 }
 
 class TestPresenter : BaseRxPresenter<MvpView, ViperRxInteractor, ViperRxRouting<*>>() {
+
+    override fun createRouting(): ViperRxRouting<*> = mock()
+    override fun createInteractor(): ViperRxInteractor = mock()
+    override fun initStreams() = Unit
+    fun getRoutingForTesting() = routing
+    fun getInteractorForTesting() = interactor
+}
+
+class TestNamedPresenter(override val name: String) : BaseRxPresenter<MvpView, ViperRxInteractor, ViperRxRouting<*>>() {
 
     override fun createRouting(): ViperRxRouting<*> = mock()
     override fun createInteractor(): ViperRxInteractor = mock()
