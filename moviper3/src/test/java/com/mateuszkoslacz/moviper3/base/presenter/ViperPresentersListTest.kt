@@ -1,7 +1,9 @@
 package com.mateuszkoslacz.moviper3.base.presenter
 
 import com.hannesdorfmann.mosby3.mvp.MvpView
+import com.mateuszkoslacz.moviper3.iface.interactor.ViperRxInteractor
 import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
+import com.mateuszkoslacz.moviper3.iface.routing.ViperRxRouting
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
@@ -82,4 +84,41 @@ class ViperPresentersListTest {
         assertTrue(presentersList.name.contains("presenter2"))
         assertTrue(presentersList.name.contains("presenter3"))
     }
+
+    @Test
+    fun `equals matches lists with the same content`(){
+        val presentersList = ViperPresentersList(TestNamedPresenter("pres1"),
+                TestNamedPresenter("pres2"), TestNamedPresenter("pres3"))
+        val anotherPresentersList = ViperPresentersList(TestNamedPresenter("pres1"),
+                TestNamedPresenter("pres2"), TestNamedPresenter("pres3"))
+        assertEquals(presentersList, anotherPresentersList)
+    }
+
+    @Test
+    fun `equals doesn't matches lists with the different content`(){
+        val presentersList = ViperPresentersList(TestNamedPresenter("pres1"),
+                TestNamedPresenter("pres2"), TestNamedPresenter("pres3"))
+        val anotherPresentersList = ViperPresentersList(TestNamedPresenter("pres1"),
+                TestNamedPresenter("pres2"), TestNamedPresenter("pres4"))
+        assertNotEquals(presentersList, anotherPresentersList)
+    }
+
+    @Test
+    fun `hashcodes for lists with the same content are the same`(){
+        val presentersList = ViperPresentersList(TestNamedPresenter("pres1"),
+                TestNamedPresenter("pres2"), TestNamedPresenter("pres3"))
+        val anotherPresentersList = ViperPresentersList(TestNamedPresenter("pres1"),
+                TestNamedPresenter("pres2"), TestNamedPresenter("pres3"))
+        assertEquals(presentersList.hashCode(), anotherPresentersList.hashCode())
+    }
+
+    @Test
+    fun `hashcodes for lists with the same content are different`(){
+        val presentersList = ViperPresentersList(TestNamedPresenter("pres1"),
+                TestNamedPresenter("pres2"), TestNamedPresenter("pres3"))
+        val anotherPresentersList = ViperPresentersList(TestNamedPresenter("pres1"),
+                TestNamedPresenter("pres2"), TestNamedPresenter("pres4"))
+        assertNotEquals(presentersList.hashCode(), anotherPresentersList.hashCode())
+    }
 }
+

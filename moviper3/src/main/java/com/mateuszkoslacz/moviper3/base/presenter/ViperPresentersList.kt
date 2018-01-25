@@ -2,8 +2,7 @@ package com.mateuszkoslacz.moviper3.base.presenter
 
 import com.hannesdorfmann.mosby3.mvp.MvpView
 import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
-
-import java.util.LinkedList
+import java.util.*
 
 /**
  * Created by mateuszkoslacz on 10.01.2017.
@@ -11,7 +10,6 @@ import java.util.LinkedList
  * It allows you to use multiple presenters in one view. It can be used with any of the passive
  * views.
  */
-
 class ViperPresentersList<ViewType : MvpView>(vararg presenters: ViperRxPresenter<ViewType>)
     : ViperRxPresenter<ViewType> {
 
@@ -31,4 +29,13 @@ class ViperPresentersList<ViewType : MvpView>(vararg presenters: ViperRxPresente
     override fun detachView() = presenters.forEach { it.detachView() }
 
     override fun destroy() = presenters.forEach { it.destroy() }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+        other as ViperPresentersList<*>
+        return presenters == other.presenters
+    }
+
+    override fun hashCode() = presenters.hashCode()
 }
