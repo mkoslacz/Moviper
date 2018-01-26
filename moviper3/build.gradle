@@ -2,11 +2,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -28,13 +28,10 @@ dependencies {
     testCompile("com.nhaarman:mockito-kotlin:1.5.0", {
         exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib'
     })
-    compile 'com.android.support:appcompat-v7:27.0.2'
-    compile 'com.android.support:support-v4:27.0.2'
-    compile 'com.android.support:appcompat-v7:27.0.2'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile 'com.hannesdorfmann.mosby3:mvp:3.1.0'
-    compile "io.reactivex.rxjava2:rxjava:2.1.8"
+    compile "io.reactivex.rxjava2:rxjava:2.1.9"
     compile 'io.reactivex.rxjava2:rxkotlin:2.2.0'
     compile 'com.akaita.java:rxjava2-debug:1.2.2'
 
