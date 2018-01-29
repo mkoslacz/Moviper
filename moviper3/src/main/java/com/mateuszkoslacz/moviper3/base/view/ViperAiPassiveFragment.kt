@@ -21,14 +21,14 @@ import com.mateuszkoslacz.moviper3.iface.view.ViperView
  * @author Hannes Dorfmann
  * @since 1.0.0
  */
-abstract class ViperAiPassiveFragment<V : MvpView, P : MvpPresenter<V>>
-    : Fragment(), MvpDelegateCallback<V, P>, MvpView, ViperView {
+abstract class ViperAiPassiveFragment<V : MvpView>
+    : Fragment(), MvpDelegateCallback<V, ViperRxPresenter<V>>, MvpView, ViperView {
 
     @Suppress("MemberVisibilityCanPrivate")
     protected val mvpDelegate: FragmentMvpDelegate<*, *> by lazy {
         FragmentMvpDelegateImpl(this, this, true, true)
     }
-    private lateinit var presenter: P
+    private lateinit var presenter: ViperRxPresenter<V>
     protected abstract val layoutId: Int
 
     override val args: Bundle?
@@ -39,7 +39,7 @@ abstract class ViperAiPassiveFragment<V : MvpView, P : MvpPresenter<V>>
      * [.setRetainInstance] is set to true. This method will be called from
      * [.onViewCreated]
      */
-    abstract override fun createPresenter(): P
+    abstract override fun createPresenter(): ViperRxPresenter<V>
 
     /**
      * **DO NOT** use this method because of a fact that this view should be completely passive
@@ -51,9 +51,9 @@ abstract class ViperAiPassiveFragment<V : MvpView, P : MvpPresenter<V>>
      * @return raw [ViperRxPresenter], so you can't call any custom methods on it anyway
      */
     @Deprecated("Do not use this method if you want your view to be passive!")
-    override fun getPresenter(): P = presenter
+    override fun getPresenter(): ViperRxPresenter<V> = presenter
 
-    override fun setPresenter(presenter: P) {
+    override fun setPresenter(presenter: ViperRxPresenter<V>) {
         this.presenter = presenter
     }
 
@@ -125,5 +125,5 @@ abstract class ViperAiPassiveFragment<V : MvpView, P : MvpPresenter<V>>
     }
 
     @Suppress("MemberVisibilityCanPrivate")
-    protected fun injectViews(view: View) = Unit // stub
+    protected open fun injectViews(view: View) = Unit // stub
 }

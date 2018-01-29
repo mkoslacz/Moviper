@@ -18,13 +18,13 @@ import com.mateuszkoslacz.moviper3.iface.view.ViperView
  * @author Hannes Dorfmann
  * @since 1.0.0
  */
-abstract class ViperAiPassiveActivity<V : MvpView, P : MvpPresenter<V>>
-    : AppCompatActivity(), MvpView, ViperView, MvpDelegateCallback<V, P> {
+abstract class ViperAiPassiveActivity<V : MvpView>
+    : AppCompatActivity(), MvpView, ViperView, MvpDelegateCallback<V, ViperRxPresenter<V>> {
 
     protected val mvpDelegate: ActivityMvpDelegate<*, *> by lazy {
         ActivityMvpDelegateImpl(this, this, true)
     }
-    private lateinit var presenter: P
+    private lateinit var presenter: ViperRxPresenter<V>
     protected var retainInstance: Boolean = false
     protected abstract val layoutId: Int
     override fun getContext(): Context = this
@@ -84,7 +84,7 @@ abstract class ViperAiPassiveActivity<V : MvpView, P : MvpPresenter<V>>
         mvpDelegate.onPostCreate(savedInstanceState)
     }
 
-    override fun setPresenter(presenter: P) {
+    override fun setPresenter(presenter: ViperRxPresenter<V>) {
         this.presenter = presenter
     }
 
@@ -105,11 +105,11 @@ abstract class ViperAiPassiveActivity<V : MvpView, P : MvpPresenter<V>>
      *
      * @return The [MvpPresenter] for this view
      */
-    abstract override fun createPresenter(): P
+    abstract override fun createPresenter():  ViperRxPresenter<V>
 
     @Suppress("UNCHECKED_CAST")
     override fun getMvpView(): V = this as V
 
     @Suppress("MemberVisibilityCanPrivate")
-    protected fun injectViews() = Unit // stub
+    protected open fun injectViews() = Unit // stub
 }
