@@ -8,7 +8,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpView
 import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpDelegate
 import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpDelegateImpl
 import com.hannesdorfmann.mosby3.mvp.delegate.MvpDelegateCallback
-import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
+import com.mateuszkoslacz.moviper3.iface.presenter.ViperPresenter
 import com.mateuszkoslacz.moviper3.iface.view.ViperView
 
 /**
@@ -19,12 +19,12 @@ import com.mateuszkoslacz.moviper3.iface.view.ViperView
  * @since 1.0.0
  */
 abstract class ViperAiPassiveActivity<V : MvpView>
-    : AppCompatActivity(), MvpView, ViperView, MvpDelegateCallback<V, ViperRxPresenter<V>> {
+    : AppCompatActivity(), MvpView, ViperView, MvpDelegateCallback<V, ViperPresenter<V>> {
 
     protected val mvpDelegate: ActivityMvpDelegate<*, *> by lazy {
         ActivityMvpDelegateImpl(this, this, true)
     }
-    private lateinit var presenter: ViperRxPresenter<V>
+    private lateinit var presenter: ViperPresenter<V>
     protected var retainInstance: Boolean = false
     protected abstract val layoutId: Int
     override fun getContext(): Context = this
@@ -84,7 +84,7 @@ abstract class ViperAiPassiveActivity<V : MvpView>
         mvpDelegate.onPostCreate(savedInstanceState)
     }
 
-    override fun setPresenter(presenter: ViperRxPresenter<V>) {
+    override fun setPresenter(presenter: ViperPresenter<V>) {
         this.presenter = presenter
     }
 
@@ -95,7 +95,7 @@ abstract class ViperAiPassiveActivity<V : MvpView>
      * event sources that will notify presenter after presenter's registration to them. To use
      * getPresenter() method you shall use non-passive Moviper view.
      *
-     * @return raw [ViperRxPresenter], so you can't call any custom methods on it anyway
+     * @return raw [ViperPresenter], so you can't call any custom methods on it anyway
      */
     @Deprecated("Do not use this method if you want your view to be passive!")
     override fun getPresenter() = presenter
@@ -105,7 +105,7 @@ abstract class ViperAiPassiveActivity<V : MvpView>
      *
      * @return The [MvpPresenter] for this view
      */
-    abstract override fun createPresenter():  ViperRxPresenter<V>
+    abstract override fun createPresenter():  ViperPresenter<V>
 
     @Suppress("UNCHECKED_CAST")
     override fun getMvpView(): V = this as V

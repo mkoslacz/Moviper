@@ -1,7 +1,7 @@
 package com.mateuszkoslacz.moviper3.base.presenter
 
 import com.hannesdorfmann.mosby3.mvp.MvpView
-import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
+import com.mateuszkoslacz.moviper3.iface.presenter.ViperPresenter
 import java.util.*
 
 /**
@@ -10,10 +10,10 @@ import java.util.*
  * It allows you to use multiple presenters in one view. It can be used with any of the passive
  * views.
  */
-class ViperPresentersList<ViewType : MvpView>(vararg presenters: ViperRxPresenter<ViewType>)
-    : ViperRxPresenter<ViewType> {
+class ViperPresentersList<ViewType : MvpView>(vararg presenters: ViperPresenter<ViewType>)
+    : ViperPresenter<ViewType> {
 
-    private val presenters = LinkedList<ViperRxPresenter<ViewType>>().apply { addAll(presenters) }
+    private val presenters = LinkedList<ViperPresenter<ViewType>>().apply { addAll(presenters) }
 
     override val name by lazy {
         "ViperPresentersList - contents: " +

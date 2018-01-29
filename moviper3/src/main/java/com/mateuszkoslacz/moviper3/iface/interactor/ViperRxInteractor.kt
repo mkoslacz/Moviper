@@ -1,12 +1,12 @@
 package com.mateuszkoslacz.moviper3.iface.interactor
 
-import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
+import com.mateuszkoslacz.moviper3.iface.presenter.ViperPresenter
 
 /**
  * Created by mateuszkoslacz on  08.08.2016 Based on lucas.urbas implementation.
  *
  *
- * It's responsible of manipulating data on behalf of Presenter (see [ViperRxPresenter]), ie. saving data to db, getting
+ * It's responsible of manipulating data on behalf of Presenter (see [ViperPresenter]), ie. saving data to db, getting
  * data from remotes etc.
  *
  *
@@ -21,7 +21,7 @@ interface ViperRxInteractor {
      *
      *
      * Moviper implementation does nothing, but it's here to allow you perform initialization
-     * actions on presenter attach  This method is invoked from [ ][ViperRxPresenter.attachView].
+     * actions on presenter attach  This method is invoked from [ ][ViperPresenter.attachView].
      */
     fun attach()
 
@@ -31,7 +31,7 @@ interface ViperRxInteractor {
      *
      *
      * This method is called on Presenter detach, ie. when the view has been destroyed.  This method
-     * is invoked from [ViperRxPresenter.detachView]}.
+     * is invoked from [ViperPresenter.detachView]}.
      */
     @Deprecated("This method has been split into 2 methods: {@link #detachView()} " +
             "and {@link #destroy()}", ReplaceWith("detachView()"))

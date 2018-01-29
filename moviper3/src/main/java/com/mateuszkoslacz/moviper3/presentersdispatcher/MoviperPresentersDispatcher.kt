@@ -2,12 +2,11 @@ package com.mateuszkoslacz.moviper3.presentersdispatcher
 
 import android.app.Activity
 import android.app.Fragment
-import android.support.annotation.VisibleForTesting
 import android.util.SparseArray
 
 import com.hannesdorfmann.mosby3.mvp.MvpActivity
 import com.hannesdorfmann.mosby3.mvp.MvpFragment
-import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
+import com.mateuszkoslacz.moviper3.iface.presenter.ViperPresenter
 import com.mateuszkoslacz.moviper3.iface.view.ViperView
 
 import java.util.Random
@@ -15,9 +14,9 @@ import java.util.Random
 object MoviperPresentersDispatcher {
 
     private val EXTRA_VIEW_ID = "EXTRA_VIEW_ID"
-    private val mPresenters = SparseArray<ViperRxPresenter<*>>() // TODO: 27.12.2016 SparseArray or HashMap?
+    private val mPresenters = SparseArray<ViperPresenter<*>>() // TODO: 27.12.2016 SparseArray or HashMap?
 
-    fun getPresenterForView(view: ViperView): ViperRxPresenter<*>
+    fun getPresenterForView(view: ViperView): ViperPresenter<*>
             = view.args?.getInt(EXTRA_VIEW_ID)
             ?.let {  mPresenters.get(it) }
             ?: throw IllegalStateException("View does not have viewId") // TODO when could it happen?
@@ -64,7 +63,7 @@ object MoviperPresentersDispatcher {
     </pre></blockquote> *
      *
      */
-    fun startFragment(fragment: MvpFragment<*, *>, presenter: ViperRxPresenter<*>): MvpFragment<*, *> {
+    fun startFragment(fragment: MvpFragment<*, *>, presenter: ViperPresenter<*>): MvpFragment<*, *> {
         val viewId = Random().nextInt()
         val arguments = fragment.getArguments()
         arguments!!.putInt(EXTRA_VIEW_ID, viewId)

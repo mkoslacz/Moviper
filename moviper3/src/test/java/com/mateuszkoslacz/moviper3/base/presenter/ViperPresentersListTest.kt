@@ -1,9 +1,7 @@
 package com.mateuszkoslacz.moviper3.base.presenter
 
 import com.hannesdorfmann.mosby3.mvp.MvpView
-import com.mateuszkoslacz.moviper3.iface.interactor.ViperRxInteractor
-import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
-import com.mateuszkoslacz.moviper3.iface.routing.ViperRxRouting
+import com.mateuszkoslacz.moviper3.iface.presenter.ViperPresenter
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
@@ -13,9 +11,9 @@ import org.junit.Test
 
 class ViperPresentersListTest {
 
-    val presenter1: ViperRxPresenter<MvpView> = mock()
-    val presenter2: ViperRxPresenter<MvpView> = mock()
-    val presenter3: ViperRxPresenter<MvpView> = mock()
+    val presenter1: ViperPresenter<MvpView> = mock()
+    val presenter2: ViperPresenter<MvpView> = mock()
+    val presenter3: ViperPresenter<MvpView> = mock()
 
     val presentersList = ViperPresentersList(presenter1, presenter2, presenter3)
 

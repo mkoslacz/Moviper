@@ -10,7 +10,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpView
  * Base interface for VIPER presenter.
  */
 
-interface ViperRxPresenter<ViewType : MvpView>: MvpPresenter<ViewType> {
+interface ViperPresenter<ViewType : MvpView>: MvpPresenter<ViewType> {
 
     /**
      * Override this if you want to access your presenter using IPC Instance Presenters Access

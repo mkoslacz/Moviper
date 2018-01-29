@@ -1,7 +1,5 @@
 package com.mateuszkoslacz.moviper3.exception
 
-import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
-
 /**
  * Created by mateuszkoslacz on 24.10.2016.
  *

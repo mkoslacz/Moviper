@@ -2,7 +2,7 @@ package com.mateuszkoslacz.moviper3.iface.routing
 
 import android.content.Context
 
-import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
+import com.mateuszkoslacz.moviper3.iface.presenter.ViperPresenter
 import com.mateuszkoslacz.moviper3.iface.view.ContextHolder
 
 /**
@@ -58,7 +58,7 @@ interface ViperRxRouting<out RelatedContext : Context> {
      *
      *
      * This method is called on Presenter detach, ie. when the view has been destroyed. This method
-     * is invoked from [ViperRxPresenter.detachView]}.
+     * is invoked from [ViperPresenter.detachView]}.
      */
     @Deprecated("This method has been split into 2 methods: {@link #detachView()} " +
             "and {@link #destroy()}", ReplaceWith("detachView()"))
@@ -74,7 +74,7 @@ interface ViperRxRouting<out RelatedContext : Context> {
      *
      *
      * Attaches a presenter to this interactor. Will be called right after view is attached to the
-     * presenter. This method is invoked from [ViperRxPresenter.attachView].
+     * presenter. This method is invoked from [ViperPresenter.attachView].
      */
     fun attach(contextHolder: ContextHolder)
 

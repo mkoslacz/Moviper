@@ -8,14 +8,13 @@ import com.mateuszkoslacz.moviper3.exception.PresenterAlreadyRegisteredException
 import com.mateuszkoslacz.moviper3.exception.PresenterInstancesAccessNotEnabled
 import com.mateuszkoslacz.moviper3.exception.PresenterNotFoundException
 import com.mateuszkoslacz.moviper3.exception.PresentersAccessUtilNotEnabled
-import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
+import com.mateuszkoslacz.moviper3.iface.presenter.ViperPresenter
 import java.util.concurrent.CopyOnWriteArrayList
 
 import io.reactivex.Maybe
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.Single
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
@@ -29,7 +28,7 @@ object Moviper{
     // for every external call we do n reads where n is the size of the presenters list.
     // that makes
     // TODO: 28.10.2016 reconsider no-checking if presenter exists
-    private val presenters = CopyOnWriteArrayList<ViperRxPresenter<*>>() // TODO no more need of using it if operates on single thread, just use plain list
+    private val presenters = CopyOnWriteArrayList<ViperPresenter<*>>() // TODO no more need of using it if operates on single thread, just use plain list
 
     private val registerSynchronizer = PublishSubject.create<MoviperBundle>()
 
@@ -55,13 +54,13 @@ object Moviper{
     }
 
     // TODO is this synchronisation needed? btw if we doesn't wait for completing this action here, it is possible that the presenter will start performing actions before register completes
-    fun register(presenter: ViperRxPresenter<*>) {
+    fun register(presenter: ViperPresenter<*>) {
         if (config.isPresenterAccessUtilEnabled) {
             registerSynchronizer.onNext(MoviperBundle(presenter, true))
         }
     }
 
-    fun unregister(presenter: ViperRxPresenter<*>) {
+    fun unregister(presenter: ViperPresenter<*>) {
         if (config.isPresenterAccessUtilEnabled) {
             registerSynchronizer.onNext(MoviperBundle(presenter, false))
         }
@@ -89,16 +88,16 @@ object Moviper{
      * @return [Observable] that emits all (from zero to n) registered presenters of given
      * class.
      */
-    fun <PresenterType : ViperRxPresenter<*>> getPresenters(
+    fun <PresenterType : ViperPresenter<*>> getPresenters(
             presenterTypeClass: Class<PresenterType>): Observable<PresenterType> {
         if (!config.isPresenterAccessUtilEnabled) throw PresentersAccessUtilNotEnabled()
-        return Observable.fromIterable<ViperRxPresenter<*>>(presenters)
+        return Observable.fromIterable<ViperPresenter<*>>(presenters)
                 .filter { viperPresenter -> viperPresenter.javaClass == presenterTypeClass }
                 .cast(presenterTypeClass)
     }
 
 
-    private fun <PresenterType : ViperRxPresenter<*>> getPresenterInstanceObservable(
+    private fun <PresenterType : ViperPresenter<*>> getPresenterInstanceObservable(
             presenterTypeClass: Class<PresenterType>, name: String): Observable<PresenterType> {
         if (!config.isInstancePresentersEnabled) throw PresenterInstancesAccessNotEnabled()
         return getPresenters(presenterTypeClass)
@@ -120,17 +119,17 @@ object Moviper{
      * true to avoid [PresenterInstancesAccessNotEnabled] exception being thrown.
      *
      *
-     * If you create two or more presenters with the same name (making [ViperRxPresenter.getName]
+     * If you create two or more presenters with the same name (making [ViperPresenter.getName]
      * method returns the the same name for them) with the IPC Instance Presenters Access
-     * enabled, a [PresenterAlreadyRegisteredException] is thrown. By default [ViperRxPresenter.getName]
+     * enabled, a [PresenterAlreadyRegisteredException] is thrown. By default [ViperPresenter.getName]
      * method returns unique names.
      *
      * @param presenterTypeClass class of presenter you want to get
      * @param name               name of a presenter you want to get here. You shall set it up by
-     * returning proper name in [ViperRxPresenter.getName].
+     * returning proper name in [ViperPresenter.getName].
      * @return [Maybe] that emits (or not) Presenter instance of given name and class.
      */
-    fun <PresenterType : ViperRxPresenter<*>> getPresenterInstance(
+    fun <PresenterType : ViperPresenter<*>> getPresenterInstance(
             presenterTypeClass: Class<PresenterType>, name: String): Maybe<PresenterType> {
         return getPresenterInstanceObservable(presenterTypeClass, name)
                 .firstElement()
@@ -151,18 +150,18 @@ object Moviper{
      * true to avoid [PresenterInstancesAccessNotEnabled] exception being thrown.
      *
      *
-     * If you create two or more presenters with the same name (making [ViperRxPresenter.getName]
+     * If you create two or more presenters with the same name (making [ViperPresenter.getName]
      * method returns the the same name for them) with the IPC Instance Presenters Access
-     * enabled, a [PresenterAlreadyRegisteredException] is thrown. By default [ViperRxPresenter.getName]
+     * enabled, a [PresenterAlreadyRegisteredException] is thrown. By default [ViperPresenter.getName]
      * method returns unique names.
      *
      * @param presenterTypeClass class of presenter you want to get
      * @param name               name of a presenter you want to get here. You shall set it up by
-     * returning proper name in [ViperRxPresenter.getName].
+     * returning proper name in [ViperPresenter.getName].
      * @return [Single] that emits Presenter instance of given name and class or throws a
      * [java.util.NoSuchElementException].
      */
-    fun <PresenterType : ViperRxPresenter<*>> getPresenterInstanceOrError(
+    fun <PresenterType : ViperPresenter<*>> getPresenterInstanceOrError(
             presenterTypeClass: Class<PresenterType>, name: String): Single<PresenterType> {
         return getPresenterInstanceObservable(presenterTypeClass, name)
                 .firstElement()
@@ -170,11 +169,11 @@ object Moviper{
                 .toSingle()
     }
 
-    private fun registerSync(presenter: ViperRxPresenter<*>) {
+    private fun registerSync(presenter: ViperPresenter<*>) {
         presenters.add(presenter)
     }
 
-    private fun unregisterSync(presenter: ViperRxPresenter<*>) {
+    private fun unregisterSync(presenter: ViperPresenter<*>) {
         presenters.remove(presenter)
     }
 
@@ -183,6 +182,6 @@ object Moviper{
         presenters.clear()
     }
 
-    private class MoviperBundle(val presenter: ViperRxPresenter<*>, val isRegister: Boolean)
+    private class MoviperBundle(val presenter: ViperPresenter<*>, val isRegister: Boolean)
 
 }

@@ -5,12 +5,13 @@ import android.os.Bundle
 import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter
 import com.hannesdorfmann.mosby3.mvp.MvpView
 import com.mateuszkoslacz.moviper3.iface.interactor.ViperRxInteractor
-import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
+import com.mateuszkoslacz.moviper3.iface.presenter.ViperPresenter
 import com.mateuszkoslacz.moviper3.iface.routing.ViperRxRouting
 import com.mateuszkoslacz.moviper3.iface.view.ViperView
 import com.mateuszkoslacz.moviper3.presenterbus.Moviper
 
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import java.util.*
 
 /**
@@ -29,7 +30,7 @@ import java.util.*
 abstract class BaseRxPresenter<ViewType : MvpView,
         out InteractorType : ViperRxInteractor,
         out RoutingType : ViperRxRouting<*>>(val args: Bundle? = null)
-    : MvpBasePresenter<ViewType>(), ViperRxPresenter<ViewType> {
+    : MvpBasePresenter<ViewType>(), ViperPresenter<ViewType> {
 
     protected val routing: RoutingType
     protected val interactor: InteractorType
@@ -117,5 +118,10 @@ abstract class BaseRxPresenter<ViewType : MvpView,
         var result = name.hashCode()
         result = 31 * result + this.javaClass.hashCode()
         return result
+    }
+
+    @Deprecated("use plain disposables.add() or yourDisposable.addTo(disposables) ")
+    protected fun addSubscription(disposable: Disposable?){
+        disposable?.let {  disposables.add(it) }
     }
 }
