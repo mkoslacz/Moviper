@@ -3,6 +3,7 @@ package com.mateuszkoslacz.moviper3.base.presenter
 import com.hannesdorfmann.mosby3.mvp.MvpView
 import com.mateuszkoslacz.moviper3.iface.presenter.ViperRxPresenter
 import java.util.*
+import kotlin.reflect.KClass
 
 /**
  * Created by mateuszkoslacz on 10.01.2017.
@@ -13,7 +14,7 @@ import java.util.*
 class ViperPresentersList<ViewType : MvpView>(vararg presenters: ViperRxPresenter<ViewType>)
     : ViperRxPresenter<ViewType> {
 
-    private val presenters = LinkedList<ViperRxPresenter<ViewType>>().apply { addAll(presenters) }
+    val presenters = LinkedList<ViperRxPresenter<ViewType>>().apply { addAll(presenters) }
 
     override val name by lazy {
         "ViperPresentersList - contents: " +
@@ -33,7 +34,7 @@ class ViperPresentersList<ViewType : MvpView>(vararg presenters: ViperRxPresente
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
-        other as ViperPresentersList<*>
+        other as ViperPresentersList<*> // TODO add comparing to ViperMutablePresentersList
         return presenters == other.presenters
     }
 

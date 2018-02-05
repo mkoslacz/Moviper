@@ -11,6 +11,7 @@ import com.mateuszkoslacz.moviper3.iface.view.ViperView
 import com.mateuszkoslacz.moviper3.presenterbus.Moviper
 
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import java.util.*
 
 /**
@@ -27,26 +28,29 @@ import java.util.*
  * You can use any Viper View with this class.
  */
 abstract class BaseRxPresenter<ViewType : MvpView,
-        out InteractorType : ViperRxInteractor,
-        out RoutingType : ViperRxRouting<*>>(val args: Bundle? = null)
+         InteractorType : ViperRxInteractor,
+         RoutingType : ViperRxRouting<*>>(val args: Bundle? = null)
     : MvpBasePresenter<ViewType>(), ViperRxPresenter<ViewType> {
 
-    protected val routing: RoutingType
-    protected val interactor: InteractorType
+    protected var routing: RoutingType = createRouting()
+    protected var interactor: InteractorType = createInteractor()
     private var viewWasAttached = false
     protected val disposables = CompositeDisposable()
 
     override val name = this.javaClass.name + "_" + Random().nextInt()
 
-    init {
-        // we shall not call non-final functions in constructor,
-        // because child-class fields won't be initialized in this moment,
-        // so it's very important to not to use any class fields in these methods!
-        @Suppress("LeakingThis")
-        this.routing = createRouting()
-        @Suppress("LeakingThis")
-        this.interactor = createInteractor()
-    }
+//    init {
+//        // we shall not call non-final functions in constructor,
+//        // because child-class fields won't be initialized in this moment,
+//        // so it's very important to not to use any class fields in these methods!
+//        @Suppress("LeakingThis")
+//        this.routing = createRouting()
+//        @Suppress("LeakingThis")
+//        this.interactor = createInteractor()
+//    }
+
+    @Deprecated("Add your disposable to `disposables` val directly", ReplaceWith("disposable\n?.addTo(disposables)", "io.reactivex.rxkotlin.addTo"))
+    protected fun addSubscription(disposable: Disposable?) = disposable?.let { disposables.add(it) }
 
     abstract fun initStreams()
 
